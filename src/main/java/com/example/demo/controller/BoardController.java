@@ -21,22 +21,17 @@ public class BoardController {
     @Autowired
     private BoardService boardService; 
 
-    // 웹 주소
-    @RequestMapping("/board.do") 
-    public String main(Model model) throws Exception{
-    	HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Board> list = boardService.selectBoardList(); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", list);
-        return "/boardList"; // WEB-INF에서 호출할 파일명
-    }
     
-    // 데이터 호출
-	@RequestMapping(value = "/list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String searchBbsList(Model model) throws Exception {
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Board> list = boardService.selectBoardList(); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", list);
-		return new Gson().toJson(resultMap);
-	}
+	 @RequestMapping("/login.do") 
+     public String login(Model model) throws Exception{
+
+		 return "/login"; // WEB-INF에서 호출할 파일명
+    }
+	
+	 @RequestMapping("/join.do") 
+     public String join(Model model) throws Exception{
+
+		 return "/join"; // WEB-INF에서 호출할 파일명
+    } 
+	 
 }
