@@ -14,7 +14,7 @@ public class JoinController {
     @Autowired
     private JoinService joinService; 
 
-	 @RequestMapping("/join2.do") 
+	 @RequestMapping("/join2.do") // 회원가입 화면
      public String join(Model model) throws Exception{
 
 		 return "/join"; // WEB-INF에서 호출할 파일명

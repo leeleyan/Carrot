@@ -14,7 +14,7 @@ public class PwFindController {
     @Autowired
     private PwFindService pwfindService; 
 
-	 @RequestMapping("/pwfind.do") 
+	 @RequestMapping("/pwfind.do") // 비밀번호 찾기 화면
      public String join(Model model) throws Exception{
 
 		 return "/pwfind"; // WEB-INF에서 호출할 파일명

@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dao.IdFindService;
+import com.example.demo.dao.PwResetService;
 
 
 @Controller 
-public class IdFindController {
+public class PwResetController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
-    private IdFindService idfindService; 
+    private PwResetService pwresetService; 
 
-	 @RequestMapping("/idfind.do") // 아이디 찾기 화면
+	 @RequestMapping("/pwreset.do") // 비밀번호 초기화 팝업 화면
      public String join(Model model) throws Exception{
 
-		 return "/idfind"; // WEB-INF에서 호출할 파일명
+		 return "/pwreset"; // WEB-INF에서 호출할 파일명
     } 
 	 
 }

@@ -14,7 +14,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService; 
 
-	 @RequestMapping("/login2.do") 
+	 @RequestMapping("/login2.do") // 로그인 화면
      public String join(Model model) throws Exception{
 
 		 return "/login"; // WEB-INF에서 호출할 파일명

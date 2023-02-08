@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dao.IdFindService;
+import com.example.demo.dao.ProInformationService;
 
 
 @Controller 
-public class IdFindController {
+public class ProInformationController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
-    private IdFindService idfindService; 
+    private ProInformationService proinformationService; 
 
-	 @RequestMapping("/idfind.do") // 아이디 찾기 화면
+	 @RequestMapping("/proinformation.do") // 상품 정보 화면
      public String join(Model model) throws Exception{
 
-		 return "/idfind"; // WEB-INF에서 호출할 파일명
+		 return "/proinformation"; // WEB-INF에서 호출할 파일명
     } 
 	 
 }
