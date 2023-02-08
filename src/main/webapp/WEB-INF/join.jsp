@@ -17,13 +17,13 @@
 	        body {
 	            background-color: #ffffff;
 				margin-left: 25%;
+				margin-top: 10%;
 	        }
 
 	        .div1{
 				display: flex;
 				padding: 5px;
       			align-items: center;
-				font-size: 20px;
 			}
 			.div2{
 				display: flex;
@@ -31,7 +31,7 @@
 				justify-content: center;
 				height: 50vh;
 			}
-			.text{
+			h3{
 				width: 150px;
 				margin-left: 10px;
 			}
@@ -68,27 +68,27 @@
 	</head>
 	<body>
 		<div class="div2">
-			<div class="div1"><span class="text">아이디</span>
+			<div class="div1"><h3>아이디</h3>
 				<input type="text">
 				<button>아이디 중복 체크</button>
 			</div>
-			<div class="div1"><span class="text">닉네임</span>
+			<div class="div1"><h3>닉네임</h3>
 				<input type="text">
 				<button>닉네임 중복 체크</button>
 			</div>
-			<div class="div1"><span class="text">비밀번호</span>
+			<div class="div1"><h3>비밀번호</h3>
 				<input type="text">
 			</div>
-			<div class="div1"><span class="text">비밀번호 확인</span>
+			<div class="div1"><h3>비밀번호 확인</h3>
 				<input type="text">
 			</div>
-			<div class="div1"><span class="text">이름</span>
+			<div class="div1"><h3>이름</h3>
 				<input type="text">
 			</div>
-			<div class="div1"><span class="text">전화번호</span>
+			<div class="div1"><h3>전화번호</h3>
 				<input type="text">
 			</div>
-			<div class="div1"><span class="text">주소</span>
+			<div class="div1"><h3>주소</h3>
 				<select name = "region" style="margin-left: 20px;">
 					<option value="선택" selected>지역 선택</option>
 					<option value="서울특별시" >서울특별시</option>
@@ -100,7 +100,7 @@
 					<option value="인천광역시" >인천광역시</option>
 				</select>
 			</div>
-			<div class="div1"><span class="text">이메일</span>
+			<div class="div1"><h3>이메일</h3>
 				<input type="text">
 				<button>이메일 중복 체크</button>
 			</div>
