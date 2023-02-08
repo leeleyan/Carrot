@@ -15,69 +15,107 @@
 	        }
 	
 	        body {
-	            background-color: #1BBC9B;
+	            background-color: #ffffff;
+				margin-left: 25%;
 	        }
-	
-	        .div1 {
-	            margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
-	            width: 500px; /*좌.우 길이, 없으면 전체*/
-	            height: 300px;
-	            background-color: #EEEFF1;
-	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
-	            text-align: center; /*하위 요소 가운데 정렬*/
-	            padding: 20px; /*상.하.좌.우로 늘리기(안쪽 여백, 창 크기가 더 커짐)*/
-	        }
-	         .div2 {
-	            margin: auto;
-	            width: 250px;
-	            background-color: #EEEFF1;
-	            border-radius: 5px;
-	            text-align: center;
-	            padding: 0px;
-	        }
-	
+
+	        .div1{
+				display: flex;
+				padding: 5px;
+      			align-items: center;
+				font-size: 20px;
+			}
+			.div2{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 50vh;
+			}
+			.text{
+				width: 150px;
+				margin-left: 10px;
+			}
+
 	        input {
-	            width: 100%;
-	            padding: 10px;
+	            width: 200px;
+				height: 30px;
 	            box-sizing: border-box;
-	            border-radius: 5px;
-	            border: none;
-	            margin-top: 20px;
+				margin-left: 20px;
+	            border: solid 1px;
+				margin-right: 20px;
 	        }
-	
-	        .in {
-	            margin-bottom: 15px;
-	        }
-	
-	        #btn {
-	            background-color: #59cf44;
-	            margin-bottom: 30px;
-	            color: white; 
-	            width: 250px;
-	            height: 50px;
-	            border-radius: 15px;
-	            margin-top: 20px;
-	        }
-	
-	        a {
-	            text-decoration: none;
-	            color: #9B9B9B;
-	            font-size: 15px;
-	        }
+
+			select{
+				width: 100px;
+				height: 30px;
+	            box-sizing: border-box;
+	            border: solid 1px;
+			}
+
+			button{
+				height: 30px;
+				width: 180px;
+				margin-left: 10px;
+			}
+
+			.joinBtn{
+				margin-top: 20px;
+				font-size: 30px;
+				height: auto;
+				margin-left: 185px;
+			}
     	</style>
 	</head>
 	<body>
-		회원가입
+		<div class="div2">
+			<div class="div1"><span class="text">아이디</span>
+				<input type="text">
+				<button>아이디 중복 체크</button>
+			</div>
+			<div class="div1"><span class="text">닉네임</span>
+				<input type="text">
+				<button>닉네임 중복 체크</button>
+			</div>
+			<div class="div1"><span class="text">비밀번호</span>
+				<input type="text">
+			</div>
+			<div class="div1"><span class="text">비밀번호 확인</span>
+				<input type="text">
+			</div>
+			<div class="div1"><span class="text">이름</span>
+				<input type="text">
+			</div>
+			<div class="div1"><span class="text">전화번호</span>
+				<input type="text">
+			</div>
+			<div class="div1"><span class="text">주소</span>
+				<select name = "region" style="margin-left: 20px;">
+					<option value="선택" selected>지역 선택</option>
+					<option value="서울특별시" >서울특별시</option>
+					<option value="인천광역시" >인천광역시</option>
+				</select>
+				<select name = "region2">
+					<option value="선택" selected>지역 선택</option>
+					<option value="서울특별시" >서울특별시</option>
+					<option value="인천광역시" >인천광역시</option>
+				</select>
+			</div>
+			<div class="div1"><span class="text">이메일</span>
+				<input type="text">
+				<button>이메일 중복 체크</button>
+			</div>
+			<button class="joinBtn">회원가입</button>
+		</div>
 	</body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+    	
     }   
     , methods: {
+		
     	
     }   
     , created: function () {
