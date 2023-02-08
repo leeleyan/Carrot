@@ -23,7 +23,7 @@
 			}
 		</style>
 	</head>
-<body>
+<body style="margin: 0px;">
 	<div class="header">
 		<div class="headfirst">
 			<a class="textblank"> <img src="img/marketlogo.png" width="136px"
@@ -35,10 +35,6 @@
 				<img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘">
 				</a>
 			</div>
-<!-- 			<a>
-			<input type="text" placeholder=" 상품 제목 입력" class="text" value="">		
-			
-			</a> -->
 			<button class="loginsignbtn">로그인/회원가입</button>
 		</div>
 	</div>

@@ -47,7 +47,7 @@
 		<div class="outerdiv">
 			<div style="text-align: left;">
 				<span>회원정보</span>	
-				<button class = "ebtn">회원탈퇴</button>
+				<button onclick="window.open('unregister.do','_blank');">회원탈퇴</button>
 			</div>
 			<table>
 				<tr>
