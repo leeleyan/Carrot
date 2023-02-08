@@ -4,6 +4,7 @@
     height: 40px; /* 검색창 세로 길이 */
     box-sizing: border-box;
     position: relative;
+    margin-top: 0px;
 }
 
 .text2 {
