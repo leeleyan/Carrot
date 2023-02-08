@@ -1,0 +1,7 @@
+.textblank{ /* 로고랑 검색창 간격 css */
+    margin-right: 100px;
+    width: 136px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}

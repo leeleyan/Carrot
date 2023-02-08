@@ -1,0 +1,6 @@
+.headfirst {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 40px;
+}
