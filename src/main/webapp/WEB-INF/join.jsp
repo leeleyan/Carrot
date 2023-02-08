@@ -30,6 +30,7 @@
 			}
 			h3{
 				width: 150px;
+				margin-left: 20px;
 			}
 
 	        input {
