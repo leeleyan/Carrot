@@ -16,8 +16,6 @@
 	
 	        body {
 	            background-color: #ffffff;
-				margin-left: 25%;
-				margin-top: 10%;
 	        }
 
 	        .div1{
@@ -26,14 +24,12 @@
       			align-items: center;
 			}
 			.div2{
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				height: 50vh;
+				width: 650px;
+				margin: auto;
+				background-color: #eeeff1;
 			}
 			h3{
 				width: 150px;
-				margin-left: 10px;
 			}
 
 	        input {
@@ -56,6 +52,7 @@
 				height: 30px;
 				width: 180px;
 				margin-left: 10px;
+				cursor: pointer;
 			}
 
 			.joinBtn{
@@ -63,6 +60,7 @@
 				font-size: 30px;
 				height: auto;
 				margin-left: 185px;
+				cursor: pointer;
 			}
     	</style>
 	</head>
