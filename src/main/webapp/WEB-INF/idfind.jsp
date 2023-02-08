@@ -13,22 +13,48 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	
+			
 	        body {
-	            background-color: #1BBC9B;
+	            background-color: #ffffff;
 	        }
+
+			input{
+				padding: 5px;
+			}
+			
+			span{
+				display: inline-block;
+				width: 120px;
+				text-align: center;
+				margin-left: 10;
+				margin-top: 20px;
+				font-size: 20px;
+			}
+			button{
+				margin-top: 40px;
+				font-size: large;
+				margin-left: 80px;
+				width: 200px;
+			}
+
     	</style>
 	</head>
 	<body>
-		아이디 찾기
+		<div>
+			<h3>아이디 찾기</h3>
+			<span>이름</span>
+			<input type="text"><br>
+			<span>이메일</span>
+			<input type="text"><br>
+		</div>
+		<button>아이디 찾기</button>
 	</body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+  
     }   
     , methods: {
     	
