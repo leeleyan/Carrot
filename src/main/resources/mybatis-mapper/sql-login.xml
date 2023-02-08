@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.BoardMapper">	
-	<select id="selectBoardList" resultType="com.example.demo.model.Board">	
+<mapper namespace="com.example.demo.mapper.LoginMapper">	
+	<select id="selectLoginList" resultType="com.example.demo.model.Login">	
 		<![CDATA[
 			SELECT
 				board_idx, title, hit_cnt, created_datetime
