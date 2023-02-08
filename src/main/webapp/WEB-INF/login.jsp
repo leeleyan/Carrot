@@ -11,9 +11,7 @@
     	</style>
 	</head>
 	<body>
-		<select name="language" >
 			로그인페이지
-		</select>
 	</body>
 </html>
 <script type="text/javascript">
