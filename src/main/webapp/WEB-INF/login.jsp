@@ -12,11 +12,7 @@
 	</head>
 	<body>
 		<select name="language" >
-			<option value="none">=== 선택 ===</option>
-			<option value="korean" selected>한국어</option>
-			<option value="english">영어</option>
-			<option value="chinese">중국어</option>
-			<option value="spanish">스페인어</option>
+			로그인페이지
 		</select>
 	</body>
 </html>
