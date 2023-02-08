@@ -72,8 +72,11 @@
 	 <button onclick="window.open('writing.do','_blank');">판매자에게 쪽지 보내기</button>
 	 <!-- 팝업창 정중앙에 위치 'left='+(screen.availWidth-900)/2+',top='+(screen.availHeight-600)/2+', width=900,height=430' -->
 
-	<input type="file" accept="image/*" required multiple>
-	<button class="browse-btn">사진업로드</botton>
+	<div class="container">
+	<input type="file" accept="image/*"multiple>
+	<img src="" alt="">
+	</div>
+	
 	
 	
 	</body>
@@ -93,5 +96,39 @@ var app = new Vue({
     , created: function () {
     
 	}
+});
+
+window.addEventListener('load', function() {
+	
+	const container = document.querySelector('.container');
+	const fileInput = container.querySelector('input[type="file"]');
+	const img = document.querySelector('img');
+  
+	fileInput.addEventListener('input', () => {
+		
+		if(!isImage(fileInput.files[0])) {
+			alert('Image 파일만 업로드 할 수 있습니다.');
+			return;
+		}
+		
+		const reader = new FileReader();
+		const image = new Image();
+    
+		reader.addEventListener('load', () => {
+            image.src = reader.result;
+            image.addEventListener('load', () => {				
+				container.style.width = image.width + 'px';
+                container.style.height = image.height + 'px';
+                img.src = image.src 
+			});    
+		});
+		
+		reader.readAsDataURL(fileInput.files[0]);
+	});
+	
+	function isImage(file){
+		return file.type.indexOf('image') >= 0;
+	}
+
 });
 </script>
