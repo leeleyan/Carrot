@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.JoinService;
-import com.example.demo.model.IdFind;
 import com.google.gson.Gson;
+
+import jakarta.persistence.criteria.Join;
 
 
 @Controller 
