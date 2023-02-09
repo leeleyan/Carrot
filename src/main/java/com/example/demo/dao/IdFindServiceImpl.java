@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class IdFindServiceImpl implements IdFindService{
 
 	// 인터페이스 구체화
 	@Override
-	public List<IdFind> selectIdFindList() throws Exception {
+	public List<IdFind> selectIdFindList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return idfindMapper.selectIdFindList(); // db를 호출하는 mapper와 연결
+		return idfindMapper.selectIdFindList(map); // db를 호출하는 mapper와 연결
 	}
 }

@@ -67,6 +67,7 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		상품정보
 		상품정보
 		상품정보
@@ -74,7 +75,7 @@
 		상품정보
 		상품정보
 		
-		
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

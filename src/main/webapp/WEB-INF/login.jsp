@@ -69,13 +69,13 @@
 	<body>
 		<div id="app" class="div1">
 		<div class="div2">
-				<input type="text" v-model="id" class="in" placeholder="아이디"></input>
+				<input type="text" v-model="uId" class="in" placeholder="아이디"></input>
 		</div>
 		<div class="div2">
-				<input type="password" v-model="pwd" class="in" placeholder="비밀번호"></input>
+				<input type="password" v-model="uPassword" class="in" placeholder="비밀번호"></input>
 		</div>
 		<div class="div2">
-				<button id="btn" @click="fnLogin">로그인</button>
+				<button @click="fnLogin">로그인</button>
 		</div>
 		<div>
 		<a href="idfind.do">아이디 찾기 </a>
@@ -91,29 +91,37 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+    	uId : ""
+    	, uPassword : ""
+    	, uName : ""
     }   
     , methods: {
     	fnLogin : function(){
             var self = this;
-            var nparmap = {id : self.id, password : self.pwd}; 
+            var nparmap = {id : self.uId, password : self.uPassword}; 
             $.ajax({
-                url:"/login/get.dox",
+                url:"/login2/get.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {     
                 	if(data.result == "success"){
-                		alert(data.list[0].name + "님 로그인 성공!!");
-                		self.name = data.list[0].name;
+                		alert(data.list[0].uName + "님 로그인 성공!!");
+                		self.uName = data.list[0].uName;
+                		self.pageChange("/main.do", {});
                 	} else {
-                		alert("로그인 실패!!");
+                		alert("아이디, 비밀번호를 정확히 입력해주세요.");
                 	}
                 }
             }); 
         }
-	  
+    
+        , pageChange : function(url, param) {
+	        var target = "_self";
+	        if(param == undefined){
+	        //   this.linkCall(url);
+	           return;
+	        }
 	        var form = document.createElement("form"); 
 	        form.name = "dataform";
 	        form.action = url;
@@ -136,7 +144,7 @@ var app = new Vue({
 	        document.body.appendChild(form);
 	        form.submit();
 	        document.body.removeChild(form);
-	     }
+	     }   
     }   
     , created: function () {
     
