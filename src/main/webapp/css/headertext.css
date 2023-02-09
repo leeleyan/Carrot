@@ -1,14 +1,26 @@
 .text1{
     border: 2px solid rgb(247, 47, 51); /* 검색창 외형 색깔 */
     width: 460px; /* 검색창 가로 길이 */
-    height: 40px; /* 검색창 세로 길이 */
     box-sizing: border-box;
     position: relative;
     margin-top: 0px;
 }
 
 .text2 {
-    color: rgb(255 10 10);
+    color: rgb(102, 102, 102);
     -webkit-box-flex: 1;
     flex-grow: 1;
+    margin-top: 0px;
+}
+input:focus{
+    border-color:none;
+    outline: none;
+}
+.text3
+{
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 15px;
 }

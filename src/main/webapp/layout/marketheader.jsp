@@ -20,7 +20,7 @@
     		text-decoration: none;
     		cursor: pointer;
     		background-color: transparent;
-			}
+			}		
 		</style>
 	</head>
 <body style="margin: 0px;">
@@ -29,11 +29,13 @@
 			<a class="textblank"> <img src="img/marketlogo.png" width="136px"
 				height="40px">
 			</a> 
-			<div>
-				<input type="text" placeholder=" 상품 제목 입력" class="text1" value="">
+			<div class="text1">
+				<div class="text3">
+				<input type="text" placeholder=" 상품 제목 입력" class="text2" value="">
 				<a>
 				<img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘">
 				</a>
+				</div>
 			</div>
 			<button class="loginsignbtn">로그인/회원가입</button>
 		</div>
