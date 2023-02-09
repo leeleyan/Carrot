@@ -27,48 +27,43 @@
 	            text-align: center; /*하위 요소 가운데 정렬*/
 	            padding: 20px; /*상.하.좌.우로 늘리기(안쪽 여백, 창 크기가 더 커짐)*/
 	        }
-	         .div2 {
-	            margin: auto;
-	            width: 250px;
-	            background-color: #EEEFF1;
-	            border-radius: 5px;
-	            text-align: center;
-	            padding: 0px;
-	        }
+	        span{
+				display: inline-block;
+				width: 140px;
+				text-align: left;
+				margin-left: 10;
+				margin-top: 20px;
+				font-size: 20px;
+			}
 	
 	        input {
-	            width: 100%;
 	            padding: 10px;
 	            box-sizing: border-box;
 	            border-radius: 5px;
-	            border: none;
-	            margin-top: 20px;
+	            border: solid 1px;
+	            margin-top: 40px;
+	            margin-left:15px;
 	        }
 	
-	        .in {
-	            margin-bottom: 15px;
-	        }
-	
-	        #btn {
-	            background-color: #59cf44;
+	        button{
 	            margin-bottom: 30px;
-	            color: white; 
 	            width: 250px;
 	            height: 50px;
 	            border-radius: 15px;
-	            margin-top: 20px;
+	            margin-top: 40px;
 	        }
 	
-	        a {
-	            text-decoration: none;
-	            color: #9B9B9B;
-	            font-size: 15px;
-	        }
+
+			
     	</style>
 	</head>
 	<body>
 	<div id="app" class="div1">
-		비밀번호 초기화
+		<span>새 비밀번호</span>
+		<input type="password" v-model="uName"><br>
+		<span>새 비밀번호 확인</span>
+		<input type="password" v-model="uEmail"><br>
+		<button>비밀번호 재설정</button>
 	</div>	
 	</body>
 </html>
