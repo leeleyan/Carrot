@@ -192,6 +192,7 @@ var app = new Vue({
 	}
 });
 </script>
+
 <script language='javascript'>
 function categoryChange(e) {
     var good_a = ['전체','강남구','강동구','강북구','강서구','관악구','광진구','구로구','금천구','노원구','도봉구','동대문구','동작구','마포구','서대문구','서초구','성동구','성북구','송파구','양천구','영등포구','용산구','은평구','종로구','중구','중랑구'];
@@ -212,6 +213,31 @@ function categoryChange(e) {
     var good_p = ['전체','거제시','김해시','마산시','밀양시','사천시','울산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','양산시','의령군','창녕군','하동군','함안군','함양군','합천군'];
     var good_q = ['전체','서귀포시','제주시','남제주군','북제주군'];
     var target = document.getElementById("sigu");
+    if(e.value == "서울특별시") var d = good_a;
+    else if(e.value == "인천광역시") var d = good_b;
+    else if(e.value == "부산광역시") var d = good_c;
+    else if(e.value == "대구광역시") var d = good_d;
+    else if(e.value == "광주광역시") var d = good_e;
+    else if(e.value == "대전광역시") var d = good_f;
+    else if(e.value == "울산광역시") var d = good_g;
+    else if(e.value == "세종특별자치시") var d = good_h;
+    else if(e.value == "경기도") var d = good_i;
+    else if(e.value == "강원도") var d = good_j;
+    else if(e.value == "충청북도") var d = good_k;
+    else if(e.value == "충청남도") var d = good_l;
+    else if(e.value == "전라북도") var d = good_m;
+    else if(e.value == "전라남도") var d = good_n;
+    else if(e.value == "경상북도") var d = good_o;
+    else if(e.value == "경상남도") var d = good_p;
+    else if(e.value == "제주특별자치도") var d = good_q;
+    target.options.length = 0;
+    for (x in d) {
+        var opt = document.createElement("option");
+        opt.value = d[x];
+        opt.innerHTML = d[x];
+        target.appendChild(opt);
+    }
+
 
     if(e.value == "서울특별시") var d = good_a;
     else if(e.value == "인천광역시") var d = good_b;
@@ -240,4 +266,6 @@ function categoryChange(e) {
         target.appendChild(opt);
     }
 }
+
+
 </script>
