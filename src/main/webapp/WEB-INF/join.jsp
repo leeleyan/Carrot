@@ -66,12 +66,9 @@
     	</style>
 	</head>
 	<body>
-<<<<<<< HEAD
 	<div id="app" class="div1">
 		<div class="div2">
-=======
 		<div class="div2" id="app">
->>>>>>> branch 'master' of https://github.com/leeleyan/TeamProject.git
 			<div class="div1"><h3>아이디</h3>
 				<input type="text">
 				<button>아이디 중복 체크</button>
@@ -133,7 +130,61 @@ var app = new Vue({
     	
     }   
     , methods: {
-		
+    	fnIdCheck : function(){
+            var self = this;
+            var nparmap = {name : self.uName}; 
+            $.ajax({
+                url:"/join2/get.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {     
+                	if(data.result == "success"){
+                		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
+                		self.pageChange("/login2.do", {});
+                	} else {
+                		alert("이름, 이메일을 정확히 입력해주세요.");
+                	}
+                }
+            }); 
+        }
+    , fnNicknameCheck : function(){
+        var self = this;
+        var nparmap = {name : self.uName, email : self.uEmail}; 
+        $.ajax({
+            url:"/join2/get.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {     
+            	if(data.result == "success"){
+            		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
+            		self.pageChange("/login2.do", {});
+            	} else {
+            		alert("이름, 이메일을 정확히 입력해주세요.");
+            	}
+            }
+        }); 
+    }
+, fnEmailCheck : function(){
+    var self = this;
+    var nparmap = {name : self.uName, email : self.uEmail}; 
+    $.ajax({
+        url:"/join2/get.dox",
+        dataType:"json",	
+        type : "POST", 
+        data : nparmap,
+        success : function(data) {     
+        	if(data.result == "success"){
+        		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
+        		self.pageChange("/login2.do", {});
+        	} else {
+        		alert("이름, 이메일을 정확히 입력해주세요.");
+        	}
+        }
+    }); 
+}
+
     	
     }   
     , created: function () {

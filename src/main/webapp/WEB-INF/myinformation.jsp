@@ -168,7 +168,6 @@ function categoryChange(e) {
     var good_p = ['전체','거제시','김해시','마산시','밀양시','사천시','울산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','양산시','의령군','창녕군','하동군','함안군','함양군','합천군'];
     var good_q = ['전체','서귀포시','제주시','남제주군','북제주군'];
     var target = document.getElementById("sigu");
-<<<<<<< HEAD
     if(e.value == "서울특별시") var d = good_a;
     else if(e.value == "인천광역시") var d = good_b;
     else if(e.value == "부산광역시") var d = good_c;
@@ -194,7 +193,6 @@ function categoryChange(e) {
         target.appendChild(opt);
     }
 }
-=======
 
     if(e.value == "서울특별시") var d = good_a;
     else if(e.value == "인천광역시") var d = good_b;
@@ -225,5 +223,4 @@ function categoryChange(e) {
 }
 
 
->>>>>>> branch 'master' of https://github.com/leeleyan/TeamProject.git
 </script>
