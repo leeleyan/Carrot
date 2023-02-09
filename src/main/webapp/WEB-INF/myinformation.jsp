@@ -35,7 +35,9 @@
 				font-size: 25px;
 				border: solid 1px;
 			}
-			
+			input{
+				height: 35px;
+			}
 			.outerdiv{
 				margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
 	            width: 800px; /*좌.우 길이, 없으면 전체*/
@@ -64,34 +66,34 @@
 	</head>
 
 	<body>
-		<div class="outerdiv">
+		<div class="outerdiv" id="app">
 			<div style="text-align: left;">
 				<span>회원정보</span>	
 				<button onclick="window.open('unregister.do','_blank');" id="ebtn" >회원탈퇴</button>
 			</div>
 			<table>
 				<tr>
-					<td class="left">아이디</td>
+					<td>아이디</td>
 					<td colspan="2">아이디테스트</td>
 					<td colspan="2">전화번호</td>
 					<td>010-1111-1111</td>
 					<td><button>변경</button></td>
 				</tr>
 				<tr>
-					<td class="left">이름</td>
-					<td>이름입력란</td>
-					<td><button>변경</button></td>
+					<td>이름</td>
+					<td><input type="text" v-model="name" :disabled="!isNameEdit"></td>
+					<td><button @click="changeName">{{ isNameEdit ? '확인' : '변경' }}</button></td>
 					<td>이메일</td>
-					<td colspan="2">이메일입력</td>
+					<td colspan="2"><input type="text" id="emailText" disabled></td>
 					<td><button>변경</button></td>
 				</tr>
 				<tr>
-					<td class="left">닉네임</td>
-					<td>닉네임입력</td>
+					<td>닉네임</td>
+					<td><input type="text" disabled value="지금닉네임"></td>
 					<td><button>변경</button></td>
 					<td>주소</td>
 					<td>
-						<select onchange="categoryChange(this)">
+						<select onchange="categoryChange(this)" disabled>
 				        	<option>지역 선택</option>
 				            <option value="서울특별시">서울특별시</option>
 				            <option value="부산광역시">부산광역시</option>
@@ -113,7 +115,7 @@
     					</select>
 					</td>
 					<td>
-						<select id="sigu">
+						<select id="sigu" disabled>
     						<option>동네 선택</option>
     					</select>
 					</td>
@@ -132,9 +134,16 @@ var app = new Vue({
     data: {
     	id : ""
     	, pwd : ""
+    	, isNameEdit: false
+        , isEmailEdit: false
     }   
     , methods: {
-    	
+    	changeName: function() {
+            this.isNameEdit = !this.isNameEdit;
+        },
+        changeEmail: function() {
+            this.isEmailEdit = !this.isEmailEdit;
+        }
     }   
     , created: function () {
     
@@ -191,4 +200,6 @@ function categoryChange(e) {
         target.appendChild(opt);
     }
 }
+
+
 </script>
