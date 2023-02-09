@@ -2,20 +2,29 @@ package com.example.demo.model;
 
 
 public class Login {
-    private String loginId;
-    private String loginPw;
+    private String uId;
+    private String uPassword;
+    private String uName;
     
-	public String getLoginId() {
-		return loginId;
+	public String getuId() {
+		return uId;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
-	public String getLoginPw() {
-		return loginPw;
+	public String getuPassword() {
+		return uPassword;
 	}
-	public void setLoginPw(String loginPw) {
-		this.loginPw = loginPw;
+	public void setuPassword(String uPassword) {
+		this.uPassword = uPassword;
 	}
+	public String getuName() {
+		return uName;
+	}
+	public void setuName(String uName) {
+		this.uName = uName;
+	}
+    
+	
 
 }
