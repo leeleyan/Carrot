@@ -47,7 +47,7 @@
 			<span>이메일</span>
 			<input type="text"><br>
 		</div>
-		<button>비밀번호 초기화</button>
+		<button>비밀번호 재설정</button>
 	</body>
 </html>
 </html>
