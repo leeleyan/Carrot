@@ -47,8 +47,13 @@ public class JoinController {
 	 	@ResponseBody
 	 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		int num = joinService.getMemberCheck(map);
-	 		resultMap.put("num", num);
+	 		List<Join> list = joinService.getMemberCheck(map);
+	 		if(list.size() > 0) {
+	 			resultMap.put("result", "success");
+	 		} else {
+	 			resultMap.put("result", "fail");
+	 		}
+	 		resultMap.put("list", list);
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 
@@ -56,7 +61,7 @@ public class JoinController {
 	 	@ResponseBody
 	 	public String check2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		int num = joinService.getMemberCheck(map);
+	 		int num = joinService.getMemberCheck2(map);
 	 		resultMap.put("num", num);
 	 		return new Gson().toJson(resultMap);
 	 	}
@@ -65,7 +70,7 @@ public class JoinController {
 	 	@ResponseBody
 	 	public String check3(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		int num = joinService.getMemberCheck(map);
+	 		int num = joinService.getMemberCheck3(map);
 	 		resultMap.put("num", num);
 	 		return new Gson().toJson(resultMap);
 	 	}

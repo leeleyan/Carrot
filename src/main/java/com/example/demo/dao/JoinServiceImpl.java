@@ -30,8 +30,18 @@ public class JoinServiceImpl implements JoinService{
 	}
 	
 	@Override
-	public int getMemberCheck(HashMap<String, Object> map) {
+	public List<Join> getMemberCheck(HashMap<String, Object> map) {
 		return joinMapper.selectMemberCheck(map);
+	}
+	
+	@Override
+	public int getMemberCheck2(HashMap<String, Object> map) {
+		return joinMapper.selectMemberCheck2(map);
+	}
+	
+	@Override
+	public int getMemberCheck3(HashMap<String, Object> map) {
+		return joinMapper.selectMemberCheck3(map);
 	}
 
 

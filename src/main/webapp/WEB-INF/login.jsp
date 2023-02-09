@@ -107,7 +107,6 @@ var app = new Vue({
                 success : function(data) {     
                 	if(data.result == "success"){
                 		alert(data.list[0].uName + "님 로그인 성공!!");
-                		self.uName = data.list[0].uName;
                 		self.pageChange("/main.do", {});
                 	} else {
                 		alert("아이디, 비밀번호를 정확히 입력해주세요.");

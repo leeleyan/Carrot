@@ -4,16 +4,16 @@
 
 <mapper namespace="com.example.demo.mapper.JoinMapper">	
 	
-	<!-- <select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
+	 <select id="selectMemberCheck" parameterType="hashmap" resultType="com.example.demo.model.Join">	
 		SELECT
-			count(*)
+			u_id
 		FROM
 			t2_account
 		WHERE 
-			u_id = #{id} 
+			u_id = #{id}
 	</select>
 	
-	<select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
+	 <select id="selectMemberCheck2" parameterType="hashmap" resultType="int">	
 		SELECT
 			count(*)
 		FROM
@@ -22,16 +22,16 @@
 			u_nickname = #{nickname} 
 	</select>
 	
-	<select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
+	<select id="selectMemberCheck3" parameterType="hashmap" resultType="int">	
 		SELECT
 			count(*)
 		FROM
 			t2_account
 		WHERE 
 			u_email = #{email} 
-	</select> -->
+	</select> 
 	
-	<!-- <insert id="insertMember" parameterType="hashmap">
+	 <!-- <insert id="insertMember" parameterType="hashmap">
         INSERT INTO t2_account
         VALUES(
             #{id}
