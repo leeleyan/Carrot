@@ -48,12 +48,8 @@
 			<span>이메일</span>
 			<input type="text" v-model="uEmail"><br>
 		</div>
-<<<<<<< HEAD
 		<button @click="fnPwFind">비밀번호 재설정</button>
 	</div>
-=======
-		<button>비밀번호 재설정</button>
->>>>>>> branch 'master' of https://github.com/leeleyan/TeamProject.git
 	</body>
 </html>
 </html>
