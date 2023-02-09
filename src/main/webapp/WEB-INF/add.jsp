@@ -67,13 +67,14 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		상품등록
 		상품등록
 		상품등록
 		상품등록
 		상품등록
 		상품등록
-		
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

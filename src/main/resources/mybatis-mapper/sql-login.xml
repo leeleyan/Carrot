@@ -10,6 +10,6 @@
 			t2_account
 		WHERE 
 			u_id = #{id} AND u_password = #{password} 
-			<!-- 앞에 u_id는 실제 DB 컬럼명, {}안에는 MAP에 있는애랑 맞춰줌-->>
+			<!-- 앞에 u_id는 실제 DB 컬럼명, {}안에는 MAP에 있는애랑 맞춰줌-->
 	</select>
 </mapper>

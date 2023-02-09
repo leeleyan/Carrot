@@ -66,6 +66,7 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		<div class="div2">
 			<div class="div1"><h3>아이디</h3>
 				<input type="text">
@@ -105,6 +106,7 @@
 			</div>
 			<button class="joinBtn">회원가입</button>
 		</div>
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

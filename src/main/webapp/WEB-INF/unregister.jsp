@@ -67,6 +67,7 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		회원탈퇴 하시겠습니까?
 		회원탈퇴 하시겠습니까?
 		회원탈퇴 하시겠습니까?
@@ -74,7 +75,7 @@
 		회원탈퇴 하시겠습니까?
 		회원탈퇴 하시겠습니까?
 		
-		
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

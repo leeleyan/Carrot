@@ -67,6 +67,7 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		쪽지
 		쪽지
 		쪽지
@@ -74,7 +75,7 @@
 		쪽지
 		쪽지
 		쪽지
-		
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

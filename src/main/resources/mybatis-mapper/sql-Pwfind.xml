@@ -4,14 +4,12 @@
 
 <mapper namespace="com.example.demo.mapper.PwFindMapper">	
 	<select id="selectPwFindList" resultType="com.example.demo.model.PwFind">	
-		<![CDATA[
-			SELECT
-				board_idx, title, hit_cnt, created_datetime
-			FROM
-				t_board
-			WHERE
-				deleted_yn = 'N'
-			ORDER BY board_idx DESC
-		]]>
+		SELECT
+			u_id, u_email
+		FROM
+			t2_account
+		WHERE 
+			u_id = #{id} AND u_email = #{email} 
+			<!-- 앞에 u_id는 실제 DB 컬럼명, {}안에는 MAP에 있는애랑 맞춰줌-->
 	</select>
 </mapper>

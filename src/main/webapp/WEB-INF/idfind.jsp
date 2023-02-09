@@ -40,23 +40,74 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		<div>
 			<h3>아이디 찾기</h3>
 			<span>이름</span>
-			<input type="text"><br>
+			<input type="text" v-model="uName"><br>
 			<span>이메일</span>
-			<input type="text"><br>
+			<input type="text" v-model="uEmail"><br>
 		</div>
-		<button>아이디 찾기</button>
+		<button @click="fnIdFind">아이디 찾기</button>
+	</div>
 	</body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-  
+    	uName : ""
+        , uEmail : ""
+        , uId : ""
     }   
     , methods: {
+    	fnIdFind : function(){
+            var self = this;
+            var nparmap = {name : self.uName, email : self.uEmail}; 
+            $.ajax({
+                url:"/idfind/get.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {     
+                	if(data.result == "success"){
+                		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
+                		self.pageChange("/login2.do", {});
+                	} else {
+                		alert("이름, 이메일을 정확히 입력해주세요.");
+                	}
+                }
+            }); 
+        }
+    , pageChange : function(url, param) {
+        var target = "_self";
+        if(param == undefined){
+        //   this.linkCall(url);
+           return;
+        }
+        var form = document.createElement("form"); 
+        form.name = "dataform";
+        form.action = url;
+        form.method = "post";
+        form.target = target;
+        for(var name in param){
+          var item = name;
+          var val = "";
+          if(param[name] instanceof Object){
+             val = JSON.stringify(param[name]);
+          } else {
+             val = param[name];
+          }
+          var input = document.createElement("input");
+           input.type = "hidden";
+           input.name = item;
+           input.value = val;
+           form.insertBefore(input, null);
+       }
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+     }   
     }   
     , created: function () {
     

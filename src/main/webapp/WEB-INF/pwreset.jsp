@@ -67,8 +67,9 @@
     	</style>
 	</head>
 	<body>
+	<div id="app" class="div1">
 		비밀번호 초기화
-		
+	</div>	
 	</body>
 </html>
 <script type="text/javascript">

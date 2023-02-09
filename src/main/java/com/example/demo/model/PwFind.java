@@ -2,19 +2,21 @@ package com.example.demo.model;
 
 
 public class PwFind {
-    private String userId;
-    private String userEmail;
+    private String uId;
+    private String uEmail;
     
-	public String getUserId() {
-		return userId;
+	public String getuId() {
+		return uId;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getuEmail() {
+		return uEmail;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setuEmail(String uEmail) {
+		this.uEmail = uEmail;
 	}
+    
+	
 }

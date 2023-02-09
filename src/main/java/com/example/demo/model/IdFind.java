@@ -2,19 +2,28 @@ package com.example.demo.model;
 
 
 public class IdFind {
-    private String userName;
-    private String userEmail;
+    private String uName;
+    private String uEmail;
+    private String uId;
     
-	public String getUserName() {
-		return userName;
+	public String getuName() {
+		return uName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setuName(String uName) {
+		this.uName = uName;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getuEmail() {
+		return uEmail;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setuEmail(String uEmail) {
+		this.uEmail = uEmail;
 	}
+	public String getuId() {
+		return uId;
+	}
+	public void setuId(String uId) {
+		this.uId = uId;
+	}
+    
+	
 }
