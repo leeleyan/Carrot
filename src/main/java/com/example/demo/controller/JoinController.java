@@ -42,4 +42,31 @@ public class JoinController {
 	 		resultMap.put("list", list);
 	 		return new Gson().toJson(resultMap);
 	 	}
+	 
+	 @RequestMapping(value = "/join2/idcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		int num = joinService.getMemberCheck(map);
+	 		resultMap.put("num", num);
+	 		return new Gson().toJson(resultMap);
+	 	}
+	 
+	 @RequestMapping(value = "/join2/nicknamecheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String check2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		int num = joinService.getMemberCheck(map);
+	 		resultMap.put("num", num);
+	 		return new Gson().toJson(resultMap);
+	 	}
+	 
+	 @RequestMapping(value = "/join2/emailcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String check3(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		int num = joinService.getMemberCheck(map);
+	 		resultMap.put("num", num);
+	 		return new Gson().toJson(resultMap);
+	 	}
 }

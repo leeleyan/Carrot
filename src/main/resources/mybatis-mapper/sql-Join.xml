@@ -4,7 +4,7 @@
 
 <mapper namespace="com.example.demo.mapper.JoinMapper">	
 	
-	<select id="selectJoinList" parameterType="hashmap" resultType="int">	
+	<!-- <select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
 		SELECT
 			count(*)
 		FROM
@@ -13,7 +13,7 @@
 			u_id = #{id} 
 	</select>
 	
-	<select id="selectJoinList" parameterType="hashmap" resultType="int">	
+	<select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
 		SELECT
 			count(*)
 		FROM
@@ -22,14 +22,14 @@
 			u_nickname = #{nickname} 
 	</select>
 	
-	<select id="selectJoinList" parameterType="hashmap" resultType="int">	
+	<select id="selectMemberCheck" parameterType="hashmap" resultType="int">	
 		SELECT
 			count(*)
 		FROM
 			t2_account
 		WHERE 
 			u_email = #{email} 
-	</select>
+	</select> -->
 	
 	<!-- <insert id="insertMember" parameterType="hashmap">
         INSERT INTO t2_account

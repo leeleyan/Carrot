@@ -71,11 +71,11 @@
 		<div class="div2" id="app">
 			<div class="div1"><h3>아이디</h3>
 				<input type="text">
-				<button>아이디 중복 체크</button>
+				<button @click="fnIdCheck">아이디 중복 체크</button>
 			</div>
 			<div class="div1"><h3>닉네임</h3>
 				<input type="text">
-				<button>닉네임 중복 체크</button>
+				<button @click="fnNicknameCheck">닉네임 중복 체크</button>
 			</div>
 			<div class="div1"><h3>비밀번호</h3>
 				<input type="text">
@@ -116,7 +116,7 @@
 			</div>
 			<div class="div1"><h3>이메일</h3>
 				<input type="text">
-				<button>이메일 중복 체크</button>
+				<button @click="fnEmailCheck">이메일 중복 체크</button>
 			</div>
 			<button class="joinBtn">회원가입</button>
 		</div>
@@ -132,54 +132,51 @@ var app = new Vue({
     , methods: {
     	fnIdCheck : function(){
             var self = this;
-            var nparmap = {name : self.uName}; 
+            var nparmap = {id : self.uId}; 
             $.ajax({
                 url:"/join2/get.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {     
-                	if(data.result == "success"){
-                		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
-                		self.pageChange("/login2.do", {});
+                	if(data.num > 0){
+                		alert("중복된 아이디가 있습니다.");
                 	} else {
-                		alert("이름, 이메일을 정확히 입력해주세요.");
+                		alert("사용 가능 합니다.");
                 	}
                 }
             }); 
         }
     , fnNicknameCheck : function(){
         var self = this;
-        var nparmap = {name : self.uName, email : self.uEmail}; 
+        var nparmap = {nickname : self.uNickname}; 
         $.ajax({
             url:"/join2/get.dox",
             dataType:"json",	
             type : "POST", 
             data : nparmap,
             success : function(data) {     
-            	if(data.result == "success"){
-            		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
-            		self.pageChange("/login2.do", {});
+            	if(data.num > 0){
+            		alert("중복된 닉네임이 있습니다.");
             	} else {
-            		alert("이름, 이메일을 정확히 입력해주세요.");
+            		alert("사용 가능 합니다.");
             	}
             }
         }); 
     }
 , fnEmailCheck : function(){
     var self = this;
-    var nparmap = {name : self.uName, email : self.uEmail}; 
+    var nparmap = {email : self.uEmail}; 
     $.ajax({
         url:"/join2/get.dox",
         dataType:"json",	
         type : "POST", 
         data : nparmap,
         success : function(data) {     
-        	if(data.result == "success"){
-        		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
-        		self.pageChange("/login2.do", {});
+        	if(data.num > 0){
+        		alert("중복된 이메일이 있습니다.");
         	} else {
-        		alert("이름, 이메일을 정확히 입력해주세요.");
+        		alert("사용 가능 합니다.");
         	}
         }
     }); 
