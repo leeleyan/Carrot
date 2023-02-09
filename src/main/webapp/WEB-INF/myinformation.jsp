@@ -18,27 +18,41 @@
 	            background-color: #1BBC9B;
 	        }
 
-			.ebtn{
-				float: right;
+			#ebtn{
 				font-size: 20px;
+				float: right; 
 			}
 
 			span{
-				font-size: 25px;
+				font-size: 40px;
 			}
 			
-			td{
-				border: solid 2px;
+			select{
+				font-size: 25px;
+			}
+			table{
+				width: 800px;
+				font-size: 25px;
+				border: solid 1px;
 			}
 			
 			.outerdiv{
 				margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
-	            width: 60%; /*좌.우 길이, 없으면 전체*/
+	            width: 800px; /*좌.우 길이, 없으면 전체*/
 	            height: 300px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
 	            text-align: center; /*하위 요소 가운데 정렬*/
 	            padding: 20px; 
+			}
+
+			table, td{
+				border-collapse: collapse;
+				border: solid 1px;
+			}
+
+			button{
+				font-size: 25px;
 			}
     	</style>
 	</head>
@@ -47,28 +61,28 @@
 		<div class="outerdiv">
 			<div style="text-align: left;">
 				<span>회원정보</span>	
-				<button onclick="window.open('unregister.do','_blank');">회원탈퇴</button>
+				<button onclick="window.open('unregister.do','_blank');" id="ebtn" >회원탈퇴</button>
 			</div>
 			<table>
 				<tr>
-					<td>아이디</td>
+					<td class="left">아이디</td>
 					<td colspan="2">아이디테스트</td>
 					<td colspan="2">전화번호</td>
 					<td>010-1111-1111</td>
-					<td><a>변경</a></td>
+					<td><button>변경</button></td>
 				</tr>
 				<tr>
-					<td>이름</td>
+					<td class="left">이름</td>
 					<td>이름입력란</td>
-					<td><a>변경</a></td>
+					<td><button>변경</button></td>
 					<td>이메일</td>
 					<td colspan="2">이메일입력</td>
-					<td><a>변경</a></td>
+					<td><button>변경</button></td>
 				</tr>
 				<tr>
-					<td>닉네임</td>
+					<td class="left">닉네임</td>
 					<td>닉네임입력</td>
-					<td>변경</td>
+					<td><button>변경</button></td>
 					<td>주소</td>
 					<td><select name = "region" style="margin-left: 20px;">
 						<option value="선택" selected>지역 선택</option>
@@ -81,7 +95,7 @@
 						<option value="서울특별시" >서울특별시</option>
 						<option value="인천광역시" >인천광역시</option>
 					</select></td>
-					<td>변경</td>
+					<td><button>변경</button></td>
 				</tr>
 			</table>
 		</div>
