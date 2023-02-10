@@ -23,5 +23,55 @@
 .imgarea {
     position: relative;
     width: 100%;
-    height: 194px;
+    height: 180px;
+}
+.imgset {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: flex;
+    gap: 5px;
+}
+.imgset2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.imgtextarea {
+    padding: 15px 10px;
+    height: 64px;
+}
+.imgnamearea{
+    position: relative;
+    font-size: 14px;
+    padding-bottom: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.imgpayandtimearea {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 20px;
+}
+.imgpaytext {
+    font-size: 16px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.imgpaytext::after {
+    content: "원";
+    font-size: 13px;
+    margin-left: 3px;
+}
+.imgtimetext{
+    font-size: 12px;
+    color: rgb(136, 136, 136);
 }

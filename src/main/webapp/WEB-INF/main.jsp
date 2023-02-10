@@ -16,7 +16,7 @@
 	        }
 	
 	        body {
-	            background-color: #1BBC9B;
+	            background-color: white;
 	        }
 	
 	        .div1 {
@@ -68,6 +68,7 @@
     	</style>
 	</head>
 	<body>
+	<jsp:include page="/layout/marketmainbody.jsp"></jsp:include>
 		<div id="app" class="div1">
    	 <button onclick="window.open('unregister.do','_blank');">회원탈퇴</button>
 	 <button onclick="window.open('writing.do','_blank');">판매자에게 쪽지 보내기</button>
@@ -80,6 +81,9 @@
 	
 	
 	</div>
+		<div class-"footer>
+		<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
+		</div>	
 	</body>
 </html>
 

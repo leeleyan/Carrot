@@ -17,6 +17,12 @@
     		font-weight: 700;
     		font-weight: bold;
 			}
+			footer {
+    		width: 100%;
+    		position: absolute;  
+    		bottom: 0;
+    		left: 0;
+			}
 	</style>
 	</head>
 	<body>

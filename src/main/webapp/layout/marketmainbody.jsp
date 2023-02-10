@@ -2,25 +2,61 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="maincss/mainbody.css" type="text/css">
-	<style>
-	</style>
-	</head>
-	<body>
-		<section class="mainblank">
-			<h2>최신 상품 추천</h2>
-				<div class="showlist">
-					<div class="separationlist">
-						<div class="marginlist">
-							<a href="proinformation.do"></a>
-							<div class=".imgarea">
-								<img  src="mainimg/testimg.png" alt="상품이미지">
-							</div>
-						</div>
-					</div>
-				</div>
-		</section>
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="maincss/mainbodyblank.css" type="text/css">
+    <style>
+      .container{
+        margin: auto;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        width: 1010px;
+      }
+
+      .item{
+        width: 195px;
+        border: solid 1px;
+        height: 274px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      
+    </style>
+    <title>JS bin</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+      	<div class="imgarea">
+			<img src="mainimg/testimg.jpg" width="195" height="180" alt="상품 이미지">
+			<div class="imgset"></div>
+			<div class="imgset2"></div>
+      	</div>
+      	<div class="imgtextarea">
+      		<div class="imgnamearea">패딩</div>
+      			<div class="imgpayandtimearea">
+      				<div class="imgpaytext">
+      				150000
+      				</div>
+      				<div class="imgtimetext">
+      					<span>7시간 전</span>
+      				</div>
+      			</div>
+      	</div>
+      </div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
 </html>

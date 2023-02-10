@@ -1,4 +1,5 @@
 .headfirst {
+	justify-content: center;
     display: flex;
     -webkit-box-align: center;
     align-items: center;

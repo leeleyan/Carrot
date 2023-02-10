@@ -1,6 +1,6 @@
 .header{ /* 메인 헤더 css */
 	position: sticky;
-    display: flex;
+	top: 0px;
     width: 100%;
     -webkit-box-pack: center;
     justify-content: center;
