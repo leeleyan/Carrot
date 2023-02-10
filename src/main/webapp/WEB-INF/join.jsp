@@ -2,73 +2,73 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<script src="js/jquery.js"></script>
-<script src="js/vue.js"></script>
-<title>마켓이름 : 회원가입</title>
-<style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-	;
-
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-body {
-	background-color: #ffffff;
-}
-
-.div1 {
-	display: flex;
-	padding: 5px;
-	align-items: center;
-}
-
-.div2 {
-	width: 650px;
-	margin: auto;
-	background-color: #eeeff1;
-}
-
-h3 {
-	width: 150px;
-	margin-left: 20px;
-}
-
-input {
-	width: 200px;
-	height: 30px;
-	box-sizing: border-box;
-	margin-left: 20px;
-	border: solid 1px;
-	margin-right: 20px;
-}
-
-select {
-	width: 100px;
-	height: 30px;
-	box-sizing: border-box;
-	border: solid 1px;
-}
-
-button {
-	height: 30px;
-	width: 180px;
-	margin-left: 10px;
-	cursor: pointer;
-}
-
-.joinBtn {
-	margin-top: 20px;
-	font-size: 30px;
-	height: auto;
-	margin-left: 185px;
-	cursor: pointer;
-}
-</style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/jquery.js"></script>
+		<script src="js/vue.js"></script>
+		<title>마켓이름 : 회원가입</title>
+		<style>
+			@import
+				url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+				;
+			
+			* {
+				font-family: 'Noto Sans KR', sans-serif;
+			}
+			
+			body {
+				background-color: #ffffff;
+			}
+			
+			.div1 {
+				display: flex;
+				padding: 5px;
+				align-items: center;
+			}
+			
+			.div2 {
+				width: 650px;
+				margin: auto;
+				background-color: #eeeff1;
+			}
+			
+			h3 {
+				width: 150px;
+				margin-left: 20px;
+			}
+			
+			input {
+				width: 200px;
+				height: 30px;
+				box-sizing: border-box;
+				margin-left: 20px;
+				border: solid 1px;
+				margin-right: 20px;
+			}
+			
+			select {
+				width: 100px;
+				height: 30px;
+				box-sizing: border-box;
+				border: solid 1px;
+			}
+			
+			button {
+				height: 30px;
+				width: 180px;
+				margin-left: 10px;
+				cursor: pointer;
+			}
+			
+			.joinBtn {
+				margin-top: 20px;
+				font-size: 30px;
+				height: auto;
+				margin-left: 185px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
 <body>
 	<div id="app" class="div1">
 		<div class="div2">
