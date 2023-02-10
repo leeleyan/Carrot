@@ -18,11 +18,14 @@
     		font-weight: bold;
 			}
 			footer {
+    		background-color: white;
+    		color: gray;
+    		border-top: 1px solid rgb(238, 238, 238);
+    		padding: 0 1.6rem;
+    		box-sizing: border-box;
     		width: 100%;
-    		position: absolute;  
-    		bottom: 0;
-    		left: 0;
-			}
+    		max-width: 100vw;
+    		}
 	</style>
 	</head>
 	<body>

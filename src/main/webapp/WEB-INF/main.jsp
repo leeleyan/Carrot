@@ -68,6 +68,27 @@
     	</style>
 	</head>
 	<body>
+	<div>
+				<label for="si" class="control-label">시 : </label>
+				<select id="si" v-model="si" class="form-control" id="si" @change="fnGuList"> 
+					<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+				</select>
+			</div>
+			<div >
+				<label for="gu" class="control-label">구/군 : </label>
+				<select id="gu" v-model="gu" class="form-control" id="gu" @change="fnDongList">
+					<option value="">:: 선택 ::</option>
+					<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+				</select>
+			</div>
+			<div>
+				<label for="dong" class="control-label">동 : </label>
+				<select id="dong" v-model="dong" class="form-control" id="dong">
+					<option value="">:: 선택 ::</option>
+					<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
+				</select>
+			</div>
+			
 	<jsp:include page="/layout/marketmainbody.jsp"></jsp:include>
 		<div id="app" class="div1">
    	 <button onclick="window.open('unregister.do','_blank');">회원탈퇴</button>
@@ -78,13 +99,9 @@
 	<input type="file" accept="image/*"multiple>
 	<img src="" alt="">
 	</div>
-	
-	
-	</div>
-		<div class-"footer>
-		<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
-		</div>	
+	</div>		
 	</body>
+	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>	
 </html>
 
 <script type="text/javascript">
@@ -94,9 +111,44 @@ var app = new Vue({
     data: {
     	id : ""
     	, pwd : ""
+    	, siList : ${siList}
+ 	    , guList : ${guList}
+ 	    , dongList : ${dongList}
+		, si : "서울특별시"
+		, gu : ""
+		, dong : ""
     }   
     , methods: {
-    	
+    	fnGuList : function(){
+    		var self = this;
+            var nparmap = {si : self.si};
+            $.ajax({
+                url:"/gu/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+	                self.guList = data.guList;
+	                console.log(data.guList);
+	                self.gu = "";
+	                self.dong = "";
+                }
+            }); 
+        }
+    	, fnDongList : function(){
+     		var self = this;
+             var nparmap = {si : self.si, gu : self.gu};
+             $.ajax({
+                 url:"/dong/list.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) {                                       
+ 	                self.dongList = data.dongList;
+ 	          		self.dong = "";
+                 }
+             }); 
+         }
     }   
     , created: function () {
     
