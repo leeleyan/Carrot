@@ -12,7 +12,7 @@ import jakarta.persistence.criteria.Join;
 public interface JoinMapper {
 	List<Join> selectJoinList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 	int insertMember(HashMap<String, Object> map);
-	List<Join> selectMemberCheck(HashMap<String, Object> map);
+	int selectMemberCheck(HashMap<String, Object> map);
 	int selectMemberCheck2(HashMap<String, Object> map);
 	int selectMemberCheck3(HashMap<String, Object> map);
 }

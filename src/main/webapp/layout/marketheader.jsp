@@ -26,7 +26,7 @@
 <body style="margin: 0px;">
 	<div class="header">
 		<div class="headfirst">
-			<a class="textblank"> <img src="img/marketlogo.png" width="136px"
+			<a class="textblank" href="main.do"> <img src="img/marketlogo.png" width="136px"
 				height="40px">
 			</a> 
 			<div class="text1">
@@ -37,19 +37,19 @@
 				</a>
 				</div>
 			</div>
-			<button class="loginsignbtn">로그인/회원가입</button>
+			<button class="loginsignbtn" onclick="location.href='/login2.do'">로그인/회원가입</button>
 		</div>
 	</div>
 	<div class="headusermenu">
-		<button class="headmymenubtn">
+		<button class="headmymenubtn" onclick="location.href='/myinformation.do'">
 			<img src="img/userlogimg.png" width="23" height="24" alt="내정보버튼 이미지">
 			내 정보
 		</button>
-		<button class="headmymenubtn">
+		<button class="headmymenubtn" onclick="location.href='/add.do'">
 			<img src="img/usersellimg.png" width="23" height="24" alt="물품등록버튼 이미지">
 			물품등록
 		</button>
-		<button class="headmymenubtn">
+		<button class="headmymenubtn" onclick="location.href='/message.do'">
 			<img src="img/userchatimg.png" width="23" height="24" alt="쪽지버튼 이미지">
 			쪽지
 		</button>

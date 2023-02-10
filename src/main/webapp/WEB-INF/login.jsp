@@ -105,7 +105,7 @@ var app = new Vue({
                 type : "POST", 
                 data : nparmap,
                 success : function(data) {     
-                	if(data.result == "success"){
+                	if(data.result2 == "success"){
                 		alert(data.list[0].uName + "님 로그인 성공!!");
                 		self.pageChange("/main.do", {});
                 	} else {

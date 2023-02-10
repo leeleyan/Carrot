@@ -15,10 +15,16 @@ import com.example.demo.dao.LoginService;
 import com.example.demo.model.Login;
 import com.google.gson.Gson;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller 
 public class LoginController {
 	// Service 인터페이스 객체 생성 및 연결
+	
+	@Autowired
+	HttpSession session;
+	
     @Autowired
     private LoginService loginService; 
 
@@ -30,15 +36,29 @@ public class LoginController {
 
 	 @RequestMapping(value = "/login2/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
-	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 	public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 	 		List<Login> list = loginService.selectLoginList(map);
 	 		if(list.size() > 0) {
-	 			resultMap.put("result", "success");
+	 			resultMap.put("result2", "success");
 	 		} else {
-	 			resultMap.put("result", "fail");
+	 			resultMap.put("result2", "fail");
 	 		}
 	 		resultMap.put("list", list);
+	 		
+			
+			  Login user = loginService.getMember(map);
+			  
+			  if( user != null) { session.setAttribute("userIdSession", user.getuId());
+			  session.setAttribute("userNicknameSession", user.getuNickname());
+			  session.setAttribute("userPasswordSession", user.getuPassword());
+			  session.setAttribute("userNameSession", user.getuName());
+			  session.setAttribute("userTelSession", user.getuTel());
+			  session.setAttribute("userAddressSession", user.getuAddress());
+			  session.setAttribute("userEmailSession", user.getuEmail());
+			  resultMap.put("user", user); resultMap.put("result", "success"); } else {
+			  resultMap.put("result", "fail"); }
+			 
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 

@@ -11,4 +11,5 @@ import com.example.demo.model.Login;
 @Mapper
 public interface LoginMapper {
 	List<Login> selectLoginList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
+	Login selectMember(HashMap<String, Object> map);
 }

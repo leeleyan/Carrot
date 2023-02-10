@@ -28,7 +28,7 @@ public class JoinController {
 
 		 return "/join"; // WEB-INF에서 호출할 파일명
     } 
-	
+	 // 회원가입
 	 @RequestMapping(value = "/join2/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -42,21 +42,16 @@ public class JoinController {
 	 		resultMap.put("list", list);
 	 		return new Gson().toJson(resultMap);
 	 	}
-	 
+	 // 아이디 중복 체크
 	 @RequestMapping(value = "/join2/idcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		List<Join> list = joinService.getMemberCheck(map);
-	 		if(list.size() > 0) {
-	 			resultMap.put("result", "success");
-	 		} else {
-	 			resultMap.put("result", "fail");
-	 		}
-	 		resultMap.put("list", list);
+	 		int num = joinService.getMemberCheck(map);
+	 		resultMap.put("num", num);
 	 		return new Gson().toJson(resultMap);
 	 	}
-	 
+	 // 닉네임 중복 체크
 	 @RequestMapping(value = "/join2/nicknamecheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -65,13 +60,26 @@ public class JoinController {
 	 		resultMap.put("num", num);
 	 		return new Gson().toJson(resultMap);
 	 	}
-	 
+	 // 이메일 중복 체크
 	 @RequestMapping(value = "/join2/emailcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check3(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 	 		int num = joinService.getMemberCheck3(map);
 	 		resultMap.put("num", num);
+	 		return new Gson().toJson(resultMap);
+	 	}
+	 // 회원가입
+	 @RequestMapping(value = "/join2/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String add(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		int num = joinService.addMember(map);
+	 		if(num > 0) {
+	 			resultMap.put("result", "success");
+	 		} else {
+	 			resultMap.put("result", "fail");
+	 		}
 	 		return new Gson().toJson(resultMap);
 	 	}
 }

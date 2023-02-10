@@ -22,4 +22,11 @@ public class LoginServiceImpl implements LoginService{
 		// TODO Auto-generated method stub
 		return loginMapper.selectLoginList(map); // db를 호출하는 mapper와 연결
 	}
+	
+	@Override
+	public Login getMember(HashMap<String, Object> map){
+		// TODO Auto-generated method stub
+		
+		return loginMapper.selectMember(map); // db를 호출하는 mapper와 연결
+	}
 }
