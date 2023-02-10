@@ -61,7 +61,6 @@
 					<div v-for="(image, index) in previewImages" :key="index">
 					<img :src="image" alt="Image Preview" class="preview-img"/>
 					<button @click="removeImage(index)">Cancel</button>
-
 				</div>
 			</template>
 			<hr>
