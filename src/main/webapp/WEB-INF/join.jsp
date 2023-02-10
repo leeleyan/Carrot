@@ -9,7 +9,8 @@
 <title>마켓이름 : 회원가입</title>
 <style>
 @import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
 
 * {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -100,7 +101,26 @@ button {
 				</div>
 				<div class="div1">
 					<h3>주소</h3>
-					<input type="text" v-model="uAddress">
+					<div>
+						<label for="si" class="control-label"></label> 
+						<select id="si"	v-model="si" class="form-control" id="si" @change="fnGuList" style="margin-left: 19px;">
+							<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+						</select>
+					</div>
+					<div>
+						<label for="gu" class="control-label"></label> 
+						<select	id="gu" v-model="gu" class="form-control" id="gu" @change="fnDongList">
+							<option value="">구 선택</option>
+							<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+						</select>
+					</div>
+					<div>
+						<label for="dong" class="control-label"></label> 
+						<select	id="dong" v-model="dong" class="form-control" id="dong">
+							<option value="">동 선택</option>
+							<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
+						</select>
+					</div>
 				</div>
 				<div class="div1">
 					<h3>이메일</h3>
@@ -110,7 +130,7 @@ button {
 				<button class="joinBtn" @click="fnJoin">회원가입</button>
 			</div>
 		</div>
-		</div>
+	</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -123,8 +143,19 @@ button {
 			uName : "",
 			uTel : "",
 			uAddress : "",
-			uEmail : ""
+			uEmail : "",
+			list : [] 
+	       , selectedItemList : []
+		   , siList : ${siList}
+		   , guList : ${guList}
+		   , dongList : ${dongList}
+		   , si : "서울특별시"
+		   , gu : ""
+		   , dong : ""
+		   , guFlg : false
+		   , dongFlg : false
 		},
+		
 		methods : {
 			fnIdCheck : function() {
 				var self = this;
@@ -185,7 +216,7 @@ button {
 							   , nickname : self.uNickname
 							   , tel : self.uTel
 							   , email : self.uEmail
-							   , address : self.uAddress};
+							   , address : self.si + self.gu + self.dong};
 				$.ajax({
 					url : "/join2/add.dox",
 					dataType : "json",
@@ -199,7 +230,37 @@ button {
 	                	}
 					}
 				});
-			}
+				
+			}, fnGuList : function(){
+	    		var self = this;
+	            var nparmap = {si : self.si};
+	            $.ajax({
+	                url:"/gu/list.dox",
+	                dataType:"json",	
+	                type : "POST", 
+	                data : nparmap,
+	                success : function(data) {  
+		                self.guList = data.guList;
+		                console.log(data.guList);
+		                self.gu = "";
+		                self.dong = "";
+	                }
+	            }); 
+	        }
+	    	, fnDongList : function(){
+	     		var self = this;
+	             var nparmap = {si : self.si, gu : self.gu};
+	             $.ajax({
+	                 url:"/dong/list.dox",
+	                 dataType:"json",	
+	                 type : "POST", 
+	                 data : nparmap,
+	                 success : function(data) {                                       
+	 	                self.dongList = data.dongList;
+	 	          		self.dong = "";
+	                 }
+	             }); 
+	         }
 
 		},
 		created : function() {
