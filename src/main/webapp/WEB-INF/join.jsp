@@ -104,6 +104,7 @@
 					<div>
 						<label for="si" class="control-label"></label> 
 						<select id="si"	v-model="si" class="form-control" @change="fnGuList" style="margin-left: 19px;">
+							<option value="">시 선택</option>
 							<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
 						</select>
 					</div>
@@ -149,7 +150,7 @@
 		   , siList : ${siList}
 		   , guList : ${guList}
 		   , dongList : ${dongList}
-		   , si : "서울특별시"
+		   , si : ""
 		   , gu : ""
 		   , dong : ""
 		   , guFlg : false
