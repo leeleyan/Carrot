@@ -75,7 +75,7 @@
 			<div class="div2" id="app">
 				<div class="div1">
 					<h3>아이디</h3>
-					<input type="text" v-model="uId">
+					<input type="text" v-model="uId" @input="validateId" placeholder = "8~16자리의 영어, 숫자">
 					<button @click="fnIdCheck">아이디 중복 체크</button>
 				</div>
 				<div class="div1">
@@ -155,12 +155,19 @@
 		   , dong : ""
 		   , guFlg : false
 		   , dongFlg : false
+		   , idFlg : false
+		   , nickFlg : false
+		   , mailFlg : false
 		},
 		
 		methods : {
 			fnIdCheck : function() {
 				var self = this;
 				var nparmap = {id : self.uId};
+				if (self.uId.length < 8 || self.uId.length > 16) {
+				    alert("아이디는 8자 이상 16자 이하로 입력해주세요.");
+				    return;
+				}
 				$.ajax({
 					url : "/join2/idcheck.dox",
 					dataType : "json",
@@ -171,6 +178,7 @@
 							alert("중복된 아이디가 있습니다.");
 						} else {
 							alert("사용가능한 아이디입니다.");
+							self.idFlg = true;
 						}
 					}
 				});
@@ -188,6 +196,7 @@
 							alert("중복된 닉네임이 있습니다.");
 						} else {
 							alert("사용가능한 닉네임입니다.");
+							self.nickFlg = true;
 						}
 					}
 				});
@@ -205,12 +214,31 @@
 							alert("중복된 이메일이 있습니다.");
 						} else {
 							alert("사용가능한 이메일입니다.");
+							self.mailFlg = true;
 						}
 					}
 				});
 			},
 			fnJoin : function() {
 				var self = this;
+				if (!self.uId || !self.uNickname || !self.uPassword || 
+					!self.uName || !self.uTel || !self.si ||
+					!self.gu || !self.dong || !self.uEmail) {
+				    alert("모든 사항을 입력해주세요.");
+				    return;
+				}
+				if (!self.idFlg) {
+					alert("아이디 중복체크를 해주세요.");
+					return;
+				}
+				if (!self.nickFlg) {
+					alert("닉네임 중복체크를 해주세요.");
+					return;
+				}
+				if (!self.mailFlg) {
+					alert("이메일 중복체크를 해주세요.");
+					return;
+				}
 				var nparmap = {id : self.uId
 							   , password : self. uPassword
 							   , name : self.uName
@@ -262,6 +290,10 @@
 	                 }
 	             }); 
 	         }
+	    	,validateId() {
+	    	      let pattern = /^[a-zA-Z0-9]+$/
+	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	 }
 
 		},
 		created : function() {

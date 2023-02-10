@@ -31,15 +31,6 @@ body {
 	padding: 20px; /*상.하.좌.우로 늘리기(안쪽 여백, 창 크기가 더 커짐)*/
 }
 
-.div2 {
-	margin: auto;
-	width: 250px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
-	text-align: center;
-	padding: 0px;
-}
-
 input {
 	width: 100%;
 	padding: 10px;
@@ -64,6 +55,10 @@ input {
 }
 .nav{
 	float: right;
+}
+
+#dong{
+	margin-right: 190px;
 }
 
 </style>
