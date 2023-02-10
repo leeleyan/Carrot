@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,11 @@ public class PwResetServiceImpl implements PwResetService{
 	public List<PwReset> selectPwResetList() throws Exception {
 		// TODO Auto-generated method stub
 		return pwresetMapper.selectPwResetList(); // db를 호출하는 mapper와 연결
+	}
+	
+	@Override
+	public int pwdUpdate(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return pwresetMapper.pwdUpdate(map);
 	}
 }

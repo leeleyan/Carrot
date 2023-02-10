@@ -60,10 +60,10 @@
 	<body>
 	<div id="app" class="div1">
 		<span>새 비밀번호</span>
-		<input type="password" v-model="uName"><br>
+		<input type="password" v-model="uPassword"><br>
 		<span>새 비밀번호 확인</span>
-		<input type="password" v-model="uEmail"><br>
-		<button>비밀번호 재설정</button>
+		<input type="password" v-model="uPassword2"><br>
+		<button @click="fnReset">비밀번호 재설정</button>
 	</div>	
 	</body>
 </html>
@@ -71,11 +71,29 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+    	uId : "${userId}"
+    	, uPassword : ""
+    	, uPassword2 : ""
     }   
     , methods: {
-    	
+    	fnReset : function(){
+            var self = this;
+            if(self.uPassword == self.uPassword2){
+            	var nparmap = {password : self.uPassword, id : self.uId}; 
+                $.ajax({
+                    url:"/pwreset/pwdupdate.dox",
+                    dataType:"json",	
+                    type : "POST", 
+                    data : nparmap,
+                    success : function(data) {
+                    	alert(self.uId + "비밀번호가 변경되었습니다.");	
+                    }
+                }); 	                		
+        	} else {
+        		alert("비밀번호가 일치하지 않습니다.");
+        	}
+            
+        }
     }   
     , created: function () {
     

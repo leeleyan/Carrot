@@ -71,8 +71,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {     
                 	if(data.result == "success"){
-                		window.open('pwreset.do','_blank');
-                		self.pageChange("/login2.do", {});
+                		window.open('pwreset.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');
                 	} else {
                 		alert("아이디, 이메일을 정확히 입력해주세요.");
                 	}

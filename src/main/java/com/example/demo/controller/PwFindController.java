@@ -15,6 +15,8 @@ import com.example.demo.dao.PwFindService;
 import com.example.demo.model.PwFind;
 import com.google.gson.Gson;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller 
 public class PwFindController {
@@ -28,6 +30,9 @@ public class PwFindController {
 		 return "/pwfind"; // WEB-INF에서 호출할 파일명
     } 
 	 
+	 @Autowired
+	 HttpSession session; 
+	 
 	 @RequestMapping(value = "/pwfind/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -39,6 +44,8 @@ public class PwFindController {
 	 			resultMap.put("result", "fail");
 	 		}
 	 		resultMap.put("list", list);
+	 		
+	 		
 	 		return new Gson().toJson(resultMap);
 	 	} 
 }
