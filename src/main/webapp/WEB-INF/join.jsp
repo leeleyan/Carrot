@@ -103,20 +103,20 @@
 					<h3>주소</h3>
 					<div>
 						<label for="si" class="control-label"></label> 
-						<select id="si"	v-model="si" class="form-control" id="si" @change="fnGuList" style="margin-left: 19px;">
+						<select id="si"	v-model="si" class="form-control" @change="fnGuList" style="margin-left: 19px;">
 							<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
 						</select>
 					</div>
 					<div>
 						<label for="gu" class="control-label"></label> 
-						<select	id="gu" v-model="gu" class="form-control" id="gu" @change="fnDongList">
+						<select	id="gu" v-model="gu" class="form-control" @change="fnDongList">
 							<option value="">구 선택</option>
 							<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
 						</select>
 					</div>
 					<div>
 						<label for="dong" class="control-label"></label> 
-						<select	id="dong" v-model="dong" class="form-control" id="dong">
+						<select	id="dong" v-model="dong" class="form-control">
 							<option value="">동 선택</option>
 							<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
 						</select>
