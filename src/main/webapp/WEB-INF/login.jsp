@@ -80,7 +80,7 @@
 		<div>
 		<a href="idfind.do">아이디 찾기 </a>
 		<a href="pwfind.do">| 비밀번호 찾기</a>
-		<a href="join2.do">| 회원가입</a>
+		<a href="join.do">| 회원가입</a>
 		</div>
 		</div>
 		
@@ -107,9 +107,11 @@ var app = new Vue({
                 success : function(data) {     
                 	if(data.result == "success"){
                 		alert(data.user.uName + "님 로그인 성공!!");
+                		self.isLoggedIn=true
                 		self.pageChange("/main.do", {});
                 	} else {
                 		alert("로그인 실패!!");
+                		self.isLoggedIn=false
                 	}
                 }
             }); 

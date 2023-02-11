@@ -71,7 +71,7 @@
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td colspan="2">아이디테스트</td>
+					<td colspan="2">{{userId}}</td>
 					<td colspan="2">전화번호</td>
 					<td>010-1111-1111</td>
 					<td><button>변경</button></td>
@@ -86,7 +86,7 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" disabled value="지금닉네임"></td>
+					<td><input type="text" disabled v-bind:value="userNickName"></td>
 					<td><button>변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
@@ -129,6 +129,8 @@ var app = new Vue({
 	    , dong : ""
 	    , guFlg : false
 	    , dongFlg : false
+	    , userNickName : "${userNickName}"
+	 	, userId : "${userId}"
     }   
     , methods: {
     	changeName: function() {

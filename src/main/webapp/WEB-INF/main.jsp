@@ -64,7 +64,7 @@
 	</head>
 <body>
 	<div id="app">
-	<span>${userNickName}님 로그인</span>
+	<span v-if="userNickName">{{userNickName}}님 안녕하세요.</span>
 		<div class = "nav">
 			<label for="si" class="control-label"></label> 
 			<select id="si"	v-model="si" class="form-control" @change="fnGuList" >
@@ -104,8 +104,6 @@
 var app = new Vue({
 	el : '#app',
 	data : {
-		uId : "",
-		uNickname : "",
 		list : [] 
        , selectedItemList : []
 	   , siList : ${siList}
@@ -119,6 +117,8 @@ var app = new Vue({
 	   , idFlg : false
 	   , nickFlg : false
 	   , mailFlg : false
+	   , userNickName : "${userNickName}"
+	   , userId : "${userId}"
 	},
 	
 	methods : {
