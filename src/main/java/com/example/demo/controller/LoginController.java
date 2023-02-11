@@ -40,7 +40,7 @@ public class LoginController {
 	 		Member user = loginService.getMember(map);
 	 		if( user != null) {
 				session.setAttribute("userId", user.getuId());
-				session.setAttribute("userName", user.getuName());
+				session.setAttribute("userNickName", user.getuNickname());
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {
