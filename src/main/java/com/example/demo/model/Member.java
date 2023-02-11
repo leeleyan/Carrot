@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 
-public class Login {
+public class Member {
 	private String uId;
     private String uNickname;
     private String uPassword;

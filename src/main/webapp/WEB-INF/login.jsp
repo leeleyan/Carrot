@@ -106,10 +106,10 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {     
                 	if(data.result == "success"){
-                		alert(data.list[0].uName + "님 로그인 성공!!");
+                		alert(data.user.uName + "님 로그인 성공!!");
                 		self.pageChange("/main.do", {});
                 	} else {
-                		alert("아이디, 비밀번호를 정확히 입력해주세요.");
+                		alert("로그인 실패!!");
                 	}
                 }
             }); 

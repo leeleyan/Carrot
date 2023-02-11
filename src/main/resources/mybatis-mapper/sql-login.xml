@@ -3,25 +3,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.LoginMapper">	
-	<select id="selectLoginList" parameterType="hashmap" resultType="com.example.demo.model.Login">	
+	<select id="getMember" parameterType="hashmap" resultType="com.example.demo.model.Member">	
 		SELECT
-			u_id, u_password, u_name
+			u_id, u_password, u_name, u_nickname, u_tel, u_address, u_email
 		FROM
 			t2_account
 		WHERE 
 			u_id = #{id} AND u_password = #{password} 
-	</select>
-	
-	<select id="selectMember" parameterType="hashmap" 
-						resultType="com.example.demo.model.Login">	
-		SELECT
-			u_id, u_nickname, u_password, u_name, u_tel, u_address, u_email
-		FROM
-			t2_account
-		WHERE 
-			u_id = #{id} AND u_nickname = #{nickname}
-		AND u_password = #{password} AND u_name = #{name}
-		AND u_tel = #{tel} AND u_address = #{address}
-		AND u_email = #{email} 
 	</select>
 </mapper>

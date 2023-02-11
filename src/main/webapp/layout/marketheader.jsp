@@ -37,7 +37,7 @@
 				</a>
 				</div>
 			</div>
-			<button class="loginsignbtn" onclick="location.href='login2.do'">로그인/회원가입</button>
+			<button class="loginsignbtn" onclick="location.href='login.do'">로그인/회원가입</button>
 		</div>
 			<div class="headusermenu">
 			<button class="headmymenubtn" onclick="location.href='myinformation.do'">

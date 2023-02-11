@@ -65,6 +65,7 @@ input {
 </head>
 <body>
 	<div id="app">
+	<span>${userId}님 로그인</span>
 		<div class = "nav">
 			<label for="si" class="control-label"></label> 
 			<select id="si"	v-model="si" class="form-control" @change="fnGuList" >
@@ -109,12 +110,13 @@ var app = new Vue({
  	    , guList : ${guList}
  	    , dongList : ${dongList}
  	   	, list : [] 
-       , selectedItemList : []
-	   , si : ""
-	   , gu : ""
-	   , dong : ""
-	   , guFlg : false
-	   , dongFlg : false
+        , selectedItemList : []
+    	, userId : "${userId}"
+	    , si : ""
+	    , gu : ""
+	    , dong : ""
+	    , guFlg : false
+	    , dongFlg : false
     }   
     , methods: {
     	fnGuList : function(){
