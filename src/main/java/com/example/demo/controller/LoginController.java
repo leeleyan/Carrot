@@ -39,26 +39,12 @@ public class LoginController {
 	 	public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 	 		List<Login> list = loginService.selectLoginList(map);
-	 		 Login user = loginService.getMember(map);
 	 		if(list.size() > 0) {
-	 			resultMap.put("result2", "success");
-	 			session.setAttribute("userIdSession", user.getuId());
-			    session.setAttribute("userNicknameSession", user.getuNickname());
-			    session.setAttribute("userPasswordSession", user.getuPassword());
-			    session.setAttribute("userNameSession", user.getuName());
-			    session.setAttribute("userTelSession", user.getuTel());
-			    session.setAttribute("userAddressSession", user.getuAddress());
-			    session.setAttribute("userEmailSession", user.getuEmail());
+	 			resultMap.put("result", "success");
 	 		} else {
-	 			resultMap.put("result2", "fail");
+	 			resultMap.put("result", "fail");
 	 		}
-	 		
-	 		
-			
-			 
-			  
-			
-			 
+	 		resultMap.put("list", list);
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 
