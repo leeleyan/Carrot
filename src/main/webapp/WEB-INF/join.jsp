@@ -254,6 +254,7 @@
 					success : function(data) {
 						if(data.result == "success"){
 	                		alert("회원가입 성공!!");
+	                		window.location.href = "/login2.do";
 	                	} else {
 	                		alert("회원가입 실패!!");
 	                	}
