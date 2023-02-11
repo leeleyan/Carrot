@@ -28,36 +28,36 @@ public class LoginController {
     @Autowired
     private LoginService loginService; 
 
-	 @RequestMapping("/login2.do") // 로그인 화면
+	 @RequestMapping("/login.do") // 로그인 화면
      public String join(Model model) throws Exception{
 
 		 return "/login"; // WEB-INF에서 호출할 파일명
     } 
 
-	 @RequestMapping(value = "/login2/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/login/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 	 		List<Login> list = loginService.selectLoginList(map);
+	 		 Login user = loginService.getMember(map);
 	 		if(list.size() > 0) {
 	 			resultMap.put("result2", "success");
+	 			session.setAttribute("userIdSession", user.getuId());
+			    session.setAttribute("userNicknameSession", user.getuNickname());
+			    session.setAttribute("userPasswordSession", user.getuPassword());
+			    session.setAttribute("userNameSession", user.getuName());
+			    session.setAttribute("userTelSession", user.getuTel());
+			    session.setAttribute("userAddressSession", user.getuAddress());
+			    session.setAttribute("userEmailSession", user.getuEmail());
 	 		} else {
 	 			resultMap.put("result2", "fail");
 	 		}
-	 		resultMap.put("list", list);
+	 		
 	 		
 			
-			  Login user = loginService.getMember(map);
+			 
 			  
-			  if( user != null) { session.setAttribute("userIdSession", user.getuId());
-			  session.setAttribute("userNicknameSession", user.getuNickname());
-			  session.setAttribute("userPasswordSession", user.getuPassword());
-			  session.setAttribute("userNameSession", user.getuName());
-			  session.setAttribute("userTelSession", user.getuTel());
-			  session.setAttribute("userAddressSession", user.getuAddress());
-			  session.setAttribute("userEmailSession", user.getuEmail());
-			  resultMap.put("user", user); resultMap.put("result", "success"); } else {
-			  resultMap.put("result", "fail"); }
+			
 			 
 	 		return new Gson().toJson(resultMap);
 	 	}

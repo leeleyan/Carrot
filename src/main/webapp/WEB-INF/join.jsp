@@ -169,7 +169,7 @@
 				    return;
 				}
 				$.ajax({
-					url : "/join2/idcheck.dox",
+					url : "/join/idcheck.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
@@ -187,7 +187,7 @@
 				var self = this;
 				var nparmap = {nickname : self.uNickname};
 				$.ajax({
-					url : "/join2/nicknamecheck.dox",
+					url : "/join/nicknamecheck.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
@@ -205,7 +205,7 @@
 				var self = this;
 				var nparmap = {email : self.uEmail};
 				$.ajax({
-					url : "/join2/emailcheck.dox",
+					url : "/join/emailcheck.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
@@ -247,14 +247,14 @@
 							   , email : self.uEmail
 							   , address : self.si + self.gu + self.dong};
 				$.ajax({
-					url : "/join2/add.dox",
+					url : "/join/add.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
 						if(data.result == "success"){
 	                		alert("회원가입 성공!!");
-	                		window.location.href = "/login2.do";
+	                		window.location.href = "/login.do";
 	                	} else {
 	                		alert("회원가입 실패!!");
 	                	}

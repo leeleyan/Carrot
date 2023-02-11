@@ -29,7 +29,7 @@ public class JoinController {
     @Autowired
     private AreaService areaService;
     
-	 @RequestMapping("/join2.do") // 회원가입 화면
+	 @RequestMapping("/join.do") // 회원가입 화면
      public String join(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		 HashMap<String, Object> map = new HashMap<String, Object>();
 	 		List<Area> siList = areaService.selectSiList(map);
@@ -43,7 +43,7 @@ public class JoinController {
 		 return "/join"; // WEB-INF에서 호출할 파일명
     } 
 	 // 회원가입
-	 @RequestMapping(value = "/join2/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/join/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -61,7 +61,7 @@ public class JoinController {
 	 		
 	 	}
 	 // 아이디 중복 체크
-	 @RequestMapping(value = "/join2/idcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/join/idcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -70,7 +70,7 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 // 닉네임 중복 체크
-	 @RequestMapping(value = "/join2/nicknamecheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/join/nicknamecheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -79,7 +79,7 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 // 이메일 중복 체크
-	 @RequestMapping(value = "/join2/emailcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/join/emailcheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String check3(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -88,7 +88,7 @@ public class JoinController {
 	 		return new Gson().toJson(resultMap);
 	 	}
 	 // 회원가입
-	 @RequestMapping(value = "/join2/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @RequestMapping(value = "/join/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	 	@ResponseBody
 	 	public String add(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();

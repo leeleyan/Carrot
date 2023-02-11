@@ -105,8 +105,6 @@ var app = new Vue({
 	
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
     	, siList : ${siList}
  	    , guList : ${guList}
  	    , dongList : ${dongList}
