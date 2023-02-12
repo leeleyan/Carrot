@@ -1,10 +1,10 @@
 package com.example.demo.dao;
 
-import java.util.List;
+import java.util.HashMap;
 
-import com.example.demo.model.MyInformation;
+import com.example.demo.model.Member;
 
 
 public interface MyInformationService {
-	List<MyInformation> selectMyInformationList() throws Exception; // 데이터 호출을 위한 인터페이스
+	Member getInfo(HashMap<String,Object> map) throws Exception; // 데이터 호출을 위한 인터페이스
 }

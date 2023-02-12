@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.MyInformationMapper">	
+	<select id="getInfo" parameterType="hashmap" resultType="com.example.demo.model.Member">	
+		SELECT
+			u_id, u_password, u_name, u_nickname, u_tel, u_address, u_email
+		FROM
+			t2_account
+		WHERE 
+			u_id = #{id} 
+	</select>
+</mapper>

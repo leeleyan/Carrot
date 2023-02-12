@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MyInformationService;
 import com.example.demo.model.Area;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class MyInformationController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
-    private MyInformationService myinformationService; 
+    private MyInformationService myInformationService; 
     
     @Autowired
     private AreaService areaService;
@@ -39,5 +43,18 @@ public class MyInformationController {
 	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
 		 return "/myinformation"; // WEB-INF에서 호출할 파일명
     } 
+	 
+	 
+	 @RequestMapping(value = "/myinfo/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 @ResponseBody
+	 public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+ 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+ 		Member user = myInformationService.getInfo(map);
+ 		resultMap.put("name", user.getuName());
+ 		resultMap.put("tel", user.getuTel());
+ 		resultMap.put("address", user.getuAddress());
+ 		resultMap.put("email", user.getuEmail());
+ 		return new Gson().toJson(resultMap);
+ 	} 
 	 
 }

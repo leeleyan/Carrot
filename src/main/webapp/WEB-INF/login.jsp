@@ -107,11 +107,9 @@ var app = new Vue({
                 success : function(data) {     
                 	if(data.result == "success"){
                 		alert(data.user.uName + "님 로그인 성공!!");
-                		self.isLoggedIn=true
                 		self.pageChange("/main.do", {});
                 	} else {
                 		alert("로그인 실패!!");
-                		self.isLoggedIn=false
                 	}
                 }
             }); 

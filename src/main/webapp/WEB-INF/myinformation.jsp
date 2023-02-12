@@ -73,20 +73,20 @@
 					<td>아이디</td>
 					<td colspan="2">{{userId}}</td>
 					<td colspan="2">전화번호</td>
-					<td>010-1111-1111</td>
+					<td>{{tel}}</td>
 					<td><button>변경</button></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" v-model="name" :disabled="!isNameEdit"></td>
-					<td><button @click="changeName">{{ isNameEdit ? '확인' : '변경' }}</button></td>
+					<td>{{name}}</td>
+					<td><button>변경</button></td>
 					<td>이메일</td>
-					<td colspan="2"><input type="text" id="emailText" disabled></td>
+					<td colspan="2">{{email}}</td>
 					<td><button>변경</button></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" disabled v-bind:value="userNickName"></td>
+					<td>{{userNickName}}</td>
 					<td><button>변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
@@ -116,11 +116,8 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
-    	, isNameEdit: false
+    	 isNameEdit: false
         , isEmailEdit: false
-        , name: ""
         , siList : ${siList}
 	    , guList : ${guList}
 	    , dongList : ${dongList}
@@ -131,15 +128,12 @@ var app = new Vue({
 	    , dongFlg : false
 	    , userNickName : "${userNickName}"
 	 	, userId : "${userId}"
+ 		, name: ""
+        , tel: ""
+        , address: ""
+        , email: ""
     }   
     , methods: {
-    	changeName: function() {
-            this.isNameEdit = !this.isNameEdit;
-        },
-    	changeEmail: function() {
-            this.isEmailEdit = !this.isEmailEdit;
-            
-        },
         fnGuList : function(){
     		var self = this;
             var nparmap = {si : self.si};
@@ -158,7 +152,7 @@ var app = new Vue({
         }, 
         fnDongList : function(){
      		var self = this;
-             var nparmap = {si : self.si, gu : self.gu};
+            var nparmap = {si : self.si, gu : self.gu};
              $.ajax({
                  url:"/dong/list.dox",
                  dataType:"json",	
@@ -169,10 +163,27 @@ var app = new Vue({
  	          		self.dong = "";
                  }
              }); 
-       }
-    }   
+       },
+        fnGetInfo : function(){
+   			var self = this;
+            var nparmap = {id : self.userId};
+	           $.ajax({
+	               url:"/myinfo/get.dox",
+	               dataType:"json",	
+	               type : "POST", 
+	               data : nparmap,
+	               success : function(data) {  
+	            	   self.name = data.name;
+	        	       self.tel = data.tel;
+	        	       self.address = data.address;
+	        	       self.email = data.email;
+	               }
+	           }); 
+	     }
+	  }   
     , created: function () {
-    
+    	var self = this;
+    	self.fnGetInfo();
 	}
 });
 
