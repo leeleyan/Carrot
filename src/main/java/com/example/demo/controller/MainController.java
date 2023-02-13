@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MainService;
-import com.example.demo.dao.PwFindService;
 import com.example.demo.dao.ShowItemService;
 import com.example.demo.model.Area;
-import com.example.demo.model.IdFind;
 import com.example.demo.model.Showitem;
 import com.google.gson.Gson;
 
@@ -53,17 +51,12 @@ public class MainController {
 		return "/main"; // WEB-INF에서 호출할 파일명
 	}
 	
-	 @RequestMapping(value = "/main/getitem.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	 	@ResponseBody
-	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-	 		HashMap<String, Object> ShowItemMap = new HashMap<String, Object>();
-	 		List<Showitem> list = showItemService.selectItemList(map);
-	 		if(list.size() > 0) {
-	 			ShowItemMap.put("result", "success");
-	 		} else {
-	 			ShowItemMap.put("result", "fail");
-	 		}
-	 		ShowItemMap.put("list", list);
-	 		return new Gson().toJson(ShowItemMap);
-	 	}
+	@RequestMapping(value = "/main/view.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String view(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Showitem> list = showItemService.selectGetItemList(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.mapper.ShowItemMapper;
 import com.example.demo.model.Showitem;
 
-
 @Service //서비스임을 선언
 public class ShowItemServicempl implements ShowItemService{
 
@@ -18,8 +17,8 @@ public class ShowItemServicempl implements ShowItemService{
 
 	// 인터페이스 구체화
 	@Override
-	public List<Showitem> selectItemList(HashMap<String, Object> map) throws Exception {
+	public List<Showitem> selectGetItemList(HashMap<String, Object> map) throws Exception{
 		// TODO Auto-generated method stub
-		return showItemMapper.selectItemList(map); // db를 호출하는 mapper와 연결
+		return showItemMapper.selectGetItemList(map); // db를 호출하는 mapper와 연결
 	}
 }
