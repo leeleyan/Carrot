@@ -30,22 +30,24 @@
   </head>
   <body>
     <div class="container">
-      <div class="item">
-      	<div class="imgarea">
-			<img src="mainimg/testimg.jpg" width="195" height="180" alt="상품 이미지">
-			<div class="imgset"></div>
-			<div class="imgset2"></div>
-      	</div>
+    	<thead>
+    	<!-- <tr v-for="(item, index) in list"> -->
+      	<div class="item">
+      		<div class="imgarea">
+				<img src="mainimg/testimg.jpg" width="195" height="180" alt="상품 이미지">
+					<div class="imgset"></div>
+					<div class="imgset2"></div>
+      		</div>
       	<div class="imgtextarea">
       		<div class="imgnamearea">패딩</div>
-      			<div class="imgpayandtimearea">
-      				<div class="imgpaytext">
+      		<div class="imgpayandtimearea">
+      		<div class="imgpaytext">
       				150000
-      				</div>
-      				<div class="imgtimetext">
-      					<span>7시간 전</span>
-      				</div>
+      		</div>
+      			<div class="imgtimetext">
+      				<span>7시간 전</span>
       			</div>
+      		</div>
       	</div>
       </div>
       <div class="item"></div>
@@ -57,6 +59,36 @@
       <div class="item"></div>
       <div class="item"></div>
       <div class="item"></div>
+      </tr>
     </div>
   </body>
 </html>
+<script type="text/javascript">
+var app = new Vue({
+	el : '#app',
+	data : {
+		list : [] 
+       , selectedItemList : []
+	},	
+	methods : {
+		fnList : function(){
+            var self = this;
+            var nparmap = {}; 
+            $.ajax({
+                url:"/main/getitem.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {   
+                	self.list = data.list;
+                	console.log(self.list);
+                }
+            }); 
+        }
+	},
+	created : function() {
+		/*     	var self = this;
+		    	self.fnList(); */
+			}
+}
+</script>
