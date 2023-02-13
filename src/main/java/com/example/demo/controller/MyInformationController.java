@@ -55,6 +55,14 @@ public class MyInformationController {
  		resultMap.put("address", user.getuAddress());
  		resultMap.put("email", user.getuEmail());
  		return new Gson().toJson(resultMap);
- 	} 
+ 	}
+	 @RequestMapping(value = "/myinfo/updatetel.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String edit(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			myInformationService.updateTel(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+		}
 	 
 }

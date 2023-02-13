@@ -21,4 +21,10 @@ public class MyInformationServiceImpl implements MyInformationService{
 		// TODO Auto-generated method stub
 		return myinformationMapper.getInfo(map);
 	}
+
+
+	@Override
+	public void updateTel(HashMap<String, Object> map) {
+		myinformationMapper.updateTel(map);
+	}
 }

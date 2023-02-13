@@ -11,4 +11,8 @@
 		WHERE 
 			u_id = #{id} 
 	</select>
+	
+	<update id="updateTel" parameterType="hashmap" >	
+		UPDATE t2_account SET u_tel = #{tel} WHERE u_id = #{id}
+	</update>
 </mapper>

@@ -74,7 +74,7 @@
 					<td colspan="2">{{userId}}</td>
 					<td colspan="2">전화번호</td>
 					<td>{{tel}}</td>
-					<td><button>변경</button></td>
+					<td><button @click="fnUpdateTel">변경</button></td>
 				</tr>
 				<tr>
 					<td>이름</td>
@@ -210,10 +210,29 @@ var app = new Vue({
         document.body.appendChild(form);
         form.submit();
         document.body.removeChild(form);
-     }
-	    , fnUnregister : function(){
-			var self = this;
-			self.pageChange("./unregister.do", {});
+     	}
+    
+	 , fnUnregister : function(){
+		var self = this;
+		self.pageChange("./unregister.do", {});
+	 }
+	 ,fnUpdateTel : function(){
+ 		var self = this;
+ 		var newTel = prompt("Please enter the new telephone number:");
+ 		  if (newTel != null) {
+ 		    self.tel = newTel;
+ 		  }
+
+      	var nparmap = { id : self.userId, tel : self.tel};
+        $.ajax({
+            url:"/myinfo/updatetel.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {            
+           	 	alert("저장되었습니다..");
+            }
+        }); 
 		}
     }
     , created: function () {
