@@ -30,8 +30,6 @@
   </head>
   <body>
     <div class="container">
-    	<thead>
-    	<!-- <tr v-for="(item, index) in list"> -->
       	<div class="item">
       		<div class="imgarea">
 				<img src="mainimg/testimg.jpg" width="195" height="180" alt="상품 이미지">
@@ -64,31 +62,31 @@
   </body>
 </html>
 <script type="text/javascript">
-var app = new Vue({
-	el : '#app',
-	data : {
-		list : [] 
-       , selectedItemList : []
-	},	
-	methods : {
-		fnList : function(){
+var app = new Vue({ 
+    el: '#app'
+    data: {
+    	list : []
+    	, info : {}
+		, idx : "${map.boardIdx}"
+    }   
+    , methods: {
+    	fnGetShowItem : function(){
             var self = this;
-            var nparmap = {}; 
+            var nparmap = {boardIdx : self.idx};
             $.ajax({
-                url:"/main/getitem.dox",
+                url:"main/view.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,
-                success : function(data) {   
-                	self.list = data.list;
-                	console.log(self.list);
+                success : function(data) {                                       
+	                self.info = data.info;
+	                console.log(self.info);
                 }
             }); 
-        }
-	},
-	created : function() {
-		/*     	var self = this;
-		    	self.fnList(); */
-			}
-}
+        } 
+    }   
+    , created: function () {
+
+	}
+});
 </script>

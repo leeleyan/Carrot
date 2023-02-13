@@ -119,8 +119,7 @@ var app = new Vue({
 	   , mailFlg : false
 	   , userNickName : "${userNickName}"
 	   , userId : "${userId}"
-	},
-	
+	},	
 	methods : {
 		fnGuList : function(){
     		var self = this;
@@ -151,11 +150,10 @@ var app = new Vue({
  	          		self.dong = "";
                  }
              }); 
-         }   
+         }  
 	},
 	created : function() {
-/*     	var self = this;
-    	self.fnList(); */
+	
 	}
 });
 </script>
