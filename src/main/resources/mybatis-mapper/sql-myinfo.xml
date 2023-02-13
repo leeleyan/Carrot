@@ -15,4 +15,13 @@
 	<update id="updateTel" parameterType="hashmap" >	
 		UPDATE t2_account SET u_tel = #{tel} WHERE u_id = #{id}
 	</update>
+	
+	<update id="editNickName" parameterType="hashmap" >	
+		UPDATE t2_account SET u_nickname = #{nickName} WHERE u_id = #{id}
+	</update>
+	
+	<update id="editEmail" parameterType="hashmap" >	
+		UPDATE t2_account SET u_email = #{email} WHERE u_id = #{id}
+	</update>
+	
 </mapper>

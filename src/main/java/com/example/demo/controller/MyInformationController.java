@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller 
@@ -29,6 +30,9 @@ public class MyInformationController {
     
     @Autowired
     private AreaService areaService;
+    
+    @Autowired
+	HttpSession session;
     
 	 @RequestMapping("/myinformation.do") // 내정보 화면
      public String join(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -58,11 +62,29 @@ public class MyInformationController {
  	}
 	 @RequestMapping(value = "/myinfo/updatetel.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
-		public String edit(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		public String editTel(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
 			myInformationService.updateTel(map);
 			resultMap.put("message", "성공");
 			return new Gson().toJson(resultMap);
-		}
+	 }
+	 @RequestMapping(value = "/myinfo/editNickName.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String editNickName(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			System.out.println(map.get("nickName"));
+			session.setAttribute("userNickName", map.get("nickName"));
+			myInformationService.editNickName(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+	 }
+	 @RequestMapping(value = "/myinfo/editEmail.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String editEmail(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			myInformationService.editEmail(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+	 }
 	 
 }

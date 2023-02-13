@@ -78,16 +78,15 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td>{{name}}</td>
-					<td><button>변경</button></td>
+					<td colspan=2>{{name}}</td>
 					<td>이메일</td>
 					<td colspan="2">{{email}}</td>
-					<td><button>변경</button></td>
+					<td><button @click="fnEditEmail">변경</button></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
 					<td>{{userNickName}}</td>
-					<td><button>변경</button></td>
+					<td><button @click="fnEditNick">변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
 					{{address}}
@@ -218,9 +217,12 @@ var app = new Vue({
 	 }
 	 ,fnUpdateTel : function(){
  		var self = this;
- 		var newTel = prompt("Please enter the new telephone number:");
+ 		var newTel = prompt("새 전화번호를 입력해주세요.");
  		  if (newTel != null) {
  		    self.tel = newTel;
+ 		  }else {
+ 			  alert("취소되었습니다.")
+ 			  return;
  		  }
 
       	var nparmap = { id : self.userId, tel : self.tel};
@@ -231,6 +233,78 @@ var app = new Vue({
             data : nparmap,
             success : function(data) {            
            	 	alert("저장되었습니다..");
+            }
+        }); 
+		}
+    ,fnEditNick : function(){
+ 		var self = this;
+ 		var newNick = prompt("새 닉네임을 입력해주세요.");
+ 		  if (newNick != null) {
+ 			  self.userNickName = newNick;
+ 		  }else {
+ 			  alert("취소되었습니다.")
+ 			  return;
+ 		  }
+      	var nparmap = { nickname : self.userNickName };
+        $.ajax({
+            url:"/join/nicknamecheck.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {            
+            	if(data.num > 0){
+            		alert("이미 사용중인 닉네임입니다.")
+            		self.userNickName = "${userNickName}"
+            		return;
+            	}else {
+            		var nparmap = { id : self.userId, nickName : newNick};
+                    $.ajax({
+                        url:"/myinfo/editNickName.dox",
+                        dataType:"json",	
+                        type : "POST", 
+                        data : nparmap,
+                        success : function(data) {            
+                       	 	alert("변경되었습니다..");
+                        }
+                    });
+            	}
+            }
+        }); 
+		}
+    ,fnEditEmail : function(){
+ 		var self = this;
+ 		var originalEmail = self.email;
+ 		var newMail = prompt("새 메일주소를 입력하세요.");
+ 		  if (newMail != null) {
+ 		    self.email = newMail;
+ 		  }else {
+ 			  alert("취소되었습니다.")
+ 			  return;
+ 		  }
+
+      	var nparmap = {email : self.email};
+        $.ajax({
+            url:"/join/emailcheck.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {            
+            	if(data.num > 0){
+            		alert("이미 사용중인 이메일입니다.")
+            		self.email = originalEmail;
+            		return;
+            	}else {
+            		var nparmap = { id : self.userId, email : self.email};
+                    $.ajax({
+                        url:"/myinfo/editEmail.dox",
+                        dataType:"json",	
+                        type : "POST", 
+                        data : nparmap,
+                        success : function(data) {
+                       	 	alert("변경되었습니다..");
+                        }
+                    });
+            	}
             }
         }); 
 		}

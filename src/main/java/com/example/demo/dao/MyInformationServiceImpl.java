@@ -9,16 +9,15 @@ import com.example.demo.mapper.MyInformationMapper;
 import com.example.demo.model.Member;
 
 
-@Service //서비스임을 선언
+@Service 
 public class MyInformationServiceImpl implements MyInformationService{
 
-	@Autowired //Mapper와 연결
+	@Autowired 
 	private MyInformationMapper myinformationMapper;
 
 
 	@Override
 	public Member getInfo(HashMap<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
 		return myinformationMapper.getInfo(map);
 	}
 
@@ -26,5 +25,17 @@ public class MyInformationServiceImpl implements MyInformationService{
 	@Override
 	public void updateTel(HashMap<String, Object> map) {
 		myinformationMapper.updateTel(map);
+	}
+
+
+	@Override
+	public void editNickName(HashMap<String, Object> map) {
+		myinformationMapper.editNickName(map);
+	}
+
+
+	@Override
+	public void editEmail(HashMap<String, Object> map) {
+		myinformationMapper.editEmail(map);
 	}
 }
