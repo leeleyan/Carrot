@@ -250,7 +250,7 @@
 							   , nickname : self.uNickname
 							   , tel : self.uTel
 							   , email : self.uEmail
-							   , address : self.si + self.gu + self.dong};
+							   , address : self.si +" "+ self.gu +" "+ self.dong};
 				$.ajax({
 					url : "/join/add.dox",
 					dataType : "json",

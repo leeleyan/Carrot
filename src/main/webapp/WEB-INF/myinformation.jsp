@@ -66,7 +66,7 @@
 		<div class="outerdiv" id="app">
 			<div style="text-align: left;">
 				<span>회원정보</span>	
-				<button onclick="window.open('unregister.do','_blank');" id="ebtn" @click="fnUnregister" >회원탈퇴</button>
+				<button id="ebtn" @click="fnUnregister" >회원탈퇴</button>
 			</div>
 			<table>
 				<tr>
@@ -90,7 +90,8 @@
 					<td><button>변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
-						<label for="si" class="control-label"></label> 
+					{{address}}
+						<!-- <label for="si" class="control-label"></label> 
 							<select id="si"	v-model="si" class="form-control" @change="fnGuList">
 								<option value="">시 선택</option>
 								<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
@@ -104,7 +105,7 @@
 							<select	id="dong" v-model="dong" class="form-control">
 								<option value="">동 선택</option>
 								<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
-							</select>
+							</select> -->
 					</td>
 					<td><button>변경</button></td>
 				</tr>
