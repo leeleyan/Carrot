@@ -9,5 +9,6 @@ import com.example.demo.model.Showitem;
 
 @Mapper
 public interface ShowItemMapper {
-	List<Showitem> selectItemList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
+	
+	List<Showitem> selectGetItemList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 }
