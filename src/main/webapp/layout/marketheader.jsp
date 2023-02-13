@@ -41,11 +41,11 @@
 					<img src="img/userlogimg.png" width="23" height="24" alt="내정보버튼 이미지">
 					내 정보
 				</button>
-			<button class="headmymenubtn" onclick="location.href='add.do'">
+			<button class="headmymenubtn" @click="fnAdd">
 				<img src="img/usersellimg.png" width="23" height="24" alt="물품등록버튼 이미지">
 				물품등록
 			</button>
-			<button class="headmymenubtn" onclick="location.href='message.do'">
+			<button class="headmymenubtn" @click="fnMessage">
 				<img src="img/userchatimg.png" width="23" height="24" alt="쪽지버튼 이미지">
 				쪽지
 			</button>
@@ -60,10 +60,7 @@
 var app = new Vue({ 
     el: '#app2',
     data: {
-    	uId : ""
-    	, uPassword : ""
-    	, uName : ""
-    	, userNickName : "${userNickName}"
+    	 userNickName : "${userNickName}"
     	, userId : "${userId}"
     }   
     , methods: {
@@ -101,6 +98,15 @@ var app = new Vue({
     		var self = this;
     		self.pageChange("./myinformation.do", {});
     	}
+        , fnAdd : function(){
+    		var self = this;
+    		self.pageChange("./add.do", {});
+    	}
+        , fnMessage : function(){
+    		var self = this;
+    		self.pageChange("./message.do", {});
+    	}
+        
     }
      
     , created: function () {

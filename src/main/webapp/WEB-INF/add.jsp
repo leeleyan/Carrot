@@ -96,9 +96,9 @@
 var app = new Vue({ 
     el: '#app',
 	data: {
-    	id : ""
-    	, pwd : ""
-		, previewImages : []
+		 previewImages : []
+		, userNickName : "${userNickName}"
+	    , userId : "${userId}"
     }  
     , methods: {
 		updateImages(event) {

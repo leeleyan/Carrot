@@ -68,7 +68,7 @@
 	</head>
 	<body>
 	<div id="app" class="div1">
-		쪽지
+		{{userNickName}}
 		쪽지
 		쪽지
 		쪽지
@@ -82,8 +82,8 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+    	userNickName : "${userNickName}"
+        , userId : "${userId}"
     }   
     , methods: {
     	
