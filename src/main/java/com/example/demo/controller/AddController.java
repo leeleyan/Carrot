@@ -17,11 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.dao.AddService;
 import com.example.demo.dao.AreaService;
 import com.example.demo.model.Area;
-import com.example.test1.dao.BoardService;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller 
@@ -32,6 +32,9 @@ public class AddController {
     
     @Autowired
     private AreaService areaService;
+    
+    @Autowired
+    HttpSession session;
     
     @RequestMapping("/add.do") // 회원가입 화면
     public String join(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -44,7 +47,10 @@ public class AddController {
 	    	request.setAttribute("siList",  new Gson().toJson(siList));
 	    	request.setAttribute("guList",  new Gson().toJson(guList));
 	    	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		 return "/add"; // WEB-INF에서 호출할 파일명
+	    	String id = (String)session.getAttribute("userIdSession");
+	    	request.setAttribute("map", map);
+	        request.setAttribute("userId", id);
+	    	return "/add"; // WEB-INF에서 호출할 파일명
    } 
     
     @RequestMapping(value = "/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -75,7 +81,7 @@ public class AddController {
 	            System.out.println("uploadpath : " + uploadpath);
 	            
 	            System.out.println("originFilename : " + originFilename);
-	            System.out.println("extensionName : " + extName);
+	            System.out.println("exten3sionName : " + extName);
 	            System.out.println("size : " + size);
 	            System.out.println("saveFileName : " + saveFileName);
 	            String path2 = System.getProperty("user.dir");

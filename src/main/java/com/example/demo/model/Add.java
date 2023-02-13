@@ -8,6 +8,14 @@ public class Add {
     private String btitle;
     private String uAddress;
     private int pPrice;
+    private int boardIdx;
+    
+	public int getBoardIdx() {
+		return boardIdx;
+	}
+	public void setBoardIdx(int boardIdx) {
+		this.boardIdx = boardIdx;
+	}
 	public String getImg() {
 		return img;
 	}

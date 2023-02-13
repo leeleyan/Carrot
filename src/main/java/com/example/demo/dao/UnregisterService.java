@@ -1,10 +1,13 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.example.demo.model.Unregister;
 
 
 public interface UnregisterService {
-	List<Unregister> selectUnregisterList() throws Exception; // 데이터 호출을 위한 인터페이스
+	// 삭제
+	int deleteUser(HashMap<String, Object> map);
+	int getPasswordCheck(HashMap<String, Object> map); // 비번 중복체크
 }

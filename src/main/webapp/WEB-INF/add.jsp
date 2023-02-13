@@ -51,7 +51,7 @@
 		<div class="container">
 			<template>
 				<h1>상품 이미지</h1>
-				<input type="file" @change="updateImages" id="file1" name="file1" multiple />
+				<input type="file" @change="updateImages" id="file1" name="file1"/>
 				<br><br>
 				<div>
 					<span v-for="(image, index) in previewImages" :key="index">

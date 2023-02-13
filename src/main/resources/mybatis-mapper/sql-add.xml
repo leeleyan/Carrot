@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.mapper.AddMapper">	
 	
 	 
-	<insert id="insertBoard" parameterType="hashmap"  useGeneratedKeys="true" keyProperty="nickname" keyColumn="board_idx">
+	<insert id="insertBoard" parameterType="hashmap"  useGeneratedKeys="true" keyProperty="id" keyColumn="board_idx">
         INSERT INTO t2_product
         (b_title, b_content, u_nickname, u_address, p_price)
         VALUES(

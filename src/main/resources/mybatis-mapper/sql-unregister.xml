@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UnregisterMapper">	
+	
+	 <delete id="deleteUser" parameterType="hashmap">	
+		DELETE FROM 
+			t2_account 
+		WHERE 
+			u_nickname = #{nickname}
+	</delete>
+	
+	<select id="selectPasswordCheck" parameterType="hashmap" resultType="int">	
+		SELECT
+			count(*)
+		FROM
+			t2_account
+		WHERE 
+			u_nickname = #{nickname} AND u_password = #{password}
+	</select>
+	
+</mapper>

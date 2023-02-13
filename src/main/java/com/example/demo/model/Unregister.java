@@ -2,19 +2,20 @@ package com.example.demo.model;
 
 
 public class Unregister { // 수정 해야됨
-    private String userName;
-    private String userEmail;
+    private String uPassword;
+    private String uNickname;
     
-	public String getUserName() {
-		return userName;
+	public String getuPassword() {
+		return uPassword;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setuPassword(String uPassword) {
+		this.uPassword = uPassword;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getuNickname() {
+		return uNickname;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setuNickname(String uNickname) {
+		this.uNickname = uNickname;
 	}
+    
 }

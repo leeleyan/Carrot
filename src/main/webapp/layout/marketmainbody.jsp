@@ -29,6 +29,7 @@
     <title>JS bin</title>
   </head>
   <body>
+  <div id="app3">
     <div class="container">
       	<div class="item">
       		<div class="imgarea">
@@ -59,11 +60,12 @@
       <div class="item"></div>
       </tr>
     </div>
+    </div>
   </body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
-    el: '#app'
+    el: '#app3',
     data: {
     	list : []
     	, info : {}
@@ -74,7 +76,7 @@ var app = new Vue({
             var self = this;
             var nparmap = {boardIdx : self.idx};
             $.ajax({
-                url:"main/view.dox",
+                url:"/main/view.dox",
                 dataType:"json",	
                 type : "POST", 
                 data : nparmap,

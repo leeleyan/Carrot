@@ -59,24 +59,52 @@
 	<div id="app" class="div1">
 		<h2>탈퇴하시겠습니까?</h2>
 		<span>비밀번호</span>
-		<input type="password" v-model="password"><br>
+		<input type="password" v-model="uPassword"><br>
 		<span>비밀번호 확인</span>
-		<input type="password" v-model="passwordC"><br>
-		<button>회원탈퇴</button><button>취소</button>
+		<input type="password" v-model="uPasswordC"><br>
+		<button @click="fnJoin">회원탈퇴</button>
+		<button @click="fnHome">취소</button>
 	</div>	
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-		password : ""
-		, passwordC : ""
-		, userNickName : "${userNickName}"
-		, userId : "${userId}"
+		uPassword : ""
+		, uPasswordC : ""
+		, uNickName : "${userNickName}"
     }   
     , methods: {
-    	
-    }   
+    	fnJoin : function() {
+			var self = this;
+			var nparmap = { nickname : self.uNickName, password : self.uPassword};
+			$.ajax({
+				url : "/join/passwordcheck.dox",
+				dataType : "json",
+				type : "POST",
+				data : nparmap,
+				success : function(data) {
+					if (self.uPassword != self.uPasswordC){
+						alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+						return;
+					}
+					$.ajax({
+						url : "/join/remove.dox",
+						dataType : "json",
+						type : "POST",
+						data : nparmap,
+						success : function(data) {
+							alert("회원탈퇴가 완료되었습니다.");
+						}
+					});
+				}
+			});
+			
+		}
+    , fnHome : function(){
+		location.href="/main.do";
+	}
+   }   
     , created: function () {
     
 	}
