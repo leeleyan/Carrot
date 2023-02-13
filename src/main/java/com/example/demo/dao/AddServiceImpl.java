@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,15 @@ public class AddServiceImpl implements AddService{
 	public List<Add> selectAddList() throws Exception {
 		// TODO Auto-generated method stub
 		return addMapper.selectAddList(); // db를 호출하는 mapper와 연결
+	}
+	
+	@Override
+	public void insertBoardImg(HashMap<String, Object> map) {
+		addMapper.insertBoardImg(map);
+	}
+	
+	@Override
+	public void insertBoard(HashMap<String, Object> map) {
+		addMapper.insertBoard(map);
 	}
 }
