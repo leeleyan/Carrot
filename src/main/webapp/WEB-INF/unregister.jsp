@@ -59,9 +59,9 @@
 	<div id="app" class="div1">
 		<h2>탈퇴하시겠습니까?</h2>
 		<span>비밀번호</span>
-		<input type="password" v-model="uName"><br>
+		<input type="password" v-model="password"><br>
 		<span>비밀번호 확인</span>
-		<input type="password" v-model="uEmail"><br>
+		<input type="password" v-model="passwordC"><br>
 		<button>회원탈퇴</button><button>취소</button>
 	</div>	
 </html>
@@ -69,8 +69,10 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+		password : ""
+		, passwordC : ""
+		, userNickName : "${userNickName}"
+		, userId : "${userId}"
     }   
     , methods: {
     	

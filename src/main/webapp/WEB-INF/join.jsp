@@ -89,7 +89,7 @@
 				</div>
 				<div class="div1">
 					<h3>비밀번호 확인</h3>
-					<input type="text">
+					<input type="text" v-model="uPasswordC">
 				</div>
 				<div class="div1">
 					<h3>이름</h3>
@@ -141,6 +141,7 @@
 			uId : "",
 			uNickname : "",
 			uPassword : "",
+			uPasswordC : "",
 			uName : "",
 			uTel : "",
 			uAddress : "",
@@ -226,6 +227,10 @@
 					!self.gu || !self.dong || !self.uEmail) {
 				    alert("모든 사항을 입력해주세요.");
 				    return;
+				}
+				if (self.uPassword != self.uPasswordC){
+					alert("비밀번호와 비밀번호 확인이 다릅니다.")
+					return;
 				}
 				if (!self.idFlg) {
 					alert("아이디 중복체크를 해주세요.");
