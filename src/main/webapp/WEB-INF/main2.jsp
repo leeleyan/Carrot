@@ -7,18 +7,17 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/vue.js"></script>  
 	<style>
-
       body{
         display: flex;
         justify-content: center;
       }
       .container{
-        margin-top: 100px;
         display: flex;
         border: solid gray 1px;
         flex-direction: row;
         flex-wrap: wrap;
         width: 1010px;
+        margin-top: 50px;
       }
       .productDetails{
     	  border: solid red 1px;
@@ -48,17 +47,56 @@
       .address{
     	  text-align: center;
       }
+      .selectAddress{
+        border: solid blue 1px;
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      #app{
+        border: solid yellow 1px;
+        margin-top: 100px;
+      }
+      .form-control{
+        height: 40px;
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
-    <div class="container" id="app">
-        <div class="product" v-for="(item, index) in list">
-          <div class="productDetails">
-            <div class="imgDiv"><img :src="item.img"></div>  
-            <div class="title">{{item.bTitle}}</div>
-            <div class = "address">{{item.uAddress}}</div>
-            <div class = "price">{{item.pPrice}} 원</div>
-          </div>
+    <div id="app">
+      <div class="selectAddress">
+        <div>
+          <label for="dong" class="control-label"></label> 
+          <select	id="dong" v-model="dong" class="form-control">
+            <option value="">동 선택</option>
+            <option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="gu" class="control-label"></label> 
+          <select	id="gu" v-model="gu" class="form-control" @change="fnDongList">
+            <option value="">구 선택</option>
+            <option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="si" class="control-label"></label> 
+          <select id="si"	v-model="si" class="form-control" @change="fnGuList" style="margin-left: 19px;">
+            <option value="">시 선택</option>
+            <option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+          </select>
+        </div>
+      </div>
+        <div class="container">
+            <div class="product" v-for="(item, index) in list">
+              <div class="productDetails" @click="fnViewItem">
+                <div class="imgDiv"><img :src="item.img" @error="handleImgError"></div>  
+                <div class="title">{{item.bTitle}}</div>
+                <div class = "address">{{item.uAddress}}</div>
+                <div class = "price">{{item.pPrice}} 원</div>
+              </div>
+            </div>
         </div>
     </div>
   </body>
@@ -67,7 +105,20 @@
   var app = new Vue({ 
       el: '#app',
     data: {
-    	list : []
+      list : [],
+      siList : ${siList},
+	  guList : ${guList},
+	  dongList : ${dongList},
+	  si : "",
+	  gu : "",
+	  dong : "",
+	  guFlg : false,
+	  dongFlg : false,
+	  idFlg : false,
+	  nickFlg : false,
+	  mailFlg : false,
+	  userNickName : "${userNickName}",
+	  userId : "${userId}"
     }, 
       methods: {
     	fnGetList : function(){
@@ -83,7 +134,76 @@
 	                console.log(self.list);
                 }
             }); 
-        }  
+        },
+    	fnGuList : function(){
+    		var self = this;
+            var nparmap = {si : self.si};
+            $.ajax({
+                url:"/gu/list.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {  
+	                self.guList = data.guList;
+	                console.log(data.guList);
+	                self.gu = "";
+	                self.dong = "";
+                }
+            }); 
+        },
+    	fnDongList : function(){
+     		var self = this;
+             var nparmap = {si : self.si, gu : self.gu};
+             $.ajax({
+                 url:"/dong/list.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) {                                       
+ 	                self.dongList = data.dongList;
+ 	          		self.dong = "";
+                 }
+             }); 
+        },
+    	 
+    	handleImgError(event) {
+        	event.target.src = "/img/default.jpg"; 
+        },
+    	
+    	fnViewItem : function(item){
+     		var self = this;
+     		console.log("fnViewItem");
+     	},
+        pageChange : function(url, param) {
+	        var target = "_self";
+	        if(param == undefined){
+	        //   this.linkCall(url);
+	           return;
+	        }
+	        var form = document.createElement("form"); 
+	        form.name = "dataform";
+	        form.action = url;
+	        form.method = "post";
+	        form.target = target;
+	        for(var name in param){
+	          var item = name;
+	          var val = "";
+	          if(param[name] instanceof Object){
+	             val = JSON.stringify(param[name]);
+	          } else {
+	             val = param[name];
+	          }
+	          var input = document.createElement("input");
+	           input.type = "hidden";
+	           input.name = item;
+	           input.value = val;
+	           form.insertBefore(input, null);
+	        }
+	        document.body.appendChild(form);
+	        form.submit();
+	        document.body.removeChild(form);
+	    }   
+      
     }, 
     created: function () {
       var self = this;
