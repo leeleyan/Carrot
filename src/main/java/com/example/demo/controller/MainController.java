@@ -45,7 +45,7 @@ public class MainController {
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		return "/main2"; // WEB-INF에서 호출할 파일명
+		return "/main"; // WEB-INF에서 호출할 파일명
 	}
 	
 	@RequestMapping(value = "/main/view.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
