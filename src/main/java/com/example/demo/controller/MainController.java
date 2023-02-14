@@ -15,7 +15,7 @@ import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MainService;
 import com.example.demo.dao.ShowItemService;
 import com.example.demo.model.Area;
-import com.example.demo.model.Showitem;
+import com.example.demo.model.Product;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,9 +32,6 @@ public class MainController {
     private AreaService areaService;
 	
 	@Autowired
-	private ShowItemService showItemService;
-	
-	@Autowired
 	HttpSession session;
 
 	@RequestMapping("/main.do") // 메인 화면
@@ -48,14 +45,14 @@ public class MainController {
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		return "/main"; // WEB-INF에서 호출할 파일명
+		return "/main2"; // WEB-INF에서 호출할 파일명
 	}
 	
 	@RequestMapping(value = "/main/view.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String view(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Showitem> list = showItemService.selectGetItemList(map);
+		List<Product> list = mainService.selectGetItemList(map);
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}

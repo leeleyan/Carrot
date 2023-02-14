@@ -197,6 +197,7 @@ var app = new Vue({
 	       	           {}
 	       	       });
 	            	alert("물품이 등록되었습니다.");
+	            	self.fnList();
 	            }
 	        }); 
 	        
