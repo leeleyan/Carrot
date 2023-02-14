@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.dao.AreaService;
 import com.example.demo.dao.JoinService;
 import com.example.demo.model.Area;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
-import jakarta.persistence.criteria.Join;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -47,7 +47,7 @@ public class JoinController {
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		List<Join> list = joinService.selectJoinList(map);
+	 		List<Member> list = joinService.selectJoinList(map);
 	 		if(list.size() > 0) {
 	 			resultMap.put("result", "success");
 	 		} else {

@@ -52,9 +52,6 @@
 	            border-radius: 15px;
 	            margin-top: 40px;
 	        }
-	
-
-			
     	</style>
 	</head>
 	<body>

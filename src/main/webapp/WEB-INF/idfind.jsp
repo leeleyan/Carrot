@@ -72,7 +72,7 @@ var app = new Vue({
                 success : function(data) {     
                 	if(data.result == "success"){
                 		alert(data.list[0].uName + "님의 아이디는 " + data.list[0].uId + " 입니다.");
-                		self.pageChange("/login2.do", {});
+                		self.pageChange("/login.do", {});
                 	} else {
                 		alert("이름, 이메일을 정확히 입력해주세요.");
                 	}

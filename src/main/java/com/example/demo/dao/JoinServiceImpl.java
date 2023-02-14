@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.JoinMapper;
-
-import jakarta.persistence.criteria.Join;
+import com.example.demo.model.Member;
 
 
 @Service //서비스임을 선언
@@ -19,7 +18,7 @@ public class JoinServiceImpl implements JoinService{
 
 	// 인터페이스 구체화
 	@Override
-	public List<Join> selectJoinList(HashMap<String, Object> map) throws Exception {
+	public List<Member> selectJoinList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return joinMapper.selectJoinList(map); // db를 호출하는 mapper와 연결
 	}
