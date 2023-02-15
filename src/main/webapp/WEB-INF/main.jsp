@@ -86,15 +86,6 @@
 		</div>
 	</div>
 	<jsp:include page="/layout/marketmainbody.jsp"></jsp:include>
-	<div id="app" class="div1">
-		<button onclick="window.open('unregister.do','_blank');">회원탈퇴</button>
-		<button onclick="window.open('writing.do','_blank');">판매자에게
-			쪽지 보내기</button>
-		<!-- 팝업창 정중앙에 위치 'left='+(screen.availWidth-900)/2+',top='+(screen.availHeight-600)/2+', width=900,height=430' -->
-
-		<div class="container">
-			<input type="file" accept="image/*" multiple> <img src="" alt="">
-		</div>
 	</div>
 </body>
 <jsp:include page="/layout/marketfooter.jsp"></jsp:include>
