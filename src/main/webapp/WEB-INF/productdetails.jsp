@@ -18,32 +18,74 @@
 				margin: auto;
 				border: solid gray 1px;
 				width: 1010px;
-				margin-top: 50px;
       		}
+			.little{
+				display: inline;
+			}
+			.content{
+				margin-left: 50px;
+				font-size: 25px;
+			}
+			.description{
+				font-size: 20px;
+			}
+			.msgDiv{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100px;
+			}
+			.msg{
+				width: 40%;
+				height: 70%;
+				font-size: 20px;
+			}
+			.imgDiv{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 30px;
+			}
+			.nick{
+				font-size: 25px;
+				margin-left: 30px;
+			}
+			.sub{
+				padding: 10px;
+			}
+			.image{
+				max-width: 80%;
+			  	max-height: 80%;
+			}
     	</style>
 	</head>
 	<body>
 		<div class = container id = "app">
-			<div class="imgDiv"><img :src="info.img" class="itemimg"></div>
-			<div class="nick">
-				<span>닉네임</span>
-				<span>{{info.uNickName}}</span>
-				<span>장소</span>
-				<span>{{info.uAddress}}</span>
+			<div class="imgDiv"><img :src="info.img" class="image"/></div>
+			<div class="sub">
+				<h2 class="little">닉네임</h2>
+				<span class="nick">{{info.uNickName}}</span><br>
+			</div>
+			<div class="sub">
+				<h2 class="little">장소</h2>
+				<span class="content">{{info.uAddress}}</span>
 			</div>
 			<hr>
-			<div class="title">
-				<span>제목</span>
-				<span>{{info.bTitle}}</span>
+			<div class="sub">
+				<h2 class="little">제목</h2>
+				<span class="content">{{info.bTitle}}</span>
 			</div>
-			<div class="price">
-				<span>가격</span>
-				<span>{{info.pPrice}} 원</span>
+			<div class="sub">
+				<h2 class="little">가격</h2>
+				<span class="content">{{info.pPrice}} 원</span>
 			</div>
-			<div class="description">
-				{{info.bContent}}
+			<div class="sub">
+				<h2>내용</h2>
+				<span class="description">{{info.bContent}}</span>
 			</div>
-			<div class="message"></div>
+			<div class="msgDiv">
+				<button class="msg">판매자에게 쪽지 보내기</button>
+			</div>
 		</div>
 	</body>
 </html>
