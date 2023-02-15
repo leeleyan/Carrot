@@ -58,6 +58,7 @@ public class MyInformationController {
  		resultMap.put("tel", user.getuTel());
  		resultMap.put("address", user.getuAddress());
  		resultMap.put("email", user.getuEmail());
+ 		resultMap.put("password", user.getuPassword());
  		return new Gson().toJson(resultMap);
  	}
 	 @RequestMapping(value = "/myinfo/updatetel.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

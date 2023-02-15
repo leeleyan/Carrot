@@ -41,6 +41,7 @@ public class LoginController {
 	 		if( user != null) {
 				session.setAttribute("userId", user.getuId());
 				session.setAttribute("userNickName", user.getuNickname());
+				session.setAttribute("userPassword", user.getuPassword());
 				resultMap.put("user", user);
 				resultMap.put("result", "success");
 			} else {

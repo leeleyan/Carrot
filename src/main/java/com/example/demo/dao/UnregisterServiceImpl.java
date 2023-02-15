@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.UnregisterMapper;
+import com.example.demo.model.Member;
 
 
 @Service //서비스임을 선언
 public class UnregisterServiceImpl implements UnregisterService{
 	@Autowired
 	private UnregisterMapper unregisterMapper;
+	
 
 	// 인터페이스 구체화
 	@Override

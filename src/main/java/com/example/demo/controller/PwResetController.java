@@ -28,9 +28,10 @@ public class PwResetController {
     HttpSession session;
 
 	 @RequestMapping("/pwreset.do") // 비밀번호 초기화 팝업 화면
-     public String join(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception{
+     public String join(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> map) throws Exception{
 		 String id = (String)session.getAttribute("userIdSession");
 		 request.setAttribute("userId", id);
+		 request.setAttribute("map", map); // 파란색글씨 map이랑 받는쪽 이름이랑 맞춰줌
 		 return "/pwreset"; // WEB-INF에서 호출할 파일명
     } 
 	

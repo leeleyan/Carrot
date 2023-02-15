@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dao.MyInformationService;
 import com.example.demo.dao.UnregisterService;
+import com.example.demo.model.Member;
 import com.example.demo.model.Unregister;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +30,7 @@ public class UnregisterController {
 	// Service 인터페이스 객체 생성 및 연결
     @Autowired
     private UnregisterService unregisterService; 
+    private MyInformationService myInformationService;
     
 	 @RequestMapping("/unregister.do") // 회원탈퇴 팝업 화면
      public String join(Model model) throws Exception{
@@ -53,4 +56,5 @@ public class UnregisterController {
 		 		resultMap.put("num", num);
 		 		return new Gson().toJson(resultMap);
 		 	}
+		 
 }

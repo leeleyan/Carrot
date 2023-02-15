@@ -68,7 +68,7 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	uId : "${userId}"
+    	uId : "${map.id}" // map -> 컨트롤러에 있는 map
     	, uPassword : ""
     	, uPassword2 : ""
     }   
@@ -83,7 +83,8 @@ var app = new Vue({
                     type : "POST", 
                     data : nparmap,
                     success : function(data) {
-                    	alert(self.uId + "비밀번호가 변경되었습니다.");	
+                    	alert(self.uId + "님의 비밀번호가 변경되었습니다.");	
+                    	location.href="/main.do";
                     }
                 }); 	                		
         	} else {

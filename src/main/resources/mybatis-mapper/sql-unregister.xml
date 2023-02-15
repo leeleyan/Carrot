@@ -10,14 +10,4 @@
 		WHERE 
 			u_nickname = #{nickname}
 	</delete>
-	
-	<select id="selectPasswordCheck" parameterType="hashmap" resultType="int">	
-		SELECT
-			count(*)
-		FROM
-			t2_account
-		WHERE 
-			u_nickname = #{nickname} AND u_password = #{password}
-	</select>
-	
 </mapper>
