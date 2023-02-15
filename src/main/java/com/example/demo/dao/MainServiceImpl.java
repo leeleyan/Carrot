@@ -22,5 +22,11 @@ public class MainServiceImpl implements MainService{
 		return mainMapper.selectGetItemList(map);
 	}
 
+	@Override
+	public List<Product> searchArea(HashMap<String, Object> map) throws Exception {
+		
+		return mainMapper.searchArea(map);
+	}
+
 	
 }

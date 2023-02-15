@@ -117,7 +117,8 @@
 	  guFlg : false,
 	  dongFlg : false,
 	  userNickName : "${userNickName}",
-	  userId : "${userId}"
+	  userId : "${userId}",
+      keyword : ""
     }, 
       methods: {
     	fnGetList : function(){
@@ -201,7 +202,22 @@
 	        document.body.appendChild(form);
 	        form.submit();
 	        document.body.removeChild(form);
-	    }   
+	    },
+	    fnSearch : function(){
+	        var self = this;
+	        var nparmap = {keyword : self.si};
+	        $.ajax({
+	            url:"/search.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                console.log(self.list);
+	                console.log(keyword);
+	            }
+	        }); 
+	    }
       
     }, 
     created: function () {
