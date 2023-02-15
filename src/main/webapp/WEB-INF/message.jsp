@@ -27,7 +27,7 @@
 	</head>
 	<body>
 	<div id="app" class="div1">
-		<button class="logobtn" @click="fnMain">쪽지작성</button>
+		<button class="logobtn" @click="fnWrite">쪽지작성</button>
 	</div>	
 	</body>
 	<setfooter>
@@ -85,7 +85,7 @@ var app = new Vue({
 	        form.submit();
 	        document.body.removeChild(form);
 	     }
-    		,fnMain : function(){
+    		,fnWrite : function(){
     			window.open("./writing.do","쪽지쓰기","width=555,height=580");
     	}
     }   
