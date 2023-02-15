@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class MessageServiceImpl implements MessageService{
 
 	// 인터페이스 구체화
 	@Override
-	public List<Message> selectMessageList() throws Exception {
+	public List<Message> selectMessageList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return messageMapper.selectMessageList(); // db를 호출하는 mapper와 연결
+		return messageMapper.selectMessageList(map); // db를 호출하는 mapper와 연결
 	}
 }

@@ -76,7 +76,13 @@ linkimg {
 }
 .sectionfooter3 li {
     float: left;
-    width: 39px;
+    width: 34px;
     height: 40px;
     list-style: none
+}
+setfooter {
+	width: 100%;
+	position: absolute;  
+	bottom: 0;
+	left: 0;
 }

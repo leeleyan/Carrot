@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
+		<jsp:include page="/layout/logoheader.jsp"></jsp:include>
 		<title>마켓이름 : 로그인</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -15,7 +16,7 @@
 	        }
 	
 	        body {
-	            background-color: #1BBC9B;
+	            background-color: white;
 	        }
 	
 	        .div1 {
@@ -64,10 +65,26 @@
 	            color: #9B9B9B;
 	            font-size: 15px;
 	        }
+	        html, body {
+   		    margin: 0;
+    		padding: 0;
+    		height: 100%;
+			}	
+
+#body-wrapper {
+    position: relative;
+}
+
+#body-content {
+    margin-top: 60px;
+}
     	</style>
 	</head>
+	<div id="body-wrapper">
+		<div id="body-content">
 	<body>
-		<div id="app" class="div1">
+		<div id="app">
+		<div class="div1">
 		<div class="div2">
 				<input type="text" v-model="uId" class="in" placeholder="아이디"></input>
 		</div>
@@ -82,9 +99,15 @@
 		<a href="pwfind.do">| 비밀번호 찾기</a>
 		<a href="join.do">| 회원가입</a>
 		</div>
-		</div>
-		
+		</div>	
+		</div>	
 	</body>
+			
+		</div>
+	</div>
+	<setfooter>
+	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
+	</setfooter>
 </html>
 <script type="text/javascript">
 
