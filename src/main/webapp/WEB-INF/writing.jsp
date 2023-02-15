@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/writebody.css" type="text/css">
 		<title>쪽지 쓰기</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -13,76 +14,41 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	
-	        body {
-	            background-color: #1BBC9B;
-	        }
-	
-	        .div1 {
-	            margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
-	            width: 500px; /*좌.우 길이, 없으면 전체*/
-	            height: 300px;
-	            background-color: #EEEFF1;
-	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
-	            text-align: center; /*하위 요소 가운데 정렬*/
-	            padding: 20px; /*상.하.좌.우로 늘리기(안쪽 여백, 창 크기가 더 커짐)*/
-	        }
-	         .div2 {
-	            margin: auto;
-	            width: 250px;
-	            background-color: #EEEFF1;
-	            border-radius: 5px;
-	            text-align: center;
-	            padding: 0px;
-	        }
-	
-	        input {
-	            width: 100%;
-	            padding: 10px;
-	            box-sizing: border-box;
-	            border-radius: 5px;
-	            border: none;
-	            margin-top: 20px;
-	        }
-	
-	        .in {
-	            margin-bottom: 15px;
-	        }
-	
-	        #btn {
-	            background-color: #59cf44;
-	            margin-bottom: 30px;
-	            color: white; 
-	            width: 250px;
-	            height: 50px;
-	            border-radius: 15px;
-	            margin-top: 20px;
-	        }
-	
-	        a {
-	            text-decoration: none;
-	            color: #9B9B9B;
-	            font-size: 15px;
-	        }
     	</style>
 	</head>
-	<body>
-	<div id="app" class="div1">
-		쪽지쓰기
-		쪽지쓰기
-		쪽지쓰기
-		쪽지쓰기
-		쪽지쓰기
-		
-	</div>	
+	<body class="popup">
+		<div id="app">
+			<div class="popWrapper">
+				<h1>쪽지 보내기</h1>
+				<div class="popWrite">
+					<dl class="to">
+						<dt>받는 사람</dt>
+						<dd>
+							<input type="text" class="inputText" placeholder="상대방 닉네임을 입력하세요." data-replyto="">
+						</dd>
+					</dl>
+					<dl>
+						<dt>내용</dt>
+						<dd>
+							<textarea name="" id="noteContents" cols="300" rows="30" 
+							class="inputTextarea" placeholder="쪽지 내용을 입력하세요"></textarea>
+							<span class="bite">0/300</span>
+						</dd>
+					</dl>
+					<div class="btSec">
+					
+					</div>
+				</div>	
+			</div>
+		</div>
 	</body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+
+    	
     }   
     , methods: {
     	

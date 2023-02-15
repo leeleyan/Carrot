@@ -1,0 +1,85 @@
+a, abbr, acronym, address, big, blockquote, body, button, caption, cite, code, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, img, ins, kbd, label, legend, li, ol, p, pre, q, s, samp, small, span, strike, strong, table, tbody, td, tfoot, th, thead, tr, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    background: transparent;
+    font-size: 1em;
+    line-height: 1.35;
+}
+button, input, textarea {
+    font: 1em "\B3CB\C6C0",dotum,Segoe WP,Helvetica,"sans serif";
+    color: #666;
+}
+
+body.popup {
+    overflow: auto;
+}
+.popWrapper {
+    padding: 37px 40px 0;
+}
+
+.popWrapper h1 {
+    height: 46px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 400;
+}
+.popWrite {
+    border-top: 1px solid #333;
+}
+.popWrite .from, .popWrite .to {
+    background: url(/img/writeline.png) repeat-x 0 bottom;
+    white-space: nowrap;
+}
+.popWrite dt {
+    display: inline-block;
+    width: 102px;
+    padding-top: 22px;
+    font-size: 15px;
+    color: #333;
+    vertical-align: top;
+    text-indent: -1px;
+}
+.popWrite dd {
+    display: inline-block;
+    padding: 15px 0 16px;
+}
+.popWrite .inputText {
+    width: 285px;
+    margin-right: 2px;
+}
+.inputText {
+    height: 34px;
+    padding: 7px 14px 3px;
+    font-size: 14px;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    box-sizing: border-box;
+}
+.popWrite textarea {
+    width: 100%;
+}
+.inputTextarea {
+    width: 434px;
+    height: 201px;
+    padding: 12px 19px;
+    font-size: 12px;
+    line-height: 1.65;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    resize: none;
+    box-sizing: border-box;
+}
+.popWrite .bite {
+    display: block;
+    padding: 6px 1px 0;
+    text-align: right;
+    color: #afafaf;
+}
+.popWrapper .btSec {
+    text-align: center;
+    padding-bottom: 30px;
+}
