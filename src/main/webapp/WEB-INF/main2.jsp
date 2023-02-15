@@ -115,9 +115,6 @@
 	  dong : "",
 	  guFlg : false,
 	  dongFlg : false,
-	  idFlg : false,
-	  nickFlg : false,
-	  mailFlg : false,
 	  userNickName : "${userNickName}",
 	  userId : "${userId}"
     }, 
@@ -173,7 +170,7 @@
     	
     	fnViewItem : function(item){
      		var self = this;
-     		console.log("fnViewItem");
+     		self.pageChange("./view.do", {boardIdx : item.boardIdx});
      	},
         pageChange : function(url, param) {
 	        var target = "_self";

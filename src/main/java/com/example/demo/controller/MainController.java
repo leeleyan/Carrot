@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MainService;
-import com.example.demo.dao.ShowItemService;
 import com.example.demo.model.Area;
 import com.example.demo.model.Product;
 import com.google.gson.Gson;
@@ -45,7 +44,7 @@ public class MainController {
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
-		return "/main"; // WEB-INF에서 호출할 파일명
+		return "/main2"; // WEB-INF에서 호출할 파일명
 	}
 	
 	@RequestMapping(value = "/main/view.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
