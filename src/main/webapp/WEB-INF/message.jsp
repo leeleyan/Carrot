@@ -27,7 +27,6 @@
 	</head>
 	<body>
 	<div id="app" class="div1">
-		{{userNickName}}
 		쪽지
 		쪽지
 		쪽지
@@ -48,10 +47,24 @@ var app = new Vue({
         , userId : "${userId}"
     }   
     , methods: {
-    	
+    	fnGetList : function(){
+            var self = this;
+            var nparmap = {};
+            $.ajax({
+                url:"/message/getmessage.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {                                       
+	                self.list = data.list;
+	                console.log(self.list);
+                }
+            }); 
+        }
     }   
     , created: function () {
-    
+        var self = this;
+        self.fnGetList();
 	}
 });
 </script>
