@@ -18,7 +18,9 @@
     	</style>
 	</head>
 	<body>
-		product details
+		{{idx}} <br>
+		{{userId}}<br>
+		{{userNickName}}
 		
 	</body>
 </html>
@@ -26,8 +28,9 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	id : ""
-    	, pwd : ""
+    	idx : "${map.boardIdx}",
+    	userId : "${userId},"
+    	userNickName : "${userNickName}"
     }   
     , methods: {
     	
