@@ -24,7 +24,11 @@
 	<div id="app2">
 	<div class="header">
 		<div class="headfirst">
-			<a class="textblank"> <img src="img/marketlogo.png" width="136px" height="40px"></a> 
+			<a class="textblank"> 
+				<button class="logobtn" @click="fnMain">
+				<img src="img/marketlogo.png" width="136px" height="40px">
+				</button>
+			</a> 	
 			<div class="text1">
 				<div class="text3">
 					<input type="text" placeholder=" 상품 제목 입력" class="text2 findinput" value="">
@@ -102,6 +106,10 @@ var app = new Vue({
         , fnMessage : function(){
     		var self = this;
     		self.pageChange("./message.do", {});
+    	}
+        , fnMain : function(){
+    		var self = this;
+    		self.pageChange("./main.do", {});
     	}
         
     }
