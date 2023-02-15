@@ -6,12 +6,13 @@
   	<meta charset="UTF-8">
 	<script src="js/jquery.js"></script>
 	<script src="js/vue.js"></script>  
+	<jsp:include page="/layout/marketheader.jsp"></jsp:include>
 	<style>
       body{
-        display: flex;
         justify-content: center;
       }
       .container{
+      	margin: auto;
         display: flex;
         border: solid gray 1px;
         flex-direction: row;
@@ -48,14 +49,14 @@
     	  text-align: center;
       }
       .selectAddress{
-        border: solid blue 1px;
+      	justify-content: center;
+      	padding-left: 600px;
         display: flex;
         flex-direction: row-reverse;
       }
 
       #app{
-        border: solid yellow 1px;
-        margin-top: 100px;
+        margin-top: 30px;
       }
       .form-control{
         height: 40px;
