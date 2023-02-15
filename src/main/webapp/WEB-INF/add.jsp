@@ -22,24 +22,25 @@
 			h1{
 				display: inline-block;
 			}
-			input{
+			.addinput{
 				margin-left: 30px;
 				width: 40em;
 				height: 40px;
 			}
-			.container{
+			.addcontainer{
 				margin-left: 10%;
 				margin-right: 10%;
+				margin-bottom: 40px;
 			}
 			hr{
 				margin-top: 15px;
 				margin-bottom: 15px;
 			}
-			span{
+			.addspan{
 				font-size: 25px;
 				margin-left: 5px;
 			}
-			button{
+			.addbutton{
 				width: 220px;
 				font-size: 30px;
 				display: block;
@@ -48,21 +49,21 @@
 	</head>
 	<body>
 	<div id="app" class="div1">
-		<div class="container">
+		<div class="addcontainer">
 			<template>
 				<h1>상품 이미지</h1>
-				<input type="file" @change="updateImages" id="file1" name="file1"/>
+				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1"/>
 				<br><br>
 				<div>
-					<span v-for="(image, index) in previewImages" :key="index">
+					<span v-for="(image, index) in previewImages" :key="index" class="addspan">
 					<img :src="image" alt="Image Preview" class="preview-img"/>
 				</div>
-					<button @click="removeImage(index)">Cancel</button>
+					<button @click="removeImage(index)" class="addbutton">Cancel</button>
 			</template>
 			<hr>
 			<div>
 				<h1>제목</h1>
-				<input type="text" v-model="bTitle" placeholder="제목">
+				<input type="text" class="addinput" v-model="bTitle" placeholder="제목">
 				<hr>
 			</div>
 			<div>
@@ -90,7 +91,7 @@
 			</div>
 			<div>
 				<h1>가격</h1>
-				<input type="text" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
+				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
 				<hr>
 			</div>
 			<div>
@@ -99,8 +100,8 @@
 				<hr>
 			</div>
 			<div style = "display : flex;">
-				<button @click="fnSave" class="btn" style ="margin-left: 100px;">등록하기</button>
-				<button @click="fnList" class="btn">돌아가기</button>
+				<button @click="fnSave" class="addbutton" style ="margin-left: 100px;">등록하기</button>
+				<button @click="fnList" class="addbutton" >돌아가기</button>
 			</div>
 		</div>
 	</div>	

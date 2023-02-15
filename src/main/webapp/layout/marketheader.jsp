@@ -12,9 +12,6 @@
 		<link rel="stylesheet" href="css/headerusermenu.css" type="text/css">
 		<link rel="stylesheet" href="css/headerusermenubtn.css" type="text/css">
 		<style>
-	        img {
-			margin-right: 5px;
-	        }
 	        a {
     		color: rgb(33, 33, 33);
     		text-decoration: none;
@@ -30,7 +27,7 @@
 			<a class="textblank"> <img src="img/marketlogo.png" width="136px" height="40px"></a> 
 			<div class="text1">
 				<div class="text3">
-					<input type="text" placeholder=" 상품 제목 입력" class="text2" value="">
+					<input type="text" placeholder=" 상품 제목 입력" class="text2 findinput" value="">
 					<a><img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘"></a>
 				</div>
 			</div>
