@@ -1,13 +1,13 @@
 package com.example.demo.model;
 
 
-public class Message { // 수정 해야됨
-    private int mNo;
-    private String uSender;
-    private String uRecipient;
-    private String mTitle;
-    private String mContent;
-    private String createDate;
+public class Message {
+    private int mNo; // 게시물 번호
+    private String uSender; // 보낸사람 닉네임
+    private String uRecipient; // 받는사람 닉네임
+    private String mTitle; // 쪽지 제목
+    private String mContent; // 쪽지 내용
+    private String createDate; // 보낸 시간
     
 	public int getmNo() {
 		return mNo;

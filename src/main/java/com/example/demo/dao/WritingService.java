@@ -1,9 +1,8 @@
 package com.example.demo.dao;
 
-import java.util.List;
-
-import com.example.demo.model.Writing;
+import java.util.HashMap;
 
 public interface WritingService {
-	List<Writing> selectWritingList() throws Exception; // 데이터 호출을 위한 인터페이스
+	
+	int addMessage(HashMap<String, Object> map) throws Exception;
 }

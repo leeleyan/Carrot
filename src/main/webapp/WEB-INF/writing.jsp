@@ -10,8 +10,7 @@
 <title>쪽지 쓰기</title>
 <style>
 @import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-	;
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -26,14 +25,21 @@
 				<dl class="to">
 					<dt>받는 사람</dt>
 					<dd>
-						<input type="text" class="inputText" v-model="sendnick" placeholder="상대방 닉네임을 입력하세요."
+						<input type="text" class="inputText" v-model="uRecipient" placeholder="상대방 닉네임을 입력하세요."
 							data-replyto="">
 					</dd>
 				</dl>
+				<dl class="to">
+					<dt>제목</dt>
+					<dd>
+						<input type="text" class="inputText" v-model="mTitle" placeholder="제목을 입력하세요."
+							data-replyto="">
+					</dd>
+				</dl>				
 				<dl>
 					<dt>내용</dt>
 					<dd for="wr_1">
-						<textarea name="" id="content" cols="300" rows="30" v-model="message"
+						<textarea name="" id="content" cols="300" rows="30" v-model="mContent"
 							class="inputTextarea" maxlength="300" placeholder="쪽지 내용을 입력하세요"></textarea>
 						<span class="bite" id="counter">0/300</span>
 					</dd>
@@ -42,7 +48,7 @@
 					<button class="btCancel" id="btCancel" @click="fnWriteclose">
 						<span>취소</span>
 					</button>
-					<button class="btSubmit" id="btSubmit" @click="fnWriteclose">
+					<button class="btSubmit" id="btSubmit" @click="fnSave">
 						<span>쪽지 보내기</span>
 					</button>
 				</div>
@@ -70,15 +76,17 @@ $(function() {
 	var app = new Vue({
 		el : '#app',
 		data : {
-			message : ""
-			,userNickName : "${userNickName}"
-			,sendnick : ""
-		},
-		methods : {
+			list : []
+			,uSender : "${userNickName}"
+			,uRecipient : ""
+			,mTitle : ""
+			,mContent : ""
+		}
+		,methods : {
 			fnWriteclose : function() {
 				window.close();
-			},
-			fnGetList : function() {
+			}
+			,fnGetList : function() {
 				var self = this;
 				var nparmap = {};
 				$.ajax({
@@ -89,16 +97,31 @@ $(function() {
 					success : function(data) {
 						self.list = data.list;
 						console.log(self.list);
+						console.log(self.uSender);
 					}
 				});
-			},
-			fnSend : function(){
-				var self = this;
-				var nparmap = {mContent : self.message, uSender : self.userNickName,
-								uRecipient : self.sendnick};
 			}
-		},
-		created : function() {
+			, fnSave : function(){
+	    		var self = this;
+		      	var nparmap = {uSender : self.uSender, uRecipient : self.uRecipient
+		      			       ,mTitle : self.mTitle, mContent : self.mContent};
+				$.ajax({
+					url : "/writing/add.dox",
+					dataType : "json",
+					type : "POST",
+					data : nparmap,
+					success : function(data) {
+						if (data.result == "success") {
+							alert("메시지 보내기가 성공했습니다.");
+							self.fnGetList();
+						} else
+							alert("메시지 보내기가 실패했습니다.");
+					}
+				}); 
+		        
+	    	}
+		}
+		, created : function() {
 	        var self = this;
 	        self.fnGetList();
 		}
