@@ -32,7 +32,7 @@
 			<div class="text1">
 				<div class="text3">
 					<input type="text" placeholder=" 상품 제목 입력" class="text2 findinput" value="" v-model="skeyword" @keyup.enter="fnSearch4">
-					<a><img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘"></a>
+					<a><img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘" @click="fnSearch4"></a>
 				</div>
 			</div>
 			<button class="loginsignbtn" @click="userId ? fnLogout() : redirectToLogin()">
