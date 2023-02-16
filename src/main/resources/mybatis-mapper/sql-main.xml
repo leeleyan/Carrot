@@ -42,7 +42,7 @@
 		ORDER BY
 			 t.board_idx DESC
 	</select>
-	
+	  
 	<select id="searchTitle" parameterType="hashmap" resultType="com.example.demo.model.Product">	
 		SELECT 
 			t.board_idx
