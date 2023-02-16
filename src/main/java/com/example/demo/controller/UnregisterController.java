@@ -57,4 +57,13 @@ public class UnregisterController {
 		 		return new Gson().toJson(resultMap);
 		 	}
 		 
+		 @RequestMapping(value = "/unregister/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		 @ResponseBody
+		 public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		Member user = unregisterService.getInfo(map);
+	 		resultMap.put("password", user.getuPassword());
+	 		resultMap.put("nickname", user.getuNickname());
+	 		return new Gson().toJson(resultMap);
+	 	} 
 }

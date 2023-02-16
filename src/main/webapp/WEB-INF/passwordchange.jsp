@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
-		<title>회원탈퇴</title>
+		<title>비밀번호 변경</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 	
@@ -14,14 +14,14 @@
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
 	
-	         body {
+	        body {
 	            background-color: #1BBC9B;
 	        }
 	
 	        .div1 {
 	            margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
 	            width: 500px; /*좌.우 길이, 없으면 전체*/
-	            height: 400px;
+	            height: 350px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
 	            text-align: center; /*하위 요소 가운데 정렬*/
@@ -47,76 +47,83 @@
 	
 	        button{
 	            margin-bottom: 30px;
-	            width: 150px;
+	            width: 250px;
 	            height: 50px;
 	            border-radius: 15px;
 	            margin-top: 40px;
-	            margin-left: 20px;
 	        }
     	</style>
 	</head>
+
 	<body>
-	<div id="app" class="div1">
-		<h2>탈퇴하시겠습니까?</h2>
-		<span>비밀번호</span>
-		<input type="password" v-model="uPasswordA"><br>
-		<span>비밀번호 확인</span>
-		<input type="password" v-model="uPasswordC"><br>
-		<button @click="fnUnregister">회원탈퇴</button>
-		<button @click="fnBack">취소</button>
-	</div>	
+		<div class="div1" id="app">
+					<span>현재 비밀번호</span>
+					<input type="password" v-model="uPassword"><br>
+					<span>새 비밀번호</span>
+					<input type="password" v-model="newPassword"><br>
+					<span>새 비밀번호 확인</span>
+					<input type="password" v-model="newPassword2"><br>
+					<button @click="fnUpdatePassword">비밀번호 변경</button>
+		</div>
+	</body>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-		password : ""
-		, uPasswordA : ""
-		, uPasswordC : ""
-		, userId : "${userId}"
+         uPassword : ""
+	    , newPassword : ""
+	    , newPassword2 : ""
+	 	, userId : "${userId}"
+	 	, password : ""
+        
     }   
     , methods: {
-    	fnUnregister : function() {
+    	fnUpdatePassword : function() {
 			var self = this;
-			var nparmap = {password : self.password, id : self.userId};
-			if((self.password == self.uPasswordA) && (self.password == self.uPasswordC)){
+			var nparmap = {password : self.newPassword, id : self.userId};
+			if(self.password == self.uPassword){
+				if(self.newPassword == self.newPassword2){
 				$.ajax({
-					url : "/join/remove.dox",
+					url : "/passwordchange/updatepassword.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						alert("회원탈퇴가 완료되었습니다.");
-						location.href="/main.do";
+						alert("비밀번호가 변경되었습니다.");
+						window.close();
 					}
 				});
-			}
-			else {
-				alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+			} else {
+				alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.")
 				return;
 			} 
+			} else{
+				alert("현재 비밀번호가 올바르지 않습니다.");
+				return;
+			}
+		},
+        fnGetInfo : function(){
+   			var self = this;
+            var nparmap = {id : self.userId};
+	           $.ajax({
+	               url:"/passwordchange/get.dox",
+	               dataType:"json",	
+	               type : "POST", 
+	               data : nparmap,
+	               success : function(data) {  
+	            	   self.password = data.password;
+	               }
+	           }); 
+	     }
+    
 		}
-			
-    , fnBack : function(){
-		location.href="/myinformation.do";
-	},
-    fnGetInfo : function(){
-			var self = this;
-        var nparmap = {id : self.userId};
-           $.ajax({
-               url:"/unregister/get.dox",
-               dataType:"json",	
-               type : "POST", 
-               data : nparmap,
-               success : function(data) {  
-        	       self.password = data.password;
-               }
-           }); 
-     }
-   }   
     , created: function () {
     	var self = this;
     	self.fnGetInfo();
 	}
 });
+
 </script>
+
+

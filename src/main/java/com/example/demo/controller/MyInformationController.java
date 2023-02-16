@@ -55,6 +55,7 @@ public class MyInformationController {
  		HashMap<String, Object> resultMap = new HashMap<String, Object>();
  		Member user = myInformationService.getInfo(map);
  		resultMap.put("name", user.getuName());
+ 		resultMap.put("nickname", user.getuNickname());
  		resultMap.put("tel", user.getuTel());
  		resultMap.put("address", user.getuAddress());
  		resultMap.put("email", user.getuEmail());

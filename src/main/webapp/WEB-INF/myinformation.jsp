@@ -50,6 +50,7 @@
 				border: solid 1px;
 			}
 			button{
+				
 				font-size: 25px;
 			}
 			
@@ -85,30 +86,21 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td>{{userNickName}}</td>
+					<td>{{nickname}}</td>
 					<td><button @click="fnEditNick">변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
 					{{address}}
-						<!-- <label for="si" class="control-label"></label> 
-							<select id="si"	v-model="si" class="form-control" @change="fnGuList">
-								<option value="">시 선택</option>
-								<option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
-							</select>
-						<label for="gu" class="control-label"></label> 
-							<select	id="gu" v-model="gu" class="form-control" @change="fnDongList">
-								<option value="">구 선택</option>
-								<option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
-							</select>
-						<label for="dong" class="control-label"></label> 
-							<select	id="dong" v-model="dong" class="form-control">
-								<option value="">동 선택</option>
-								<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
-							</select> -->
 					</td>
-					<td><button>변경</button></td>
+					<td><button onclick="window.open('addresschange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
 				</tr>
+				<tr>
+				<td>비밀번호</td>
+				<td><button onclick="window.open('passwordchange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
+				</tr>
+				
 			</table>
+			<span><button @click="fnHome" class="addbutton" >돌아가기</button></span>
 		</div>
 	</body>
 </html>
@@ -126,7 +118,7 @@ var app = new Vue({
 	    , dong : ""
 	    , guFlg : false
 	    , dongFlg : false
-	    , userNickName : "${userNickName}"
+	    , nickname : ""
 	 	, userId : "${userId}"
  		, name: ""
         , tel: ""
@@ -174,7 +166,9 @@ var app = new Vue({
 	               data : nparmap,
 	               success : function(data) {  
 	            	   self.name = data.name;
-	        	       self.tel = data.tel;
+	            	   self.nickname = data.nickname;
+	            	   self.password = data.password;
+	            	   self.tel = data.tel;
 	        	       self.address = data.address;
 	        	       self.email = data.email;
 	               }
@@ -240,12 +234,12 @@ var app = new Vue({
  		var self = this;
  		var newNick = prompt("새 닉네임을 입력해주세요.");
  		  if (newNick != null) {
- 			  self.userNickName = newNick;
+ 			  self.nickname = newNick;
  		  }else {
  			  alert("취소되었습니다.")
  			  return;
  		  }
-      	var nparmap = { nickname : self.userNickName };
+      	var nparmap = { nickname : self.nickname };
         $.ajax({
             url:"/join/nicknamecheck.dox",
             dataType:"json",	
@@ -254,10 +248,9 @@ var app = new Vue({
             success : function(data) {            
             	if(data.num > 0){
             		alert("이미 사용중인 닉네임입니다.")
-            		self.userNickName = "${userNickName}"
             		return;
             	}else {
-            		var nparmap = { id : self.userId, nickName : newNick};
+            		var nparmap = { id : self.userId, nickname : newNick};
                     $.ajax({
                         url:"/myinfo/editNickName.dox",
                         dataType:"json",	
@@ -308,6 +301,9 @@ var app = new Vue({
             }
         }); 
 		}
+    , fnHome : function(){
+		location.href="/main.do";
+	}
     }
     , created: function () {
     	var self = this;
