@@ -33,6 +33,11 @@ public class MainServiceImpl implements MainService{
 		
 		return mainMapper.searchTitle(map);
 	}
-
+	
+	@Override
+	public List<Product> selectGetMyItemList(HashMap<String, Object> map) throws Exception {
+		
+		return mainMapper.selectGetMyItemList(map);
+	}
 	
 }

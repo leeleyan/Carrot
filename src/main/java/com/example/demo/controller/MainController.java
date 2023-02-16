@@ -56,6 +56,15 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	@RequestMapping(value = "/main/myview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String myview(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> list = mainService.selectGetMyItemList(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
+	
 	@RequestMapping(value = "/search.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String searchArea(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
