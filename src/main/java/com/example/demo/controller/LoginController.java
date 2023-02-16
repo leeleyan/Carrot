@@ -49,5 +49,19 @@ public class LoginController {
 	 		}
 	 		return new Gson().toJson(resultMap);
 	 	}
-	 
+	 	
+	 	@RequestMapping(value = "/logout/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String logout(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		String id = (String)session.getAttribute("id");  
+	 		String userNickName = (String)session.getAttribute("userNickName");
+	 		String userPassWord = (String)session.getAttribute("userPassword");
+	 		session.removeAttribute("userNickName");
+	 		session.removeAttribute("id");
+	 		session.removeAttribute("userPassword");
+	 		session.invalidate();
+			resultMap.put("result", "success");
+	 		return new Gson().toJson(resultMap);
+	 	}
 }

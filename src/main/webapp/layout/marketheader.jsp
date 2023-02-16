@@ -35,18 +35,20 @@
 					<a><img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘"></a>
 				</div>
 			</div>
-			<button class="loginsignbtn" onclick="location.href='login.do'">로그인/회원가입</button>
+			<button class="loginsignbtn" @click="userId ? fnLogout() : redirectToLogin()">
+    				{{ userId ? '로그아웃' : '로그인/회원가입' }}
+			</button>
 		</div>
 			<div class="headusermenu">
-				<button class="headmymenubtn" @click="fnMyInfo">
+				<button class="headmymenubtn"@click="userId ? fnMyInfo() : redirectToLogin()">
 					<img src="img/userlogimg.png" width="23" height="24" alt="내정보버튼 이미지">
 					내 정보
 				</button>
-			<button class="headmymenubtn" @click="fnAdd">
+			<button class="headmymenubtn" @click="userId ? fnAdd() : redirectToLogin()">
 				<img src="img/usersellimg.png" width="23" height="24" alt="물품등록버튼 이미지">
 				물품등록
 			</button>
-			<button class="headmymenubtn" @click="fnMessage">
+			<button class="headmymenubtn" @click="userId ? fnMessage() : redirectToLogin()">
 				<img src="img/userchatimg.png" width="23" height="24" alt="쪽지버튼 이미지">
 				쪽지
 			</button>
@@ -95,23 +97,45 @@ var app = new Vue({
 	        form.submit();
 	        document.body.removeChild(form);
 	     }
+    
         , fnMyInfo : function(){
     		var self = this;
     		self.pageChange("./myinformation.do", {});
     	}
+        
         , fnAdd : function(){
     		var self = this;
     		self.pageChange("./add.do", {});
     	}
+        
         , fnMessage : function(){
     		var self = this;
     		self.pageChange("./message.do", {});
     	}
+        
         , fnMain : function(){
     		var self = this;
     		self.pageChange("./main.do", {});
     	}
         
+        , redirectToLogin() {
+        	var self = this;
+            self.pageChange("./login.do", {});
+        }
+        
+        , fnLogout : function(){
+            var self = this;
+            var nparmap = {}; 
+            $.ajax({
+                url:"/logout/get.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {
+                	self.pageChange("./main.do", {});
+          		}
+        	}); 
+    	}
     }
      
     , created: function () {

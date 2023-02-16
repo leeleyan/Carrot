@@ -53,7 +53,7 @@
       	justify-content: center;
       	padding-left: 600px;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: start;;
       }
 
       #app{
@@ -69,24 +69,24 @@
     <div id="app">
       <div class="selectAddress">
         <div>
-          <label for="dong" class="control-label"></label> 
-          <select	id="dong" v-model="dong" class="form-control">
-            <option value="">동 선택</option>
-            <option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
+          <label for="si" class="control-label"></label> 
+          <select id="si"	v-model="si" class="form-control" @change="fnGuList(); fnSearch1();" style="margin-left: 19px;">
+            <option value="">시 선택</option>
+            <option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
           </select>
         </div>
         <div>
           <label for="gu" class="control-label"></label> 
-          <select	id="gu" v-model="gu" class="form-control" @change="fnDongList">
+          <select	id="gu" v-model="gu" class="form-control" @change="fnDongList(); fnSearch2();">
             <option value="">구 선택</option>
             <option v-for="item in guList" v-bind:value="item.gu">{{item.gu}}</option>
           </select>
         </div>
         <div>
-          <label for="si" class="control-label"></label> 
-          <select id="si"	v-model="si" class="form-control" @change="fnGuList" style="margin-left: 19px;">
-            <option value="">시 선택</option>
-            <option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
+          <label for="dong" class="control-label"></label> 
+          <select	id="dong" v-model="dong" class="form-control" @change="fnSearch3">
+            <option value="">동 선택</option>
+            <option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
           </select>
         </div>
       </div>
@@ -117,8 +117,7 @@
 	  guFlg : false,
 	  dongFlg : false,
 	  userNickName : "${userNickName}",
-	  userId : "${userId}",
-      keyword : ""
+	  userId : "${userId}"
     }, 
       methods: {
     	fnGetList : function(){
@@ -203,7 +202,8 @@
 	        form.submit();
 	        document.body.removeChild(form);
 	    },
-	    fnSearch : function(){
+        
+	    fnSearch1 : function(){
 	        var self = this;
 	        var nparmap = {keyword : self.si};
 	        $.ajax({
@@ -214,10 +214,42 @@
 	            success : function(data) {                                       
 	                self.list = data.list;
 	                console.log(self.list);
-	                console.log(keyword);
+	                console.log(si);
 	            }
 	        }); 
-	    }
+	    },
+	    
+	    fnSearch2 : function(){
+	        var self = this;
+	        var nparmap = {keyword : self.si + " " + self.gu};
+	        $.ajax({
+	            url:"/search.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                console.log(self.list);
+	                console.log(si);
+	            }
+	        }); 
+	    },
+	    
+	    fnSearch3 : function(){
+	        var self = this;
+	        var nparmap = {keyword : self.si + " " + self.gu + " " + self.dong};
+	        $.ajax({
+	            url:"/search.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.list = data.list;
+	                console.log(self.list);
+	                console.log(si);
+	            }
+	        }); 
+	    },
       
     }, 
     created: function () {

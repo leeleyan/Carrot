@@ -58,13 +58,13 @@ public class MainController {
 	
 	@RequestMapping(value = "/search.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String searchArea(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Product> list = mainService.searchArea(map); // DB 접근 및 쿼리를 통한 데이터 호출 
 		resultMap.put("list", list);
-		System.out.println("search");
 		return new Gson().toJson(resultMap);
 	}
+	
 	
 	
 }
