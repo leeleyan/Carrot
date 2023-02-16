@@ -103,8 +103,8 @@ $(function() {
 			}
 			, fnSave : function(){
 	    		var self = this;
-		      	var nparmap = {uSender : self.uSender, uRecipient : self.uRecipient
-		      			       ,mTitle : self.mTitle, mContent : self.mContent};
+		      	var nparmap = {u_sender : self.uSender, u_recipient : self.uRecipient
+		      			       ,m_title : self.mTitle, m_content : self.mContent};
 				$.ajax({
 					url : "/writing/add.dox",
 					dataType : "json",
