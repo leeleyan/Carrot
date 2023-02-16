@@ -74,11 +74,19 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	
 	@RequestMapping(value = "/searchTitle.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String searchTitle(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Product> list = mainService.searchTitle(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		
+		String keyword = (String)map.get("keyword");
+		List<Product> list = mainService.searchTitle(map);
+		
+		if (list.size()==0) {
+			list = mainService.searchArea(map);
+		}
+		
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
