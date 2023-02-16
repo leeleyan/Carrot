@@ -75,6 +75,9 @@ public class JoinController {
 	 	public String check2(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 	 		int num = joinService.getMemberCheck2(map);
+	 		System.out.println(map);
+	 		System.out.println("num : " + num);
+	 		System.out.println(map.get("nickname"));
 	 		resultMap.put("num", num);
 	 		return new Gson().toJson(resultMap);
 	 	}

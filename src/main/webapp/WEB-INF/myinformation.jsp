@@ -135,7 +135,7 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td>{{nickname}}</td>
+					<td v-model="userNickName">{{userNickName}}</td>
 					<td><button @click="fnEditNick">변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
@@ -171,16 +171,12 @@
 var app = new Vue({ 
     el: '#app',
     data: {
-    	 isNameEdit: false
-        , isEmailEdit: false
-        , siList : ${siList}
+         siList : ${siList}
 	    , guList : ${guList}
 	    , dongList : ${dongList}
 	    , si : ""
 	    , gu : ""
 	    , dong : ""
-	    , guFlg : false
-	    , dongFlg : false
 	    , nickname : ""
 	 	, userId : "${userId}"
 	 	, userNickName : "${userNickName}"
@@ -189,6 +185,7 @@ var app = new Vue({
         , address: ""
         , email: ""
         , list : []
+        , newNick : ""
     }   
     , methods: {
         fnGuList : function(){
@@ -295,40 +292,43 @@ var app = new Vue({
             }
         }); 
 		}
-    ,fnEditNick : function(){
- 		var self = this;
- 		var newNick = prompt("새 닉네임을 입력해주세요.");
- 		  if (newNick != null) {
- 			  self.nickname = newNick;
- 		  }else {
- 			  alert("취소되었습니다.")
- 			  return;
- 		  }
-      	var nparmap = { nickname : self.nickname };
+	 
+    ,fnEditNick: function() {
+        var self = this;
+        self.newNick = prompt("새 닉네임을 입력해주세요.");
+        if (self.newNick == null) {
+            alert("취소되었습니다.");
+            return;
+        }
+        var nparmap = { nickname: self.newNick };
         $.ajax({
-            url:"/join/nicknamecheck.dox",
-            dataType:"json",	
-            type : "POST", 
-            data : nparmap,
-            success : function(data) {            
-            	if(data.num > 0){
-            		alert("이미 사용중인 닉네임입니다.")
-            		return;
-            	}else {
-            		var nparmap = { id : self.userId, nickname : newNick};
+            url: "/join/nicknamecheck.dox",
+            dataType: "json",
+            type: "POST",
+            data: nparmap,
+            success: function(data) {
+                if (data.num > 0) {
+                    alert("이미 사용중인 닉네임입니다.");
+                    return;
+                } else {
+                    var nparmap = { id: self.userId, nickname: self.newNick };
                     $.ajax({
-                        url:"/myinfo/editNickName.dox",
-                        dataType:"json",	
-                        type : "POST", 
-                        data : nparmap,
-                        success : function(data) {            
-                       	 	alert("변경되었습니다..");
+                        url: "/myinfo/editNickName.dox",
+                        dataType: "json",
+                        type: "POST",
+                        data: nparmap,
+                        success: function(data) {
+                            alert("변경되었습니다.");
+                            self.userNickName = self.newNick;
+                            self.fnGetMyList();
                         }
                     });
-            	}
+                }
             }
-        }); 
-		}
+        });
+    }
+
+    
     ,fnEditEmail : function(){
  		var self = this;
  		var originalEmail = self.email;
