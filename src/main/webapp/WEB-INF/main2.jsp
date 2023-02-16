@@ -14,14 +14,12 @@
       .container{
       	margin: auto;
         display: flex;
-        border: solid gray 1px;
         flex-direction: row;
         flex-wrap: wrap;
         width: 1010px;
         margin-top: 50px;
       }
       .productDetails{
-    	  border: solid red 1px;
         width: 230px;
         height: 270px;
         padding: 5px;
