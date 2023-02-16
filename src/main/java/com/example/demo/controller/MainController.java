@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MainController {
-	// Service 인터페이스 객체 생성 및 연결
+	
 	@Autowired
 	private MainService mainService;
 	
@@ -65,6 +65,13 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	
+	@RequestMapping(value = "/searchTitle.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String searchTitle(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Product> list = mainService.searchTitle(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 	
 }

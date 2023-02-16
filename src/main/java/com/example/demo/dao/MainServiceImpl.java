@@ -28,5 +28,11 @@ public class MainServiceImpl implements MainService{
 		return mainMapper.searchArea(map);
 	}
 
+	@Override
+	public List<Product> searchTitle(HashMap<String, Object> map) throws Exception {
+		
+		return mainMapper.searchTitle(map);
+	}
+
 	
 }

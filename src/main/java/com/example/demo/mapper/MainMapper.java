@@ -12,4 +12,5 @@ import com.example.demo.model.Product;
 public interface MainMapper {
 	List<Product> selectGetItemList(HashMap<String, Object> map);
 	List<Product> searchArea(HashMap<String, Object> map);
+	List<Product> searchTitle(HashMap<String, Object> map);
 }
