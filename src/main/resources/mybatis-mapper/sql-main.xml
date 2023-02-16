@@ -20,6 +20,7 @@
 		GROUP BY t.board_idx 
 		ORDER BY
 			 t.board_idx DESC
+		LIMIT 100;
 	</select>
 	
 	<select id="searchArea" parameterType="hashmap" resultType="com.example.demo.model.Product">	

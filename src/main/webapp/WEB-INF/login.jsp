@@ -89,7 +89,7 @@
 				<input type="text" v-model="uId" class="in" placeholder="아이디"></input>
 		</div>
 		<div class="div2">
-				<input type="password" v-model="uPassword" class="in" placeholder="비밀번호"></input>
+				<input type="password" v-model="uPassword" class="in" placeholder="비밀번호" @keyup.enter ="fnLogin"></input>
 		</div>
 		<div class="div2">
 				<button id="btn" @click="fnLogin">로그인</button>
