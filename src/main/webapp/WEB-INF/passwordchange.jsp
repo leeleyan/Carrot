@@ -47,7 +47,7 @@
 	
 	        button{
 	            margin-bottom: 30px;
-	            width: 250px;
+	            width: 200px;
 	            height: 50px;
 	            border-radius: 15px;
 	            margin-top: 40px;
@@ -63,7 +63,10 @@
 					<input type="password" v-model="newPassword"><br>
 					<span>새 비밀번호 확인</span>
 					<input type="password" v-model="newPassword2"><br>
-					<button @click="fnUpdatePassword">비밀번호 변경</button>
+					<div style = "display : flex;">
+						<button @click="fnUpdatePassword" style ="margin-left: 40px;">비밀번호 변경</button>
+						<button @click="fnClose" style ="margin-left: 20px;">닫기</button>
+					</div>
 		</div>
 	</body>
 </html>
@@ -116,6 +119,9 @@ var app = new Vue({
 	               }
 	           }); 
 	     }
+		, fnClose : function(){
+				window.close();
+	      	}
     
 		}
     , created: function () {

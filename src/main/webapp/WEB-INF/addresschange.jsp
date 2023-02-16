@@ -90,6 +90,7 @@
 					<td><button @click="fnUpdateAddress">변경하기</button></td>
 				</tr>
 			</table>
+			<span><button @click="fnClose">닫기</button></span>
 		</div>
 	</body>
 </html>
@@ -142,17 +143,24 @@ var app = new Vue({
 	, fnUpdateAddress : function(){
  		var self = this;
       	var nparmap = { id : self.userId, address : self.si +" "+ self.gu +" "+ self.dong};
-        $.ajax({
-            url:"/addresschange/updateaddress.dox",
-            dataType:"json",	
-            type : "POST", 
-            data : nparmap,
-            success : function(data) {            
-           	 	alert("주소가 변경되었습니다.");
-           	 	window.close();
-            }
-        }); 
-		}
+      	if(!self.si || !self.gu || !self.dong){
+      		alert("모든 주소를 입력해주세요.");
+      	} else{
+      		$.ajax({
+                url:"/addresschange/updateaddress.dox",
+                dataType:"json",	
+                type : "POST", 
+                data : nparmap,
+                success : function(data) {            
+               	 	alert("주소가 변경되었습니다.");
+               	 	opener.location.replace("myinformation.do")
+               	 	window.close();
+                }
+            }); 
+    		}
+      	}, fnClose : function(){
+			window.close();
+      	}
     
 		}
     , created: function () {

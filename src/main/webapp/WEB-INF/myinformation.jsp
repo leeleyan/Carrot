@@ -6,7 +6,6 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
-		<jsp:include page="/layout/marketheader.jsp"></jsp:include>
 		<title>마켓이름 : 상품정보</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -22,7 +21,7 @@
 				font-size: 20px;
 				float: right; 
 			}
-			.infospan{
+			span{
 				font-size: 40px;
 			}
 			
@@ -45,7 +44,6 @@
 	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
 	            text-align: center; /*하위 요소 가운데 정렬*/
 	            padding: 20px; 
-	            margin-top: 50px; /* 헤더와 떨어진 길이 */
 			}
 			table, td{
 				border-collapse: collapse;
@@ -61,56 +59,6 @@
 				height: 50px;
 				font-size: 16px;
 			}
-			.container{
-      		margin: auto;
-        	display: flex;
-	        flex-direction: row;
-	        flex-wrap: wrap;
-	        width: 1010px;
-	        margin-top: 50px;
-	      }
-	      .productDetails{
-	        width: 230px;
-	        height: 270px;
-	        padding: 5px;
-	        margin: 5px;
-	        cursor: pointer;
-	      }
-	      
-	      .imgDiv{
-	        width: 220px;
-	        height: 200px;
-	        background-color: aquamarine;
-	      }
-	      
-	      .itemimg{
-			width: 100%;
-			height: 100%
-	      }
-	      
-	      .price{
-	    	  text-align: center;
-	      }
-	      .title{
-	    	  text-align: center;
-	      }
-	      .address{
-	    	  text-align: center;
-	      }
-	      .selectAddress{
-	      	justify-content: center;
-	      	padding-left: 600px;
-	        display: flex;
-	        flex-direction: start;;
-	      }
-	
-	      #app{
-	        margin-top: 30px;
-	      }
-	      .form-control{
-	        height: 40px;
-	        font-size: 20px;
-	      }
 			
     	</style>
 	</head>
@@ -118,7 +66,7 @@
 	<body>
 		<div class="outerdiv" id="app">
 			<div style="text-align: left;">
-				<span class="infospan">회원정보</span>	
+				<span>회원정보</span>	
 				<button id="ebtn" @click="fnUnregister" >회원탈퇴</button>
 			</div>
 			<table>
@@ -153,22 +101,8 @@
 				
 			</table>
 			<span><button @click="fnHome" class="addbutton" >돌아가기</button></span>
-			
-			<div class="container">
-            	<div class="product" v-for="(item, index) in list">
-              		<div class="productDetails" @click="fnViewItem(item)">
-                	<div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
-                	<div class="title">{{item.bTitle}}</div>
-                	<div class = "address">{{item.uAddress}}</div>
-                	<div class = "price">{{item.pPrice}} 원</div>
-              		</div>
-            	</div>
-        	</div>
 		</div>
 	</body>
-	<setfooter>
-	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
-	</setfooter>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
@@ -190,7 +124,6 @@ var app = new Vue({
         , tel: ""
         , address: ""
         , email: ""
-        , list : []
     }   
     , methods: {
         fnGuList : function(){
@@ -299,6 +232,7 @@ var app = new Vue({
 		}
     ,fnEditNick : function(){
  		var self = this;
+ 		var originalNickname = self.nickname;
  		var newNick = prompt("새 닉네임을 입력해주세요.");
  		  if (newNick != null) {
  			  self.nickname = newNick;
@@ -315,6 +249,7 @@ var app = new Vue({
             success : function(data) {            
             	if(data.num > 0){
             		alert("이미 사용중인 닉네임입니다.")
+            		self.nickname = originalNickname;
             		return;
             	}else {
             		var nparmap = { id : self.userId, nickname : newNick};
@@ -370,66 +305,11 @@ var app = new Vue({
 		}
     , fnHome : function(){
 		location.href="/main.do";
-	},
-	
-	fnGetList : function(){
-        var self = this;
-        var nparmap = {};
-        $.ajax({
-            url:"/main/view.dox",
-            dataType:"json",	
-            type : "POST", 
-            data : nparmap,
-            success : function(data) {                                       
-                self.list = data.list;
-                console.log(self.list);
-            }
-        }); 
-    },
-    
-	handleImgError(event) {
-    	event.target.src = "/img/default.jpg"; 
-    },
-	
-	fnViewItem : function(item){
- 		var self = this;
- 		self.pageChange("/productdetails.do", {boardIdx : item.boardIdx});
- 	},
- 	
-    pageChange : function(url, param) {
-        var target = "_self";
-        if(param == undefined){
-        //   this.linkCall(url);
-           return;
-        }
-        var form = document.createElement("form"); 
-        form.name = "dataform";
-        form.action = url;
-        form.method = "post";
-        form.target = target;
-        for(var name in param){
-          var item = name;
-          var val = "";
-          if(param[name] instanceof Object){
-             val = JSON.stringify(param[name]);
-          } else {
-             val = param[name];
-          }
-          var input = document.createElement("input");
-           input.type = "hidden";
-           input.name = item;
-           input.value = val;
-           form.insertBefore(input, null);
-        }
-        document.body.appendChild(form);
-        form.submit();
-        document.body.removeChild(form);
-    	}
+	}
     }
     , created: function () {
     	var self = this;
     	self.fnGetInfo();
-    	self.fnGetList();
 	}
 });
 

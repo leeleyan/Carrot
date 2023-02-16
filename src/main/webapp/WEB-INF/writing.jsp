@@ -77,10 +77,12 @@ $(function() {
 		el : '#app',
 		data : {
 			list : []
-			,uSender : "${userNickName}"
+			,nickname : ""
+			,uSender : ""
 			,uRecipient : ""
 			,mTitle : ""
 			,mContent : ""
+			,userId : "${userId}"
 		}
 		,methods : {
 			fnWriteclose : function() {
@@ -101,28 +103,62 @@ $(function() {
 					}
 				});
 			}
-			, fnSave : function(){
-	    		var self = this;
-		      	var nparmap = {u_sender : self.uSender, u_recipient : self.uRecipient
-		      			       ,m_title : self.mTitle, m_content : self.mContent};
+			,
+	        fnGetInfo : function(){
+	   			var self = this;
+	            var nparmap = {id : self.userId};
+		           $.ajax({
+		               url:"/writing/get.dox",
+		               dataType:"json",	
+		               type : "POST", 
+		               data : nparmap,
+		               success : function(data) {  
+		            	   self.nickname = data.nickname;
+		               }
+		           }); 
+		     }
+	    	,
+	    	fnSave : function() {
+				var self = this;
+				var nparmap = {nickname : self.uRecipient};
+				if(!self.uRecipient || !self.mTitle || !self.mContent){
+		      		alert("모든 내용을 입력해주세요.");
+		      	} else{
 				$.ajax({
-					url : "/writing/add.dox",
+					url : "/writing/nicknamecheck.dox",
 					dataType : "json",
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						if (data.result == "success") {
-							alert("메시지 보내기가 성공했습니다.");
-							self.fnGetList();
-						} else
-							alert("메시지 보내기가 실패했습니다.");
+						if (data.num > 0) {
+					      	var nparmap = {u_sender : self.nickname, u_recipient : self.uRecipient
+					      			       ,m_title : self.mTitle, m_content : self.mContent};
+							$.ajax({
+								url : "/writing/add.dox",
+								dataType : "json",
+								type : "POST",
+								data : nparmap,
+								success : function(data) {
+									if (data.result == "success") {
+										alert("메시지 보내기가 성공했습니다.");
+										self.fnGetList();
+										window.close();
+									} else
+										alert("메시지 보내기가 실패했습니다.");
+								}
+							}); 
+						} else {
+							alert("닉네임을 정확히 입력해주세요.");
+							return;
+						}
 					}
-				}); 
-		        
-	    	}
+				});
+		      	}
+			}
 		}
 		, created : function() {
 	        var self = this;
+	        self.fnGetInfo();
 	        self.fnGetList();
 		}
 	});

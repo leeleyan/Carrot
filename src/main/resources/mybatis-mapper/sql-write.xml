@@ -3,6 +3,24 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.WritingMapper">	
+	<select id="getInfo" parameterType="hashmap" resultType="com.example.demo.model.Member">	
+		SELECT
+			u_nickname
+		FROM
+			t2_account
+		WHERE 
+			u_id = #{id} 
+	</select>
+	
+	<select id="NicknameCheck" parameterType="hashmap" resultType="int">	
+		SELECT
+			count(*)
+		FROM
+			t2_account
+		WHERE 
+			u_nickname = #{nickname} 
+	</select>
+	
 	   
     <insert id="insertMessage" parameterType="hashmap">
 	INSERT INTO t2_message
@@ -14,7 +32,5 @@
 		, #{m_content}
 	)
 	</insert>
-	
-	
 	
 </mapper>

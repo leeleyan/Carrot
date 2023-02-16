@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MessageService;
 import com.example.demo.dao.WritingService;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
 
@@ -41,4 +42,22 @@ public class WritingController {
 				resultMap.put("result", "fail");
 			return new Gson().toJson(resultMap);
 		}
+		
+		@RequestMapping(value = "/writing/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		 @ResponseBody
+		 public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		Member user = writingService.getInfo(map);
+	 		resultMap.put("nickname", user.getuNickname());
+	 		return new Gson().toJson(resultMap);
+	 	}
+		//닉네임 체크
+		@RequestMapping(value = "/writing/nicknamecheck.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	 	@ResponseBody
+	 	public String check(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		int num = writingService.getMemberCheck(map);
+	 		resultMap.put("num", num);
+	 		return new Gson().toJson(resultMap);
+	 	}
 }
