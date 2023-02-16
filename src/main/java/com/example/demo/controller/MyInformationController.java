@@ -74,8 +74,9 @@ public class MyInformationController {
 		@ResponseBody
 		public String editNickName(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 			HashMap<String, Object> resultMap = new HashMap<String, Object>();
-			System.out.println(map.get("nickName"));
-			session.setAttribute("userNickName", map.get("nickName"));
+			String userNickName = (String)session.getAttribute("userNickName");
+			session.removeAttribute("userNickName");
+			session.setAttribute("userNickName", map.get("nickname"));
 			myInformationService.editNickName(map);
 			resultMap.put("message", "성공");
 			return new Gson().toJson(resultMap);
