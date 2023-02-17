@@ -56,16 +56,19 @@ public class MainController {
 		for(int i=0; i<list.size();i++) {
 			list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
 		}
-		System.out.println(list.get(0).getImg());
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
 	
+	//내정보에서 내가 쓴 판매글
 	@RequestMapping(value = "/main/myview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String myview(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Product> list = mainService.selectGetMyItemList(map);
+		for(int i=0; i<list.size();i++) {
+			list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+		}
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}

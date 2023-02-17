@@ -15,5 +15,6 @@ public interface AddMapper {
 	void insertBoardImg(HashMap<String, Object> map);
 	// 삽입
 	void insertBoard(HashMap<String, Object> map);
+	// 등록할때 닉네임 가져옴
 	Member getInfo(HashMap<String, Object> map) throws Exception;
 }

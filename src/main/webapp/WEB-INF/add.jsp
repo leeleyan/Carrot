@@ -122,8 +122,6 @@ var app = new Vue({
 	    , si : ""
 	    , gu : ""
 	    , dong : ""
-	    , guFlg : false
-	    , dongFlg : false
 	    , img : ""
 	    , bTitle : ""
 	    , uAddress : ""
