@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.IdFindMapper">	
-	<select id="selectIdFindList" resultType="com.example.demo.model.IdFind">	
+	<select id="selectIdFindList" resultType="com.example.demo.model.Member">	
 		SELECT
 			u_id, u_email, u_name
 		FROM

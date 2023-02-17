@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.dao.MyInformationService;
 import com.example.demo.dao.UnregisterService;
 import com.example.demo.model.Member;
-import com.example.demo.model.Unregister;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-
-import jakarta.persistence.criteria.Join;
 
 
 

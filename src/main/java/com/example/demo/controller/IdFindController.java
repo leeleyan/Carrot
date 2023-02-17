@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.IdFindService;
-import com.example.demo.model.IdFind;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
 
@@ -32,7 +32,7 @@ public class IdFindController {
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		List<IdFind> list = idfindService.selectIdFindList(map);
+	 		List<Member> list = idfindService.selectIdFindList(map);
 	 		if(list.size() > 0) {
 	 			resultMap.put("result", "success");
 	 		} else {

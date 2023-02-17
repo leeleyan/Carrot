@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.PwFindService;
-import com.example.demo.model.PwFind;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,7 +37,7 @@ public class PwFindController {
 	 	@ResponseBody
 	 	public String searchBbsList(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-	 		List<PwFind> list = pwfindService.selectPwFindList(map);
+	 		List<Member> list = pwfindService.selectPwFindList(map);
 	 		if(list.size() > 0) {
 	 			resultMap.put("result", "success");
 	 		} else {

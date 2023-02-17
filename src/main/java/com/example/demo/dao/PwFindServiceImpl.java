@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.mapper.PwFindMapper;
-import com.example.demo.model.PwFind;
+import com.example.demo.model.Member;
 
 
 @Service //서비스임을 선언
@@ -18,7 +18,7 @@ public class PwFindServiceImpl implements PwFindService{
 
 	// 인터페이스 구체화
 	@Override
-	public List<PwFind> selectPwFindList(HashMap<String, Object> map) throws Exception {
+	public List<Member> selectPwFindList(HashMap<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return pwfindMapper.selectPwFindList(map); // db를 호출하는 mapper와 연결
 	}

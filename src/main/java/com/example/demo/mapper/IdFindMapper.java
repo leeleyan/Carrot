@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.model.IdFind;
+import com.example.demo.model.Member;
 
 
 @Mapper
 public interface IdFindMapper {
-	List<IdFind> selectIdFindList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
+	List<Member> selectIdFindList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 }

@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.model.PwFind;
+import com.example.demo.model.Member;
 
 
 @Mapper
 public interface PwFindMapper {
-	List<PwFind> selectPwFindList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
+	List<Member> selectPwFindList(HashMap<String, Object> map) throws Exception; // xml파일 접근 및 db 호출결과 리턴 받음
 }
