@@ -47,14 +47,13 @@ public class MainController {
 		return "/main2"; // WEB-INF에서 호출할 파일명
 	}
 	
+	//메인에서 제품들 불러오기
 	@RequestMapping(value = "/main/view.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String view(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Product> list = mainService.selectGetItemList(map);
 		resultMap.put("list", list);
-		List<Product> list2 = mainService.selectImgList(map);
-		resultMap.put("list2", list);
 		return new Gson().toJson(resultMap);
 	}
 	
