@@ -325,7 +325,6 @@ var app = new Vue({
 	                                type: "POST",
 	                                data: nparmap,
 	                                success: function(data) {
-	                                	alert("업데이트 되었습니다.");	
 	                                	self.userNickName = self.newNick;
 	                                    self.fnGetMyList();
 	                                }

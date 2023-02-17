@@ -52,7 +52,7 @@
 		<div class="addcontainer">
 			<template>
 				<h1>상품 이미지</h1>
-				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1"/>
+				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" multiple/>
 				<br><br>
 				<div>
 					<span v-for="(image, index) in previewImages" :key="index" class="addspan">
@@ -100,7 +100,7 @@
 				<hr>
 			</div>
 			<div style = "display : flex;">
-				<button @click="fnSave" class="addbutton" style ="margin-left: 100px;">등록하기</button>
+				<button @click="fnSave" class="addbutton" style ="margin-left: 100px;" type="submit">등록하기</button>
 				<button @click="fnList" class="addbutton" >돌아가기</button>
 			</div>
 		</div>
@@ -173,11 +173,33 @@ var app = new Vue({
 	     }
 		, fnSave : function(){
     		var self = this;
+    		var fileCheck = document.getElementById("file1").value;
+    		var nparmap = {title : self.bTitle, content : self.bContent
+   			       , nickname : self.nickname, img : self.img
+   			       , address : self.si + self.gu + self.dong
+   			       , price : self.pPrice};
     		console.log(self.img);
-	      	var nparmap = {title : self.bTitle, content : self.bContent
-	      			       , nickname : self.nickname, img : self.img
-	      			       , address : self.si + self.gu + self.dong
-	      			       , price : self.pPrice};
+    		
+    	    if(!fileCheck || !self.bTitle || !self.bContent ||
+    	       !self.pPrice || !self.si || !self.dong || !self.gu) {
+    	    	if(!fileCheck){
+	    	    	alert("사진을 선택해주세요.");
+    	    	}
+    	    	if(!self.bTitle){
+	    	    	alert("제목을 입력해주세요.");
+    	    	}
+    	    	if(!self.si || !self.gu || !self.dong){
+	    	    	alert("시, 구, 동을 모두 선택해주세요.");
+    	    	}
+    	    	if(!self.pPrice){
+	    	    	alert("가격을 입력해주세요.");
+    	    	}
+    	    	if(!self.bContent){
+	    	    	alert("내용을 입력해주세요.");
+    	    	}
+    	    	return;
+    	    }
+    	    
 	        $.ajax({
 	            url:"/add.dox",
 	            dataType:"json",	
