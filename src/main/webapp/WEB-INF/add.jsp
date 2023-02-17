@@ -130,11 +130,14 @@ var app = new Vue({
 	    , pPrice : 0
 	    , bContent : ""
 	    , userId : "${userId}"
+	    , saveImgFile : []
     }  
     , methods: {
 		updateImages(event) {
 			const files = event.target.files;
+			
 			for (const file of files) {
+				this.saveImgFile.push(file);
 				this.previewImages.push(URL.createObjectURL(file));
 			}
     	}
@@ -199,33 +202,39 @@ var app = new Vue({
     	    	}
     	    	return;
     	    }
-    	    
 	        $.ajax({
 	            url:"/add.dox",
 	            dataType:"json",	
 	            type : "POST", 
 	            data : nparmap,
-	            success : function(data) {            
-	            	var form = new FormData();
-	       	        form.append( "file1", $("#file1")[0].files[0] );
-	       	     	form.append( "boardIdx",  data.boardIdx);
-	       	        
-	       	         $.ajax({
-	       	             url : "/upload"
-	       	           , type : "POST"
-	       	           , processData : false
-	       	           , contentType : false
-	       	           , data : form
-	       	           , success:function(response) { }
-	       	           ,error: function (jqXHR) 
-	       	           {}
-	       	       });
+	            success : function(data) {      
+	            	for(var i=0; i<self.saveImgFile.length; i++){
+	            		var form = new FormData();
+		       	        form.append( "file1", self.saveImgFile[i] );
+		       	     	form.append( "boardIdx",  data.boardIdx);
+	            		self.fnUpload(form);
+	            	}
+	       	         
 	            	alert("물품이 등록되었습니다.");
 	            	self.fnList();
 	            }
 	        }); 
 	        
-    	},
+    	}
+		, fnUpload : function(form){
+    		var self = this;
+    		$.ajax({
+  	             url : "/upload"
+  	           , type : "POST"
+  	           , processData : false
+  	           , contentType : false
+  	           , data : form
+  	           , success:function(response) { }
+  	           ,error: function (jqXHR) 
+  	           {}
+  	       });
+    	}
+		,
         fnGetInfo : function(){
    			var self = this;
             var nparmap = {id : self.userId};
