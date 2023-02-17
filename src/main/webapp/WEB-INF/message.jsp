@@ -14,37 +14,98 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	        .div1 {
-	            margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
-	            width: 500px; /*좌.우 길이, 없으면 전체*/
-	            height: 300px;
+	        .board {
+	            width: 800px;
+	            height: 450px;
 	            background-color: #EEEFF1;
-	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
-	            text-align: center; /*하위 요소 가운데 정렬*/
-	            padding: 20px; /*상.하.좌.우로 늘리기(안쪽 여백, 창 크기가 더 커짐)*/
+	            border-radius: 5px; 
 	        }
+			td{
+				border: solid red 1px;
+			}
+			th{
+				border: solid green 1px;
+			}
+			.sendOrReceive{
+				display: flex;
+				justify-content: center;
+			}
+			.container{
+				border: solid black 5px;
+				margin: auto;
+				text-align: center;
+				width: 800px;
+			}
+			.menu{
+				border: solid greenyellow 4px;
+			}
+			.btn{
+				background-color: transparent; /*버튼 배경 제거*/
+			    cursor: pointer; /*버튼 활성화*/
+			    outline: none; /* 테두리의 두께에 따라 주변 레이아웃을 변형X */
+			    border:none; /*버튼 테두리 제거*/
+			}
+			.deleteAndWrite{
+				text-align: right;
+			}
     	</style>
 	</head>
-	<body>
-	<div id="app" class="div1">
-		<button class="logobtn" @click="fnWrite">쪽지작성</button>
+<body>
+	<div id="app" class = "container">
+		<div class="menu">
+			<div class ="sendOrReceive">
+				<button class="btn">받은 쪽지함</button>
+				<button class="btn">보낸 쪽지함</button>
+			</div>
+			<div class="deleteAndWrite"> 
+				<button class="btn">삭제</button>
+				<button class="logobtn" @click="fnWrite">쪽지작성</button>
+			</div>
+		</div>
+		<div class="board">
+			<table class="board_list">
+					<colgroup>
+						<col width="5%"/>
+						<col width="15%"/>
+						<col width="*"/>
+						<col width="20%"/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">보낸 사람</th>
+							<th scope="col">내용</th>
+							<th scope="col">시간</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, index) in list">                            
+		                   <td><input type="checkbox" name="selectBoard" v-bind:id="'idx_' + index" v-bind:value="item" v-model="fnGetList"></td>                       
+		                   <td>{{item.uSender}}</td> 
+		                   <td>{{item.mContent}}</td>
+		                   <td>{{item.createDate}}</td>
+		               </tr>
+				</tbody>
+			</table>
+		</div>
 	</div>	
-	</body>
+</body>
 	<setfooter>
-	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
+		<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
 	</setfooter>
 </html>
 <script type="text/javascript">
 var app = new Vue({ 
     el: '#app',
     data: {
-    	userNickName : "${userNickName}"
-        , userId : "${userId}"
+    	userNickName : "${userNickName}",
+        userId : "${userId}",
+        list : []
     }   
     , methods: {
     	fnGetList : function(){
             var self = this;
-            var nparmap = {};
+            var nparmap = { nickname : self.userNickName };
             $.ajax({
                 url:"/message/getmessage.dox",
                 dataType:"json",	
@@ -90,8 +151,8 @@ var app = new Vue({
     	}
     }   
     , created: function () {
-        var self = this;
-        self.fnGetList();
+    	var self = this;
+    	self.fnGetList();
 	}
 });
 </script>
