@@ -91,7 +91,7 @@
         <div class="container">
             <div class="product" v-for="(item, index) in list">
               <div class="productDetails" @click="fnViewItem(item)">
-                <div class="imgDiv" v-for="(item, index) in list2"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
+                <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
                 <div class="title">{{item.bTitle}}</div>
                 <div class = "address">{{item.uAddress}}</div>
                 <div class = "price">{{item.pPrice}} 원</div>

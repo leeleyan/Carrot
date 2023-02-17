@@ -39,6 +39,12 @@ public class MainServiceImpl implements MainService{
 		
 		return mainMapper.selectGetMyItemList(map);
 	}
+
+	@Override
+	public String selectImg(int idx) throws Exception {
+		// TODO Auto-generated method stub
+		return mainMapper.selectImg(idx);
+	}
 	
 	
 }

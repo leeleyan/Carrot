@@ -19,12 +19,14 @@
 		LIMIT 100;
 	</select>
 	
-	<select id="selectImgList" parameterType="hashmap" resultType="com.example.demo.model.Product">
+	<select id="selectImg" parameterType="int" resultType="string">
 		SELECT 
-		    board_idx, img
+		    img
 			FROM
 			    t2_image 
-			    
+			WHERE
+				board_idx = #{idx}
+			LIMIT 1 
 	</select>
 	
 	

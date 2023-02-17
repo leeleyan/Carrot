@@ -7,7 +7,7 @@ import com.example.demo.model.Product;
 
 
 public interface MainService {
-	List<Product> selectGetItemList(HashMap<String, Object> map) throws Exception; 
+	List<Product> selectGetItemList(HashMap<String, Object> map) throws Exception; //메인에서 img 제외하고 검색
 	
 	List<Product> searchArea(HashMap<String, Object> map) throws Exception; //지역으로 검색
 	
@@ -15,4 +15,5 @@ public interface MainService {
 	
 	List<Product> selectGetMyItemList(HashMap<String, Object> map) throws Exception; //자기상품보기
 	
+	String selectImg(int idx) throws Exception;
 }

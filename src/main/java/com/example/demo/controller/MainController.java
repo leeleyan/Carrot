@@ -53,6 +53,10 @@ public class MainController {
 	public String view(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Product> list = mainService.selectGetItemList(map);
+		for(int i=0; i<list.size();i++) {
+			list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+		}
+		System.out.println(list.get(0).getImg());
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}

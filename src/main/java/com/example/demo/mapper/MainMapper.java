@@ -15,4 +15,5 @@ public interface MainMapper {
 	List<Product> searchArea(HashMap<String, Object> map);
 	List<Product> searchTitle(HashMap<String, Object> map);
 	List<Product> selectImgList(HashMap<String, Object> map) throws Exception;
+	String selectImg(int idx);
 }
