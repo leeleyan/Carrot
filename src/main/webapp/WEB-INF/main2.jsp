@@ -91,7 +91,7 @@
         <div class="container">
             <div class="product" v-for="(item, index) in list">
               <div class="productDetails" @click="fnViewItem(item)">
-                <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
+                <div class="imgDiv" v-for="(item, index) in list2"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
                 <div class="title">{{item.bTitle}}</div>
                 <div class = "address">{{item.uAddress}}</div>
                 <div class = "price">{{item.pPrice}} 원</div>
@@ -106,6 +106,7 @@
       el: '#app',
     data: {
       list : [],
+      list2 : [],
       siList : ${siList},
 	  guList : ${guList},
 	  dongList : ${dongList},
@@ -115,10 +116,11 @@
 	  guFlg : false,
 	  dongFlg : false,
 	  userNickName : "${userNickName}",
-	  userId : "${userId}"
+	  userId : "${userId}", 
+	  boardIdx : ""
     }, 
       methods: {
-    	fnGetList : function(){
+    	fnGetList : function(item){
             var self = this;
             var nparmap = {};
             $.ajax({
@@ -128,6 +130,7 @@
                 data : nparmap,
                 success : function(data) {                                       
 	                self.list = data.list;
+	                self.list2 = data.list2;
 	                console.log(self.list);
                 }
             }); 

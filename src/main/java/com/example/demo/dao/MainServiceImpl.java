@@ -40,4 +40,10 @@ public class MainServiceImpl implements MainService{
 		return mainMapper.selectGetMyItemList(map);
 	}
 	
+	@Override
+	public List<Product> selectImgList(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return mainMapper.selectImgList(map); // db를 호출하는 mapper와 연결
+	}
+	
 }

@@ -11,4 +11,5 @@ public interface MainService {
 	List<Product> searchArea(HashMap<String, Object> map) throws Exception;
 	List<Product> searchTitle(HashMap<String, Object> map) throws Exception;
 	List<Product> selectGetMyItemList(HashMap<String, Object> map) throws Exception;
+	List<Product> selectImgList(HashMap<String, Object> map) throws Exception;
 }

@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,12 @@ public class ProductDetailsServiceImpl implements ProductDetailsService{
 		Product product = productDetailsMapper.selectGetItem(map);
 		resultMap.put("product", product);
 		return resultMap;
+	}
+	
+	@Override
+	public List<Product> selectImgList(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return productDetailsMapper.selectImgList(map); // db를 호출하는 mapper와 연결
 	}
 
 }

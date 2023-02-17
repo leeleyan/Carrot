@@ -61,7 +61,7 @@
 	</head>
 	<body>
 		<div class = container id = "app">
-			<div class="imgDiv"><img :src="info.img" class="image"/></div>
+			<div class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></div>
 			<div class="sub">
 				<h2 class="little">닉네임</h2>
 				<span class="nick">{{info.uNickName}}</span><br>
@@ -97,7 +97,8 @@ var app = new Vue({
     	idx : "${map.boardIdx}",
     	userId : "${userId}",
     	userNickName : "${userNickName}",
-    	info : {}
+    	info : {},
+    	list : []
     }   
     , methods: {
     	fnGetItem : function(){
@@ -110,6 +111,7 @@ var app = new Vue({
                 data : nparmap,
                 success : function(data) {                                       
 	                self.info = data.product;
+	                self.list = data.list;
                 }
             }); 
         },

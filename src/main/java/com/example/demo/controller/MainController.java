@@ -53,6 +53,8 @@ public class MainController {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		List<Product> list = mainService.selectGetItemList(map);
 		resultMap.put("list", list);
+		List<Product> list2 = mainService.selectImgList(map);
+		resultMap.put("list2", list);
 		return new Gson().toJson(resultMap);
 	}
 	

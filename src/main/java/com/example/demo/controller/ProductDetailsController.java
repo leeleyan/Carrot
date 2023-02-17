@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.ProductDetailsService;
+import com.example.demo.model.Product;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,8 +40,12 @@ public class ProductDetailsController {
 	public String details(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap = productDetailsService.selectGetItem(map);
+		List<Product> list = productDetailsService.selectImgList(map);
+		resultMap.put("list", list);
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	} 
+ 	
+ 	
 	 
 }

@@ -5,17 +5,24 @@
 <mapper namespace="com.example.demo.mapper.ProductDetailsMapper">	
 	<select id="selectGetItem" resultType="com.example.demo.model.Product">
 		SELECT 
-		    t.board_idx
+		    board_idx
 		    , b_title
 		    , b_content
 		    , u_nickname
 		    , u_address
 		    , p_price
-		    , img
 			FROM
-			    t2_product t
-			LEFT OUTER JOIN t2_image i on t.board_idx = i.board_idx 
+			    t2_product 
 			WHERE
-			    t.board_idx = #{boardIdx}
+			    board_idx = #{boardIdx}
+	</select>
+	
+	<select id="selectImgList" parameterType="hashmap" resultType="com.example.demo.model.Product">
+		SELECT 
+		    board_idx, img
+			FROM
+			    t2_image 
+			WHERE
+			    board_idx = #{boardIdx}
 	</select>
 </mapper>
