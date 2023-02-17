@@ -135,7 +135,7 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td v-model="userNickName">{{userNickName}}</td>
+					<td>{{userNickName}}</td>
 					<td><button @click="fnEditNick">변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
@@ -311,7 +311,7 @@ var app = new Vue({
                     alert("이미 사용중인 닉네임입니다.");
                     return;
                 } else {
-                    var nparmap = { id: self.userId, nickname: self.newNick };
+                    var nparmap = { id: self.userId, beforeNickname: self.userNickName, nickname: self.newNick };
                     $.ajax({
                         url: "/myinfo/editNickName.dox",
                         dataType: "json",
@@ -319,8 +319,17 @@ var app = new Vue({
                         data: nparmap,
                         success: function(data) {
                             alert("변경되었습니다.");
-                            self.userNickName = self.newNick;
-                            self.fnGetMyList();
+	                            $.ajax({
+	                                url: "/myinfo/updatenick.dox",
+	                                dataType: "json",
+	                                type: "POST",
+	                                data: nparmap,
+	                                success: function(data) {
+	                                	alert("업데이트 되었습니다.");	
+	                                	self.userNickName = self.newNick;
+	                                    self.fnGetMyList();
+	                                }
+	                                });
                         }
                     });
                 }

@@ -90,4 +90,12 @@ public class MyInformationController {
 			return new Gson().toJson(resultMap);
 	 }
 	 
+	 @RequestMapping(value = "/myinfo/updatenick.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		@ResponseBody
+		public String updateNick(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+			HashMap<String, Object> resultMap = new HashMap<String, Object>();
+			myInformationService.updateNick(map);
+			resultMap.put("message", "성공");
+			return new Gson().toJson(resultMap);
+	 }
 }

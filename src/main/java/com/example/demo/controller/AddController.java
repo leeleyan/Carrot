@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.dao.AddService;
 import com.example.demo.dao.AreaService;
 import com.example.demo.model.Area;
+import com.example.demo.model.Member;
 import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -125,5 +126,13 @@ public class AddController {
 	        return fileName;
 	    }
 	    
+	    @RequestMapping(value = "/add/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+		 @ResponseBody
+		 public String login(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+	 		Member user = addService.getInfo(map);
+	 		resultMap.put("nickname", user.getuNickname());
+	 		return new Gson().toJson(resultMap);
+	 	}
 	
 }

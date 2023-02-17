@@ -24,6 +24,15 @@
 			(#{boardIdx}, #{img})
 	</insert>
 	
+	<select id="getInfo" parameterType="hashmap" resultType="com.example.demo.model.Member">	
+		SELECT
+			u_nickname
+		FROM
+			t2_account
+		WHERE 
+			u_id = #{id} 
+	</select>
+	
 	
 	
 </mapper>

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.model.Member;
+
 
 
 @Mapper
@@ -13,4 +15,5 @@ public interface AddMapper {
 	void insertBoardImg(HashMap<String, Object> map);
 	// 삽입
 	void insertBoard(HashMap<String, Object> map);
+	Member getInfo(HashMap<String, Object> map) throws Exception;
 }

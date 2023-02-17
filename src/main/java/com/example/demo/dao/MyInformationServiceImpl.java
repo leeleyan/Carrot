@@ -38,4 +38,9 @@ public class MyInformationServiceImpl implements MyInformationService{
 	public void editEmail(HashMap<String, Object> map) {
 		myinformationMapper.editEmail(map);
 	}
+	
+	@Override
+	public void updateNick(HashMap<String, Object> map) {
+		myinformationMapper.updateNick(map);
+	}
 }

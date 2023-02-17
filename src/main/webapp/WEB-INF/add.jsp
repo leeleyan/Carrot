@@ -113,7 +113,7 @@ var app = new Vue({
     el: '#app',
 	data: {
 		 previewImages : []
-		, userNickName : "${userNickName}"
+		, nickname : ""
 	    , list : [] 
     	, selectedItemList : []
 	    , siList : ${siList}
@@ -129,6 +129,7 @@ var app = new Vue({
 	    , uAddress : ""
 	    , pPrice : 0
 	    , bContent : ""
+	    , userId : "${userId}"
     }  
     , methods: {
 		updateImages(event) {
@@ -174,7 +175,7 @@ var app = new Vue({
     		var self = this;
     		console.log(self.img);
 	      	var nparmap = {title : self.bTitle, content : self.bContent
-	      			       , nickname : self.userNickName, img : self.img
+	      			       , nickname : self.nickname, img : self.img
 	      			       , address : self.si + self.gu + self.dong
 	      			       , price : self.pPrice};
 	        $.ajax({
@@ -202,14 +203,28 @@ var app = new Vue({
 	            }
 	        }); 
 	        
-    	}
+    	},
+        fnGetInfo : function(){
+   			var self = this;
+            var nparmap = {id : self.userId};
+	           $.ajax({
+	               url:"/add/get.dox",
+	               dataType:"json",	
+	               type : "POST", 
+	               data : nparmap,
+	               success : function(data) {  
+	            	   self.nickname = data.nickname;
+	               }
+	           }); 
+	     }
 		
 		, fnList : function(){
 			location.href="/main.do";
 		}
 	}   
     , created: function () {
-    
+    	var self = this;
+    	self.fnGetInfo();
 	}
 });
 </script>

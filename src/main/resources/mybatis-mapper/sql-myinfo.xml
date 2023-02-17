@@ -24,4 +24,8 @@
 		UPDATE t2_account SET u_email = #{email} WHERE u_id = #{id}
 	</update>
 	
+	<update id="updateNick" parameterType="hashmap" >	
+		UPDATE t2_product SET u_nickname = #{nickname} WHERE u_nickname = #{beforeNickname}
+	</update>
+	
 </mapper>
