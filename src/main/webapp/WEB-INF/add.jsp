@@ -91,7 +91,7 @@
 			</div>
 			<div>
 				<h1>가격</h1>
-				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
+				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="0"> <span>원</span>
 				<hr>
 			</div>
 			<div>
