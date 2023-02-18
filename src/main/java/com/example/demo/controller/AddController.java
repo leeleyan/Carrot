@@ -68,7 +68,7 @@ public class AddController {
 	} 
 	 
 	 @RequestMapping("/upload")
-	    public String result(@RequestParam("file1") MultipartFile multi, @RequestParam("boardIdx") int boardIdx, HttpServletRequest request,HttpServletResponse response, Model model)
+	    public String result(@RequestParam("file1") MultipartFile multi, @RequestParam("boardIdx") int boardIdx, @RequestParam("thumbnail") String thumbnail, HttpServletRequest request,HttpServletResponse response, Model model)
 	    {
 	        String url = null;
 	        String path="c:\\img";
@@ -80,7 +80,7 @@ public class AddController {
 	            String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());
 	            long size = multi.getSize();
 	            String saveFileName = genSaveFileName(extName);
-	            
+	            System.out.println("thumbnail : " + thumbnail);
 	            System.out.println("uploadpath : " + uploadpath);
 	            
 	            System.out.println("originFilename : " + originFilename);
@@ -97,6 +97,7 @@ public class AddController {
 	                HashMap<String, Object> map = new HashMap<String, Object>();
 	                map.put("img", "\\img\\" + saveFileName);
 	                map.put("boardIdx", boardIdx);
+	                map.put("thumbnail", thumbnail);
 	                //
 	        		addService.insertBoardImg(map);
 	                //

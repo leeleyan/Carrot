@@ -19,9 +19,9 @@
     
     <insert id="insertBoardImg" parameterType="hashmap">	
 		INSERT INTO t2_image
-			(board_idx, img)  
+			(board_idx, img, thumbnail)  
 		VALUES
-			(#{boardIdx}, #{img})
+			(#{boardIdx}, #{img}, #{thumbnail})
 	</insert>
 	
 	<select id="getInfo" parameterType="hashmap" resultType="com.example.demo.model.Member">	

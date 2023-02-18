@@ -56,6 +56,7 @@
 				<br><br>
 				<div>
 					<span v-for="(image, index) in previewImages" :key="index" class="addspan">
+					<input type ="radio" v-model = "selectItem" v-bind:id = "'radio_' + index" v-bind:value="index" @click="fnSelectThumbnail"></input>
 					<img :src="image" alt="Image Preview" class="preview-img"/>
 				</div>
 					<button @click="removeImage(index)" class="addbutton">Cancel</button>
@@ -91,7 +92,7 @@
 			</div>
 			<div>
 				<h1>가격</h1>
-				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="0"> <span>원</span>
+				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
 				<hr>
 			</div>
 			<div>
@@ -129,6 +130,8 @@ var app = new Vue({
 	    , bContent : ""
 	    , userId : "${userId}"
 	    , saveImgFile : []
+	    , selectItem : null
+	    , thumbnail : 0
     }  
     , methods: {
 		updateImages(event) {
@@ -178,7 +181,7 @@ var app = new Vue({
     		var nparmap = {title : self.bTitle, content : self.bContent
    			       , nickname : self.nickname, img : self.img
    			       , address : self.si + self.gu + self.dong
-   			       , price : parseInt(self.pPrice)};
+   			       , price : self.pPrice};
     		console.log(self.img);
     		
     	    if(!fileCheck || !self.bTitle || !self.bContent ||
@@ -210,6 +213,11 @@ var app = new Vue({
 	            		var form = new FormData();
 		       	        form.append( "file1", self.saveImgFile[i] );
 		       	     	form.append( "boardIdx",  data.boardIdx);
+		       	     	if(i==self.thumbnail) {
+		       	     		form.append("thumbnail", "y");
+		       	     	}else {
+		       	     		form.append("thumbnail", "n");
+		       	     	}
 	            		self.fnUpload(form);
 	            	}
 	       	         
@@ -249,6 +257,11 @@ var app = new Vue({
 		
 		, fnList : function(){
 			location.href="/main.do";
+		}
+		, fnSelectThumbnail : function(event){
+			var self = this;
+	   		self.thumbnail = event.srcElement.id.replace('radio_', '');
+	   		console.log(self.thumbnail);
 		}
 	}   
     , created: function () {

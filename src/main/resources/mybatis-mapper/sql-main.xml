@@ -24,8 +24,7 @@
 			FROM
 			    t2_image 
 			WHERE
-				board_idx = #{idx}
-			LIMIT 1 
+				board_idx = #{idx} AND thumbnail = 'y'
 	</select>
 	
 	
@@ -40,7 +39,8 @@
 		    , p_price
 		FROM
 		    t2_product
-		WHERE u_address LIKE CONCAT('%', #{keyword}, '%')
+		WHERE 
+			u_address LIKE CONCAT('%', #{keyword}, '%')
 		ORDER BY
 			 board_idx DESC
 	
@@ -64,21 +64,18 @@
 	
 		<select id="selectGetMyItemList" parameterType="hashmap" resultType="com.example.demo.model.Product">
 		SELECT 
-		    t.board_idx
+		    board_idx
 		    , b_title
 		    , b_content
 		    , u_nickname
 		    , u_address
 		    , p_price
-		    , GROUP_CONCAT(img SEPARATOR ';') as img
 		FROM
-		    t2_product t
-		LEFT OUTER JOIN t2_image i on t.board_idx = i.board_idx 
+		    t2_product 
 		WHERE
 		    u_nickname = #{userNickName}
-		GROUP BY t.board_idx 
 		ORDER BY
-			 t.board_idx DESC
+			board_idx DESC
 	</select>
 	
 	
