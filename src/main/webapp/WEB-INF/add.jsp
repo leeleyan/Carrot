@@ -44,6 +44,18 @@
 				width: 220px;
 				font-size: 30px;
 				display: block;
+				margin: 10px;
+			}
+			.preview{
+				width: 100%;
+			}
+			.cancelBtn{
+				width: 150px;
+				font-size: 20px;
+				display: block;
+			}
+			.an{
+				color: rgb(23, 117, 175);
 			}
     	</style>
 	</head>
@@ -53,13 +65,15 @@
 			<template>
 				<h1>상품 이미지</h1>
 				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" multiple/>
-				<br><br>
-				<div>
-					<span v-for="(image, index) in previewImages" :key="index" class="addspan">
-					<input type ="radio" v-model = "selectItem" v-bind:id = "'radio_' + index" v-bind:value="index" @click="fnSelectThumbnail"></input>
-					<img :src="image" alt="Image Preview" class="preview-img"/>
+				<div class="preview">
+					<label v-for="(image, index) in previewImages" :key="index" class="addspan">
+						<img :src="image" alt="Image Preview" class="preview-img"/>
+						<input type ="radio" v-model = "selectItem" v-bind:id = "'radio_' + index" 
+						v-bind:value="index" @click="fnSelectThumbnail" ></input>
+					</label>
 				</div>
-					<button @click="removeImage(index)" class="addbutton">Cancel</button>
+					<button @click="removeImage(index)" class="cancelBtn">Cancel</button>
+					<span class="an">판매하실 상품을 대표할 만한 미리보기 이미지를 선택하세요.</span>
 			</template>
 			<hr>
 			<div>
