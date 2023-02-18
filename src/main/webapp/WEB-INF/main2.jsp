@@ -106,15 +106,12 @@
       el: '#app',
     data: {
       list : [],
-      list2 : [],
       siList : ${siList},
 	  guList : ${guList},
 	  dongList : ${dongList},
 	  si : "",
 	  gu : "",
 	  dong : "",
-	  guFlg : false,
-	  dongFlg : false,
 	  userNickName : "${userNickName}",
 	  userId : "${userId}", 
 	  boardIdx : ""
@@ -130,7 +127,6 @@
                 data : nparmap,
                 success : function(data) {                                       
 	                self.list = data.list;
-	                self.list2 = data.list2;
 	                console.log(self.list);
                 }
             }); 
