@@ -111,19 +111,35 @@ public class AddController {
 	    
 	    // 현재 시간을 기준으로 파일 이름 생성
 	    private String genSaveFileName(String extName) {
-	        String fileName = "";
-	        
-	        Calendar calendar = Calendar.getInstance();
-	        fileName += calendar.get(Calendar.YEAR);
-	        fileName += calendar.get(Calendar.MONTH);
-	        fileName += calendar.get(Calendar.DATE);
-	        fileName += calendar.get(Calendar.HOUR);
-	        fileName += calendar.get(Calendar.MINUTE);
-	        fileName += calendar.get(Calendar.SECOND);
-	        fileName += calendar.get(Calendar.MILLISECOND);
-	        fileName += extName;
-	        
-	        return fileName;
+	    	String fileName = "";
+	        Calendar calendar;
+
+	        while (true) {
+	            try {
+	                Thread.sleep(1);
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+
+	            calendar = Calendar.getInstance();
+	            fileName += calendar.get(Calendar.YEAR);
+	            fileName += calendar.get(Calendar.MONTH);
+	            fileName += calendar.get(Calendar.DATE);
+	            fileName += calendar.get(Calendar.HOUR);
+	            fileName += calendar.get(Calendar.MINUTE);
+	            fileName += calendar.get(Calendar.SECOND);
+	            fileName += calendar.get(Calendar.MILLISECOND);
+	            fileName += extName;
+
+	            File file = new File(fileName);
+
+	            if (!file.exists()) {
+	            	System.out.println("return!!");
+	                return fileName;
+	            } else {
+	                fileName = "";
+	            }
+	        }
 	    }
 	    
 	    @RequestMapping(value = "/add/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

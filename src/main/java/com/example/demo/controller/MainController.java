@@ -77,7 +77,10 @@ public class MainController {
 	@ResponseBody
 	public String searchArea(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		List<Product> list = mainService.searchArea(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		List<Product> list = mainService.searchArea(map);
+		for(int i=0; i<list.size();i++) {
+			list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+		}
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
@@ -91,8 +94,15 @@ public class MainController {
 		String keyword = (String)map.get("keyword");
 		List<Product> list = mainService.searchTitle(map);
 		
+		for(int i=0; i<list.size();i++) {
+			list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+		}
+		
 		if (list.size()==0) {
 			list = mainService.searchArea(map);
+			for(int i=0; i<list.size();i++) {
+				list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+			}
 		}
 		
 		resultMap.put("list", list);
