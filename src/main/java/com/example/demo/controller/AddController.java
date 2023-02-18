@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,6 +63,7 @@ public class AddController {
 		addService.insertBoard(map);
 		resultMap.put("message", "성공");
 		resultMap.put("boardIdx", map.get("id"));
+		System.out.println(map);
 		return new Gson().toJson(resultMap);
 	} 
 	 
@@ -95,8 +97,9 @@ public class AddController {
 	                HashMap<String, Object> map = new HashMap<String, Object>();
 	                map.put("img", "\\img\\" + saveFileName);
 	                map.put("boardIdx", boardIdx);
+	                //
 	        		addService.insertBoardImg(map);
-	                
+	                //
 	                model.addAttribute("filename", multi.getOriginalFilename());
 	                model.addAttribute("uploadPath", file.getAbsolutePath());
 	                
@@ -114,32 +117,14 @@ public class AddController {
 	    	String fileName = "";
 	        Calendar calendar;
 
-	        while (true) {
-	            try {
-	                Thread.sleep(1);
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
+	        UUID uuid = UUID.randomUUID();
+	        fileName += uuid.toString();
+	        fileName += extName;
 
-	            calendar = Calendar.getInstance();
-	            fileName += calendar.get(Calendar.YEAR);
-	            fileName += calendar.get(Calendar.MONTH);
-	            fileName += calendar.get(Calendar.DATE);
-	            fileName += calendar.get(Calendar.HOUR);
-	            fileName += calendar.get(Calendar.MINUTE);
-	            fileName += calendar.get(Calendar.SECOND);
-	            fileName += calendar.get(Calendar.MILLISECOND);
-	            fileName += extName;
+	        File file = new File(fileName);
 
-	            File file = new File(fileName);
-
-	            if (!file.exists()) {
-	            	System.out.println("return!!");
-	                return fileName;
-	            } else {
-	                fileName = "";
-	            }
-	        }
+	        return fileName;
+	       
 	    }
 	    
 	    @RequestMapping(value = "/add/get.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

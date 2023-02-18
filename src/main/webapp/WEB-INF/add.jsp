@@ -125,7 +125,7 @@ var app = new Vue({
 	    , img : ""
 	    , bTitle : ""
 	    , uAddress : ""
-	    , pPrice : 0
+	    , pPrice : ""
 	    , bContent : ""
 	    , userId : "${userId}"
 	    , saveImgFile : []
@@ -178,7 +178,7 @@ var app = new Vue({
     		var nparmap = {title : self.bTitle, content : self.bContent
    			       , nickname : self.nickname, img : self.img
    			       , address : self.si + self.gu + self.dong
-   			       , price : self.pPrice};
+   			       , price : parseInt(self.pPrice)};
     		console.log(self.img);
     		
     	    if(!fileCheck || !self.bTitle || !self.bContent ||
