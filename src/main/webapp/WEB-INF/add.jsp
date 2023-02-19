@@ -194,7 +194,7 @@ var app = new Vue({
     		var fileCheck = document.getElementById("file1").value;
     		var nparmap = {title : self.bTitle, content : self.bContent
    			       , nickname : self.nickname, img : self.img
-   			       , address : self.si + self.gu + self.dong
+   			       , address : self.si + " " + self.gu +" "+ self.dong
    			       , price : self.pPrice};
     		console.log(self.img);
     		
