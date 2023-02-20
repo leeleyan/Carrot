@@ -64,8 +64,8 @@ th {
 	<div id="app" class="container">
 		<div class="menu">
 			<div class="sendOrReceive">
-				<button class="btn">받은 쪽지함</button>
-				<button class="btn">보낸 쪽지함</button>
+				<button class="btn" @click="fnGetList">받은 쪽지함</button>
+				<button class="btn" @click="fnGetGotList">보낸 쪽지함</button>
 			</div>
 			<div class="deleteAndWrite">
 				<button class="btn">삭제</button>
@@ -83,7 +83,8 @@ th {
 				<thead>
 					<tr>
 						<th scope="col"></th>
-						<th scope="col">보낸 사람</th>
+						<th scope="col" v-if="flg == false">보낸 사람</th>
+						<th scope="col" v-else="flg == true">받는 사람</th>
 						<th scope="col">내용</th>
 						<th scope="col">시간</th>
 					</tr>
@@ -93,7 +94,8 @@ th {
 						<td><input type="checkbox" name="selectBoard"
 							v-bind:id="'idx_' + index" v-bind:value="item"
 							v-model="fnGetList"></td>
-						<td>{{item.uSender}}</td>
+						<td v-if="flg == false">{{item.uSender}}</td>
+						<td v-else="flg == true">{{item.uRecipient}}</td>
 						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent}}</td>
 						<td>{{item.createDate}}</td>
 					</tr>
@@ -111,7 +113,8 @@ th {
 		data : {
 			userNickName : "${userNickName}",
 			list : [],
-			mNo : ""
+			mNo : "",
+			flg : false
 		},
 		methods : {
 			fnGetList : function() {
@@ -127,10 +130,28 @@ th {
 					success : function(data) {
 						self.list = data.list;
 						console.log(self.list);
+						self.flg = false;
 					}
 				});
-			},
-			fnWrite : function() {
+			},	
+			fnGetGotList : function() {
+				var self = this;
+				var nparmap = {
+					nickname : self.userNickName
+				};
+				$.ajax({
+					url : "/message/getgotmessage.dox",
+					dataType : "json",
+					type : "POST",
+					data : nparmap,
+					success : function(data) {
+						self.list = data.list;
+						console.log(self.list);
+						self.flg = true;
+					}
+				});
+			}
+			,fnWrite : function() {
 				window.open("./writing.do", "쪽지 쓰기", "width=555,height=580");
 			},
 			fnViewItem: function(item) {

@@ -28,4 +28,10 @@ public class MessageServiceImpl implements MessageService{
 		// TODO Auto-generated method stub
 		return messageMapper.selectSendList(map);
 	}
+
+	@Override
+	public List<Message> selectGotMessageList(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return messageMapper.selectGotMessageList(map);
+	}
 }

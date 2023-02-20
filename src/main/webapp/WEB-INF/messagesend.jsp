@@ -19,25 +19,25 @@
 </head>
 <body class="popup">
 	<div id="app">
-		<div class="popWrapper">
+		<div class="popWrapper" v-for="(item, index) in list">
 			<h1>받은 쪽지</h1>
 			<div class="popSend">
 				<dl class="to">
 					<dt>보낸 사람</dt>
 					<dd>
-					<dt>보낸 사람</dt>
+					<dt>{{item.uSender}}</dt>
 					</dd>
 				</dl>
 				<dl class="to">
 					<dt>제목</dt>
 					<dd>
-					<dt>제목</dt>
+					<dt>{{item.mTitle}}</dt>
 					</dd>
 				</dl>				
 				<dl>
 					<dt>내용</dt>
 					<dd for="wr_1">
-					<dt>내용</dt>
+					<dt class="textarea">{{item.mContent}}</dt>
 					</dd>
 				</dl>
 				<div class="btSec">

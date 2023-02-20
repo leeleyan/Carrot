@@ -41,6 +41,9 @@ body.popup {
     vertical-align: top;
     text-indent: -1px;
 }
+dt .textarea{
+	word-break: break-all;
+}
 .popSend dd {
     display: inline-block;
     padding: 15px 0 16px;
