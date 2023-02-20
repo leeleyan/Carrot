@@ -86,7 +86,7 @@
 			</div>
 			<div class="sub">
 				<h2>내용</h2>
-				<span class="description">{{info.bContent}}</span>
+				<span class="description"><pre>{{info.bContent}}</pre></span>
 			</div>
 			<div class="msgDiv">
 				<button class="msg">판매자에게 쪽지 보내기</button>

@@ -142,7 +142,7 @@ $(function() {
 									if (data.result == "success") {
 										alert("메시지 보내기가 성공했습니다.");
 										self.fnGetList();
-										window.close();
+										console.log(text);
 									} else
 										alert("메시지 보내기가 실패했습니다.");
 								}
