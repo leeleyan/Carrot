@@ -92,8 +92,8 @@ th {
 				<tbody>
 					<tr v-for="(item, index) in list">
 						<td><input type="checkbox" name="selectBoard"
-							v-bind:id="'idx_' + index" v-bind:value="item"
-							v-model="fnGetList"></td>
+							v-bind:id="'idx_' + index" v-bind:value="item">
+						</td>
 						<td v-if="flg == false">{{item.uSender}}</td>
 						<td v-else="flg == true">{{item.uRecipient}}</td>
 						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0, 30)}}{{item.mContent.length > 30 ? '...' : ''}}</td>
