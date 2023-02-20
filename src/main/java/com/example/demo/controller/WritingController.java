@@ -31,6 +31,13 @@ public class WritingController {
 
 		 return "/writing"; // WEB-INF에서 호출할 파일명
     } 
+	 
+	 @RequestMapping("/send.do") // 받은 쪽지 팝업 화면
+     public String send(Model model) throws Exception{
+
+		 return "/messagesend"; // WEB-INF에서 호출할 파일명
+    } 
+	 
 		@RequestMapping(value = "/writing/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String Insertmessage(Model model, @RequestParam HashMap<String, Object> map) throws Exception {

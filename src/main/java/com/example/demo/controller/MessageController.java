@@ -36,4 +36,13 @@ public class MessageController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+	@RequestMapping(value = "/message/getsendmessage.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String sendmessage(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		List<Message> list = messageService.selectSendList(map);
+		resultMap.put("list", list);
+		return new Gson().toJson(resultMap);
+	}
 }

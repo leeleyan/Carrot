@@ -10,4 +10,12 @@
 			t2_message
 		where u_recipient = #{nickname}
 	</select>
+	
+	<select id="selectSendList" parameterType="hashmap" resultType="com.example.demo.model.Message">	
+		SELECT
+			m_no, u_sender, u_recipient, m_title, m_content, createDate
+		from 
+			t2_message
+		where m_no = #{mNo}
+	</select>
 </mapper>
