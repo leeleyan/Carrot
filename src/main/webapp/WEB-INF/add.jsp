@@ -72,7 +72,7 @@
 						v-bind:value="index" @click="fnSelectThumbnail" ></input>
 					</label>
 				</div>
-					<button @click="removeImage(index)" class="cancelBtn">삭제</button>
+					<button @click="removeImage" class="cancelBtn">삭제</button>
 					<span class="an">대표 사진을 선택해주세요.</span>
 			</template>
 			<hr>
@@ -146,18 +146,45 @@ var app = new Vue({
 	    , saveImgFile : []
 	    , selectItem : null
 	    , thumbnail : 0
+	    , imgLength : 0
     }  
     , methods: {
 		updateImages(event) {
+			var self = this;
 			const files = event.target.files;
+			if((self.imgLength + files.length) > 3){
+				alert("3개이상 불가");
+				if(self.imgLength == 0){
+					$('#file1').val('');
+				} else {
+					for(var i=self.imgLength+1; i <= self.imgLength + files.length; i++){
+						const dataTransfer = new DataTransfer();
+					    let files = $('#file1')[0].files;	//사용자가 입력한 파일을 변수에 할당
+					    let fileArray = Array.from(files);	//변수에 할당된 파일을 배열로 변환(FileList -> Array)
+					    fileArray.splice(i, 1);	//해당하는 index의 파일을 배열에서 제거
+					    fileArray.forEach(file => { dataTransfer.items.add(file); });
+					    $('#file1')[0].files = dataTransfer.files;	//제거 처리된 FileList를 돌려줌
+					}
+				}
+				return;
+			} else {
+				self.imgLength += files.length;
+			}
 			for (const file of files) {
 				this.saveImgFile.push(file);
 				this.previewImages.push(URL.createObjectURL(file));
 			}
     	}
-		, removeImage(index) {
-    		this.previewImages.splice(index, 1);
-    		
+		, removeImage() {
+			var self = this;
+    		this.previewImages.splice(self.thumbnail, 1);
+    		this.saveImgFile.splice(self.thumbnail, 1);
+    		const dataTransfer = new DataTransfer();
+		    let files = $('#file1')[0].files;	//사용자가 입력한 파일을 변수에 할당
+		    let fileArray = Array.from(files);	//변수에 할당된 파일을 배열로 변환(FileList -> Array)
+		    fileArray.splice(self.thumbnail, 1);	//해당하는 index의 파일을 배열에서 제거
+		    fileArray.forEach(file => { dataTransfer.items.add(file); });
+		    $('#file1')[0].files = dataTransfer.files;	//제거 처리된 FileList를 돌려줌
   		}
 		, fnGuList : function(){
 			var self = this;
@@ -272,7 +299,7 @@ var app = new Vue({
 		, fnList : function(){
 			location.href="/main.do";
 		}
-		, fnSelectThumbnail : function(event){
+		, fnSelectThumbnail : function(event, index){
 			var self = this;
 	   		self.thumbnail = event.srcElement.id.replace('radio_', '');
 	   		console.log(self.thumbnail);
