@@ -18,6 +18,11 @@
         flex-wrap: wrap;
         width: 1010px;
         margin-top: 50px;
+        margin-bottom: 20px;
+      }
+      .container2{
+      width: 100%;
+     	 border: 1px solid rgb(200, 200, 200);
       }
       .productDetails{
         width: 230px;
@@ -25,12 +30,14 @@
         padding: 5px;
         margin: 5px;
         cursor: pointer;
+        margin-bottom: 15px;
       }
       
       .imgDiv{
-        width: 220px;
+        width: 100%;
         height: 200px;
         background-color: aquamarine;
+        border: 1px solid rgb(200, 200, 200);
       }
       
       .itemimg{
@@ -38,15 +45,40 @@
 		height: 100%
       }
       
-      .price{
-    	  text-align: center;
-      }
       .title{
-    	  text-align: center;
+    	    font-size: 16px;
+		    letter-spacing: -0.02px;
+		    color: #212529;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    margin-bottom: 4px;
+		    line-height: 1.5;
+		    font-weight: normal;
+      }
+      .price{
+	        font-size: 15px;
+			font-weight: 700;
+			line-height: 1.5;
+		    margin-bottom: 4px;
       }
       .address{
-    	  text-align: center;
+   	        font-size: 13px;
+		    color: #212529;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    margin-bottom: 4px;
+		    line-height: 1.5;
       }
+      .head-title {
+	    font-size: 32px;
+	    font-weight: 600;
+	    letter-spacing: -0.6px;
+	    text-align: center;
+	    color: #212529;
+	    margin-bottom: 40px;
+	  }
       .selectAddress{
       	justify-content: center;
       	padding-left: 600px;
@@ -65,6 +97,9 @@
   </head>
   <body>
     <div id="app">
+    <h1 class="head-title" id="hot-articles-head-title">
+      {{si}} {{gu}} {{dong}} 중고거래 최신매물
+  	</h1>
       <div class="selectAddress">
         <div>
           <label for="si" class="control-label"></label> 
@@ -92,14 +127,21 @@
             <div class="product" v-for="(item, index) in list">
               <div class="productDetails" @click="fnViewItem(item)">
                 <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
-                <div class="title">{{item.bTitle}}</div>
-                <div class = "address">{{item.uAddress}}</div>
-                <div class = "price">{{item.pPrice}} 원</div>
+             	<div class="container2">
+               	 <div class="title">{{item.bTitle}}</div>
+               	 <div class = "price">{{item.pPrice}}원</div>
+               	 <div class = "address">{{item.uAddress}}</div>
+               </div>
+              </div>
               </div>
             </div>
         </div>
     </div>
+    <mainsetfooter>
+	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
+	</mainsetfooter>
   </body>
+  
 </html>
 <script type="text/javascript">
   var app = new Vue({ 

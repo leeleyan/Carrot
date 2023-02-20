@@ -37,11 +37,11 @@
 				margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
 	            width: 800px; /*좌.우 길이, 없으면 전체*/
 	            height: 300px;
-	            background-color: #EEEFF1;
 	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
 	            text-align: center; /*하위 요소 가운데 정렬*/
 	            padding: 20px; 
 	            margin-top: 50px; /* 헤더와 떨어진 길이 */
+	            background-color: silver;
 			}
 			table, td{
 				border-collapse: collapse;
@@ -64,6 +64,7 @@
 	        flex-wrap: wrap;
 	        width: 1010px;
 	        margin-top: 50px;
+	        background-color: silver;
 	      }
 	      .productDetails{
 	        width: 230px;
@@ -74,7 +75,7 @@
 	      }
 	      
 	      .imgDiv{
-	        width: 220px;
+	        width: 100%;
 	        height: 200px;
 	        background-color: aquamarine;
 	      }
@@ -84,14 +85,31 @@
 			height: 100%
 	      }
 	      
-	      .price{
-	    	  text-align: center;
-	      }
 	      .title{
-	    	  text-align: center;
+    	    font-size: 16px;
+		    letter-spacing: -0.02px;
+		    color: #212529;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    margin-bottom: 4px;
+		    line-height: 1.5;
+		    font-weight: normal;
+    	  }
+	      .price{
+		        font-size: 15px;
+				font-weight: 700;
+				line-height: 1.5;
+			    margin-bottom: 4px;
 	      }
 	      .address{
-	    	  text-align: center;
+	   	        font-size: 13px;
+			    color: #212529;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			    margin-bottom: 4px;
+			    line-height: 1.5;
 	      }
 	      .selectAddress{
 	      	justify-content: center;
@@ -107,7 +125,14 @@
 	        height: 40px;
 	        font-size: 20px;
 	      }
-			
+		  .head-title {
+		    font-size: 32px;
+		    font-weight: 600;
+		    letter-spacing: -0.6px;
+		    text-align: center;
+		    color: #212529;
+		    margin-bottom: -40px;
+	  }	
     	</style>
 	</head>
 
@@ -151,6 +176,9 @@
 			</table>
 			<span><button @click="fnHome" class="addbutton" >돌아가기</button></span>
 			</div>
+			<h1 class="head-title" id="hot-articles-head-title">
+     		  내 판매물건
+  			</h1>
 			<div class="container">
             	<div class="product" v-for="(item, index) in list">
               		<div class="productDetails" @click="fnViewItem(item)">

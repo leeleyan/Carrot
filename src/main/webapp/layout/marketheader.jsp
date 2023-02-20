@@ -31,12 +31,15 @@
 			</a> 	
 			<div class="text1">
 				<div class="text3">
-					<input type="text" placeholder=" 상품 제목 입력" class="text2 findinput" value="" v-model="skeyword" @keyup.enter="fnSearch4">
+					<input type="text" placeholder="상품명, 지역을 입력하세요." class="text2 findinput" value="" v-model="skeyword" @keyup.enter="fnSearch4">
 					<a><img src="img/selectimg.png" width="16" height="16" alt="검색 버튼 아이콘" @click="fnSearch4"></a>
 				</div>
 			</div>
+			<button class="loginsignbtn" @click="userId ? fnMyInfo() : fnMyInfo()">
+					  {{ userId ? userId + '님' : '' }}
+			</button>
 			<button class="loginsignbtn" @click="userId ? fnLogout() : redirectToLogin()">
-    				{{ userId ? '로그아웃' : '로그인/회원가입' }}
+    				  {{ userId ? '로그아웃' : '로그인/회원가입' }}
 			</button>
 		</div>
 			<div class="headusermenu">
@@ -117,6 +120,11 @@ var app = new Vue({
         , fnMain : function(){
     		var self = this;
     		self.pageChange("./main.do", {});
+    	}
+        
+        , fnMyInfor : function(){
+    		var self = this;
+    		self.pageChange("./myinformation.do", {});
     	}
         
         , redirectToLogin() {

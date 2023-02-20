@@ -63,7 +63,7 @@
 	<div id="app" class="div1">
 		<div class="addcontainer">
 			<template>
-				<h1>상품 이미지(최대 3장)</h1>
+				<h1>상품 이미지(최대 4장)</h1>
 				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" accept="image/*" multiple/>
 				<div class="preview">
 					<label v-for="(image, index) in previewImages" :key="index" class="addspan">
@@ -78,7 +78,7 @@
 			<hr>
 			<div>
 				<h1>제목</h1>
-				<input type="text" class="addinput" v-model="bTitle" placeholder="제목">
+				<input type="text" maxlength="30" class="addinput" v-model="bTitle" placeholder="30글자까지 입력가능">
 				<hr>
 			</div>
 			<div>
@@ -106,12 +106,12 @@
 			</div>
 			<div>
 				<h1>가격</h1>
-				<input type="text" class="addinput" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
+				<input type="text" class="addinput" @input="validatePrice" maxlength="8" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
 				<hr>
 			</div>
 			<div>
 				<h1 style="display: block;">게시글 내용</h1>
-				<textarea name="" id="" cols="85" rows="10" v-model="bContent"></textarea>
+				<textarea name="" id="" cols="85" rows="10" maxlength="300" placeholder="300글자까지 입력가능" v-model="bContent"></textarea>
 				<hr>
 			</div>
 			<div style = "display : flex;">
@@ -152,8 +152,8 @@ var app = new Vue({
 		updateImages(event) {
 			var self = this;
 			const files = event.target.files;
-			if((self.imgLength + files.length) > 3){
-				alert("3개이상 불가");
+			if((self.imgLength + files.length) > 4){
+				alert("사진은 최대 4장까지만 등록가능합니다.");
 				if(self.imgLength == 0){
 					$('#file1').val('');
 				} else {
@@ -304,6 +304,10 @@ var app = new Vue({
 	   		self.thumbnail = event.srcElement.id.replace('radio_', '');
 	   		console.log(self.thumbnail);
 		}
+		,validatePrice() {
+    		let pattern = /^[0-9]+$/
+	    	      this.pPrice = this.pPrice.match(pattern) ? this.pPrice : this.pPrice.slice(0, -1)
+    	}
 	}   
     , created: function () {
     	var self = this;

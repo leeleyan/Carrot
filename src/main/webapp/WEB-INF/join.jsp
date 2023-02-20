@@ -313,7 +313,22 @@
 	    	      let pattern = /^[a-zA-Z0-9]+$/
 	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
-
+	    	,validatePw() {
+	    	      let pattern = /^[a-zA-Z0-9]+$/
+	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	 }
+	    	,validateName() {
+	    	      let pattern = /^[a-zA-Z0-9]+$/
+	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	 }
+	    	,validateTel() {
+	    	      let pattern = /^[a-zA-Z0-9]+$/
+	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	 }
+	    	,validateEmail() {
+	    	      let pattern = /^[a-zA-Z0-9]+$/
+	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	 }
 		},
 		created : function() {
 
