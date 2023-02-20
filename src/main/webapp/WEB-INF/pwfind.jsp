@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
+		<jsp:include page="/layout/logoheader.jsp"></jsp:include>
 		<title>마켓이름 : 비밀번호 찾기</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -30,25 +31,46 @@
 				margin-top: 20px;
 				font-size: 20px;
 			}
-			button{
-				margin-top: 40px;
+			.findPwBtn{
 				font-size: large;
-				margin-left: 80px;
 				width: 200px;
+				justify-content: center;
+			}
+			.container{
+				width: fit-content;
+				margin: auto;
+				padding: 10px;
+				display: flex;
+				flex-direction: column;
+				background-color: #eeeef1;
+			}
+
+			.div1{
+				padding: 5px;
+			}
+			.div2{
+				padding: 5px;
+				display: flex;
+				justify-content: center; 
+				margin-top: 20px;
 			}
 
     	</style>
 	</head>
 	<body>
 	<div id="app" class="div1">
-		<div>
-			<h3>비밀번호 찾기</h3>
-			<span>아이디</span>
-			<input type="text" v-model="uId"><br>
-			<span>이메일</span>
-			<input type="text" v-model="uEmail"><br>
+		<div class="container">
+			<div class="div1">
+				<h3>비밀번호 찾기</h3>
+				<span>아이디</span>
+				<input type="text" v-model="uId" autofocus><br>
+				<span>이메일</span>
+				<input type="text" v-model="uEmail" @keyup.enter = "fnPwFind"><br>
+			</div>
+			<div class="div2">
+				<button @click="fnPwFind" class="findPwBtn">비밀번호 재설정</button>	
+			</div>
 		</div>
-		<button @click="fnPwFind">비밀번호 재설정</button>
 	</div>
 	</body>
 </html>

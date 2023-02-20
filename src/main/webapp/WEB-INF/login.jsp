@@ -86,7 +86,7 @@
 		<div id="app">
 		<div class="div1">
 		<div class="div2">
-				<input type="text" v-model="uId" class="in" placeholder="아이디"></input>
+				<input type="text" v-model="uId" class="in" placeholder="아이디" autofocus></input>
 		</div>
 		<div class="div2">
 				<input type="password" v-model="uPassword" class="in" placeholder="비밀번호" @keyup.enter ="fnLogin"></input>

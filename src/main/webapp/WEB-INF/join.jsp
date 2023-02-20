@@ -6,6 +6,7 @@
 		<meta charset="UTF-8">
 		<script src="js/jquery.js"></script>
 		<script src="js/vue.js"></script>
+		<jsp:include page="/layout/logoheader.jsp"></jsp:include>
 		<title>마켓이름 : 회원가입</title>
 		<style>
 			@import
@@ -53,7 +54,7 @@
 				border: solid 1px;
 			}
 			
-			button {
+			.mButton {
 				height: 30px;
 				width: 180px;
 				margin-left: 10px;
@@ -66,6 +67,9 @@
 				height: auto;
 				margin-left: 185px;
 				cursor: pointer;
+				width: 220px;
+				cursor: pointer;
+				margin-bottom: 30px;
 			}
 		</style>
 	</head>
@@ -75,13 +79,13 @@
 			<div class="div2" id="app">
 				<div class="div1">
 					<h3>아이디</h3>
-					<input type="text" v-model="uId" @input="validateId" placeholder = "8~16자리의 영어, 숫자">
-					<button @click="fnIdCheck">아이디 중복 체크</button>
+					<input type="text" v-model="uId" @input="validateId" placeholder = "8~16자리의 영어, 숫자" autofocus @keyup.enter ="fnIdCheck">
+					<button @click="fnIdCheck" class="mButton">아이디 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>닉네임</h3>
-					<input type="text" v-model="uNickname">
-					<button @click="fnNicknameCheck">닉네임 중복 체크</button>
+					<input type="text" v-model="uNickname" @keyup.enter="fnNickNameCheck">
+					<button @click="fnNicknameCheck" class="mButton">닉네임 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>비밀번호</h3>
@@ -125,8 +129,8 @@
 				</div>
 				<div class="div1">
 					<h3>이메일</h3>
-					<input type="text" v-model="uEmail">
-					<button @click="fnEmailCheck">이메일 중복 체크</button>
+					<input type="text" v-model="uEmail" @keyup.enter = "fnEmailCheck">
+					<button @click="fnEmailCheck" class="mButton">이메일 중복 체크</button>
 				</div>
 				<button class="joinBtn" @click="fnJoin">회원가입</button>
 			</div>
