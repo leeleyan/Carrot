@@ -96,7 +96,7 @@ th {
 							v-model="fnGetList"></td>
 						<td v-if="flg == false">{{item.uSender}}</td>
 						<td v-else="flg == true">{{item.uRecipient}}</td>
-						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent}}</td>
+						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0, 30)}}{{item.mContent.length > 30 ? '...' : ''}}</td>
 						<td>{{item.createDate}}</td>
 					</tr>
 				</tbody>
