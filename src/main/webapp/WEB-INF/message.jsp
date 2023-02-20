@@ -133,14 +133,13 @@ th {
 			fnWrite : function() {
 				window.open("./writing.do", "쪽지 쓰기", "width=555,height=580");
 			},
-			fnViewItem : function(item) {
-				var self = this;
-				self.mNo = item.mNo;
-				console.log(self.mNo);
-				window.close();
-				window.open("./send.do", "받은 쪽지", "width=555,height=580");	
-				mNo : item.mNo;
-			}
+			fnViewItem: function(item) {
+				  var self = this;
+				  var paramMap = {mNo: item.mNo};
+				  console.log(paramMap);
+				  window.close();
+				  window.open("./send.do?mNo=" + paramMap.mNo, "받은 쪽지", "width=555,height=580");
+				},
 		},
 		created : function() {
 			var self = this;

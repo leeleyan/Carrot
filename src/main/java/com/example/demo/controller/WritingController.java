@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.dao.AreaService;
 import com.example.demo.dao.MessageService;
 import com.example.demo.dao.WritingService;
 import com.example.demo.model.Member;
 import com.google.gson.Gson;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller 
@@ -26,6 +30,9 @@ public class WritingController {
     @Autowired
     private MessageService messageService;
     
+    @Autowired
+	HttpSession session;
+    
 	 @RequestMapping("/writing.do") // 쪽지 쓰기 팝업 화면
      public String join(Model model) throws Exception{
 
@@ -33,8 +40,9 @@ public class WritingController {
     } 
 	 
 	 @RequestMapping("/send.do") // 받은 쪽지 팝업 화면
-     public String send(Model model) throws Exception{
-
+     public String send(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		 request.setAttribute("map", map);
+		 System.out.println(map);
 		 return "/messagesend"; // WEB-INF에서 호출할 파일명
     } 
 	 
