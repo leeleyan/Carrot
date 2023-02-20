@@ -79,25 +79,25 @@
 			<div class="div2" id="app">
 				<div class="div1">
 					<h3>아이디</h3>
-					<input type="text" v-model="uId" @input="validateId" placeholder = "8~16자리의 영어, 숫자" autofocus @keyup.enter ="fnIdCheck">
+					<input type="text" v-model="uId"  maxlength="16" @input="validateId" placeholder = "8~16자리의 영어, 숫자" autofocus @keyup.enter ="fnIdCheck">
 					<button @click="fnIdCheck" class="mButton">아이디 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>닉네임</h3>
-					<input type="text" v-model="uNickname" @keyup.enter="fnNickNameCheck">
+					<input type="text" v-model="uNickname" maxlength="16" placeholder = "8~16자리의 영어, 숫자" @keyup.enter="fnNickNameCheck">
 					<button @click="fnNicknameCheck" class="mButton">닉네임 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>비밀번호</h3>
-					<input type="text" v-model="uPassword">
+					<input type="password" v-model="uPassword"  maxlength="16" @input="validatePw" placeholder = "문자포함 8~16자리의 영어, 숫자">
 				</div>
 				<div class="div1">
 					<h3>비밀번호 확인</h3>
-					<input type="text" v-model="uPasswordC">
+					<input type="password" v-model="uPasswordC"  maxlength="16" @input="validatePw" placeholder = "문자포함 8~16자리의 영어, 숫자">
 				</div>
 				<div class="div1">
 					<h3>이름</h3>
-					<input type="text" v-model="uName">
+					<input type="text" v-model="uName" @input="validateName" maxlength="30" placeholder = "8~16자리의 영어, 숫자">
 				</div>
 				<div class="div1">
 					<h3>전화번호</h3>
@@ -129,7 +129,7 @@
 				</div>
 				<div class="div1">
 					<h3>이메일</h3>
-					<input type="text" v-model="uEmail" @keyup.enter = "fnEmailCheck">
+					<input type="text" v-model="uEmail" @input="validateEmail" @keyup.enter = "fnEmailCheck">
 					<button @click="fnEmailCheck" class="mButton">이메일 중복 체크</button>
 				</div>
 				<button class="joinBtn" @click="fnJoin">회원가입</button>
@@ -314,20 +314,12 @@
 	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
 	    	,validatePw() {
-	    	      let pattern = /^[a-zA-Z0-9]+$/
-	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
 	    	,validateName() {
-	    	      let pattern = /^[a-zA-Z0-9]+$/
-	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
 	    	,validateTel() {
-	    	      let pattern = /^[a-zA-Z0-9]+$/
-	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
 	    	,validateEmail() {
-	    	      let pattern = /^[a-zA-Z0-9]+$/
-	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
 	    	 }
 		},
 		created : function() {

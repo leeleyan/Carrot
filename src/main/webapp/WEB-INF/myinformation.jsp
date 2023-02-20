@@ -41,7 +41,6 @@
 	            text-align: center; /*하위 요소 가운데 정렬*/
 	            padding: 20px; 
 	            margin-top: 50px; /* 헤더와 떨어진 길이 */
-	            background-color: silver;
 			}
 			table, td{
 				border-collapse: collapse;
@@ -64,8 +63,12 @@
 	        flex-wrap: wrap;
 	        width: 1010px;
 	        margin-top: 50px;
-	        background-color: silver;
+	        margin-bottom: 20px;
 	      }
+	      .container2{
+      		width: 100%;
+     		border: 1px solid rgb(200, 200, 200);
+      		}
 	      .productDetails{
 	        width: 230px;
 	        height: 270px;
@@ -78,6 +81,7 @@
 	        width: 100%;
 	        height: 200px;
 	        background-color: aquamarine;
+	        border: 1px solid rgb(200, 200, 200);
 	      }
 	      
 	      .itemimg{
@@ -180,15 +184,17 @@
      		  내 판매물건
   			</h1>
 			<div class="container">
-            	<div class="product" v-for="(item, index) in list">
-              		<div class="productDetails" @click="fnViewItem(item)">
-                	<div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
-                	<div class="title">{{item.bTitle}}</div>
-                	<div class = "address">{{item.uAddress}}</div>
-                	<div class = "price">{{item.pPrice}} 원</div>
-              		</div>
-            	</div>
-        	</div>
+            <div class="product" v-for="(item, index) in list">
+              <div class="productDetails" @click="fnViewItem(item)">
+                <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
+             	<div class="container2">
+               	 <div class="title">{{item.bTitle}}</div>
+               	 <div class = "price">{{item.pPrice}}원</div>
+               	 <div class = "address">{{item.uAddress}}</div>
+               </div>
+              </div>
+              </div>
+            </div>
 		</div>
 			<mainsetfooter>
 	<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
