@@ -63,8 +63,8 @@
 	<div id="app" class="div1">
 		<div class="addcontainer">
 			<template>
-				<h1>상품 이미지</h1>
-				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" multiple/>
+				<h1>상품 이미지(최대 3장)</h1>
+				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" accept="image/*" multiple/>
 				<div class="preview">
 					<label v-for="(image, index) in previewImages" :key="index" class="addspan">
 						<img :src="image" alt="Image Preview" class="preview-img"/>
@@ -72,8 +72,8 @@
 						v-bind:value="index" @click="fnSelectThumbnail" ></input>
 					</label>
 				</div>
-					<button @click="removeImage(index)" class="cancelBtn">Cancel</button>
-					<span class="an">판매하실 상품을 대표할 만한 미리보기 이미지를 선택하세요.</span>
+					<button @click="removeImage(index)" class="cancelBtn">삭제</button>
+					<span class="an">대표 사진을 선택해주세요.</span>
 			</template>
 			<hr>
 			<div>
@@ -150,7 +150,6 @@ var app = new Vue({
     , methods: {
 		updateImages(event) {
 			const files = event.target.files;
-			
 			for (const file of files) {
 				this.saveImgFile.push(file);
 				this.previewImages.push(URL.createObjectURL(file));
@@ -158,6 +157,7 @@ var app = new Vue({
     	}
 		, removeImage(index) {
     		this.previewImages.splice(index, 1);
+    		
   		}
 		, fnGuList : function(){
 			var self = this;

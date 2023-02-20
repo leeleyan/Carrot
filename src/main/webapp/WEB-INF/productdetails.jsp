@@ -41,10 +41,12 @@
 				font-size: 20px;
 			}
 			.imgDiv{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-bottom: 30px;
+				width: 250px;
+			    height: 250px;
+			    border: 1px solid rgb(230, 229, 239);
+			    margin-right: 1rem;
+			    margin-bottom: 1rem;
+			    display: inline-flex;
 			}
 			.nick{
 				font-size: 25px;
@@ -54,14 +56,16 @@
 				padding: 10px;
 			}
 			.image{
-				max-width: 80%;
-			  	max-height: 80%;
+				max-width: 100%;
+			  	max-height: 100%;
 			}
     	</style>
 	</head>
 	<body>
 		<div class = container id = "app">
-			<div class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></div>
+			<div>
+			<span class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></span>
+			</div>
 			<div class="sub">
 				<h2 class="little">닉네임</h2>
 				<span class="nick">{{info.uNickName}}</span><br>
