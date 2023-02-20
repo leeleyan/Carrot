@@ -37,8 +37,8 @@
         VALUES(
             #{id}
             , #{password}
-            , #{nickname}
             , #{name}
+            , #{nickname}
             , #{tel} 
             , #{email}
             , #{address}

@@ -147,7 +147,6 @@
 			uAddress : "",
 			uEmail : "",
 			list : [] 
-	       , selectedItemList : []
 		   , siList : ${siList}
 		   , guList : ${guList}
 		   , dongList : ${dongList}
@@ -159,6 +158,9 @@
 		   , idFlg : false
 		   , nickFlg : false
 		   , mailFlg : false
+		   , validatedId : ""
+		   , validatedNickname : ""
+		   , validatedEmail : ""
 		},
 		
 		methods : {
@@ -179,6 +181,7 @@
 							alert("중복된 아이디가 있습니다.");
 						} else {
 							alert("사용가능한 아이디입니다.");
+							self.validatedId = self.uId; 
 							self.idFlg = true;
 						}
 					}
@@ -197,6 +200,7 @@
 							alert("중복된 닉네임이 있습니다.");
 						} else {
 							alert("사용가능한 닉네임입니다.");
+							self.validatedNickname = self.uNickname;
 							self.nickFlg = true;
 						}
 					}
@@ -216,6 +220,7 @@
 						} else {
 							alert("사용가능한 이메일입니다.");
 							self.mailFlg = true;
+							self.validatedEmail = self.uEmail;
 						}
 					}
 				});
@@ -232,18 +237,22 @@
 					alert("비밀번호와 비밀번호 확인이 다릅니다.")
 					return;
 				}
-				if (!self.idFlg) {
+				if (!self.idFlg || self.validatedId != self.uId) {
 					alert("아이디 중복체크를 해주세요.");
+					self.idFlg = false;
 					return;
 				}
-				if (!self.nickFlg) {
+				if (!self.nickFlg || self.validatedNickname != self.uNickname) {
 					alert("닉네임 중복체크를 해주세요.");
+					self.nickFlg = false;
 					return;
 				}
-				if (!self.mailFlg) {
+				if (!self.mailFlg || self.validatedEmail != self.uEmail) {
 					alert("이메일 중복체크를 해주세요.");
+					self.mailFlg = false;
 					return;
 				}
+				
 				var nparmap = {id : self.uId
 							   , password : self. uPassword
 							   , name : self.uName
