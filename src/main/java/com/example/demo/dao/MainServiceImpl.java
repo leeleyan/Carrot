@@ -42,8 +42,14 @@ public class MainServiceImpl implements MainService{
 
 	@Override
 	public String selectImg(int idx) throws Exception {
-		// TODO Auto-generated method stub
 		return mainMapper.selectImg(idx);
+	}
+	
+	//최근에 본 상품 불러오기
+	@Override
+	public List<Product> selectRecentlyList(HashMap<String, Object> map) throws Exception {
+			
+		return mainMapper.selectRecentlyList(map);
 	}
 	
 	

@@ -63,7 +63,6 @@ public class AddController {
 		addService.insertBoard(map);
 		resultMap.put("message", "성공");
 		resultMap.put("boardIdx", map.get("id"));
-		System.out.println(map);
 		return new Gson().toJson(resultMap);
 	} 
 	 

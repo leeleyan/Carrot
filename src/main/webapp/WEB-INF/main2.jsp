@@ -101,7 +101,7 @@
 		width: 120px;
 		height: fit-content;
 		position: fixed;
-    	top: 400px;
+    	top: 250px;
     	right: calc(50% - 800px);
 		border: solid gold 1px;
 		display: flex;
@@ -134,6 +134,12 @@
 	  .right{
 		border: solid lightgray 1px;
 	  }
+	  .miniImgDiv{
+		  width: 95%;
+		  height: 70px;
+		  padding: 5px;
+		  cursor: pointer;
+	  }
 
 
     </style>
@@ -143,11 +149,15 @@
     <h1 class="head-title" id="hot-articles-head-title">
       {{si}} {{gu}} {{dong}} 중고거래 최신매물
   	</h1>
-	<div class="recently">
+	<div class="recently" v-if="reList.length != null">
 		<div class="recently_inner">
-			<div><span>최근 본 상품</span></div>
-			<div class="recently_image">
-//				{{re}} index = {{reIndex}}
+			<div>
+				<span>최근 본 상품</span>
+			</div>
+			<div class="recently_image" v-for="(item, index) in reList">
+				<div class="miniImgDiv" @click="fnViewItem(item)" >
+					<img :src="item.img" class="itemimg">
+				</div>
 			</div>
 			<div class="recently_page">
 				<div class="pre"><span class="left"><</span></div>
@@ -200,7 +210,14 @@
   
 </html>
 <script type="text/javascript">
-  var app = new Vue({ 
+
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+
+var app = new Vue({ 
       el: '#app',
     data: {
       list : [],
@@ -213,9 +230,7 @@
 	  userNickName : "${userNickName}",
 	  userId : "${userId}", 
 	  boardIdx : "",
-	  
 	  re : ${re}, // 최근에 본 상품의 보드인덱스를 저장하는 ArrayList
-//	  reIndex : ${reIndex}, //ArrayList 의 현재 마지막 인덱스
 	  reList : [] //최근에 본 상품의 정보를 받아오는 리스트
     }, 
       methods: {
@@ -229,7 +244,6 @@
                 data : nparmap,
                 success : function(data) {                                       
 	                self.list = data.list;
-	                console.log(self.list);
                 }
             }); 
         },
@@ -243,7 +257,6 @@
                 data : nparmap,
                 success : function(data) {  
 	                self.guList = data.guList;
-	                console.log(data.guList);
 	                self.gu = "";
 	                self.dong = "";
                 }
@@ -344,26 +357,31 @@
 	        }); 
 	    },
 	    
-      //최근에 본 상품 인덱스 리스트 전달
-     fnGetReList : function(item){
-        var self = this;
-        var nparmap = { recentlyList : self.re};
-        $.ajax({
-            url:"/main/recentlyview.dox",
-            dataType:"json",	
-            type : "POST", 
-            data : nparmap,
-            success : function(data) {                                       
-                self.list = data.list;
-                console.log(self.list);
-            }
-        }); 
-    }
+      //최근에 본 상품 정보 받아오기
+	     fnGetReList : function(item){
+	        var self = this;
+	        nparmap = {};
+	        $.ajax({
+	            url:"/main/recentlyview.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.reList = data.list;
+	                console.log(self.re);
+	                console.log(self.reList);
+	            }
+	        }); 
+	    }
+	  
   },
     created: function () {
       var self = this;
       self.fnGetList();
-      console.log(self.re);
+      if (self.re.length >= 1) {
+          self.fnGetReList();
+      }
     }
   });
+
   </script>

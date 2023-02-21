@@ -78,5 +78,23 @@
 			board_idx DESC
 	</select>
 	
+	<select id="selectRecentlyList" parameterType="hashmap" resultType="com.example.demo.model.Product">
+    SELECT 
+        board_idx,
+        b_title,
+        b_content,
+        u_nickname,
+        u_address,
+        p_price
+    FROM
+        t2_product  
+    WHERE 
+        board_idx IN
+        <foreach item="item" collection="recentlyList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+</select>
+	
+	
 	
 </mapper>

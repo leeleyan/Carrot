@@ -16,4 +16,6 @@ public interface MainService {
 	List<Product> selectGetMyItemList(HashMap<String, Object> map) throws Exception; //자기상품보기
 	
 	String selectImg(int idx) throws Exception;
+
+	List<Product> selectRecentlyList(HashMap<String, Object> map) throws Exception;
 }

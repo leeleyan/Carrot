@@ -109,6 +109,8 @@ var app = new Vue({
     	userId : "${userId}",
     	userNickName : "${userNickName}",
     	info : {},
+    	re : ${re},
+    	reList : [],
     	list : []
     }   
     , methods: {

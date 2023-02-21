@@ -48,13 +48,11 @@ public class MainController {
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
     	
     	ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re"); 
-    	
     	if (re == null) {
         	re = new ArrayList<Integer>();
         }
-    	session.setAttribute("re", re);
-        
     	
+    	session.setAttribute("re", re);
 		return "/main2"; // WEB-INF에서 호출할 파일명
 	}
 	
@@ -83,7 +81,7 @@ public class MainController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
-	
+	//지역으로 검색
 	@RequestMapping(value = "/search.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String searchArea(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -96,7 +94,7 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	}
 	
-	
+	//검색창에서 검색
 	@RequestMapping(value = "/searchTitle.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public String searchTitle(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
@@ -120,4 +118,18 @@ public class MainController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	//최근에 본 상품 정보 불러오기
+	@RequestMapping(value = "/main/recentlyview.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String recentlyView(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		ArrayList<Integer> re = (ArrayList<Integer>)session.getAttribute("re");
+		map.put("recentlyList", re);
+		List<Product> list = mainService.selectRecentlyList(map);
+	    for(int i=0; i<list.size();i++) {
+	        list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+	    }
+	    resultMap.put("list", list);
+	    return new Gson().toJson(resultMap);
+	}
 }
