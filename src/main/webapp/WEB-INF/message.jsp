@@ -67,6 +67,7 @@ body {
 </head>
 <body>
 	<div id="app" class="container">
+		<jsp:include page="/layout/testmessage.jsp"></jsp:include>
 		<div class="menu">
 			<div class="sendOrReceive">
 				<button class="btn" @click="fnGetList">받은 쪽지함</button>

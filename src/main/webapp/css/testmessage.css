@@ -1,0 +1,21 @@
+.nav {
+    position: absolute;
+    left: 0;
+    width: 160px;
+    border-top: 2px solid #333;
+}
+.nav h1 {
+    height: 118px;
+}
+.nav h1 a {
+    display: block;
+    height: 93px;
+    padding-top: 25px;
+    font-size: 30px;
+    color: #333;
+    font-weight: 400;
+}
+.nav ul {
+    padding: 23px 0;
+    border-top: 1px solid #e5e5e5;
+}
