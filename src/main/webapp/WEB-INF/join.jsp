@@ -25,6 +25,7 @@
 				display: flex;
 				padding: 5px;
 				align-items: center;
+				
 			}
 			
 			.div2 {
@@ -52,6 +53,7 @@
 				height: 30px;
 				box-sizing: border-box;
 				border: solid 1px;
+				margin-right : 5px;
 			}
 			
 			.mButton {
@@ -79,29 +81,29 @@
 			<div class="div2" id="app">
 				<div class="div1">
 					<h3>아이디</h3>
-					<input type="text" v-model="uId"  maxlength="16" @input="validateId" placeholder = "8~16자리의 영어, 숫자" autofocus @keyup.enter ="fnIdCheck">
+					<input type="text" v-model="uId"  maxlength="16" @input="validateId" placeholder = "4~16자리의 영어, 숫자" autofocus @keyup.enter ="fnIdCheck">
 					<button @click="fnIdCheck" class="mButton">아이디 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>닉네임</h3>
-					<input type="text" v-model="uNickname" maxlength="16" placeholder = "8~16자리의 영어, 숫자" @keyup.enter="fnNickNameCheck">
+					<input type="text" v-model="uNickname" maxlength="16" placeholder = "" @keyup.enter="fnNickNameCheck">
 					<button @click="fnNicknameCheck" class="mButton">닉네임 중복 체크</button>
 				</div>
 				<div class="div1">
 					<h3>비밀번호</h3>
-					<input type="password" v-model="uPassword"  maxlength="16" @input="validatePw" placeholder = "문자포함 8~16자리의 영어, 숫자">
+					<input type="password" v-model="uPassword"  maxlength="16" @input="validatePw" placeholder = "영어, 숫자, 특수문자">
 				</div>
 				<div class="div1">
 					<h3>비밀번호 확인</h3>
-					<input type="password" v-model="uPasswordC"  maxlength="16" @input="validatePw" placeholder = "문자포함 8~16자리의 영어, 숫자">
+					<input type="password" v-model="uPasswordC"  maxlength="16" @input="validatePw" placeholder = "영어, 숫자, 특수문자">
 				</div>
 				<div class="div1">
 					<h3>이름</h3>
-					<input type="text" v-model="uName" @input="validateName" maxlength="30" placeholder = "8~16자리의 영어, 숫자">
+					<input type="text" @input="validateName" v-model="uName" @input="validateName" maxlength="30" placeholder = "한글 또는 영어">
 				</div>
 				<div class="div1">
 					<h3>전화번호</h3>
-					<input type="text" v-model="uTel">
+					<input type="text" v-model="uTel" @input="validateTel" placeholder = " '-' 없이 숫자만 입력해주세요.">
 				</div>
 				<div class="div1">
 					<h3>주소</h3>
@@ -171,8 +173,8 @@
 			fnIdCheck : function() {
 				var self = this;
 				var nparmap = {id : self.uId};
-				if (self.uId.length < 8 || self.uId.length > 16) {
-				    alert("아이디는 8자 이상 16자 이하로 입력해주세요.");
+				if (self.uId.length < 4 || self.uId.length > 16) {
+				    alert("아이디는 4자 이상 16자 이하로 입력해주세요.");
 				    return;
 				}
 				$.ajax({
@@ -310,14 +312,28 @@
 	             }); 
 	         }
 	    	,validateId() {
-	    	      let pattern = /^[a-zA-Z0-9]+$/
-	    	    	      this.uId = this.uId.match(pattern) ? this.uId : this.uId.slice(0, -1)
+	    	      const regex = new RegExp(/^[a-zA-Z가-힣0-9]*$/); // regular expression that matches only Korean and English characters
+		    	    if (!regex.test(this.uId)) {
+		    	        this.uId = this.uId.replace(/[^a-zA-Z가-힣]/g, ''); // remove any characters that are not Korean or English
+		    	    }
 	    	 }
 	    	,validatePw() {
+	    		 const regex = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]*$/);
+	    		  if (!regex.test(this.uPassword)) {
+	    		    this.uPassword = this.uPassword.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]/g, '');
+	    		  }
 	    	 }
 	    	,validateName() {
+	    		const regex = new RegExp(/^[a-zA-Z가-힣]*$/); // regular expression that matches only Korean and English characters
+	    	    if (!regex.test(this.uName)) {
+	    	        this.uName = this.uName.replace(/[^a-zA-Z가-힣]/g, ''); // remove any characters that are not Korean or English
+	    	    }
 	    	 }
 	    	,validateTel() {
+	    		const regex = new RegExp(/^[0-9]*$/); // regular expression that matches only Korean and English characters
+	    	    if (!regex.test(this.uTel)) {
+	    	        this.uTel = this.uTel.replace(/[^0-9]/g, ''); // remove any characters that are not Korean or English
+	    	    }
 	    	 }
 	    	,validateEmail() {
 	    	 }
