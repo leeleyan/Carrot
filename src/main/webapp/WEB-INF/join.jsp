@@ -99,7 +99,7 @@
 				</div>
 				<div class="div1">
 					<h3>이름</h3>
-					<input type="text" @input="validateName" v-model="uName" @input="validateName" maxlength="30" placeholder = "한글 또는 영어">
+					<input type="text"  v-model="uName" @input="validateName" maxlength="30" placeholder = "한글 또는 영어">
 				</div>
 				<div class="div1">
 					<h3>전화번호</h3>

@@ -16,7 +16,19 @@
 	        }
 			#ebtn{
 				font-size: 20px;
-				float: right; 
+				float: right;
+				height: 50px; 
+			}
+			#fbtn{
+				font-size: 25px;
+				height: 50px; 
+				margin-top: 10px;
+			}
+			#gbtn{
+				font-size: 25px;
+				height: 100%;
+				width: 100%;
+				 
 			}
 			.infospan{
 				font-size: 32px;
@@ -63,8 +75,8 @@
 	        flex-direction: row;
 	        flex-wrap: wrap;
 	        width: 1010px;
-	        margin-top: 50px;
-	        margin-bottom: 20px;
+	        margin-top: 20px;
+	            
 	      }
 	      .container2{
       		width: 100%;
@@ -135,17 +147,22 @@
 		    font-weight: 600;
 		    letter-spacing: -0.6px;
 		    color: #212529;
-		    margin-bottom: -40px;
+		    margin-bottom: -35px;
+		    margin-top: -35px;
+		    margin-left: 10px;    
 	  }	
+	  	.top{
+	  	    margin-bottom: 15px;
+		}
     	</style>
 	</head>
 
 	<body>
 		<div id="app">
 			<div class="outerdiv">
-			<div style="text-align: left;">
+			<div class="top" style="text-align: left;">
 				<span class="infospan">회원정보</span>	
-				<button id="ebtn" @click="fnUnregister" >회원탈퇴</button>
+				<button id="ebtn" onclick="window.open('unregister.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-500)/2+', width=660px,height=500px');">회원탈퇴</button>
 			</div>
 			<table>
 				<tr>
@@ -153,37 +170,39 @@
 					<td colspan="2">{{userId}}</td>
 					<td colspan="2">전화번호</td>
 					<td>{{tel}}</td>
-					<td><button @click="fnUpdateTel">변경</button></td>
+					<td><button id="gbtn" @click="fnUpdateTel">변경</button></td>
 				</tr>
 				<tr>
 					<td>이름</td>
 					<td colspan=2>{{name}}</td>
 					<td>이메일</td>
 					<td colspan="2">{{email}}</td>
-					<td><button @click="fnEditEmail">변경</button></td>
+					<td><button id="gbtn" @click="fnEditEmail">변경</button></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
 					<td>{{userNickName}}</td>
-					<td><button @click="fnEditNick">변경</button></td>
+					<td><button id="gbtn" @click="fnEditNick">변경</button></td>
 					<td>주소</td>
 					<td colspan=2>
 					{{address}}
 					</td>
-					<td><button onclick="window.open('addresschange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
+					<td><button  id="gbtn" onclick="window.open('addresschange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
 				</tr>
 				<tr>
 				<td>비밀번호</td>
-				<td><button onclick="window.open('passwordchange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
+				<td><button id="gbtn" onclick="window.open('passwordchange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
 				</tr>
 				
 			</table>
-			<span><button @click="fnHome" class="addbutton" >돌아가기</button></span>
+			<span><button id="fbtn" @click="fnHome" class="addbutton" >돌아가기</button></span>
 			</div>
 			<div class="container">
 			<h1 class="head-title" id="hot-articles-head-title">
-     		  내 판매물건
+      			 나의 판매목록
   			</h1>
+  			</div>
+			<div class="container">
             <div class="product" v-for="(item, index) in list">
               <div class="productDetails" @click="fnViewItem(item)">
                 <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  
@@ -301,15 +320,17 @@ var app = new Vue({
         document.body.removeChild(form);
      	}
     
-	 , fnUnregister : function(){
-		var self = this;
-		self.pageChange("./unregister.do", {});
-	 }
 	 ,fnUpdateTel : function(){
  		var self = this;
  		var newTel = prompt("새 전화번호를 입력해주세요.");
  		  if (newTel != null) {
- 		    self.tel = newTel;
+ 			 const regex = new RegExp(/^[0-9]*$/); // regular expression that matches only Korean and English characters
+	    	    if (!regex.test(newTel)) {
+	    	    	alert("숫자만 입력가능합니다.");
+	    	    	return;
+	    	    } else{
+ 		    		self.tel = newTel;
+	    	    }
  		  }else {
  			  alert("취소되었습니다.")
  			  return;
@@ -334,6 +355,11 @@ var app = new Vue({
             alert("취소되었습니다.");
             return;
         }
+        
+        else if (self.newNick.length < 2 || self.newNick.length > 6) {
+		    alert("닉네임은 2자 이상 6자 이하로 입력해주세요.");
+		    return;
+		}
         var nparmap = { nickname: self.newNick };
         $.ajax({
             url: "/join/nicknamecheck.dox",

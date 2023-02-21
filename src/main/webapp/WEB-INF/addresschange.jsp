@@ -49,9 +49,15 @@
 				font-size: 25px;
 			}
 			select{
-				width: auto;
+			    width: 32%;
 				height: 50px;
 				font-size: 16px;
+			}
+			#gbtn{
+				font-size: 25px;
+				height: 50px;
+				width: 100%;
+				 
 			}
 			
     	</style>
@@ -82,7 +88,7 @@
 								<option v-for="item in dongList" v-bind:value="item.dong">{{item.dong}}</option>
 							</select> 
 					</td>
-					<td><button @click="fnUpdateAddress">변경하기</button></td>
+					<td><button id="gbtn" @click="fnUpdateAddress">변경하기</button></td>
 				</tr>
 			</table>
 			<span><button @click="fnClose">닫기</button></span>

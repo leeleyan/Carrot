@@ -57,7 +57,7 @@
 	</head>
 	<body>
 	<div id="app" class="div1">
-		<h2>탈퇴하시겠습니까?</h2>
+		<h2>정말 탈퇴하시겠습니까?</h2>
 		<span>비밀번호</span>
 		<input type="password" v-model="uPasswordA"><br>
 		<span>비밀번호 확인</span>
@@ -86,10 +86,6 @@ var app = new Vue({
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
-						console.log(data.num);
-						console.log(data.num2);
-						console.log(data.num3);
-						console.log(data.num4);
 						alert("회원탈퇴가 완료되었습니다.");
 						self.fnLogout();
 						location.href="/main.do";

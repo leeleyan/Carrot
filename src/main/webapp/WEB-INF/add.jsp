@@ -24,12 +24,12 @@
 			}
 			.addinput{
 				margin-left: 30px;
-				width: 40em;
+				width: 30em;
 				height: 40px;
 			}
 			.addcontainer{
-				margin-left: 10%;
-				margin-right: 10%;
+				margin-left: 20%;
+				margin-right: 20%;
 				margin-bottom: 40px;
 			}
 			hr{
@@ -41,10 +41,10 @@
 				margin-left: 5px;
 			}
 			.addbutton{
-				width: 220px;
-				font-size: 30px;
-				display: block;
-				margin: 10px;
+				width: 250px;
+    			font-size: 30px;
+    			display: block;
+    			margin-left: 18%;
 			}
 			.preview{
 				width: 100%;
@@ -53,15 +53,81 @@
 				width: 150px;
 				font-size: 20px;
 				display: block;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				margin-left: 40px;
 			}
 			.an{
-				color: rgb(23, 117, 175);
+				color: rgb(255, 0, 0);
+				font-size: 20px;
+   				font-weight: bold;
 			}
 			select{
 				width: auto;
 				height: 50px;
 				font-size: 16px;
 			}
+			.cXVdux {
+			    display: flex;
+			    width: 856px;
+			    flex-wrap: wrap;
+			    overflow-x: hidden;
+			 }
+			.gDZtN {
+			    width: 202px;
+			    height: 202px;
+			    position: relative;
+			    border: 1px solid rgb(230, 229, 239);
+			    background: rgb(250, 250, 253);
+			    display: flex;
+			    -webkit-box-align: center;
+			    align-items: center;
+			    -webkit-box-pack: center;
+			    justify-content: center;
+			    flex-direction: column;
+			    color: rgb(155, 153, 169);
+			    font-size: 1rem;
+			    margin-right: 1rem;
+			    margin-bottom: 1rem;
+			}
+			.fJxKeH::before {
+			    content: "";
+			    background-position: center center;
+			    background-repeat: no-repeat;
+			    background-size: cover;
+			    width: 2rem;
+			    height: 2rem;
+			    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxwYXRoIGZpbGw9IiNEQ0RCRTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI4LjQ3MSAzMkgzLjUzYy0uOTcxIDAtMS44OTQtLjQyMi0yLjUyOS0xLjE1N2wtLjAyNi0uMDNBNCA0IDAgMCAxIDAgMjguMTk4VjguNjA3QTQgNCAwIDAgMSAuOTc0IDUuOTlMMSA1Ljk2YTMuMzQzIDMuMzQzIDAgMCAxIDIuNTI5LTEuMTU2aDIuNTM0YTIgMiAwIDAgMCAxLjUzNy0uNzJMMTAuNC43MkEyIDIgMCAwIDEgMTEuOTM3IDBoOC4xMjZBMiAyIDAgMCAxIDIxLjYuNzJsMi44IDMuMzYzYTIgMiAwIDAgMCAxLjUzNy43MmgyLjUzNGMuOTcxIDAgMS44OTQuNDIzIDIuNTI5IDEuMTU3bC4wMjYuMDNBNCA0IDAgMCAxIDMyIDguNjA2djE5LjU5MWE0IDQgMCAwIDEtLjk3NCAyLjYxN2wtLjAyNi4wM0EzLjM0MyAzLjM0MyAwIDAgMSAyOC40NzEgMzJ6TTE2IDkuNmE4IDggMCAxIDEgMCAxNiA4IDggMCAwIDEgMC0xNnptMCAxMi44YzIuNjQ3IDAgNC44LTIuMTUzIDQuOC00LjhzLTIuMTUzLTQuOC00LjgtNC44YTQuODA1IDQuODA1IDAgMCAwLTQuOCA0LjhjMCAyLjY0NyAyLjE1MyA0LjggNC44IDQuOHoiLz4KPC9zdmc+Cg==);
+			    margin-bottom: 1rem;
+			}
+			.fJxKeH2 {
+			    width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    top: 0px;
+			    left: 0px;
+			    opacity: 0;
+			    cursor: pointer;
+			    font-size: 0px;
+			}
+			.fJxKeH {
+			    width: 202px;
+			    height: 202px;
+			    position: relative;
+			    border: 1px solid rgb(230, 229, 239);
+			    background: rgb(250, 250, 253);
+			    display: flex;
+			    -webkit-box-align: center;
+			    align-items: center;
+			    -webkit-box-pack: center;
+			    justify-content: center;
+			    flex-direction: column;
+			    color: rgb(155, 153, 169);
+			    font-size: 1rem;
+			    margin-right: 1rem;
+			    margin-bottom: 1rem;
+			}
+			
     	</style>
 	</head>
 	<body>
@@ -69,7 +135,12 @@
 		<div class="addcontainer">
 			<template>
 				<h1>상품 이미지(최대 4장)</h1>
-				<input type="file" class="addinput" @change="updateImages" id="file1" name="file1" accept="image/*" multiple/>
+				<ul class="sc-giOsra cXVdux">
+					<li class="sc-SFOxd gDZtN">
+					이미지 등록
+					<input type="file" class="fJxKeH2" @change="updateImages" id="file1" name="file1" accept="image/*" multiple/>
+					</li>
+					</ul>
 				<div class="preview">
 					<label v-for="(image, index) in previewImages" :key="index" class="addspan">
 						<img :src="image" alt="Image Preview" class="preview-img"/>
@@ -80,6 +151,8 @@
 					<button v-bind:disabled="previewImages == 0" @click="removeImage" class="cancelBtn">삭제</button>
 					<span class="an">대표 사진을 선택해주세요.</span>
 			</template>
+			
+			
 			<hr>
 			<div>
 				<h1>제목</h1>
@@ -120,7 +193,7 @@
 				<hr>
 			</div>
 			<div style = "display : flex;">
-				<button @click="fnSave" class="addbutton" style ="margin-left: 100px;" type="submit">등록하기</button>
+				<button @click="fnSave" class="addbutton" type="submit">등록하기</button>
 				<button @click="fnList" class="addbutton" >돌아가기</button>
 			</div>
 		</div>
