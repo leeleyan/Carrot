@@ -103,7 +103,7 @@
 		position: fixed;
     	top: 250px;
     	right: calc(50% - 800px);
-		border: solid gold 1px;
+		border: solid lightgray 1px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -113,26 +113,8 @@
 		display: flex;
 	  }
 	  .recently_inner{
-		border: solid salmon 1px;
 		padding: 5px;
 		margin: 5px;
-	  }
-	  .pre{
-		width: 33%;
-		text-align: right;
-	  }
-	  .current{
-		width: 34%;
-	  }
-	  .next{
-		width: 33%;
-		text-align: left;
-	  }
-	  .left{
-		border: solid lightgray 1px;
-	  }
-	  .right{
-		border: solid lightgray 1px;
 	  }
 	  .miniImgDiv{
 		  width: 95%;
@@ -149,20 +131,17 @@
     <h1 class="head-title" id="hot-articles-head-title">
       {{si}} {{gu}} {{dong}} 중고거래 최신매물
   	</h1>
-	<div class="recently" v-if="reList.length != null">
-		<div class="recently_inner">
-			<div>
-				<span>최근 본 상품</span>
-			</div>
-			<div class="recently_image" v-for="(item, index) in reList">
-				<div class="miniImgDiv" @click="fnViewItem(item)" >
-					<img :src="item.img" class="itemimg">
+    <div>
+		<div class="recently"v-if="reList.length>0" >
+			<div class="recently_inner" >
+				<div>
+					<span>최근 본 상품<br><hr></span>
 				</div>
-			</div>
-			<div class="recently_page">
-				<div class="pre"><span class="left"><</span></div>
-				<div class="current"> </div>
-				<div class="next"> <span class="right">></span></div>
+				<div class="recently_image" v-for="(item, index) in reList">
+					<div class="miniImgDiv" @click="fnViewItem(item)" >
+						<img :src="item.img" class="itemimg">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
