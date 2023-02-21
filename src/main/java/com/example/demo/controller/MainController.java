@@ -48,11 +48,12 @@ public class MainController {
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
     	
     	ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re"); 
-        if (re == null) {
+    	
+    	if (re == null) {
         	re = new ArrayList<Integer>();
         }
-        //reIndex 도 if 안에 넣어서 만들어줘야함
-        session.setAttribute("re", re);
+    	session.setAttribute("re", re);
+        
     	
 		return "/main2"; // WEB-INF에서 호출할 파일명
 	}

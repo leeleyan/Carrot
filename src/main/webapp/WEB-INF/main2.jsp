@@ -147,7 +147,7 @@
 		<div class="recently_inner">
 			<div><span>최근 본 상품</span></div>
 			<div class="recently_image">
-				{{re}} index = {{reIndex}}
+//				{{re}} index = {{reIndex}}
 			</div>
 			<div class="recently_page">
 				<div class="pre"><span class="left"><</span></div>
@@ -215,7 +215,7 @@
 	  boardIdx : "",
 	  
 	  re : ${re}, // 최근에 본 상품의 보드인덱스를 저장하는 ArrayList
-	  reIndex : ${reIndex}, //ArrayList 의 현재 마지막 인덱스
+//	  reIndex : ${reIndex}, //ArrayList 의 현재 마지막 인덱스
 	  reList : [] //최근에 본 상품의 정보를 받아오는 리스트
     }, 
       methods: {
