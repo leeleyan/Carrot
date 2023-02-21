@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <title>slide images</title>
-    <link type="text/css" rel="stylesheet" href="css/styles.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
     #index_01{
