@@ -109,9 +109,6 @@
 		justify-content: center;
 		align-items: center;
 	  }
-	  .recently_page{
-		display: flex;
-	  }
 	  .recently_inner{
 		padding: 5px;
 		margin: 5px;
@@ -121,6 +118,9 @@
 		  height: 70px;
 		  padding: 5px;
 		  cursor: pointer;
+		  border: solid lightgray 1px;
+		  margin-top : 5px;
+		  margin-right : 7px;
 	  }
 
 

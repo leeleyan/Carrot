@@ -78,6 +78,7 @@
 				  padding: 5px;
 				  cursor: pointer;
 				  border: solid lightgray 1px;
+				  margin : 5px;
 			  }
     	</style>
 	</head>
