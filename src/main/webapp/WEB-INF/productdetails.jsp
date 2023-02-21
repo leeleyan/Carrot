@@ -77,18 +77,12 @@
 				  height: 70px;
 				  padding: 5px;
 				  cursor: pointer;
+				  border: solid lightgray 1px;
 			  }
     	</style>
 	</head>
 	<body>
 		<div id="app">
-		/*
-		 * <div class="recently"v-if="reList.length>0" > <div class="recently_inner" >
-		 * <div><span>최근 본 상품<br><hr></span> </div> <div class="recently_image"
-		 * v-for="(item, index) in reList"> <div
-		 * class="miniImgDiv" @click="fnViewItem(item)" > <img :src="item.img"
-		 * class="itemimg"> </div> </div> </div> </div>
-		 */
 		<div class = container>
 			<div>
 			<span class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></span>
