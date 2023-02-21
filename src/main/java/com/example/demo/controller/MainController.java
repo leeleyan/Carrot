@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,6 +46,14 @@ public class MainController {
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
+    	
+    	ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re"); 
+        if (re == null) {
+        	re = new ArrayList<Integer>();
+        }
+        //reIndex 도 if 안에 넣어서 만들어줘야함
+        session.setAttribute("re", re);
+    	
 		return "/main2"; // WEB-INF에서 호출할 파일명
 	}
 	

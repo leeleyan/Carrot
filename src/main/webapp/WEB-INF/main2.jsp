@@ -85,6 +85,7 @@
       	padding-left: 600px;
         display: flex;
         flex-direction: start;;
+		margin-right: 30px;
       }
 
       #app{
@@ -93,7 +94,48 @@
       .form-control{
         height: 40px;
         font-size: 20px;
+		margin-right: 5px;
       }
+
+	  .recently{
+		width: 120px;
+		height: fit-content;
+		position: fixed;
+    	top: 400px;
+    	right: calc(50% - 800px);
+		border: solid gold 1px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	  }
+	  .recently_page{
+		display: flex;
+	  }
+	  .recently_inner{
+		border: solid salmon 1px;
+		padding: 5px;
+		margin: 5px;
+	  }
+	  .pre{
+		width: 33%;
+		text-align: right;
+	  }
+	  .current{
+		width: 34%;
+	  }
+	  .next{
+		width: 33%;
+		text-align: left;
+	  }
+	  .left{
+		border: solid lightgray 1px;
+	  }
+	  .right{
+		border: solid lightgray 1px;
+	  }
+
+
     </style>
   </head>
   <body>
@@ -101,6 +143,19 @@
     <h1 class="head-title" id="hot-articles-head-title">
       {{si}} {{gu}} {{dong}} 중고거래 최신매물
   	</h1>
+	<div class="recently">
+		<div class="recently_inner">
+			<div><span>최근 본 상품</span></div>
+			<div class="recently_image">
+				{{re}} index = {{reIndex}}
+			</div>
+			<div class="recently_page">
+				<div class="pre"><span class="left"><</span></div>
+				<div class="current"> </div>
+				<div class="next"> <span class="right">></span></div>
+			</div>
+		</div>
+	</div>
       <div class="selectAddress">
         <div>
           <label for="si" class="control-label"></label> 
@@ -157,7 +212,11 @@
 	  dong : "",
 	  userNickName : "${userNickName}",
 	  userId : "${userId}", 
-	  boardIdx : ""
+	  boardIdx : "",
+	  
+	  re : ${re}, // 최근에 본 상품의 보드인덱스를 저장하는 ArrayList
+	  reIndex : ${reIndex}, //ArrayList 의 현재 마지막 인덱스
+	  reList : [] //최근에 본 상품의 정보를 받아오는 리스트
     }, 
       methods: {
     	fnGetList : function(item){
@@ -284,11 +343,27 @@
 	            }
 	        }); 
 	    },
-      
-    }, 
+	    
+      //최근에 본 상품 인덱스 리스트 전달
+     fnGetReList : function(item){
+        var self = this;
+        var nparmap = { recentlyList : self.re};
+        $.ajax({
+            url:"/main/recentlyview.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {                                       
+                self.list = data.list;
+                console.log(self.list);
+            }
+        }); 
+    }
+  },
     created: function () {
       var self = this;
       self.fnGetList();
+      console.log(self.re);
     }
   });
   </script>

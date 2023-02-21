@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +33,16 @@ public class ProductDetailsController {
 	 @RequestMapping("/productdetails.do") // 상품 정보 화면
      public String pdp(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
 		request.setAttribute("map", map);
+		String indexString = map.get("boardIdx").toString();
+		int tIndex = Integer.parseInt(indexString);
+		System.out.println("상품 인덱스 정수 " + tIndex);
+		ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re");
+		int reIndex = (int)session.getAttribute("reIndex");
+		reIndex += 1;
+		re.add(tIndex);
+		//반복문써서 중복된거 없을때만 추가
+		session.setAttribute("re", re);
+		session.setAttribute("reIndex", reIndex);
 		return "/productdetails"; 
     } 
 	 
