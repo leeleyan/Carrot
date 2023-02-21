@@ -37,7 +37,7 @@
 				<dl>
 					<dt>내용</dt>
 					<dd for="wr_1">
-					<dt class="textarea"><pre>{{item.mContent}}</pre></dt>
+					<dt class="textarea">{{item.mContent}}</dt>
 					</dd>
 				</dl>
 				<div class="btSec">

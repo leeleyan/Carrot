@@ -14,5 +14,5 @@ public interface MessageService {
 	
 	List<Message> selectSendList(HashMap<String, Object> map) throws Exception;
 	
-	int removeMessage(HashMap<String, Object> map) throws Exception;
+	void deleteMessage(HashMap<String, Object> map);
 }

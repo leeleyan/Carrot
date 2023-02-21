@@ -17,6 +17,6 @@ public interface MessageMapper {
 	
 	List<Message> selectSendList(HashMap<String, Object> map) throws Exception;
 	
-	int deleteStudent(HashMap<String, Object> map);
+	void deleteMessage(HashMap<String, Object> map);
 	
 }

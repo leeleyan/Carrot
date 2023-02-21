@@ -36,8 +36,7 @@ public class MessageServiceImpl implements MessageService{
 	}
 
 	@Override
-	public int removeMessage(HashMap<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return messageMapper.deleteStudent(map);
+	public void deleteMessage(HashMap<String, Object> map) {
+		messageMapper.deleteMessage(map);
 	}
 }

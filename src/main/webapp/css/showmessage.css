@@ -59,9 +59,10 @@ body.popup {
     border: 1px solid #d1d1d1;
     box-sizing: border-box;
 }
-.popSend textarea {
-    width: 100%;
+.popSend .textarea {
+    width: 365px;
 }
+
 .inputTextarea {
     width: 434px;
     height: 201px;

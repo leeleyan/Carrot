@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.MessageService;
 import com.example.demo.model.Message;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 
@@ -57,10 +61,14 @@ public class MessageController {
 	
 	@RequestMapping(value = "/message/remove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String removeStudent(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+	public String remove(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		int num = messageService.removeMessage(map); // DB 접근 및 쿼리를 통한 데이터 호출 
-		resultMap.put("list", num);
+		String json = map.get("list").toString();
+		ObjectMapper mapper = new ObjectMapper();
+	    List<Map<String, Object>> list = mapper.readValue(json, new TypeReference<ArrayList<Map<String, Object>>>(){});
+		map.put("list", list);
+		messageService.deleteMessage(map);
+		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
 	}
 }

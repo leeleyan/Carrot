@@ -8,62 +8,62 @@
 <script src="js/vue.js"></script>
 <jsp:include page="/layout/logoheader.jsp"></jsp:include>
 <title>마켓이름 : 쪽지화면</title>
-	<style>
-	@import
-		url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-		;
-	
-		* {
-			font-family: 'Noto Sans KR', sans-serif;
-		}
-		
-		.board {
-			width: 800px;
-			height: 330px;
-			background-color: #EEEFF1;
-			border-radius: 5px;
-			overflow: auto;
-		}
-		
-		td {
-			border: solid red 1px;
-		}
-		
-		th {
-			border: solid green 1px;
-		}
-		
-		.sendOrReceive {
-			display: flex;
-			justify-content: center;
-		}
-		
-		.container {
-			border: solid black 5px;
-			margin: auto;
-			text-align: center;
-			width: 800px;
-		}
-		
-		.menu {
-			border: solid greenyellow 4px;
-		}
-		
-		.btn {
-			background-color: transparent; /*버튼 배경 제거*/
-			cursor: pointer; /*버튼 활성화*/
-			outline: none; /* 테두리의 두께에 따라 주변 레이아웃을 변형X */
-			border: none; /*버튼 테두리 제거*/
-		}
-		
-		.deleteAndWrite {
-			text-align: right;
-		}
-		
-		body{
-			padding-bottom: 50px;
-		}
-	</style>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.board {
+	width: 800px;
+	height: 330px;
+	background-color: #EEEFF1;
+	border-radius: 5px;
+	overflow: auto;
+}
+
+td {
+	border: solid red 1px;
+}
+
+th {
+	border: solid green 1px;
+}
+
+.sendOrReceive {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	border: solid black 5px;
+	margin: auto;
+	text-align: center;
+	width: 800px;
+}
+
+.menu {
+	border: solid greenyellow 4px;
+}
+
+.btn {
+	background-color: transparent; /*버튼 배경 제거*/
+	cursor: pointer; /*버튼 활성화*/
+	outline: none; /* 테두리의 두께에 따라 주변 레이아웃을 변형X */
+	border: none; /*버튼 테두리 제거*/
+}
+
+.deleteAndWrite {
+	text-align: right;
+}
+
+body {
+	padding-bottom: 50px;
+}
+</style>
 </head>
 <body>
 	<div id="app" class="container">
@@ -73,7 +73,7 @@
 				<button class="btn" @click="fnGetGotList">보낸 쪽지함</button>
 			</div>
 			<div class="deleteAndWrite">
-				<button class="btn">삭제</button>
+				<button class="btn" @click="fnRemove">삭제</button>
 				<button class="logobtn" @click="fnWrite">쪽지작성</button>
 			</div>
 		</div>
@@ -87,8 +87,8 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col"><input type='checkbox'name='selectBoard'
-						value='selectall' onclick='selectAll(this)'/></th>
+						<th scope="col"><input type='checkbox' name='selectBoard'
+							value='selectall' onclick='selectAll(this)' /></th>
 						<th scope="col" v-if="flg == false">보낸 사람</th>
 						<th scope="col" v-else="flg == true">받는 사람</th>
 						<th scope="col">내용</th>
@@ -98,10 +98,12 @@
 				<tbody>
 					<tr v-for="(item, index) in list">
 						<td><input type="checkbox" name="selectBoard"
-							v-bind:id="'idx_' + index" v-bind:value="item"></td>
+							v-bind:id="'idx_' + index" v-bind:value="item"
+							v-model="selectedItemList"></td>
 						<td v-if="flg == false">{{item.uSender}}</td>
 						<td v-else="flg == true">{{item.uRecipient}}</td>
-						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0, 30)}}{{item.mContent.length > 30 ? '...' : ''}}</td>
+						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0,
+							30)}}{{item.mContent.length > 30 ? '...' : ''}}</td>
 						<td>{{item.createDate}}</td>
 					</tr>
 				</tbody>
@@ -122,12 +124,25 @@ function selectAll(selectAll)  {
 	    checkbox.checked = selectAll.checked;
 	  })
 }
+
+$(document).ready(function() {
+    $('#submit').click(function() {
+        if ($('#male').is(":checked")) {
+            alert($('#male').val());
+        }
+        else if ($('#female').is(":checked")) {
+            alert($('#female').val());
+        }
+    })
+});
+
 	var app = new Vue({
 		el : '#app',
 		data : {
 			userNickName : "${userNickName}",
 			list : [],
 			mNo : "",
+			selectedItemList : [],
 			flg : false
 		},
 		methods : {
@@ -174,7 +189,25 @@ function selectAll(selectAll)  {
 				  console.log(paramMap);
 				  window.close();
 				  window.open("./send.do?mNo=" + paramMap.mNo, "받은 쪽지", "width=555,height=580");
-				},
+			},
+	    	fnRemove : function(){
+	    		var self = this;
+	    		if (confirm("쪽지를 정말 삭제하시겠습니까?")) {
+	    		var list = JSON.stringify(self.selectedItemList);
+	    		var nparmap = {"test" : "1",  "list" : list};
+	             $.ajax({
+	                 url:"/message/remove.dox",
+	                 dataType:"json",	
+	                 type : "POST", 
+	                 data : nparmap,
+	                 success : function(data) {            
+	                	 alert("삭제되었습니다.");
+	                	 self.selectedItemList = [];
+	                	 self.fnGetList();
+	                 }
+	             });  
+	    	   }
+	    	}
 		},
 		created : function() {
 			var self = this;
