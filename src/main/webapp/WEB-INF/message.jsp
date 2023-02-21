@@ -87,7 +87,8 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col"></th>
+						<th scope="col"><input type='checkbox'name='selectBoard'
+						value='selectall' onclick='selectAll(this)'/></th>
 						<th scope="col" v-if="flg == false">보낸 사람</th>
 						<th scope="col" v-else="flg == true">받는 사람</th>
 						<th scope="col">내용</th>
@@ -112,6 +113,15 @@
 </setfooter>
 </html>
 <script type="text/javascript">
+
+function selectAll(selectAll)  {
+	  const checkboxes 
+	       = document.getElementsByName('selectBoard');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked;
+	  })
+}
 	var app = new Vue({
 		el : '#app',
 		data : {

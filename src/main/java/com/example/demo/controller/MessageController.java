@@ -54,4 +54,13 @@ public class MessageController {
 		resultMap.put("list", list);
 		return new Gson().toJson(resultMap);
 	}
+	
+	@RequestMapping(value = "/message/remove.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String removeStudent(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		int num = messageService.removeMessage(map); // DB 접근 및 쿼리를 통한 데이터 호출 
+		resultMap.put("list", num);
+		return new Gson().toJson(resultMap);
+	}
 }

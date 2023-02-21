@@ -34,4 +34,10 @@ public class MessageServiceImpl implements MessageService{
 		// TODO Auto-generated method stub
 		return messageMapper.selectGotMessageList(map);
 	}
+
+	@Override
+	public int removeMessage(HashMap<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return messageMapper.deleteStudent(map);
+	}
 }

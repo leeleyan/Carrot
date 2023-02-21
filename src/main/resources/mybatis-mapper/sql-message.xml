@@ -26,4 +26,9 @@
 			t2_message
 		where m_no = #{mNo}
 	</select>
+	
+	<delete id="deleteMessage" parameterType="hashmap">
+		DELETE FROM t2_message WHERE m_no = #{mNo}
+	</delete>
+	
 </mapper>

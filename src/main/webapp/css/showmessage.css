@@ -40,9 +40,7 @@ body.popup {
     color: #333;
     vertical-align: top;
     text-indent: -1px;
-}
-dt .textarea{
-	word-break: break-all;
+    word-break: break-all;
 }
 .popSend dd {
     display: inline-block;
