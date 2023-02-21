@@ -37,6 +37,9 @@ public class ProductDetailsController {
 		int tIndex = Integer.parseInt(indexString);
 		ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re");
 		if (!re.contains(tIndex)) {
+			if (re.size()==5) {
+				re.remove(0);
+			}
 		    re.add(tIndex);
 		}
 		session.setAttribute("re", re);
