@@ -18,6 +18,7 @@
 				margin: auto;
 				border: solid gray 1px;
 				width: 1010px;
+				margin-bottom: 20px;
       		}
 			.little{
 				display: inline;
@@ -94,6 +95,9 @@
 				</button>
 			</div>
 		</div>
+		<mainsetfooter>
+			<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
+		</mainsetfooter>
 	</body>
 </html>
 

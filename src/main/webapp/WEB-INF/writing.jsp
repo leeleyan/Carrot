@@ -121,7 +121,10 @@ $(function() {
 	    	fnSave : function() {
 				var self = this;
 				var nparmap = {nickname : self.uRecipient};
-				if(!self.uRecipient || !self.mTitle || !self.mContent){
+				if(!self.userId){
+					alert("로그인 후 이용가능합니다.");
+				}
+				else if(!self.uRecipient || !self.mTitle || !self.mContent){
 		      		alert("모든 내용을 입력해주세요.");
 		      	} else{
 				$.ajax({
@@ -132,7 +135,7 @@ $(function() {
 					success : function(data) {
 						if (data.num > 0) {
 					      	var nparmap = {u_sender : self.nickname, u_recipient : self.uRecipient
-					      			       ,m_title : self.mTitle, m_content : self.mContent};
+					      			       ,m_title : self.mTitle, m_content : self.mContent, u_id : self.userId};
 							$.ajax({
 								url : "/writing/add.dox",
 								dataType : "json",

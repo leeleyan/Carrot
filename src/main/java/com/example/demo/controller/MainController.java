@@ -41,6 +41,7 @@ public class MainController {
         List<Area> guList = areaService.selectGuList(map);
         map.put("gu", guList.get(0).getGu());
         List<Area> dongList = areaService.selectDongList(map);
+        map.put("dong", guList.get(0).getDong());
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));

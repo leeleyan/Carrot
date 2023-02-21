@@ -18,4 +18,25 @@
 		WHERE 
 			u_id = #{id}
 	</delete>
+	
+	<delete id="deleteUser2" parameterType="hashmap">	
+		DELETE FROM 
+			t2_product 
+		WHERE 
+			u_id = #{id}
+	</delete>
+	
+	<delete id="deleteUser3" parameterType="hashmap">	
+		DELETE FROM 
+			t2_image 
+		WHERE 
+			u_id = #{id}
+	</delete>
+	
+	<delete id="deleteUser4" parameterType="hashmap">	
+		DELETE FROM 
+			t2_message 
+		WHERE 
+			u_id = #{id}
+	</delete>
 </mapper>

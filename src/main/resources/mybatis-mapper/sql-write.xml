@@ -24,12 +24,13 @@
 	   
     <insert id="insertMessage" parameterType="hashmap">
 	INSERT INTO t2_message
-	(u_sender, u_recipient, m_title, m_content)
+	(u_sender, u_recipient, m_title, m_content, u_id)
 	VALUES(
 		#{u_sender}
 		, #{u_recipient}
 		, #{m_title}
 		, #{m_content}
+		, #{u_id}
 	)
 	</insert>
 	

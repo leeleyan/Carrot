@@ -103,7 +103,7 @@
       <div class="selectAddress">
         <div>
           <label for="si" class="control-label"></label> 
-          <select id="si"	v-model="si" class="form-control" @change="fnGuList(); fnSearch1();" style="margin-left: 19px;">
+          <select id="si"	v-model="si" class="form-control" @change="fnGuList(); fnDongList(); fnSearch1();" style="margin-left: 19px;">
             <option value="">시 선택</option>
             <option v-for="item in siList" v-bind:value="item.si">{{item.si}}</option>
           </select>
@@ -252,8 +252,6 @@
 	            data : nparmap,
 	            success : function(data) {                                       
 	                self.list = data.list;
-	                console.log(self.list);
-	                console.log(si);
 	            }
 	        }); 
 	    },
@@ -268,8 +266,6 @@
 	            data : nparmap,
 	            success : function(data) {                                       
 	                self.list = data.list;
-	                console.log(self.list);
-	                console.log(si);
 	            }
 	        }); 
 	    },
@@ -284,8 +280,6 @@
 	            data : nparmap,
 	            success : function(data) {                                       
 	                self.list = data.list;
-	                console.log(self.list);
-	                console.log(si);
 	            }
 	        }); 
 	    },

@@ -86,7 +86,12 @@ var app = new Vue({
 					type : "POST",
 					data : nparmap,
 					success : function(data) {
+						console.log(data.num);
+						console.log(data.num2);
+						console.log(data.num3);
+						console.log(data.num4);
 						alert("회원탈퇴가 완료되었습니다.");
+						self.fnLogout();
 						location.href="/main.do";
 					}
 				});
@@ -99,8 +104,8 @@ var app = new Vue({
 			
     , fnBack : function(){
 		location.href="/myinformation.do";
-	},
-    fnGetInfo : function(){
+	}
+    , fnGetInfo : function(){
 			var self = this;
         var nparmap = {id : self.userId};
            $.ajax({
@@ -113,6 +118,18 @@ var app = new Vue({
                }
            }); 
      }
+	, fnLogout : function(){
+        var self = this;
+        var nparmap = {}; 
+        $.ajax({
+            url:"/logout/get.dox",
+            dataType:"json",	
+            type : "POST", 
+            data : nparmap,
+            success : function(data) {
+      		}
+    	}); 
+	}
    }   
     , created: function () {
     	var self = this;

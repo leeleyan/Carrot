@@ -19,7 +19,8 @@
 				float: right; 
 			}
 			.infospan{
-				font-size: 40px;
+				font-size: 32px;
+   			    font-weight: 600;
 			}
 			
 			select{
@@ -133,7 +134,6 @@
 		    font-size: 32px;
 		    font-weight: 600;
 		    letter-spacing: -0.6px;
-		    text-align: center;
 		    color: #212529;
 		    margin-bottom: -40px;
 	  }	
@@ -180,10 +180,10 @@
 			</table>
 			<span><button @click="fnHome" class="addbutton" >돌아가기</button></span>
 			</div>
+			<div class="container">
 			<h1 class="head-title" id="hot-articles-head-title">
      		  내 판매물건
   			</h1>
-			<div class="container">
             <div class="product" v-for="(item, index) in list">
               <div class="productDetails" @click="fnViewItem(item)">
                 <div class="imgDiv"><img :src="item.img" @error="handleImgError" class="itemimg"></div>  

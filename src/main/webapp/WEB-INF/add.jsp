@@ -76,9 +76,8 @@
 						<input type ="radio" v-model = "selectItem" v-bind:id = "'radio_' + index" 
 						v-bind:value="index" @click="fnSelectThumbnail" ></input>
 					</label>
-					<!-- v-bind:disabled="previewImages == 0" -->
 				</div>
-					<button @click="removeImage" class="cancelBtn">삭제</button>
+					<button v-bind:disabled="previewImages == 0" @click="removeImage" class="cancelBtn">삭제</button>
 					<span class="an">대표 사진을 선택해주세요.</span>
 			</template>
 			<hr>
@@ -160,6 +159,10 @@ var app = new Vue({
 			const files = event.target.files;
 			if((self.imgLength + files.length) > 4){
 				alert("사진은 최대 4장까지만 등록가능합니다.");
+				
+				self.imgLength = 0;
+				this.previewImages.splice(self.thumbnail, 4);
+				
 				if(self.imgLength == 0){
 					$('#file1').val('');
 				} else {
@@ -228,7 +231,7 @@ var app = new Vue({
     		var nparmap = {title : self.bTitle, content : self.bContent
    			       , nickname : self.nickname, img : self.img
    			       , address : self.si + " " + self.gu +" "+ self.dong
-   			       , price : self.pPrice};
+   			       , price : self.pPrice, id : self.userId};
     		console.log(self.img);
     		
     	    if(!fileCheck || !self.bTitle || !self.bContent ||
@@ -260,6 +263,7 @@ var app = new Vue({
 	            		var form = new FormData();
 		       	        form.append( "file1", self.saveImgFile[i] );
 		       	     	form.append( "boardIdx",  data.boardIdx);
+		       	     	form.append( "userId",  self.userId);
 		       	     	if(i==self.thumbnail) {
 		       	     		form.append("thumbnail", "y");
 		       	     	}else {
