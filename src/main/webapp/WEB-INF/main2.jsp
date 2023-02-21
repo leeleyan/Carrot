@@ -7,6 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/vue.js"></script>  
 	<jsp:include page="/layout/marketheader.jsp"></jsp:include>
+	<jsp:include page="/layout/slide.jsp"></jsp:include>
 	<style>
       body{
         justify-content: center;
