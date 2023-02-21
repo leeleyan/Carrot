@@ -75,8 +75,11 @@
 	                }
 	            }); 
 	        },fnWrite : function(){
-	        	window.close();
-    			window.open("./writing.do","쪽지쓰기","width=555,height=580");
+	        	var self = this;
+	        	console.log(self.list[0].uSender);
+	        	var reply = self.list[0].uSender;
+	        	/* window.close(); */
+    			window.open("./writing.do?recipient="+reply,"쪽지쓰기","width=555,height=580");
 	    	},fnSendclose : function() {
 				window.close();
 			}

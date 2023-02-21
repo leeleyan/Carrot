@@ -79,7 +79,7 @@ $(function() {
 			list : []
 			,nickname : ""
 			,uSender : ""
-			,uRecipient : ""
+			,uRecipient : "${map.recipient}"
 			,mTitle : ""
 			,mContent : ""
 			,userId : "${userId}"

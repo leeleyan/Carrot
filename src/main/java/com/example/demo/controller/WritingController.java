@@ -34,8 +34,8 @@ public class WritingController {
 	HttpSession session;
     
 	 @RequestMapping("/writing.do") // 쪽지 쓰기 팝업 화면
-     public String join(Model model) throws Exception{
-
+     public String join(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		 request.setAttribute("map", map);
 		 return "/writing"; // WEB-INF에서 호출할 파일명
     } 
 	 
