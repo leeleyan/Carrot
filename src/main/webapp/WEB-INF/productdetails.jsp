@@ -56,15 +56,40 @@
 			.sub{
 				padding: 10px;
 			}
-			.image{
-				max-width: 100%;
-			  	max-height: 100%;
-			}
-						
+			.recently{
+				width: 120px;
+				height: fit-content;
+				position: fixed;
+		    	top: 250px;
+		    	right: calc(50% - 800px);
+				border: solid lightgray 1px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			  }
+			  .recently_inner{
+				padding: 5px;
+				margin: 5px;
+			  }
+			  .miniImgDiv{
+				  width: 95%;
+				  height: 70px;
+				  padding: 5px;
+				  cursor: pointer;
+			  }
     	</style>
 	</head>
 	<body>
-		<div class = container id = "app">
+		<div id="app">
+		/*
+		 * <div class="recently"v-if="reList.length>0" > <div class="recently_inner" >
+		 * <div><span>최근 본 상품<br><hr></span> </div> <div class="recently_image"
+		 * v-for="(item, index) in reList"> <div
+		 * class="miniImgDiv" @click="fnViewItem(item)" > <img :src="item.img"
+		 * class="itemimg"> </div> </div> </div> </div>
+		 */
+		<div class = container>
 			<div>
 			<span class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></span>
 			</div>
@@ -128,12 +153,35 @@ var app = new Vue({
                 }
             }); 
         },
+    	fnViewItem : function(item){
+     		var self = this;
+     		self.pageChange("/productdetails.do", {boardIdx : item.boardIdx});
+     	},
+    	fnGetReList : function(item){
+	        var self = this;
+	        nparmap = {};
+	        $.ajax({
+	            url:"/main/recentlyview.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.reList = data.list;
+	                console.log(self.re);
+	                console.log(self.reList);
+	            }
+	        }); 
+	    }
 
     	
     }   
     , created: function () {
     	var self = this;
     	self.fnGetItem();
+    	if (self.re.length >= 1) {
+            self.fnGetReList();
+        }
+    	
 	}
 });
 </script>
