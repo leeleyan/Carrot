@@ -60,16 +60,4 @@ setInterval(function(){
     $('#slide1>ul').delay(2500);
     $('#slide1>ul').animate({marginLeft: "0px"})
 });
-var app = new Vue({ 
-	el: '#app2',
-    data: {
-
-   }   
-    , methods: {
-   
-    }    
-    , created: function () {
-    
-	}
-});
 </script>
