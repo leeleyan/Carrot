@@ -4,60 +4,67 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>slide images</title>
+    <link rel="stylesheet" href="css/slide.css" type="text/css">
+    <title>main</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-    #index_01{
-    width: 1200px;
-    margin: 0 auto;
-}
-
-#header1{
-    height: 100px;
-    border-bottom: 1px solid dimgrey;
-    box-sizing: border-box;
-    text-align: center;
-    line-height: 100px;
-    font-size: 1.5rem;
-}
-
-#slide1{
-    height: 355px;
-    overflow: hidden;
-    margin-top: 30px;
-}
-#slide1>ul{
-    width: 9999999px;
-    font-size: 0;
-    padding-inline-start: 0px;
-}
-#slide1>ul>li{
-    display: inline-block;
-    font-size: 0;
-}
-    </style>
 </head>
 <body>
- <div id="index_01">
-        <div id="slide1">
-            <ul>
-                <li><a href="#"><img src="img/slideimg1.jpg" alt="슬라이드1"></a></li>
-                <li><a href="#"><img src="img/slideimg3.jpg" alt="슬라이드2"></a></li>
-                <li><a href="#"><img src="img/slideimg2.jpg" alt="슬라이드3"></a></li>
-            </ul>
+<main id="main">
+    <section id="sliderType01" style="margin-top: 50px;">
+        <div class="slider__wrap">
+            <div class="slider__img">
+                <div class="slider__inner">
+                    <div class="slider"><img src="img/slideimg1.jpg" alt="이미지1"></div>
+                    <div class="slider"><img src="img/slideimg2.jpg" alt="이미지2"></div>
+                    <div class="slider"><img src="img/slideimg3.jpg" alt="이미지3"></div>
+                </div>
+            </div>
+            <div class="slider__btn">
+                <a href="#" class="prev">prev</a>   
+                <a href="#" class="next">next</a>
+            </div>
         </div>
-    </div>
+    </section>
+</main>
 </body>
 </html>
 
 <script type="text/javascript">
+const sliderWrap = document.querySelector(".slider__wrap"); 
+const sliderImg = document.querySelector(".slider__img");       //보여지는 영역
+const sliderInner = document.querySelector(".slider__inner");   //움직이는 영역 
+const slider = document.querySelectorAll(".slider");            //각각 이미지
+const sliderBtn = document.querySelector(".slider__btn");    //버튼
+const sliderBtnPrev = sliderBtn.querySelector(".prev");      //왼쪽버튼
+const sliderBtnNext = sliderBtn.querySelector(".next");      //오른쪽버튼
 
-setInterval(function(){
-    $('#slide1>ul').delay(2500);
-    $('#slide1>ul').animate({marginLeft: "-1200px"})
-    $('#slide1>ul').delay(2500);
-    $('#slide1>ul').animate({marginLeft: "-2400px"})
-    $('#slide1>ul').delay(2500);
-    $('#slide1>ul').animate({marginLeft: "0px"})
+let currentIndex = 0;                       //현재 이미지
+let sliderCount = slider.length;            //이미지 갯수
+let sliderWidth = sliderImg.offsetWidth;    //이미지 가로값
+
+
+//이미지 움직이는 영역
+function gotoSlider(num){
+    sliderInner.style.transition = "all 400ms"
+    sliderInner.style.transform = "translateX("+ -sliderWidth * num +"px)";
+    currentIndex = num;
+}
+
+//왼쪽 버튼 클릭
+sliderBtnPrev.addEventListener("click", ()=>{
+    let prevIndex = (currentIndex + (sliderCount-1)) %  sliderCount
+    gotoSlider(prevIndex);
+    // 0,4,3,2,1..
+    console.log(prevIndex);
 });
+
+//오른쪽 버튼 클릭
+sliderBtnNext.addEventListener("click", ()=>{
+    let nextIndex = (currentIndex + 1) % sliderCount;
+    gotoSlider(nextIndex);
+    // 0,1,2,3,4..
+    console.log(nextIndex);
+});
+
+
 </script>
