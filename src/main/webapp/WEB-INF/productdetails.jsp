@@ -41,7 +41,7 @@
 				font-size: 20px;
 			}
 			.imgDiv{
-				width: 250px;
+				width: 234px;
 			    height: 250px;
 			    border: 1px solid rgb(230, 229, 239);
 			    margin-right: 1rem;
@@ -89,7 +89,9 @@
 				<span class="description"><pre>{{info.bContent}}</pre></span>
 			</div>
 			<div class="msgDiv">
-				<button class="msg">판매자에게 쪽지 보내기</button>
+				<button class="msg" onclick="window.open('writing.do','_blank', 'left='+(screen.availWidth-555)/2+',top='+(screen.availHeight-580)/2+', width=555px,height=580px');">
+				판매자에게 쪽지 보내기
+				</button>
 			</div>
 		</div>
 	</body>

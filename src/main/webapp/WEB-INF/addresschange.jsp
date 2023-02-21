@@ -24,10 +24,6 @@
 			span{
 				font-size: 40px;
 			}
-			
-			select{
-				font-size: 25px;
-			}
 			table{
 				width: 500px;
 				font-size: 25px;
@@ -52,7 +48,6 @@
 			button{
 				font-size: 25px;
 			}
-			
 			select{
 				width: auto;
 				height: 50px;

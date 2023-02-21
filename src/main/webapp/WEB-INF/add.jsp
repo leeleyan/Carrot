@@ -57,6 +57,11 @@
 			.an{
 				color: rgb(23, 117, 175);
 			}
+			select{
+				width: auto;
+				height: 50px;
+				font-size: 16px;
+			}
     	</style>
 	</head>
 	<body>
@@ -71,6 +76,7 @@
 						<input type ="radio" v-model = "selectItem" v-bind:id = "'radio_' + index" 
 						v-bind:value="index" @click="fnSelectThumbnail" ></input>
 					</label>
+					<!-- v-bind:disabled="previewImages == 0" -->
 				</div>
 					<button @click="removeImage" class="cancelBtn">삭제</button>
 					<span class="an">대표 사진을 선택해주세요.</span>
@@ -78,7 +84,7 @@
 			<hr>
 			<div>
 				<h1>제목</h1>
-				<input type="text" maxlength="30" class="addinput" v-model="bTitle" placeholder="30글자까지 입력가능">
+				<input type="text" maxlength="30" class="addinput" v-model="bTitle" placeholder=" 30글자까지 입력가능">
 				<hr>
 			</div>
 			<div>
@@ -106,12 +112,12 @@
 			</div>
 			<div>
 				<h1>가격</h1>
-				<input type="text" class="addinput" @input="validatePrice" maxlength="8" v-model="pPrice" style="width: 100px;" placeholder="ex)10000"> <span>원</span>
+				<input type="text" class="addinput" @input="validatePrice" maxlength="8" v-model="pPrice" style="width: 100px;" placeholder=" ex)10000"> <span>원</span>
 				<hr>
 			</div>
 			<div>
 				<h1 style="display: block;">게시글 내용</h1>
-				<textarea name="" id="" cols="85" rows="10" maxlength="300" placeholder="300글자까지 입력가능" v-model="bContent"></textarea>
+				<textarea name="" id="" cols="85" rows="10" maxlength="300" placeholder=" 300글자까지 입력가능" v-model="bContent"></textarea>
 				<hr>
 			</div>
 			<div style = "display : flex;">
