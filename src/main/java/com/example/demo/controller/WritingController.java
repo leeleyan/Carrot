@@ -46,6 +46,13 @@ public class WritingController {
 		 return "/messagesend"; // WEB-INF에서 호출할 파일명
     } 
 	 
+	 @RequestMapping("/got.do") // 보낸 쪽지 팝업 화면
+     public String got(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam HashMap<String, Object> map) throws Exception{
+		 request.setAttribute("map", map);
+		 System.out.println(map);
+		 return "/messagegot"; // WEB-INF에서 호출할 파일명
+    }  
+	 
 		@RequestMapping(value = "/writing/add.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 		@ResponseBody
 		public String Insertmessage(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
