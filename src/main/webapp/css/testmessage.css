@@ -19,3 +19,22 @@
     padding: 23px 0;
     border-top: 1px solid #e5e5e5;
 }
+.nav li {
+    height: 29px;
+    list-style:none;
+    list-style-type:none;
+}
+.nav li.active a, .nav li a:hover {
+    color: #5468e7;
+    background-position: right -43px;
+}
+
+.nav li a {
+    display: block;
+    width: 160px;
+    height: 24px;
+    padding-top: 5px;
+    font-size: 15px;
+    color: #666;
+    background: url(../img/messageimg.png) no-repeat right 7px;
+}

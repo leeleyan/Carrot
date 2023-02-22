@@ -70,7 +70,7 @@ body {
 		<jsp:include page="/layout/testmessage.jsp"></jsp:include>
 		<div class="menu">
 			<div class="sendOrReceive">
-				<button class="btn" @click="fnGetList">받은 쪽지함</button>
+				<button class="btn" @click="fnGetList" >받은 쪽지함</button>
 				<button class="btn" @click="fnGetGotList">보낸 쪽지함</button>
 			</div>
 			<div class="deleteAndWrite">
@@ -126,17 +126,6 @@ function selectAll(selectAll)  {
 	  })
 }
 
-$(document).ready(function() {
-    $('#submit').click(function() {
-        if ($('#male').is(":checked")) {
-            alert($('#male').val());
-        }
-        else if ($('#female').is(":checked")) {
-            alert($('#female').val());
-        }
-    })
-});
-
 	var app = new Vue({
 		el : '#app',
 		data : {
@@ -144,7 +133,8 @@ $(document).ready(function() {
 			list : [],
 			mNo : "",
 			selectedItemList : [],
-			flg : false
+			flg : false,
+			messageflg : false
 		},
 		methods : {
 			fnGetList : function() {
@@ -161,6 +151,7 @@ $(document).ready(function() {
 						self.list = data.list;
 						console.log(self.list);
 						self.flg = false;
+						self.messageflg = false;
 					}
 				});
 			},	
@@ -178,6 +169,7 @@ $(document).ready(function() {
 						self.list = data.list;
 						console.log(self.list);
 						self.flg = true;
+						self.messageflg = true;
 					}
 				});
 			}
@@ -189,7 +181,10 @@ $(document).ready(function() {
 				  var paramMap = {mNo: item.mNo};
 				  console.log(paramMap);
 				  window.close();
+				  if(self.messageflg == false)
 				  window.open("./send.do?mNo=" + paramMap.mNo, "받은 쪽지", "width=555,height=580");
+				  else
+				  window.open("./got.do?mNo=" + paramMap.mNo, "보낸 쪽지", "width=555,height=580");
 			},
 	    	fnRemove : function(){
 	    		var self = this;
