@@ -42,10 +42,7 @@
 				</dl>
 				<div class="btSec">
 					<button class="btCancel" id="btCancel" @click="fnSendclose">
-						<span>취소</span>
-					</button>
-					<button class="btSubmit" id="btSubmit" @click="fnWrite">
-						<span>답장 하기</span>
+						<span>닫기</span>
 					</button>
 				</div>
 			</div>

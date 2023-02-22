@@ -1,0 +1,1258 @@
+a,abbr,acronym,address,big,blockquote,body,button,caption,cite,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,html,img,ins,kbd,label,legend,li,ol,p,pre,q,s,samp,small,span,strike,strong,table,tbody,td,tfoot,th,thead,tr,ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    background: transparent;
+    font-size: 1em;
+    line-height: 1.35;
+}
+
+ol,ul {
+    list-style: none
+}
+
+@font-face {
+    font-family: NEXON Lv1 Gothic;
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://rs.nxfs.nexon.com/message/fonts/NEXON%20Lv1%20Gothic%20OTF.eot);
+    src: url(https://rs.nxfs.nexon.com/message/fonts/NEXON%20Lv1%20Gothic%20OTF.eot#iefix) format("embedded-opentype"),url(https://rs.nxfs.nexon.com/message/fonts/NEXON%20Lv1%20Gothic%20OTF.woff) format("woff")
+}
+
+body,html {
+    width: 100%
+}
+
+body {
+    overflow-y: scroll;
+    *overflow-y: hidden;
+    font: 12px/1.35 "\B3CB\C6C0",dotum,Segoe WP,Helvetica,"sans serif"
+}
+
+button,input,textarea {
+    font: 1em "\B3CB\C6C0",dotum,Segoe WP,Helvetica,"sans serif";
+    color: #666
+}
+
+button {
+    position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    text-decoration: none!important;
+    white-space: nowrap;
+    vertical-align: top;
+    overflow: visible;
+    cursor: pointer;
+    _cursor: hand
+}
+
+.floatClear {
+    *zoom:1}
+
+.floatClear:after {
+    content: "";
+    clear: both;
+    display: block
+}
+
+.skipNav {
+    margin: 0 -1px -1px 0
+}
+
+.skipNav,.skipNav a {
+    height: 1px;
+    width: 1px
+}
+
+.skipNav a {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0
+}
+
+.skipNav a:active,.skipNav a:focus,.skipNav a:hover {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    height: auto;
+    width: auto;
+    margin: 0;
+    padding: 5px 20px;
+    font-size: 12px;
+    line-height: 1;
+    background-color: #fff;
+    color: #000;
+    z-index: 100000
+}
+
+.visuallyHidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px
+}
+
+html {
+    background-color: #fff
+}
+
+body {
+    /* color:#999; */
+    background-color: #fafbfc
+}
+
+a,a:hover {
+    color: #999;
+    text-decoration: none
+}
+
+.sel {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    height: 34px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    vertical-align: top;
+    z-index: 100
+}
+
+.selPlaceholder {
+    display: block;
+    width: 163px;
+    height: 23px;
+    padding: 9px 0 0 15px;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    -ms-user-select: none;
+    visibility: visible;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    background-color: #fff;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.selbutton {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    display: block;
+    width: 40px;
+    height: 32px;
+    background: #fff url(https://rs.nxfs.nexon.com/message/images/set_input.png) no-repeat 3px -186px
+}
+
+.active .selbutton {
+    background-position: 3px -236px
+}
+
+.selbox {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    display: none;
+    list-style-type: none;
+    text-align: left;
+    font-size: 1em;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    width: 100%;
+    box-sizing: border-box
+}
+
+.sel.active .selbox {
+    display: block;
+    padding: 10px 0 14px
+}
+
+.sel.disabled .selDisabled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #f7f7f7;
+    opacity: .7;
+    cursor: default;
+    z-index: 100
+}
+
+.selOptions {
+    display: list-item;
+    user-select: none;
+    -ms-user-select: none;
+    white-space: normal;
+    margin-bottom: 1px;
+    padding: 4px 10px 0 15px
+}
+
+.selOptions.selected:after {
+    display: inline
+}
+
+.selOptions:hover {
+    background-color: #f2f2f2
+}
+
+.inputCheck,.inputRadio {
+    position: relative;
+    display: inline-block;
+    min-width: 19px;
+    height: 19px;
+    user-select: none;
+    -ms-user-select: none;
+    overflow: hidden
+}
+
+.inputCheck input,.inputRadio input {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    z-index: -1
+}
+
+.inputCheck label,.inputRadio label {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;min-width: 19px;
+    height: 17px;
+    padding: 2px 9px 0 26px;
+    font-size: 14px;
+    color: #999;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_input.png) no-repeat 2px 2px;
+    cursor: pointer
+}
+
+.inputCheck input:checked+label {
+    background-position: 2px -48px
+}
+
+.inputCheck input.disabled+label,.inputCheck input:disabled+label {
+    background-position: 2px -298px
+}
+
+.inputRadio label {
+    background-position: 2px -98px
+}
+
+.inputRadio input:checked+label {
+    background-position: 2px -148px
+}
+
+.inputText {
+    height: 34px;
+    padding: 7px 14px 3px;
+    font-size: 14px;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    box-sizing: border-box
+}
+
+.inputText.disabled,.inputText:disabled {
+    background-color: #f9f9f9;
+    border: 1px solid #f2f2f2
+}
+
+input[type=text]::-ms-clear {
+    display: none
+}
+
+.inputTextarea {
+    width: 434px;
+    height: 201px;
+    padding: 12px 19px;
+    font-size: 12px;
+    line-height: 1.65;
+    vertical-align: top;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    resize: none;
+    box-sizing: border-box
+}
+
+:placeholder {
+    color: #d2d2d2
+}
+
+::-webkit-input-placeholder {
+    color: #d2d2d2
+}
+
+:-ms-input-placeholder {
+    color: #d2d2d2
+}
+
+:-moz-placeholder {
+    color: #d2d2d2
+}
+
+.placeholderWarp {
+    position: relative;
+    display: inline-block
+}
+
+.placeholderTxt {
+    display: inline-block;
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    font-size: 14px;
+    color: #d2d2d2
+}
+
+.btDefault,.btDefaultB,.btDefaultS {
+    display: inline-block;
+    color: #666;
+    border: 1px solid #d1d1d1;
+    text-align: center
+}
+
+.btDefaultS {
+    border-color: #e6e6e6
+}
+
+.btDefault:hover,.btDefaultB:hover,.btDefaultS:hover {
+    color: #333;
+    border: 1px solid #333
+}
+
+.btDefault.disabled,.btDefaultB.disabled,.btDefaultS.disabled {
+    color: #cbcbcb;
+    border-color: #ebebeb;
+    background-color: #f9f9f9;
+    cursor: default
+}
+
+.btDefaultS:hover {
+    z-index: 10
+}
+
+.btDefaultB {
+    min-width: 48px;
+    height: 23px;
+    padding: 9px 10px 0 9px;
+    font-size: 14px;
+    color: #999
+}
+
+.btDefault {
+    min-width: 24px;
+    height: 22px;
+    padding: 8px 14px 0
+}
+
+.btDefaultS {
+    position: relative;
+    min-width: 25px;
+    height: 15px;
+    padding: 3px 4px 0 6px;
+    font-size: 11px;
+    color: #999;
+    background-color: #fff;
+    margin-right: -6px
+}
+
+@supports (-ms-ime-align:auto) {
+    .btDefaultS {
+        padding: 1px 4px 2px 6px
+    }
+}
+
+@-moz-document url-prefix() {
+    .btDefaultS {
+        padding: 2px 4px 1px 6px
+    }
+}
+
+.btCancel,.btSubmit {
+    display: inline-block;
+    min-width: 51px;
+    height: 30px;
+    padding: 15px 20px 0 19px;
+    margin: 0 2px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center
+}
+
+.btCancel {
+    color: #999;
+    background-color: #e5e5e5
+}
+
+.btSubmit {
+    color: #fff;
+    background-color: #5468e7
+}
+
+.btCancel:hover {
+    color: #666;
+    background-color: #ebebeb
+}
+
+.btSubmit:hover {
+    color: #fff;
+    background-color: #4a60ea
+}
+
+.wrapper {
+    position: relative;
+    width: 780px;
+    height: 605px;
+    padding: 0 0 80px 200px;
+    margin: 80px auto 0;
+    overflow: hidden
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    font-family: NEXON Lv1 Gothic;
+    border-top: 2px solid #333
+}
+
+.nav h1 {
+    height: 118px
+}
+
+.nav h1 a {
+    display: block;
+    height: 93px;
+    padding-top: 25px;
+    font-size: 30px;
+    color: #333;
+    font-weight: 400
+}
+
+.nav ul {
+    padding: 23px 0;
+    border-top: 1px solid #e5e5e5
+}
+
+.nav li {
+    height: 29px
+}
+
+.nav li a {
+    display: block;
+    width: 160px;
+    height: 24px;
+    padding-top: 5px;
+    font-size: 15px;
+    color: #666;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_message.png) no-repeat right 7px
+}
+
+
+.nav .btWrite {
+    display: block;
+    height: 50px;
+    padding: 27px 0 0 27px;
+    font-size: 18px;
+    color: #333;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_message.png) no-repeat 0 -69px
+}
+
+.nav .btWrite:hover {
+    color: #5468e7;
+    background-position: 0 -119px
+}
+
+.wrapper #contents {
+    width: 700px;
+    height: 650px;
+    padding: 0 39px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff
+}
+
+.wrapper h2 {
+    height: 56px;
+    padding-top: 36px;
+    font-family: NEXON Lv1 Gothic;
+    font-size: 24px;
+    color: #333;
+    font-weight: 400
+}
+
+.wrapper h2 .new {
+    color: #5468e7
+}
+
+.wrapper h2 .all {
+    color: #999
+}
+
+.tab {
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+}
+
+.tabNone {
+    margin-top: -29px;
+    height: 30px
+}
+
+.tabNone,.tab ul {
+    box-shadow: inset 0 -1px 0 0 #afafaf
+}
+
+.tab ul {
+    height: 50px;
+    font-family: NEXON Lv1 Gothic;
+    overflow: hidden
+}
+
+.tab li {
+    position: relative;
+    float: left;
+    margin-right: -1px
+}
+
+.tab a {
+    display: block;
+    min-width: 146px;
+    height: 33px;
+    padding: 15px 15px 0;
+    color: #999;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #e6e6e6;
+    border-bottom: 0;
+    background-color: #f9f9f9
+}
+
+.tab .active {
+    z-index: 10
+}
+
+.tab .active a {
+    height: 34px;
+    color: #5468e7;
+    border: 1px solid #afafaf;
+    border-bottom: 0;
+    background-color: #fff
+}
+
+.msgInfo {
+    position: absolute;
+    bottom: 7px;
+    right: 0;
+    padding-left: 8px;
+    color: #afafaf;
+    font-size: 11px;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_message.png) no-repeat left -397px
+}
+
+.btSecList {
+    position: relative;
+    height: 43px;
+    padding-top: 31px
+}
+
+.btSecList .btDefault {
+    margin-right: 1px
+}
+
+.btSecList .btChangeView {
+    margin-left: 5px;
+    font-size: 11px;
+    color: #848484
+}
+
+.btSecList .btChangeView:hover {
+    color: #5468e7;
+    text-decoration: underline
+}
+
+.btSecList .sel {
+    position: absolute;
+    top: 30px;
+    right: 0
+}
+
+.btSecList .msgCount {
+    display: inline-block;
+    padding-left: 4px;
+    color: #666
+}
+
+.btSecList .msgInfo {
+    bottom: 6px
+}
+
+div.list {
+    border-top: 1px solid #c1c1c1;
+    font-size: 14px
+}
+
+div.list table {
+    width: 100%;
+    border-spacing: 0;
+    user-select: none;
+    -ms-user-select: none
+}
+
+div.list .inputCheck {
+    width: 19px
+}
+
+div.list .inputCheck label {
+    padding-left: 0
+}
+
+col.checkbox {
+    width: 55px
+}
+
+col.cate {
+    width: 115px
+}
+
+col.nickname {
+    width: 122px
+}
+
+col.date {
+    width: 126px
+}
+
+div.list thead {
+    background-color: #f9f9f9
+}
+
+thead tr {
+    height: 49px
+}
+
+thead th {
+    padding-top: 11px;
+    color: #333;
+    font-weight: 400
+}
+
+th.cate {
+    text-align: left
+}
+
+tr.list,tr.none {
+    height: 50px;
+    color: #afafaf
+}
+
+tr.list {
+    cursor: pointer
+}
+
+tr.list:hover {
+    background-color: #f7f7f7
+}
+
+tr.list:hover .tit {
+    text-decoration: underline
+}
+
+tr.unread td {
+    color: #5468e7
+}
+
+tr.unread:hover {
+    background-color: #f4f6ff
+}
+
+tr.view {
+    display: none
+}
+
+tr.list.show td {
+    color: #000
+}
+
+tr.view.show {
+    display: table-row
+}
+
+tbody td {
+    padding-top: 11px;
+    border-top: 1px solid #ebebeb;
+    color: #848484
+}
+
+tbody td span {
+    display: block;
+    height: 20px;
+    overflow: hidden
+}
+
+td.checkbox {
+    text-align: center
+}
+
+td.checkbox .inputCheck,th.checkbox .inputCheck {
+    margin: 4px 0 -4px
+}
+
+td.none {
+    padding-top: 16px;
+    text-align: center
+}
+
+td.nickname,td.tit {
+    padding-left: 20px
+}
+
+td.tit .receive,td.tit .send {
+    padding-left: 21px;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_state.png) no-repeat 0 2px
+}
+
+td.tit .send {
+    background-position: 0 2px
+}
+
+.unread td.tit .send {
+    background-position: 0 -48px
+}
+
+.show td.tit .send {
+    background-position: 0 -98px
+}
+
+td.tit .receive {
+    background-position: 0 -148px
+}
+
+.unread td.tit .receive {
+    background-position: 0 -198px
+}
+
+.show td.tit .receive {
+    background-position: 0 -248px
+}
+
+td.date {
+    padding-left: 20px
+}
+
+td.view {
+    padding: 22px 55px 19px;
+    background-color: #f9f9f9;
+    word-break: break-all
+}
+
+td.view .date,td.view .nickname {
+    line-height: 1.65;
+    font-size: 12px;
+    color: #666
+}
+
+td.view .date dt,td.view .nickname dt {
+    display: inline-block;
+    font-weight: 700;
+    padding-right: 6px
+}
+
+td.view .date dd,td.view .nickname dd {
+    display: inline-block
+}
+
+td.view .cnts {
+    padding-top: 11px;
+    line-height: 1.65;
+    font-size: 12px
+}
+
+.listSetting col.nickname {
+    width: 162px
+}
+
+.listSetting tr.unread td {
+    color: #848484
+}
+
+.listSetting tr.list:hover,.listSetting tr.unread:hover {
+    background-color: transparent
+}
+
+.listSetting tr.list:hover {
+    cursor: default
+}
+
+.listSetting tr.list:hover .tit {
+    text-decoration: none
+}
+
+.listSetting td {
+    height: 48px;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    line-height: 1.75;
+    vertical-align: middle
+}
+
+.listSetting td.checkbox {
+    padding-top: 12px
+}
+
+.listSetting td.tit {
+    padding-top: 14px;
+    padding-bottom: 11px
+}
+
+.btSecView {
+    padding-top: 14px
+}
+
+.btSecView .btGroup {
+    display: inline-block;
+    margin-right: 9px
+}
+
+.msgAlert {
+    padding: 3px 0 0 18px;
+    background: url(https://rs.nxfs.nexon.com/message/images/ico_alert.gif) no-repeat 0 4px
+}
+
+.msgAlert,.update {
+    color: #666;
+    font-size: 12px
+}
+
+.update {
+    display: block;
+    height: 17px;
+    line-height: 18px;
+    padding-top: 2px;
+    margin-bottom: 2px
+}
+
+.update .icon {
+    display: inline-block;
+    height: 15px;
+    padding: 1px 10px 0;
+    color: #fff;
+    background-color: #27e282;
+    border-radius: 16px;
+    vertical-align: top
+}
+
+.paginate {
+    height: 90px;
+    padding-top: 30px;
+    vertical-align: top;
+    text-align: center
+}
+
+.paginate:empty {
+    height: 30px
+}
+
+.btPaginateNum {
+    display: inline-block;
+    margin: 0 9px;
+    vertical-align: top
+}
+
+.paginate a {
+    display: inline-block;
+    min-width: 12px;
+    height: 16px;
+    padding: 7px 9px 5px 7px;
+    margin-right: -4px;
+    color: #777;
+    text-align: center;
+    border: 1px solid #fff;
+    vertical-align: middle
+}
+
+.paginate a.btPaginate {
+    border-color: #efefef;
+    background: #fdfdfd url(https://rs.nxfs.nexon.com/message/images/set_message.png) no-repeat 11px -191px
+}
+
+.paginate a.btPaginate:hover {
+    border-color: #ccc;
+    background-color: #fff
+}
+
+.paginate a.btPaginateNext {
+    background-position: 11px -291px
+}
+
+.paginate a.btPaginatePrev:hover {
+    background-position: 11px -241px
+}
+
+.paginate a.btPaginateNext:hover {
+    background-position: 11px -341px
+}
+
+.paginate a.active,.paginate a:hover {
+    color: #5468e7;
+    border-color: #5468e7
+}
+
+.setting {
+    padding-top: 40px
+}
+
+.setting dl {
+    padding-bottom: 32px
+}
+
+.setting dt {
+    position: relative;
+    padding-left: 12px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 700
+}
+
+.setting dt:before {
+    content: ".";
+    position: absolute;
+    top: -4px;
+    left: -1px
+}
+
+.setting dd {
+    padding-top: 7px;
+    margin-left: -2px
+}
+
+.setting .inputRadio {
+    margin-right: 25px
+}
+
+.setting .btSec {
+    height: 104px;
+    padding: 1px 0;
+    text-align: center
+}
+
+.writeSetting {
+    position: relative;
+    padding: 20px 0 10px;
+    margin-top: 30px;
+    border: 1px solid #e5e5e5;
+    z-index: 10
+}
+
+.writeSetting dl {
+    height: 44px;
+    vertical-align: top
+}
+
+.writeSetting dt {
+    display: inline-block;
+    width: 111px;
+    padding: 10px 0 0 29px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 700;
+    vertical-align: top
+}
+
+.writeSetting dd {
+    display: inline-block;
+    height: 44px
+}
+
+.writeSetting .nickname .inputText {
+    width: 261px;
+    margin-left: 4px
+}
+
+.writeSetting .memo .inputText {
+    width: 449px;
+    margin-right: 2px
+}
+
+.writeSetting+.msgAlert {
+    margin: 11px 0 -4px
+}
+
+.footer {
+    height: 63px;
+    padding-top: 42px;
+    color: #888;
+    font-family: malgun gothic;
+    font-size: 11px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5
+}
+
+.footer,body.popup {
+    background-color: #fff
+}
+
+body.popup {
+    overflow: auto
+}
+
+.popWrapper {
+    padding: 37px 40px 0
+}
+
+.popWrapper h1 {
+    height: 46px;
+    font-size: 24px;
+    color: #333;
+    font-family: NEXON Lv1 Gothic;
+    font-weight: 400
+}
+
+.popWrite {
+    border-top: 1px solid #333
+}
+
+.popWrite .from,.popWrite .to {
+    background: url(https://rs.nxfs.nexon.com/message/images/bg_dotted.png) repeat-x 0 bottom;
+    white-space: nowrap
+}
+
+.popWrite dt {
+    display: inline-block;
+    width: 102px;
+    padding-top: 22px;
+    font-family: NEXON Lv1 Gothic;
+    font-size: 15px;
+    color: #333;
+    vertical-align: top;
+    text-indent: -1px
+}
+
+.popWrite .cnts dt {
+    display: none
+}
+
+.popWrite .cnts dd {
+    width: 100%
+}
+
+.popWrite dd {
+    display: inline-block;
+    padding: 15px 0 16px
+}
+
+.popWrite .sel:first-child {
+    margin-right: 4px
+}
+
+.popWrite .inputText {
+    width: 285px;
+    margin-right: 2px
+}
+
+.popWrite .msg {
+    padding-left: 8px;
+    margin: 9px 0 -4px 1px;
+    color: #afafaf;
+    font-size: 11px;
+    background: url(https://rs.nxfs.nexon.com/message/images/set_message.png) no-repeat left -397px
+}
+
+.popWrite .cnts .placeholderTxt {
+    top: 15px;
+    left: 20px;
+    font-size: 12px
+}
+
+.popWrite .bite {
+    display: block;
+    padding: 6px 1px 0;
+    text-align: right;
+    color: #afafaf
+}
+
+.popWrite textarea {
+    width: 100%
+}
+
+.popCompleted {
+    display: table;
+    width: 100%;
+    padding: 15px 0 20px;
+    border-top: 1px solid #333
+}
+
+.popCompleted .cnts {
+    display: table-cell;
+    height: 300px;
+    padding: 46px 40px 30px;
+    color: #666;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f5f5f5
+}
+
+.popCompleted h2 {
+    padding-top: 46px;
+    margin-bottom: -7px;
+    font-family: NEXON Lv1 Gothic;
+    font-size: 24px;
+    color: #333;
+    font-weight: 400;
+    background: url(https://rs.nxfs.nexon.com/message/images/bg_completed.png) no-repeat top
+}
+
+.popCompleted p {
+    margin: 28px 0;
+    font-size: 16px;
+    line-height: 1.62;
+    word-break: break-all
+}
+
+.popCompleted p strong {
+    color: #5468e7
+}
+
+.popReport p.msgTxt {
+    padding-bottom: 14px;
+    margin-top: -9px;
+    color: #afafaf;
+    line-height: 1.66
+}
+
+.popReport dl {
+    display: table;
+    width: 100%;
+    min-height: 49px;
+    font-size: 14px;
+    border-top: 1px solid #e5e5e5
+}
+
+.popReport dl:nth-child(2) {
+    border-top: 1px solid #c1c1c1
+}
+
+.popReport dt {
+    width: 95px;
+    padding: 16px 0 0 19px;
+    font-family: NEXON Lv1 Gothic;
+    border-right: 1px solid #e5e5e5;
+    background-color: #f9f9f9;
+    vertical-align: top
+}
+
+.popReport dd,.popReport dt {
+    display: table-cell;
+    color: #666
+}
+
+.popReport dd {
+    padding: 16px 0 8px 19px
+}
+
+.popReport dd .inputRadio {
+    margin-bottom: 11px
+}
+
+.popReport .inputRadio label {
+    color: #666
+}
+
+.popReport dd .inputText {
+    margin-top: -8px
+}
+
+.popReport .btSec {
+    border-top: 1px solid #c1c1c1;
+    padding-top: 30px
+}
+
+.popFriends p.msgTxt {
+    padding-bottom: 12px;
+    margin-top: -6px;
+    color: #afafaf;
+    font-size: 14px
+}
+
+.popFriends p.msgAlert {
+    padding: 3px 0 14px 18px;
+    margin-top: -5px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.35;
+    background: url(https://rs.nxfs.nexon.com/message/images/ico_alert.gif) no-repeat 0 4px
+}
+
+.popFriends table {
+    width: 100%;
+    margin: 3px 0 20px;
+    border-spacing: 0;
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1
+}
+
+.popFriends col.checkbox {
+    width: 45px
+}
+
+.popFriends col.nickname {
+    width: auto
+}
+
+.popFriends .inputCheck {
+    width: 19px
+}
+
+.popFriends th {
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #f9f9f9
+}
+
+.popFriends tbody tr {
+    height: 50px
+}
+
+.popFriends td {
+    font-size: 14px;
+    color: #666
+}
+
+.popFriends td.nickname {
+    padding-left: 13px
+}
+
+.popFriends .checkbox {
+    border-right: 1px solid #e5e5e5
+}
+
+.popFriends .btSec {
+    padding-top: 10px
+}
+
+.popWrapper .btSec {
+    text-align: center;
+    padding-bottom: 30px
+}
+tbody tr {
+    height: 49px;
+}
+tbody th {
+    padding-top: 11px;
+    color: #333;
+    font-weight: 400;
+}

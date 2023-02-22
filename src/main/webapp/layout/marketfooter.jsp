@@ -49,16 +49,16 @@
 									010-1234-1234
 								</span>
 							</div>
-							<div>
+							<div style=" display: flex;">
 								<b>직업정보제공사업 신고번호</b>
 								2023-인천부평-0209
 							</div>
 							<address class="addressfooter">
-								<div>
+								<div style=" display: flex;">
 								<b>주소</b>
 								인천광역시 부평구 부평1동 534-48
 								</div>
-								<div>
+								<div >
 									<span>
 										<b>전화</b>
 										1577-1577

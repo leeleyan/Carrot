@@ -8,108 +8,70 @@
 <script src="js/vue.js"></script>
 <jsp:include page="/layout/logoheader.jsp"></jsp:include>
 <title>마켓이름 : 쪽지화면</title>
-<style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
-	;
-
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-.board {
-	width: 800px;
-	height: 330px;
-	background-color: #EEEFF1;
-	border-radius: 5px;
-	overflow: auto;
-}
-
-td {
-	border: solid red 1px;
-}
-
-th {
-	border: solid green 1px;
-}
-
-.sendOrReceive {
-	display: flex;
-	justify-content: center;
-}
-
-.container {
-	border: solid black 5px;
-	margin: auto;
-	text-align: center;
-	width: 800px;
-}
-
-.menu {
-	border: solid greenyellow 4px;
-}
-
-.btn {
-	background-color: transparent; /*버튼 배경 제거*/
-	cursor: pointer; /*버튼 활성화*/
-	outline: none; /* 테두리의 두께에 따라 주변 레이아웃을 변형X */
-	border: none; /*버튼 테두리 제거*/
-}
-
-.deleteAndWrite {
-	text-align: right;
-}
-
-body {
-	padding-bottom: 50px;
-}
-</style>
+<link rel="stylesheet" href="css/messagemain.css" type="text/css">
 </head>
 <body>
 	<div id="app" class="container">
-		<jsp:include page="/layout/testmessage.jsp"></jsp:include>
-		<div class="menu">
-			<div class="sendOrReceive">
-				<button class="btn" @click="fnGetList" >받은 쪽지함</button>
-				<button class="btn" @click="fnGetGotList">보낸 쪽지함</button>
-			</div>
-			<div class="deleteAndWrite">
-				<button class="btn" @click="fnRemove">삭제</button>
-				<button class="logobtn" @click="fnWrite">쪽지작성</button>
-			</div>
+	<div class="wrapper">
+		<div class="nav">
+			<h1>
+				<a @click="fnMessage">쪽지</a>
+			</h1>
+			<ul id="NoteBoxMenu">
+				<li class="active"><a @click="fnGetList">받은 쪽지함</a></li>
+				<li><a @click="fnGetGotList">보낸 쪽지함</a></li>
+			</ul>
+			<a class="btWrite" @click="fnWrite">쪽지보내기</a>
 		</div>
-		<div class="board">
-			<table class="board_list">
-				<colgroup>
-					<col width="5%" />
-					<col width="15%" />
-					<col width="*" />
-					<col width="20%" />
-				</colgroup>
-				<thead>
-					<tr>
-						<th scope="col"><input type='checkbox' name='selectBoard'
-							value='selectall' onclick='selectAll(this)' /></th>
-						<th scope="col" v-if="flg == false">보낸 사람</th>
-						<th scope="col" v-else="flg == true">받는 사람</th>
-						<th scope="col">내용</th>
-						<th scope="col">시간</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="(item, index) in list">
-						<td><input type="checkbox" name="selectBoard"
+		<div id="contents" class="contents">
+			<h2 v-if="flg == false">
+				받은 쪽지함
+			</h2>
+			<h2 v-else="flg == true">
+				보낸 쪽지함
+			</h2>
+			<div class="btSecList">
+				<a href="#" class="btDefault" id="aDelete" a2s="click" obj="MSG" @click="fnRemove"
+					opt="{&quot;Name&quot;:&quot;receive&quot;,&quot;Type&quot;:&quot;delete&quot;}">
+					<span>삭제</span>
+				</a>
+			</div>
+			<div class="list listMessage">
+				<table id="tblList" border="1">
+					<colgroup>
+						<col class="checkbox">
+						<col class="cate">
+						<col class="tit">
+						<col class="date">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col"><input type='checkbox' name='selectBoard'
+								value='selectall' onclick='selectAll(this)' /></th>
+							<th scope="col" v-if="flg == false">보낸 사람</th>
+							<th scope="col" v-else="flg == true">받는 사람</th>
+							<th class="tit">내용</th>
+							<th scope="col" v-if="flg == false">받은 날짜</th>
+							<th scope="col" v-else="flg == true">보낸 닐짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item, index) in list">
+						<th scope="col"><input type="checkbox" name="selectBoard"
 							v-bind:id="'idx_' + index" v-bind:value="item"
-							v-model="selectedItemList"></td>
-						<td v-if="flg == false">{{item.uSender}}</td>
-						<td v-else="flg == true">{{item.uRecipient}}</td>
-						<td @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0,
-							30)}}{{item.mContent.length > 30 ? '...' : ''}}</td>
-						<td>{{item.createDate}}</td>
+							v-model="selectedItemList"></th>
+						<th scope="col" v-if="flg == false" @click="fnViewItem(item)" style="cursor: pointer">{{item.uSender}}</th>
+						<th scope="col" v-else="flg == true" @click="fnViewItem(item)" style="cursor: pointer">{{item.uRecipient}}</th>
+						<th scope="col" @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0,
+							30)}}{{item.mContent.length > 30 ? '...' : ''}}</th>
+						<th scope="col">{{item.createDate}}</th>
 					</tr>
-				</tbody>
-			</table>
+					</tbody>
+				</table>
+			</div>
+			<div class="pboardNavigation"></div>
 		</div>
+	</div>
 	</div>
 </body>
 <setfooter> <jsp:include page="/layout/marketfooter.jsp"></jsp:include>
@@ -117,10 +79,9 @@ body {
 </html>
 <script type="text/javascript">
 
+
 function selectAll(selectAll)  {
-	  const checkboxes 
-	       = document.getElementsByName('selectBoard');
-	  
+	  const checkboxes = document.getElementsByName('selectBoard');	  
 	  checkboxes.forEach((checkbox) => {
 	    checkbox.checked = selectAll.checked;
 	  })
@@ -204,7 +165,11 @@ function selectAll(selectAll)  {
 	             });  
 	    	   }
 	    	}
-		},
+	        , fnMessage : function(){
+	    		var self = this;
+	    		self.pageChange("./message.do", {});
+	    	} 
+		},	
 		created : function() {
 			var self = this;
 			self.fnGetList();

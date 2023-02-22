@@ -30,7 +30,7 @@ public class MessageController {
      public String join(Model model) throws Exception{
 
 		 return "/message"; // WEB-INF에서 호출할 파일명
-    } 
+    }  
 	
 	@RequestMapping(value = "/message/getmessage.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
