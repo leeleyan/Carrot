@@ -25,4 +25,12 @@
 			WHERE
 			    board_idx = #{boardIdx}
 	</select>
+	
+	<delete id="deleteItem" parameterType="hashmap">	
+		DELETE FROM 
+			t2_product
+		WHERE
+			board_idx = #{boardIdx} 
+	</delete>
+	
 </mapper>

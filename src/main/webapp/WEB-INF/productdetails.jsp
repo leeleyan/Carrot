@@ -37,8 +37,8 @@
 				height: 100px;
 			}
 			.msg{
-				width: 40%;
-				height: 70%;
+				width: 250px;
+				height: 80px;
 				font-size: 20px;
 			}
 			.imgDiv{
@@ -56,30 +56,12 @@
 			.sub{
 				padding: 10px;
 			}
-			.recently{
-				width: 120px;
-				height: fit-content;
-				position: fixed;
-		    	top: 250px;
-		    	right: calc(50% - 800px);
-				border: solid lightgray 1px;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			  }
-			  .recently_inner{
-				padding: 5px;
-				margin: 5px;
-			  }
-			  .miniImgDiv{
-				  width: 95%;
-				  height: 70px;
-				  padding: 5px;
-				  cursor: pointer;
-				  border: solid lightgray 1px;
-				  margin : 5px;
-			  }
+			
+			.deleteBtn{
+				width: 200px;
+				height: 60px;
+				font-size: 20px;
+			}
     	</style>
 	</head>
 	<body>
@@ -109,10 +91,15 @@
 				<h2>내용</h2>
 				<span class="description"><pre>{{info.bContent}}</pre></span>
 			</div>
-			<div class="msgDiv">
-				<button class="msg" onclick="window.open('writing.do','_blank', 'left='+(screen.availWidth-555)/2+',top='+(screen.availHeight-580)/2+', width=555px,height=580px');">
-				판매자에게 쪽지 보내기
-				</button>
+			<div class="msgDiv" >
+				<div v-if="info.uNickName != userNickName">
+					<button class="msg" onclick="window.open('writing.do','_blank', 'left='+(screen.availWidth-555)/2+',top='+(screen.availHeight-580)/2+', width=555px,height=580px');">
+					판매자에게 쪽지 보내기
+					</button>
+				</div>
+				<div v-if="info.uNickName == userNickName">
+					<button class="deleteBtn" @click="fnDelete">게시물 삭제하기</button>
+				</div>
 			</div>
 		</div>
 		</div>
@@ -149,34 +136,68 @@ var app = new Vue({
                 }
             }); 
         },
-    	fnViewItem : function(item){
-     		var self = this;
-     		self.pageChange("/productdetails.do", {boardIdx : item.boardIdx});
-     	},
-    	fnGetReList : function(item){
-	        var self = this;
-	        nparmap = {};
-	        $.ajax({
-	            url:"/main/recentlyview.dox",
-	            dataType:"json",	
-	            type : "POST", 
-	            data : nparmap,
-	            success : function(data) {                                       
-	                self.reList = data.list;
-	                console.log(self.re);
-	                console.log(self.reList);
-	            }
-	        }); 
-	    }
-
+        
+     	fnDelete : function(){
+    		var self = this;
+    		var nparmap = { boardIdx : self.idx };
+    		if (confirm("정말 삭제하시겠습니까?")) {
+             $.ajax({
+                 url:"/product/delete.dox",
+                 dataType:"json",	
+                 type : "POST", 
+                 data : nparmap,
+                 success : function(data) {            
+                	 alert("삭제되었습니다.");
+                	 self.fnMain();
+                 }
+             });
+    		}
+    	},
+    	
+    	pageChange : function(url, param) {
+	        var target = "_self";
+	        if(param == undefined){
+	        //   this.linkCall(url);
+	           return;
+	        }
+	        var form = document.createElement("form"); 
+	        form.name = "dataform";
+	        form.action = url;
+	        form.method = "post";
+	        form.target = target;
+	        for(var name in param){
+	          var item = name;
+	          var val = "";
+	          if(param[name] instanceof Object){
+	             val = JSON.stringify(param[name]);
+	          } else {
+	             val = param[name];
+	          }
+	          var input = document.createElement("input");
+	           input.type = "hidden";
+	           input.name = item;
+	           input.value = val;
+	           form.insertBefore(input, null);
+	       }
+	        document.body.appendChild(form);
+	        form.submit();
+	        document.body.removeChild(form);
+	     },
+	     
+	     fnMain : function(){
+	    		var self = this;
+	    		self.pageChange("./main.do", {});
+	    },
+	    fnWrite : function(){
+        	var self = this;
+        	var reply = self.info.uNickName;
+			window.open("./writing.do?recipient="+reply,"쪽지쓰기","width=555,height=580");
+    	}
     	
     }   
     , created: function () {
     	var self = this;
     	self.fnGetItem();
-    	if (self.re.length >= 1) {
-            self.fnGetReList();
-        }
     	
 	}
 });

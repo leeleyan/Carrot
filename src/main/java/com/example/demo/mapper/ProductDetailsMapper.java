@@ -12,4 +12,5 @@ import com.example.demo.model.Product;
 public interface ProductDetailsMapper {
 	Product selectGetItem(HashMap<String, Object> map);
 	List<Product> selectImgList(HashMap<String, Object> map) throws Exception; //제품상세 이미지
+	public void deleteItem(HashMap<String, Object> map);
 }

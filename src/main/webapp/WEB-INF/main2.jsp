@@ -115,7 +115,7 @@
 	  }
 	  .miniImgDiv{
 		  width: 95%;
-		  height: 70px;
+		  height: 80px;
 		  padding: 5px;
 		  cursor: pointer;
 		  border: solid lightgray 1px;

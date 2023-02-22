@@ -26,8 +26,12 @@ public class ProductDetailsServiceImpl implements ProductDetailsService{
 	
 	@Override
 	public List<Product> selectImgList(HashMap<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
 		return productDetailsMapper.selectImgList(map); // db를 호출하는 mapper와 연결
+	}
+
+	@Override
+	public void deleteItem(HashMap<String, Object> map) {
+		productDetailsMapper.deleteItem(map);
 	}
 
 }

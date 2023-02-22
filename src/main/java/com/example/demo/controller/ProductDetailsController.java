@@ -55,5 +55,14 @@ public class ProductDetailsController {
 		resultMap.put("list", list);
 		resultMap.put("message", "성공");
 		return new Gson().toJson(resultMap);
-	} 
+	}
+ 	
+ 	@RequestMapping(value = "/product/delete.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public String delete(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		productDetailsService.deleteItem(map);
+		resultMap.put("message", "성공");
+		return new Gson().toJson(resultMap);
+	}
 }
