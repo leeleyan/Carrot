@@ -93,7 +93,7 @@
 			</div>
 			<div class="msgDiv" >
 				<div v-if="info.uNickName != userNickName">
-					<button class="msg" onclick="window.open('writing.do','_blank', 'left='+(screen.availWidth-555)/2+',top='+(screen.availHeight-580)/2+', width=555px,height=580px');">
+					<button class="msg" @click="fnWrite">
 					판매자에게 쪽지 보내기
 					</button>
 				</div>
@@ -191,6 +191,11 @@ var app = new Vue({
 	    fnWrite : function(){
         	var self = this;
         	var reply = self.info.uNickName;
+        	console.log(reply);
+        	if(!self.userId){
+        		alert("쪽지보내기는 로그인 후에 사용해주세요.");
+        		return;
+        	}
 			window.open("./writing.do?recipient="+reply,"쪽지쓰기","width=555,height=580");
     	}
     	
