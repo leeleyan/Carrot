@@ -40,7 +40,14 @@ public class MyInformationServiceImpl implements MyInformationService{
 	}
 	
 	@Override
-	public void updateNick(HashMap<String, Object> map) {
-		myinformationMapper.updateNick(map);
+	public HashMap<String, Object> updateNick(HashMap<String, Object> map) {
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		int a = myinformationMapper.updateNick(map);
+		int b = myinformationMapper.updateNick2(map);
+		int c = myinformationMapper.updateNick3(map);
+		result.put("num", a);
+		result.put("num2", b);
+		result.put("num3", c);
+		return result;
 	}
 }

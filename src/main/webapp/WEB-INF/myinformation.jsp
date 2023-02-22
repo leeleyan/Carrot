@@ -187,7 +187,7 @@
 					<td colspan=2>
 					{{address}}
 					</td>
-					<td><button  id="gbtn" onclick="window.open('addresschange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-430)/2+', width=660px,height=430px');">변경</button></td>
+					<td><button  id="gbtn" onclick="window.open('addresschange.do','_blank', 'left='+(screen.availWidth-660)/2+',top='+(screen.availHeight-500)/2+', width=660px,height=280px');">변경</button></td>
 				</tr>
 				<tr>
 				<td>비밀번호</td>

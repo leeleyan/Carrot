@@ -28,4 +28,13 @@
 		UPDATE t2_product SET u_nickname = #{nickname} WHERE u_nickname = #{beforeNickname}
 	</update>
 	
+	<update id="updateNick2" parameterType="hashmap" >	
+		UPDATE t2_message SET u_sender = #{nickname} WHERE u_sender = #{beforeNickname}
+	</update>
+	
+	<update id="updateNick3" parameterType="hashmap" >	
+		UPDATE t2_message SET u_recipient = #{nickname} WHERE u_recipient = #{beforeNickname}
+	</update>
+	
+	
 </mapper>
