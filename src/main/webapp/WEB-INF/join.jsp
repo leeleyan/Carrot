@@ -159,8 +159,6 @@
 		   , si : ""
 		   , gu : ""
 		   , dong : ""
-		   , guFlg : false
-		   , dongFlg : false
 		   , idFlg : false
 		   , nickFlg : false
 		   , mailFlg : false
@@ -235,7 +233,7 @@
 				var self = this;
 				if (!self.uId || !self.uNickname || !self.uPassword || 
 					!self.uName || !self.uTel || !self.si ||
-					!self.gu || !self.dong || !self.uEmail) {
+					(self.si != "세종특별자치시" && !self.gu) || !self.dong || !self.uEmail) {
 				    alert("모든 사항을 입력해주세요.");
 				    return;
 				}
