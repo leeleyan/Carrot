@@ -63,7 +63,7 @@
 		<span>비밀번호 확인</span>
 		<input type="password" v-model="uPasswordC"><br>
 		<button @click="fnUnregister">회원탈퇴</button>
-		<button @click="fnBack">취소</button>
+		<button @click="fnClose">취소</button>
 	</div>	
 </html>
 <script type="text/javascript">
@@ -98,8 +98,8 @@ var app = new Vue({
 			} 
 		}
 			
-    , fnBack : function(){
-		location.href="/myinformation.do";
+    , fnClose : function(){
+		window.close();
 	}
     , fnGetInfo : function(){
 			var self = this;
