@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	 <link rel="icon" href="/img/favicon.ico">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/logoheader.css" type="text/css">
 		<style>
