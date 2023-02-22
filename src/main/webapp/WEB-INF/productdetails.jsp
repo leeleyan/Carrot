@@ -115,6 +115,7 @@
 				</button>
 			</div>
 		</div>
+		</div>
 		<mainsetfooter>
 			<jsp:include page="/layout/marketfooter.jsp"></jsp:include>
 		</mainsetfooter>
