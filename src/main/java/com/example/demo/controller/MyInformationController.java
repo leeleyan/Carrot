@@ -98,4 +98,6 @@ public class MyInformationController {
 			resultMap.put("message", "성공");
 			return new Gson().toJson(resultMap);
 	 }
+	 
+	 
 }

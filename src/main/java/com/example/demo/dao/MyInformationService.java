@@ -10,5 +10,5 @@ public interface MyInformationService {
 	void updateTel(HashMap<String, Object> map);
 	void editNickName(HashMap<String, Object> map);
 	void editEmail(HashMap<String, Object> map);
-	void updateNick(HashMap<String, Object> map);
+	HashMap<String, Object> updateNick(HashMap<String, Object> map);
 }

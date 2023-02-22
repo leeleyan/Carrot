@@ -18,5 +18,9 @@ public interface MyInformationMapper {
 	//이메일 바꾸기
 	void editEmail(HashMap<String, Object> map);
 	//account 테이블 닉네임 바꿀 때 product 테이블 닉네임 바꾸기
-	void updateNick(HashMap<String, Object> map);
+	int updateNick(HashMap<String, Object> map);
+	//account 테이블 닉네임 바꿀 때 message 테이블 sender 바꾸기
+	int updateNick2(HashMap<String, Object> map);
+	//account 테이블 닉네임 바꿀 때 message 테이블 recipient 바꾸기
+	int updateNick3(HashMap<String, Object> map);
 }

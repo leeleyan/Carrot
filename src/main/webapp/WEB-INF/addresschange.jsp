@@ -15,12 +15,8 @@
 	        }
 	
 	        body {
-	            background-color: #1BBC9B;
+				background-color: #ffffff;
 	        }
-			#ebtn{
-				font-size: 20px;
-				float: right; 
-			}
 			span{
 				font-size: 40px;
 			}
@@ -35,7 +31,7 @@
 			.outerdiv{
 				margin: auto; /*상.하.좌.우 가운데 정렬(바깥쪽 여백), width랑 같이 사용*/
 	            width: 500px; /*좌.우 길이, 없으면 전체*/
-	            height: auto;
+	            height: 200px;
 	            background-color: #EEEFF1;
 	            border-radius: 5px; /*모서리 부분 원의 형태로 바꿔줌*/
 	            text-align: center; /*하위 요소 가운데 정렬*/
@@ -57,6 +53,15 @@
 				font-size: 25px;
 				height: 50px;
 				width: 100%;
+				 
+			}
+			#ebtn{
+				margin-bottom: 30px;
+	            width: 150px;
+	            height: 50px;
+	            border-radius: 15px;
+	            margin-top: 40px;
+	            margin-left: 20px;
 				 
 			}
 			
@@ -91,7 +96,7 @@
 					<td><button id="gbtn" @click="fnUpdateAddress">변경하기</button></td>
 				</tr>
 			</table>
-			<span><button @click="fnClose">닫기</button></span>
+			<span><button id="ebtn" @click="fnClose">닫기</button></span>
 		</div>
 	</body>
 </html>
