@@ -62,11 +62,55 @@
 				height: 60px;
 				font-size: 20px;
 			}
+		  .recently{
+			width: 120px;
+			height: fit-content;
+			position: fixed;
+	    	top: 250px;
+	    	right: calc(50% - 700px);
+			border: solid lightgray 1px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+		  }
+		  .recently_inner{
+			padding: 5px;
+			margin: 5px;
+		  }
+		  .miniImageDiv{
+			  width: 95%;
+			  height: 80px;
+			  padding: 5px;
+			  cursor: pointer;
+			  border: solid lightgray 1px;
+			  margin-top : 5px;
+			  margin-right : 7px;
+		  }
+		  .itemimg{
+			width: 100%;
+			height: 100%
+	      }
     	</style>
 	</head>
 	<body>
 		<div id="app">
 		<div class = container>
+			<div>
+				<div class="recently"v-if="reList.length>0" >
+					<div class="recently_inner" >
+						<div>
+							<span>최근 본 상품<br><hr></span>
+						</div>
+						<div class="recently_image" v-for="(item, index) in reList">
+							<div class="miniImageDiv" @click="fnViewItem(item)" >
+								<img :src="item.img" class="itemimg">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div>
 			<span class="imgDiv" v-for="(item, index) in list"><img :src="item.img" class="image"/></span>
 			</div>
@@ -197,13 +241,35 @@ var app = new Vue({
         		return;
         	}
 			window.open("./writing.do?recipient="+reply,"쪽지쓰기","width=555,height=580");
-    	}
+    	},
+    	fnGetReList : function(item){
+	        var self = this;
+	        nparmap = {};
+	        $.ajax({
+	            url:"/main/recentlyview.dox",
+	            dataType:"json",	
+	            type : "POST", 
+	            data : nparmap,
+	            success : function(data) {                                       
+	                self.reList = data.list;
+	                console.log(self.re);
+	                console.log(self.reList);
+	            }
+	        }); 
+	    },
+	    fnViewItem : function(item){
+     		var self = this;
+     		self.pageChange("/productdetails.do", {boardIdx : item.boardIdx});
+     	}
     	
     }   
     , created: function () {
     	var self = this;
     	self.fnGetItem();
+    	 if (self.re.length >= 1) {
+             self.fnGetReList();
+         }
     	
 	}
-});
+}); 
 </script>

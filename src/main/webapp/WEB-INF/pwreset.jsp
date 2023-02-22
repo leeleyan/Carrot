@@ -57,9 +57,9 @@
 	<body>
 	<div id="app" class="div1">
 		<span>새 비밀번호</span>
-		<input type="password" v-model="uPassword"><br>
+		<input type="password" v-model="uPassword" maxlength="16" @input="validatePw"><br>
 		<span>새 비밀번호 확인</span>
-		<input type="password" v-model="uPassword2"><br>
+		<input type="password" v-model="uPassword2" maxlength="16" @input="validatePw" @keyup.enter = "fnReset"><br>
 		<button @click="fnReset">비밀번호 재설정</button>
 	</div>	
 	</body>
@@ -84,14 +84,20 @@ var app = new Vue({
                     data : nparmap,
                     success : function(data) {
                     	alert(self.uId + "님의 비밀번호가 변경되었습니다.");	
-                    	location.href="/main.do";
+                    	location.href="/login.do";
                     }
                 }); 	                		
         	} else {
         		alert("비밀번호가 일치하지 않습니다.");
         	}
             
-        }
+        },
+        validatePw() {
+      		 const regex = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]*$/);
+      		  if (!regex.test(this.uPassword)) {
+      		    this.uPassword = this.uPassword.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]/g, '');
+      		  }
+      	 }
     }   
     , created: function () {
     

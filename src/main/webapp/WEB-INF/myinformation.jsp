@@ -18,6 +18,7 @@
 				font-size: 20px;
 				float: right;
 				height: 50px; 
+				background-color: transparent;
 			}
 			#fbtn{
 				font-size: 25px;
@@ -407,7 +408,6 @@ var app = new Vue({
  			  alert("취소되었습니다.")
  			  return;
  		  }
-
       	var nparmap = {email : self.email};
         $.ajax({
             url:"/join/emailcheck.dox",

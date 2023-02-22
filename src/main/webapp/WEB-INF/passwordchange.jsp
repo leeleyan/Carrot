@@ -60,9 +60,9 @@
 					<span>현재 비밀번호</span>
 					<input type="password" v-model="uPassword"><br>
 					<span>새 비밀번호</span>
-					<input type="password" v-model="newPassword"><br>
+					<input type="password" v-model="newPassword" maxlength="16" placeholder = "영어, 숫자, 특수문자" @input="validatePw"><br>
 					<span>새 비밀번호 확인</span>
-					<input type="password" v-model="newPassword2"><br>
+					<input type="password" v-model="newPassword2" maxlength="16" placeholder = "영어, 숫자, 특수문자" @input="validatePw"><br>
 					<div style = "display : flex;">
 						<button @click="fnUpdatePassword" style ="margin-left: 40px;">비밀번호 변경</button>
 						<button @click="fnClose" style ="margin-left: 20px;">닫기</button>
@@ -118,12 +118,18 @@ var app = new Vue({
 	            	   self.password = data.password;
 	               }
 	           }); 
-	     }
-		, fnClose : function(){
+	     },
+		 fnClose : function(){
 				window.close();
-	      	}
-    
-		}
+	      	},
+	
+		validatePw() {
+   		 const regex = new RegExp(/^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]*$/);
+   		  if (!regex.test(this.newPassword)) {
+   		    this.newPassword = this.newPassword.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]/g, '');
+   		  }
+   	 	}
+	}
     , created: function () {
     	var self = this;
     	self.fnGetInfo();
