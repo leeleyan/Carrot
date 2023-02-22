@@ -15,7 +15,7 @@
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
 			.preview-img {
-				width: 300px;
+				width: 235px;
 				height: 200px;
 				margin-right: 10px;
 			}
@@ -308,14 +308,14 @@ var app = new Vue({
     		console.log(self.img);
     		
     	    if(!fileCheck || !self.bTitle || !self.bContent ||
-    	       !self.pPrice || !self.si || !self.dong || !self.gu) {
+    	       !self.pPrice || !self.si || (self.si != "세종특별자치시" && !self.gu) || !self.dong ) {
     	    	if(!fileCheck){
 	    	    	alert("사진을 선택해주세요.");
     	    	}
     	    	if(!self.bTitle){
 	    	    	alert("제목을 입력해주세요.");
     	    	}
-    	    	if(!self.si || !self.gu || !self.dong){
+    	    	if(!self.si || (self.si != "세종특별자치시" && !self.gu) || !self.dong){
 	    	    	alert("시, 구, 동을 모두 선택해주세요.");
     	    	}
     	    	if(!self.pPrice){

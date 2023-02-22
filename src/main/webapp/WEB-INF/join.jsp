@@ -86,7 +86,7 @@
 				</div>
 				<div class="div1">
 					<h3>닉네임</h3>
-					<input type="text" v-model="uNickname" maxlength="16" placeholder = "" @keyup.enter="fnNickNameCheck">
+					<input type="text" v-model="uNickname" maxlength="6" @input="validateNickname" placeholder = "2~6자리의 영어, 한글, 숫자" @keyup.enter="fnNickNameCheck">
 					<button @click="fnNicknameCheck" class="mButton">닉네임 중복 체크</button>
 				</div>
 				<div class="div1">
@@ -131,7 +131,7 @@
 				</div>
 				<div class="div1">
 					<h3>이메일</h3>
-					<input type="text" v-model="uEmail" @input="validateEmail" @keyup.enter = "fnEmailCheck">
+					<input type="text" v-model="uEmail" @keyup.enter = "fnEmailCheck">
 					<button @click="fnEmailCheck" class="mButton">이메일 중복 체크</button>
 				</div>
 				<button class="joinBtn" @click="fnJoin">회원가입</button>
@@ -194,6 +194,10 @@
 			fnNicknameCheck : function() {
 				var self = this;
 				var nparmap = {nickname : self.uNickname};
+				if (self.uNickname.length < 2 || self.uNickname.length > 6) {
+				    alert("닉네임은 2자 이상 6자 이하로 입력해주세요.");
+				    return;
+				}
 				$.ajax({
 					url : "/join/nicknamecheck.dox",
 					dataType : "json",
@@ -310,9 +314,9 @@
 	             }); 
 	         }
 	    	,validateId() {
-	    	      const regex = new RegExp(/^[a-zA-Z가-힣0-9]*$/); // regular expression that matches only Korean and English characters
+	    	      const regex = new RegExp(/^[a-zA-Z0-9]$/); // regular expression that matches only Korean and English characters
 		    	    if (!regex.test(this.uId)) {
-		    	        this.uId = this.uId.replace(/[^a-zA-Z가-힣]/g, ''); // remove any characters that are not Korean or English
+		    	        this.uId = this.uId.replace(/[^a-zA-Z0-9]/g, ''); // remove any characters that are not Korean or English
 		    	    }
 	    	 }
 	    	,validatePw() {
@@ -320,6 +324,12 @@
 	    		  if (!regex.test(this.uPassword)) {
 	    		    this.uPassword = this.uPassword.replace(/[^a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?]/g, '');
 	    		  }
+	    	 }
+	    	,validateNickname() {
+	    		const regex = new RegExp(/^[a-zA-Z가-힣0-9]*$/); 
+	    	    if (!regex.test(this.uNickname)) {
+	    	        this.uNickname = this.uNickname.replace(/[^a-zA-Z가-힣0-9]/g, ''); 
+	    	    }
 	    	 }
 	    	,validateName() {
 	    		const regex = new RegExp(/^[a-zA-Z가-힣]*$/); // regular expression that matches only Korean and English characters
