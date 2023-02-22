@@ -151,7 +151,7 @@
 		    margin-bottom: -35px;
 		    margin-top: -35px;
 		    margin-left: 10px;    
-	  }	
+		  }	
 	  	.top{
 	  	    margin-bottom: 15px;
 		}

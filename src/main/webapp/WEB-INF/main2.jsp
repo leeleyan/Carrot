@@ -357,9 +357,7 @@ var app = new Vue({
     created: function () {
       var self = this;
       self.fnGetList();
-      if (self.re.length >= 1) {
           self.fnGetReList();
-      }
     }
   });
 

@@ -311,20 +311,24 @@ var app = new Vue({
     	       !self.pPrice || !self.si || (self.si != "세종특별자치시" && !self.gu) || !self.dong ) {
     	    	if(!fileCheck){
 	    	    	alert("사진을 선택해주세요.");
+	    	    	return;
     	    	}
     	    	if(!self.bTitle){
 	    	    	alert("제목을 입력해주세요.");
+	    	    	return;
     	    	}
     	    	if(!self.si || (self.si != "세종특별자치시" && !self.gu) || !self.dong){
 	    	    	alert("시, 구, 동을 모두 선택해주세요.");
+	    	    	return;
     	    	}
     	    	if(!self.pPrice){
 	    	    	alert("가격을 입력해주세요.");
+	    	    	return;
     	    	}
     	    	if(!self.bContent){
 	    	    	alert("내용을 입력해주세요.");
+	    	    	return;
     	    	}
-    	    	return;
     	    }
 	        $.ajax({
 	            url:"/add.dox",

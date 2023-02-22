@@ -89,11 +89,17 @@
     FROM
         t2_product  
     WHERE 
+    <if test="recentlyList != null and recentlyList.size() > 0">
         board_idx IN
         <foreach item="item" collection="recentlyList" open="(" separator="," close=")">
             #{item}
         </foreach>
+    </if>
+    <if test="recentlyList == null or recentlyList.size() == 0">
+        1=0
+    </if>
 </select>
+
 	
 	
 	
