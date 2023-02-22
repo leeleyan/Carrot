@@ -65,7 +65,7 @@
 						<th scope="col" @click="fnViewItem(item)" style="cursor: pointer">{{item.mContent.substr(0,
 							30)}}{{item.mContent.length > 30 ? '...' : ''}}</th>
 						<th scope="col">{{item.createDate}}</th>
-					</tr>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -168,7 +168,36 @@ function selectAll(selectAll)  {
 	        , fnMessage : function(){
 	    		var self = this;
 	    		self.pageChange("./message.do", {});
-	    	} 
+	    	}
+	       , pageChange : function(url, param) {
+		        var target = "_self";
+		        if(param == undefined){
+		        //   this.linkCall(url);
+		           return;
+		        }
+		        var form = document.createElement("form"); 
+		        form.name = "dataform";
+		        form.action = url;
+		        form.method = "post";
+		        form.target = target;
+		        for(var name in param){
+		          var item = name;
+		          var val = "";
+		          if(param[name] instanceof Object){
+		             val = JSON.stringify(param[name]);
+		          } else {
+		             val = param[name];
+		          }
+		          var input = document.createElement("input");
+		           input.type = "hidden";
+		           input.name = item;
+		           input.value = val;
+		           form.insertBefore(input, null);
+		        }
+		        document.body.appendChild(form);
+		        form.submit();
+		        document.body.removeChild(form);
+		    }
 		},	
 		created : function() {
 			var self = this;

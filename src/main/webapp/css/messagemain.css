@@ -567,7 +567,6 @@ input[type=text]::-ms-clear {
 .btSecList {
     position: relative;
     height: 43px;
-    padding-top: 31px
 }
 
 .btSecList .btDefault {
@@ -602,6 +601,8 @@ input[type=text]::-ms-clear {
 }
 
 div.list {
+	overflow-y: scroll;
+    height: 490px;
     border-top: 1px solid #c1c1c1;
     font-size: 14px
 }

@@ -84,15 +84,15 @@ setfooter {
 	width: 100%;
 	position: absolute;  
 	bottom: 0;
-	left: 0;
+	left: 0;	
 }
 mainsetfooter {
 	width: 100%;
 	bottom: 0;
 	left: 0;
 }
-a img 
+setfooter a img 
 {
-    margin-top: 5px;
-    margin-right: 5px;
+    margin-top: 9px;
+    margin-right: 7px;
 }
