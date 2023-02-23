@@ -12,10 +12,14 @@
 		    , u_address
 		    , p_price
 		FROM
-		    t2_product  
+		    t2_product
+		<if test="keyword != '' and keyword != null">
+		WHERE
+			b_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>  
 		ORDER BY
 			 board_idx DESC
-		LIMIT 100;
+		LIMIT 100
 	</select>
 	
 	<select id="selectImg" parameterType="int" resultType="string">

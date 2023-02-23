@@ -35,7 +35,7 @@ public class MainController {
 	HttpSession session;
 
 	@RequestMapping("/main.do") // 메인 화면
-	public String join(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String join(Model model, HttpServletRequest request, HttpServletResponse response, @RequestParam HashMap<String, Object> item) throws Exception {
 		HashMap<String, Object> map = new HashMap<String, Object>();
  		List<Area> siList = areaService.selectSiList(map);
         map.put("si", siList.get(0).getSi());
@@ -46,6 +46,7 @@ public class MainController {
     	request.setAttribute("siList",  new Gson().toJson(siList));
     	request.setAttribute("guList",  new Gson().toJson(guList));
     	request.setAttribute("dongList",  new Gson().toJson(dongList));
+    	request.setAttribute("item", item);
     	
     	ArrayList<Integer> re = (ArrayList<Integer>) session.getAttribute("re"); 
     	if (re == null) {

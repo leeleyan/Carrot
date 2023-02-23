@@ -210,12 +210,13 @@ var app = new Vue({
 	  userId : "${userId}", 
 	  boardIdx : "",
 	  re : ${re}, // 최근에 본 상품의 보드인덱스를 저장하는 ArrayList
-	  reList : [] //최근에 본 상품의 정보를 받아오는 리스트
+	  reList : [], //최근에 본 상품의 정보를 받아오는 리스트
+	  keyword : "${item.keyword}"
     }, 
       methods: {
     	fnGetList : function(item){
             var self = this;
-            var nparmap = {};
+            var nparmap = {keyword : self.keyword};
             $.ajax({
                 url:"/main/view.dox",
                 dataType:"json",	

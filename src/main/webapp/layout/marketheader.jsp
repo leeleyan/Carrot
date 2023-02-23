@@ -149,7 +149,8 @@ var app = new Vue({
         , fnSearch4 : function(){
 	        var self = this;
 	        var nparmap = {keyword : self.skeyword};
-	        $.ajax({
+	        self.pageChange("/main.do", nparmap);
+	        /* $.ajax({
 	            url:"/searchTitle.dox",
 	            dataType:"json",	
 	            type : "POST", 
@@ -158,7 +159,7 @@ var app = new Vue({
 	                app.list = data.list;
 	                self.skeyword = '';
 	            }
-	        }); 
+	        }); */ 
 	    }
     }
      
