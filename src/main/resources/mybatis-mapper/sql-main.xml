@@ -15,7 +15,7 @@
 		    t2_product
 		<if test="keyword != '' and keyword != null">
 		WHERE
-			b_title LIKE CONCAT('%', #{keyword}, '%')
+			b_title LIKE CONCAT('%', #{keyword}, '%') or u_address LIKE CONCAT('%', #{keyword}, '%')
 		</if>  
 		ORDER BY
 			 board_idx DESC
@@ -50,21 +50,6 @@
 	
 	</select>
 	  
-	<select id="searchTitle" parameterType="hashmap" resultType="com.example.demo.model.Product">	
-		SELECT 
-			board_idx
-			, b_title
-			, b_content
-			, u_nickname
-			, u_address
-			, p_price
-		FROM 
-			t2_product
-		WHERE
-			b_title LIKE CONCAT('%', #{keyword}, '%')   
-		ORDER BY
-			board_idx DESC
-	</select>
 	
 		<select id="selectGetMyItemList" parameterType="hashmap" resultType="com.example.demo.model.Product">
 		SELECT 

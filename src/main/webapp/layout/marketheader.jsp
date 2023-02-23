@@ -150,16 +150,7 @@ var app = new Vue({
 	        var self = this;
 	        var nparmap = {keyword : self.skeyword};
 	        self.pageChange("/main.do", nparmap);
-	        /* $.ajax({
-	            url:"/searchTitle.dox",
-	            dataType:"json",	
-	            type : "POST", 
-	            data : nparmap,
-	            success : function(data) {                                       
-	                app.list = data.list;
-	                self.skeyword = '';
-	            }
-	        }); */ 
+	      
 	    }
     }
      
