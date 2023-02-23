@@ -231,14 +231,8 @@ var app = new Vue({
 			var self = this;
 			const files = event.target.files;
 			
-			self.imgLength = 0;
-			files.length = 0;
-			this.previewImages.splice(self.thumbnail, 4);
-			this.saveImgFile.splice(self.thumbnail, 4);
-			
 			if((self.imgLength + files.length) > 4){
 				alert("사진은 최대 4장까지만 등록가능합니다.");
-				
 				if(self.imgLength == 0){
 					$('#file1').val('');
 				} else {
@@ -254,16 +248,19 @@ var app = new Vue({
 				return;
 			} else {
 				self.imgLength += files.length;
-			}
-			for (const file of files) {
-				this.saveImgFile.push(file);
-				this.previewImages.push(URL.createObjectURL(file));
+				if(self.imgLength < 5){
+				for (const file of files) {
+					this.saveImgFile.push(file);
+					this.previewImages.push(URL.createObjectURL(file));
+				}
+				}
 			}
     	}
 		, removeImage() {
 			var self = this;
     		this.previewImages.splice(self.thumbnail, 1);
     		this.saveImgFile.splice(self.thumbnail, 1);
+    		self.imgLength -= 1;
     		const dataTransfer = new DataTransfer();
 		    let files = $('#file1')[0].files;	//사용자가 입력한 파일을 변수에 할당
 		    let fileArray = Array.from(files);	//변수에 할당된 파일을 배열로 변환(FileList -> Array)

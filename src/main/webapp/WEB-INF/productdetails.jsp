@@ -14,10 +14,6 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
-	        .image{
-	        	 width: 253px;
-   				 height: 250px;
-	        }
 			.container{
 				margin: auto;
 				border: solid gray 1px;
@@ -26,6 +22,11 @@
       		}
 			.little{
 				display: inline;
+			}
+			.test{
+				word-wrap:break-word;
+				word-break:keep-all;
+				font-size: 20px;
 			}
 			.content{
 				margin-left: 50px;
@@ -137,7 +138,7 @@
 			</div>
 			<div class="sub">
 				<h2>내용</h2>
-				<span class="description"><pre>{{info.bContent}}</pre></span>
+				<div class="test">{{info.bContent}}</div>
 			</div>
 			<div class="msgDiv" >
 				<div v-if="info.uNickName != userNickName">
