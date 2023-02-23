@@ -88,7 +88,7 @@ var app = new Vue({
 					success : function(data) {
 						alert("회원탈퇴가 완료되었습니다.");
 						self.fnLogout();
-						location.href="/main.do";
+						window.close();
 					}
 				});
 			}

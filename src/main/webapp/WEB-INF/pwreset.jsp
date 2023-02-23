@@ -15,7 +15,7 @@
 	        }
 	
 	        body {
-	            background-color: #1BBC9B;
+	            background-color: #ffffff;
 	        }
 	
 	        .div1 {
