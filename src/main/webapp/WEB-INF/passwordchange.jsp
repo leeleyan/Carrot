@@ -110,7 +110,7 @@ var app = new Vue({
    			var self = this;
             var nparmap = {id : self.userId};
 	           $.ajax({
-	               url:"/message/get.dox",
+	               url:"/passwordchange/get.dox",
 	               dataType:"json",	
 	               type : "POST", 
 	               data : nparmap,
