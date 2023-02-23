@@ -31,8 +31,7 @@
 				보낸 쪽지함
 			</h2>
 			<div class="btSecList">
-				<a href="#" class="btDefault" id="aDelete" a2s="click" obj="MSG" @click="fnRemove"
-					opt="{&quot;Name&quot;:&quot;receive&quot;,&quot;Type&quot;:&quot;delete&quot;}">
+				<a href="#" class="btDefault" id="aDelete" a2s="click" obj="MSG" @click="fnRemove">
 					<span>삭제</span>
 				</a>
 			</div>
@@ -46,8 +45,7 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col"><input type='checkbox' name='selectBoard'
-								value='selectall' onclick='selectAll(this)' /></th>
+							<th><input type="checkbox" id="checkall"/></th>
 							<th scope="col" v-if="flg == false">보낸 사람</th>
 							<th scope="col" v-else="flg == true">받는 사람</th>
 							<th class="tit">내용</th>
@@ -57,7 +55,7 @@
 					</thead>
 					<tbody>
 						<tr v-for="(item, index) in list">
-						<th scope="col"><input type="checkbox" name="selectBoard"
+						<th scope="col"><input type="checkbox" name="checkbox"
 							v-bind:id="'idx_' + index" v-bind:value="item"
 							v-model="selectedItemList"></th>
 						<th scope="col" v-if="flg == false" @click="fnViewItem(item)" style="cursor: pointer">{{item.uSender}}</th>
@@ -79,14 +77,21 @@
 </html>
 <script type="text/javascript">
 
-
-function selectAll(selectAll)  {
-	  const checkboxes = document.getElementsByName('selectBoard');	  
-	  checkboxes.forEach((checkbox) => {
-	    checkbox.checked = selectAll.checked;
-	  })
-}
-
+$(document).ready(function() {
+	$("#checkall").click(function() {
+		if($("#checkall").is(":checked")) $("input[name=checkbox]").prop("checked", true);
+		else $("input[name=checkbox]").prop("checked", false);
+	});
+	
+	$("input[name=checkbox]").click(function() {
+		var total = $("input[name=checkbox]").length;
+		var checked = $("input[name=checkbox]:checked").length;
+		
+		if(total != checked) $("#checkall").prop("checked", false);
+		else $("#checkall").prop("checked", true); 
+	});
+});
+	
 	var app = new Vue({
 		el : '#app',
 		data : {
@@ -150,8 +155,13 @@ function selectAll(selectAll)  {
 	    	fnRemove : function(){
 	    		var self = this;
 	    		if (confirm("쪽지를 정말 삭제하시겠습니까?")) {
+	    		var checkarr = [];
+	    		$("input[name=checkbox]:checked").each(function(i){
+	    			checkarr.push($(this).val());
+	    		});
+	    		console.log(checkarr);
 	    		var list = JSON.stringify(self.selectedItemList);
-	    		var nparmap = {"test" : "1",  "list" : list};
+	    		var nparmap = {"test" : "1",  "list" : checkarr};
 	             $.ajax({
 	                 url:"/message/remove.dox",
 	                 dataType:"json",	
