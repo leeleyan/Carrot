@@ -230,11 +230,14 @@ var app = new Vue({
 		updateImages(event) {
 			var self = this;
 			const files = event.target.files;
+			
+			self.imgLength = 0;
+			files.length = 0;
+			this.previewImages.splice(self.thumbnail, 4);
+			this.saveImgFile.splice(self.thumbnail, 4);
+			
 			if((self.imgLength + files.length) > 4){
 				alert("사진은 최대 4장까지만 등록가능합니다.");
-				
-				self.imgLength = 0;
-				this.previewImages.splice(self.thumbnail, 4);
 				
 				if(self.imgLength == 0){
 					$('#file1').val('');

@@ -14,6 +14,10 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
+	        .image{
+	        	 width: 253px;
+   				 height: 250px;
+	        }
 			.container{
 				margin: auto;
 				border: solid gray 1px;
