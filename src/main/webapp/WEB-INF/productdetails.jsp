@@ -14,6 +14,10 @@
 	        * {
 	            font-family: 'Noto Sans KR', sans-serif;
 	        }
+	        .image{
+	        	width: 250px;
+			    height: 250px;
+	        }
 			.container{
 				margin: auto;
 				border: solid gray 1px;
@@ -50,9 +54,7 @@
 				width: 234px;
 			    height: 250px;
 			    border: 1px solid rgb(230, 229, 239);
-			    margin-right: 1rem;
 			    margin-bottom: 1rem;
-			    display: inline-flex;
 			}
 			.nick{
 				font-size: 25px;
