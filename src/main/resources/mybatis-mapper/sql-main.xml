@@ -67,29 +67,4 @@
 			board_idx DESC
 	</select>
 	
-	<select id="selectRecentlyList" parameterType="hashmap" resultType="com.example.demo.model.Product">
-	    SELECT 
-	        board_idx,
-	        b_title,
-	        b_content,
-	        u_nickname,
-	        u_address,
-	        p_price
-	    FROM
-	        t2_product  
-	    WHERE 
-		    <if test="recentlyList != null and recentlyList.size() > 0">
-		        board_idx IN
-		        <foreach item="item" collection="recentlyList" open="(" separator="," close=")">
-		            #{item}
-		        </foreach>
-		    </if>
-		    <if test="recentlyList == null or recentlyList.size() == 0">
-		        1=0
-		    </if>
-	</select>
-
-	
-	
-	
 </mapper>

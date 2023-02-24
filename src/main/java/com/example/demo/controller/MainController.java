@@ -125,12 +125,17 @@ public class MainController {
 	public String recentlyView(Model model, @RequestParam HashMap<String, Object> map ) throws Exception {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		ArrayList<Integer> re = (ArrayList<Integer>)session.getAttribute("re");
-		map.put("recentlyList", re);
-		List<Product> list = mainService.selectRecentlyList(map);
-	    for(int i=0; i<list.size();i++) {
-	        list.get(i).setImg(mainService.selectImg(list.get(i).getBoardIdx()));
+		System.out.println("map" + map);
+		System.out.println("re" + re);
+	    ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		for(int i=0; i<re.size();i++) {
+			HashMap<String, Object> remap = new HashMap<String, Object>();
+			remap.put("boardIdx", re.get(i));
+			remap.put("img", mainService.selectImg(re.get(i)));
+			list.add(remap);
 	    }
-	    resultMap.put("list", list);
+		resultMap.put("list", list);
+		System.out.println("list" + list);
 	    return new Gson().toJson(resultMap);
 	}
 }

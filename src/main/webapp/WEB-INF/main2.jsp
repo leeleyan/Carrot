@@ -22,8 +22,8 @@
         margin-bottom: 20px;
       }
       .container2{
-      width: 100%;
-     	 border: 1px solid rgb(200, 200, 200);
+    	width: 100%;
+     	border: 1px solid rgb(200, 200, 200);
       }
       .productDetails{
         width: 230px;
@@ -37,7 +37,6 @@
       .imgDiv{
         width: 100%;
         height: 200px;
-        background-color: aquamarine;
         border: 1px solid rgb(200, 200, 200);
       }
       
