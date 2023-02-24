@@ -10,20 +10,25 @@ CREATE TABLE `t2_account` (
   `changeDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`u_id`,`u_nickname`,`u_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
+CREATE TABLE `t2_image` (
+  `board_idx` int NOT NULL,
+  `img` varchar(100) NOT NULL,
+  `thumbnail` varchar(10) DEFAULT NULL,
+  `u_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`img`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `t2_message` (
-  `m_no` int NOT NULL,
+  `m_no` int NOT NULL AUTO_INCREMENT,
   `u_sender` varchar(20) NOT NULL,
   `u_recipient` varchar(20) NOT NULL,
   `m_title` varchar(20) NOT NULL,
-  `m_content` text NOT NULL,
+  `m_content` varchar(300) NOT NULL,
   `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `u_id` varchar(45) NOT NULL,
   PRIMARY KEY (`m_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `t2_product` (
-  `b_no` int NOT NULL AUTO_INCREMENT,
+  `board_idx` int NOT NULL AUTO_INCREMENT,
   `b_title` varchar(50) NOT NULL,
   `b_content` text NOT NULL,
   `u_nickname` varchar(20) NOT NULL,
@@ -31,13 +36,13 @@ CREATE TABLE `t2_product` (
   `p_price` int NOT NULL,
   `createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `changeDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`b_no`)
+  `u_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`board_idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `t_area` (
+  `idx` int NOT NULL,
+  `si` varchar(45) DEFAULT NULL,
+  `gu` varchar(45) DEFAULT NULL,
+  `dong` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `t2_image` (
-  `b_no` int NOT NULL,
-  `p_image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO t2_account (u_id, u_password, u_name, u_nickname, u_tel, u_email, u_address)
-VALUES ('id', 'pwd', 'name', 'nick', '0102222', 'mail@mail.com', 'address');

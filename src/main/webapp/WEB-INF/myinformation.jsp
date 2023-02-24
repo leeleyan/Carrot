@@ -18,7 +18,6 @@
 				font-size: 20px;
 				float: right;
 				height: 50px; 
-				background-color: transparent;
 			}
 			#fbtn{
 				font-size: 25px;
@@ -196,7 +195,7 @@
 				</tr>
 				
 			</table>
-			<span><button id="fbtn" @click="fnHome" class="addbutton" >돌아가기</button></span>
+			
 			</div>
 			<div class="container">
 			<h1 class="head-title" id="hot-articles-head-title">
