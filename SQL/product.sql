@@ -1,0 +1,49 @@
+/*
+-- Query: SELECT * FROM teamproject.t2_product
+LIMIT 0, 1000
+
+-- Date: 2023-02-24 13:00
+*/
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (94,'테스트','ㅌㅅㅌ','ㅇ?','서울특별시 종로구 청운동',5000,'2023-02-17 22:59:15','2023-02-17 22:59:15','');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (95,'테스트2','2121','ㅇ?','서울특별시 중구 무교동',6000,'2023-02-17 23:00:12','2023-02-17 23:00:12','');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (152,'ㅎㅇㅇ','ㅎㅇ\nㅎㅇ\nㅎㅇ\nㅎㅇ\nㅇ\n','ㅇ?','부산광역시 서구 동대신동3가',6000,'2023-02-21 01:33:45','2023-02-21 01:33:45','');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (160,'닭강점','팝니다\n','서영석','제주특별자치도 제주시 삼도이동',11000,'2023-02-21 13:05:25','2023-02-21 13:05:25','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (161,'닭다리','팝니다','서영석','경상남도 고성군 동해면',11000,'2023-02-21 13:05:52','2023-02-21 13:05:52','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (162,'떡볶이','팝니다','서영석','경상북도 구미시 봉곡동',11000,'2023-02-21 13:06:14','2023-02-21 13:06:14','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (163,'똥집튀김','팝니다','서영석','전라남도 장흥군 대덕읍',11000,'2023-02-21 13:06:40','2023-02-21 13:06:40','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (164,'무뼈닭발','ㅍㅍ','서영석','전라북도 군산시 월명동',11000,'2023-02-21 13:07:04','2023-02-21 13:07:04','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (165,'사이다','ㅍㅍ','서영석','충청남도 서천군 마서면',11000,'2023-02-21 13:07:23','2023-02-21 13:07:23','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (166,'맥주','ㅍㅍ','서영석','충청북도 청주시 청원구 내덕동',11000,'2023-02-21 13:07:51','2023-02-21 13:07:51','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (167,'순살튀김','ㅍㅍ','서영석','강원도 속초시 중앙동',11000,'2023-02-21 13:08:11','2023-02-21 13:08:11','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (168,'호떡','ㅇㅇ','서영석','경기도 성남시 분당구 이매동',11000,'2023-02-21 13:08:29','2023-02-21 13:08:29','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (169,'통닭','ㅇㅇ','서영석','울산광역시 남구 신정동',11000,'2023-02-21 13:11:03','2023-02-21 13:11:03','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (170,'오뎅탕','ㅍ','서영석','대전광역시 서구 변동',11000,'2023-02-21 13:11:20','2023-02-21 13:11:20','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (171,'윙봉','ㅍ','서영석','광주광역시 광산구 신촌동',11000,'2023-02-21 13:11:39','2023-02-21 13:11:39','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (173,'치즈볼','ㅍㅍ','서영석','광주광역시 남구 양촌동',10000,'2023-02-21 13:13:30','2023-02-21 13:13:30','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (174,'떡볶이팜','111','tetete','세종특별자치시  도렴동',1111,'2023-02-22 10:48:16','2023-02-22 10:48:16','tetete');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (177,'음료팔아요','ㅍ','서영석','대전광역시 유성구 대정동',20000,'2023-02-23 10:06:29','2023-02-23 10:06:29','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (182,'ㅎㅇ','124','leea','전라북도 전주시 완산구 중앙동1가',2323,'2023-02-23 12:01:33','2023-02-23 12:01:33','leele');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (183,'팝니다요','1111','서영석','충청북도 청주시 서원구 모충동',1111,'2023-02-23 12:03:35','2023-02-23 12:03:35','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (184,'#떡볶이 팔아요#@!@#!@!@#$%^&*','111###','서영석','전라남도 장성군 남면',1111,'2023-02-23 12:44:54','2023-02-23 12:44:54','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (186,'test2','1555','서영석','충청남도 서천군 판교면',1555,'2023-02-23 14:38:07','2023-02-23 14:38:07','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (187,'test','11','서영석','충청남도 홍성군 결성면',111,'2023-02-23 14:38:59','2023-02-23 14:38:59','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (188,'test','1212','서영석','전라북도 순창군 순창읍',121212,'2023-02-23 14:40:45','2023-02-23 14:40:45','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (189,'trte','1','서영석','경상북도 고령군 덕곡면',1,'2023-02-23 14:41:23','2023-02-23 14:41:23','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (190,'ㅅㄷㄴㅅ','1212','서영석','부산광역시 동구 좌천동',1212,'2023-02-23 14:55:54','2023-02-23 14:55:54','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (191,'ㄷㅅㄷ','1212','서영석','충청북도 괴산군 사리면',1212,'2023-02-23 14:57:22','2023-02-23 14:57:22','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (192,'ㅅㄷㅅㄷ','11','서영석','부산광역시 동구 좌천동',11,'2023-02-23 14:58:50','2023-02-23 14:58:50','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (194,'ㅅㄷ','12','서영석','부산광역시 서구 동대신동2가',121,'2023-02-23 15:01:10','2023-02-23 15:01:10','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (195,'ㅅㄷㅅㄷ','11','서영석','부산광역시 서구 동대신동1가',11,'2023-02-23 15:04:26','2023-02-23 15:04:26','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (199,'te','12','서영석','전라북도 고창군 성내면',12,'2023-02-23 15:21:25','2023-02-23 15:21:25','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (203,'ㅅㄷㄴㅅ','11','서영석','충청남도 천안시 서북구 백석동',11,'2023-02-23 15:47:16','2023-02-23 15:47:16','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (204,'ㅅㄷ','1','서영석','충청남도 청양군 대치면',1,'2023-02-23 16:07:45','2023-02-23 16:07:45','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (205,'ㅅㄷㅅㄷ','11','서영석','충청남도 홍성군 광천읍',11,'2023-02-23 16:18:49','2023-02-23 16:18:49','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (210,'12','12','서영석','전라남도 함평군 나산면',12,'2023-02-23 17:01:02','2023-02-23 17:01:02','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (211,'12','11','서영석','서울특별시 강서구 등촌동',11,'2023-02-23 17:01:36','2023-02-23 17:01:36','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (212,'1','1','서영석','충청북도 옥천군 안남면',1,'2023-02-23 17:02:41','2023-02-23 17:02:41','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (213,'1','11','서영석','경상남도 하동군 청암면',11,'2023-02-23 17:03:25','2023-02-23 17:03:25','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (214,'1','1','서영석','경상북도 영덕군 지품면',1,'2023-02-23 17:04:09','2023-02-23 17:04:09','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (216,'ㅇㄴㅁ','11','서영석','전라남도 영광군 백수읍',11,'2023-02-23 17:07:42','2023-02-23 17:07:42','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (219,'121','dasdsa\nsadasdas\nasd\nasd\nasd\nasd\nasd\nasd\n','서영석','인천광역시 미추홀구 숭의동',11,'2023-02-23 17:16:57','2023-02-23 17:16:57','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (220,'1','sadasd\nsad\nasd\nsad\nsda\nsa\n','서영석','경상북도 청도군 금천면',11,'2023-02-23 17:17:19','2023-02-23 17:17:19','infesteds');
+INSERT INTO `` (`board_idx`,`b_title`,`b_content`,`u_nickname`,`u_address`,`p_price`,`createDate`,`changeDate`,`u_id`) VALUES (221,'1212','1212','서영석','부산광역시 동구 수정동',1212,'2023-02-24 09:58:19','2023-02-24 09:58:19','infesteds');
